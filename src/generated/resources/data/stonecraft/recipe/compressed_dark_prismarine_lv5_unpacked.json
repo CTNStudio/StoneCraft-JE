@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "stonecraft:compressed_dark_prismarine_lv5"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "stonecraft:compressed_dark_prismarine_lv4"
+  }
+}

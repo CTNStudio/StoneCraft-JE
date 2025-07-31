@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "axe",
+  "key": {
+    "#": {
+      "tag": "stonecraft:material/compressed_stone_lv3"
+    },
+    "O": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "##",
+    "#O",
+    " O"
+  ],
+  "result": {
+    "count": 1,
+    "id": "stonecraft:compressed_stone_axe_lv3"
+  }
+}

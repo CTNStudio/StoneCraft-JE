@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "block.minecraft.cobblestone": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:cobblestone"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "stonecraft:cobblestone"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "item.stonecraft.stone_nugget": {
+      "conditions": {
+        "items": [
+          {
+            "items": "stonecraft:stone_nugget"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "block.minecraft.cobblestone",
+      "item.stonecraft.stone_nugget"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "stonecraft:cobblestone"
+    ]
+  }
+}

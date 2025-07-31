@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "block.minecraft.dark_prismarine": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:dark_prismarine"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "block.stonecraft.compressed_dark_prismarine_lv1": {
+      "conditions": {
+        "items": [
+          {
+            "items": "stonecraft:compressed_dark_prismarine_lv1"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "stonecraft:dark_prismarine_packed"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "block.stonecraft.compressed_dark_prismarine_lv1",
+      "block.minecraft.dark_prismarine"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "stonecraft:dark_prismarine_packed"
+    ]
+  }
+}

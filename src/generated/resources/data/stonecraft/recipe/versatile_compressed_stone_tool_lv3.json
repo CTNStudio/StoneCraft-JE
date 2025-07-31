@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "versatileTool",
+  "key": {
+    "A": {
+      "item": "stonecraft:compressed_stone_axe_lv3"
+    },
+    "H": {
+      "item": "stonecraft:compressed_stone_hoe_lv3"
+    },
+    "I": {
+      "item": "minecraft:stick"
+    },
+    "P": {
+      "item": "stonecraft:compressed_stone_pickaxe_lv3"
+    },
+    "S": {
+      "item": "stonecraft:compressed_stone_shovel_lv3"
+    }
+  },
+  "pattern": [
+    "APH",
+    " I ",
+    " S "
+  ],
+  "result": {
+    "count": 1,
+    "id": "stonecraft:versatile_compressed_stone_tool_lv3"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "parent": "stonecraft:stone_adventure/get_cobbled_deepslate",
+  "criteria": {
+    "stone_adventure/get_obsidian": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:obsidian"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.stonecraft.stone_adventure/get_obsidian.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:obsidian"
+    },
+    "title": {
+      "translate": "advancements.stonecraft.stone_adventure/get_obsidian.title"
+    }
+  },
+  "requirements": [
+    [
+      "stone_adventure/get_obsidian"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

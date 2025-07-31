@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "stonecraft:stone_boots"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "item.stonecraft.stone_boots": {
+      "conditions": {
+        "items": [
+          {
+            "items": "stonecraft:stone_boots"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "minecraft:stone_crafting_materials": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#minecraft:stone_crafting_materials"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "item.stonecraft.stone_boots",
+      "minecraft:stone_crafting_materials"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "stonecraft:stone_boots"
+    ]
+  }
+}

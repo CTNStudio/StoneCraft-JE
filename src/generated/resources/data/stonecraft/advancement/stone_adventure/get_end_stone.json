@@ -1,0 +1,33 @@
+{
+  "parent": "stonecraft:stone_adventure/root",
+  "criteria": {
+    "stone_adventure/get_end_stone": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:end_stone"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.stonecraft.stone_adventure/get_end_stone.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:end_stone"
+    },
+    "title": {
+      "translate": "advancements.stonecraft.stone_adventure/get_end_stone.title"
+    }
+  },
+  "requirements": [
+    [
+      "stone_adventure/get_end_stone"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

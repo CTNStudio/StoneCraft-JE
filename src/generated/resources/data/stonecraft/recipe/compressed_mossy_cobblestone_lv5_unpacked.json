@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "stonecraft:compressed_mossy_cobblestone_lv5"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "stonecraft:compressed_mossy_cobblestone_lv4"
+  }
+}

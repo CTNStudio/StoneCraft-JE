@@ -1,0 +1,33 @@
+{
+  "parent": "stonecraft:stone_adventure/root",
+  "criteria": {
+    "stone_adventure/get_diorite": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:diorite"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.stonecraft.stone_adventure/get_diorite.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:diorite"
+    },
+    "title": {
+      "translate": "advancements.stonecraft.stone_adventure/get_diorite.title"
+    }
+  },
+  "requirements": [
+    [
+      "stone_adventure/get_diorite"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,54 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "stonecraft:ultimate_compressed_stone_sword_act1"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "item.stonecraft.compressed_stone_sword_lv5": {
+      "conditions": {
+        "items": [
+          {
+            "items": "stonecraft:compressed_stone_sword_lv5"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "item.stonecraft.stone_star": {
+      "conditions": {
+        "items": [
+          {
+            "items": "stonecraft:stone_star"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "item.stonecraft.ultimate_compressed_stone_sword_act1": {
+      "conditions": {
+        "items": [
+          {
+            "items": "stonecraft:ultimate_compressed_stone_sword_act1"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "item.stonecraft.ultimate_compressed_stone_sword_act1",
+      "item.stonecraft.stone_star",
+      "item.stonecraft.compressed_stone_sword_lv5"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "stonecraft:ultimate_compressed_stone_sword_act1"
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "pickaxe",
+  "key": {
+    "#": {
+      "item": "stonecraft:compressed_stone_pickaxe_lv2"
+    }
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "stonecraft:compressed_stone_pickaxe_lv3"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "values": [
+    "minecraft:stone",
+    "minecraft:cobblestone",
+    "minecraft:end_stone",
+    "minecraft:infested_stone",
+    "minecraft:blackstone",
+    "minecraft:dripstone_block",
+    "minecraft:prismarine",
+    "minecraft:dark_prismarine"
+  ]
+}

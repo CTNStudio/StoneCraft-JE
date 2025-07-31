@@ -1,0 +1,54 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "stonecraft:compressed_stonickers_lv2"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "item.minecraft.cookie": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:cookie"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "item.stonecraft.compressed_stonickers_lv2": {
+      "conditions": {
+        "items": [
+          {
+            "items": "stonecraft:compressed_stonickers_lv2"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "stonecraft:material/compressed_stone_lv3": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#stonecraft:material/compressed_stone_lv3"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "item.stonecraft.compressed_stonickers_lv2",
+      "stonecraft:material/compressed_stone_lv3",
+      "item.minecraft.cookie"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "stonecraft:compressed_stonickers_lv2"
+    ]
+  }
+}

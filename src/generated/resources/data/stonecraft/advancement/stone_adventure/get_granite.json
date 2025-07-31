@@ -1,0 +1,33 @@
+{
+  "parent": "stonecraft:stone_adventure/root",
+  "criteria": {
+    "stone_adventure/get_granite": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:granite"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.stonecraft.stone_adventure/get_granite.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:granite"
+    },
+    "title": {
+      "translate": "advancements.stonecraft.stone_adventure/get_granite.title"
+    }
+  },
+  "requirements": [
+    [
+      "stone_adventure/get_granite"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

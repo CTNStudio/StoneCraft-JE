@@ -1,0 +1,33 @@
+{
+  "parent": "stonecraft:stone_adventure/get_cobblestone",
+  "criteria": {
+    "stone_adventure/get_blackstone": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:blackstone"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.stonecraft.stone_adventure/get_blackstone.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:blackstone"
+    },
+    "title": {
+      "translate": "advancements.stonecraft.stone_adventure/get_blackstone.title"
+    }
+  },
+  "requirements": [
+    [
+      "stone_adventure/get_blackstone"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

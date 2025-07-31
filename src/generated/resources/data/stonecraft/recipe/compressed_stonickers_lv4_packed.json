@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "stone_food",
+  "key": {
+    "#": {
+      "item": "stonecraft:compressed_stonickers_lv4"
+    }
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "stonecraft:compressed_stonickers_lv5"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "pickaxe",
+  "key": {
+    "#": {
+      "tag": "stonecraft:material/compressed_stone_lv5"
+    },
+    "O": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "###",
+    " O ",
+    " O "
+  ],
+  "result": {
+    "count": 1,
+    "id": "stonecraft:compressed_stone_pickaxe_lv5"
+  }
+}

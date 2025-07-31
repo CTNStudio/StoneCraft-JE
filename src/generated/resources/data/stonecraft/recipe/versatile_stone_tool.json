@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "versatileTool",
+  "key": {
+    "A": {
+      "item": "minecraft:stone_axe"
+    },
+    "H": {
+      "item": "minecraft:stone_hoe"
+    },
+    "I": {
+      "item": "minecraft:stick"
+    },
+    "P": {
+      "item": "minecraft:stone_pickaxe"
+    },
+    "S": {
+      "item": "minecraft:stone_shovel"
+    }
+  },
+  "pattern": [
+    "APH",
+    " I ",
+    " S "
+  ],
+  "result": {
+    "count": 1,
+    "id": "stonecraft:versatile_stone_tool"
+  }
+}

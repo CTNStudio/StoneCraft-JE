@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "stonecraft:compressed_blackstone_lv2"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "stonecraft:compressed_blackstone_lv1"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "parent": "stonecraft:stone_adventure/root",
+  "criteria": {
+    "stone_adventure/get_netherrack": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:netherrack"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.stonecraft.stone_adventure/get_netherrack.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:netherrack"
+    },
+    "title": {
+      "translate": "advancements.stonecraft.stone_adventure/get_netherrack.title"
+    }
+  },
+  "requirements": [
+    [
+      "stone_adventure/get_netherrack"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

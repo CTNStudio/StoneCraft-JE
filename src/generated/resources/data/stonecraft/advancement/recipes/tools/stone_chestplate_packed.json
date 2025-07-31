@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "stonecraft:stone_chestplate_packed"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "item.stonecraft.compressed_stone_chestplate_lv1": {
+      "conditions": {
+        "items": [
+          {
+            "items": "stonecraft:compressed_stone_chestplate_lv1"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "item.stonecraft.stone_chestplate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "stonecraft:stone_chestplate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "item.stonecraft.compressed_stone_chestplate_lv1",
+      "item.stonecraft.stone_chestplate"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "stonecraft:stone_chestplate_packed"
+    ]
+  }
+}

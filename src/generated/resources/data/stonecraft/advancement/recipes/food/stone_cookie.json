@@ -1,0 +1,54 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "stonecraft:stone_cookie"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "item.minecraft.cookie": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:cookie"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "item.stonecraft.stone_cookie": {
+      "conditions": {
+        "items": [
+          {
+            "items": "stonecraft:stone_cookie"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "minecraft:stone_crafting_materials": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#minecraft:stone_crafting_materials"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "item.stonecraft.stone_cookie",
+      "minecraft:stone_crafting_materials",
+      "item.minecraft.cookie"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "stonecraft:stone_cookie"
+    ]
+  }
+}

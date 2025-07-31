@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "stonecraft:compressed_crying_obsidian_lv4"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "stonecraft:compressed_crying_obsidian_lv3"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "sword",
+  "key": {
+    "#": {
+      "tag": "stonecraft:material/compressed_stone_lv1"
+    },
+    "O": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "#",
+    "#",
+    "O"
+  ],
+  "result": {
+    "count": 1,
+    "id": "stonecraft:compressed_stone_sword_lv1"
+  }
+}

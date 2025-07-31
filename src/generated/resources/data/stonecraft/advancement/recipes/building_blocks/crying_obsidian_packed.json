@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "block.minecraft.crying_obsidian": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:crying_obsidian"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "block.stonecraft.compressed_crying_obsidian_lv1": {
+      "conditions": {
+        "items": [
+          {
+            "items": "stonecraft:compressed_crying_obsidian_lv1"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "stonecraft:crying_obsidian_packed"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "block.stonecraft.compressed_crying_obsidian_lv1",
+      "block.minecraft.crying_obsidian"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "stonecraft:crying_obsidian_packed"
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "stonecraft:stone_pickaxe_packed"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "item.minecraft.stone_pickaxe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:stone_pickaxe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "item.stonecraft.compressed_stone_pickaxe_lv1": {
+      "conditions": {
+        "items": [
+          {
+            "items": "stonecraft:compressed_stone_pickaxe_lv1"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "item.stonecraft.compressed_stone_pickaxe_lv1",
+      "item.minecraft.stone_pickaxe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "stonecraft:stone_pickaxe_packed"
+    ]
+  }
+}

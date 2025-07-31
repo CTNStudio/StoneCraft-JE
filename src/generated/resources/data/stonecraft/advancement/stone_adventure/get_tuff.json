@@ -1,0 +1,33 @@
+{
+  "parent": "stonecraft:stone_adventure/root",
+  "criteria": {
+    "stone_adventure/get_tuff": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:tuff"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.stonecraft.stone_adventure/get_tuff.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:tuff"
+    },
+    "title": {
+      "translate": "advancements.stonecraft.stone_adventure/get_tuff.title"
+    }
+  },
+  "requirements": [
+    [
+      "stone_adventure/get_tuff"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

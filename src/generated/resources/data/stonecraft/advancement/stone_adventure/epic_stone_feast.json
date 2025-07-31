@@ -1,0 +1,219 @@
+{
+  "parent": "stonecraft:stone_adventure/ten_stones_eaten",
+  "criteria": {
+    "item.stonecraft.compressed_stonickers_lv1": {
+      "conditions": {
+        "item": {
+          "items": "stonecraft:compressed_stonickers_lv1"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "item.stonecraft.compressed_stonickers_lv2": {
+      "conditions": {
+        "item": {
+          "items": "stonecraft:compressed_stonickers_lv2"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "item.stonecraft.compressed_stonickers_lv3": {
+      "conditions": {
+        "item": {
+          "items": "stonecraft:compressed_stonickers_lv3"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "item.stonecraft.compressed_stonickers_lv4": {
+      "conditions": {
+        "item": {
+          "items": "stonecraft:compressed_stonickers_lv4"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "item.stonecraft.compressed_stonickers_lv5": {
+      "conditions": {
+        "item": {
+          "items": "stonecraft:compressed_stonickers_lv5"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "item.stonecraft.stone_apple": {
+      "conditions": {
+        "item": {
+          "items": "stonecraft:stone_apple"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "item.stonecraft.stone_bread": {
+      "conditions": {
+        "item": {
+          "items": "stonecraft:stone_bread"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "item.stonecraft.stone_carrot": {
+      "conditions": {
+        "item": {
+          "items": "stonecraft:stone_carrot"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "item.stonecraft.stone_cooked_beef": {
+      "conditions": {
+        "item": {
+          "items": "stonecraft:stone_cooked_beef"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "item.stonecraft.stone_cooked_cod": {
+      "conditions": {
+        "item": {
+          "items": "stonecraft:stone_cooked_cod"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "item.stonecraft.stone_cookie": {
+      "conditions": {
+        "item": {
+          "items": "stonecraft:stone_cookie"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "item.stonecraft.stone_glow_berries": {
+      "conditions": {
+        "item": {
+          "items": "stonecraft:stone_glow_berries"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "item.stonecraft.stone_hodgepodge": {
+      "conditions": {
+        "item": {
+          "items": "stonecraft:stone_hodgepodge"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "item.stonecraft.stone_kelp": {
+      "conditions": {
+        "item": {
+          "items": "stonecraft:stone_kelp"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "item.stonecraft.stone_melon_slice": {
+      "conditions": {
+        "item": {
+          "items": "stonecraft:stone_melon_slice"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "item.stonecraft.stone_potato": {
+      "conditions": {
+        "item": {
+          "items": "stonecraft:stone_potato"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "item.stonecraft.stone_sweet_berries": {
+      "conditions": {
+        "item": {
+          "items": "stonecraft:stone_sweet_berries"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "item.stonecraft.stonickers": {
+      "conditions": {
+        "item": {
+          "items": "stonecraft:stonickers"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.stonecraft.stone_adventure/epic_stone_feast.description"
+    },
+    "frame": "challenge",
+    "icon": {
+      "count": 1,
+      "id": "stonecraft:stonickers"
+    },
+    "title": {
+      "translate": "advancements.stonecraft.stone_adventure/epic_stone_feast.title"
+    }
+  },
+  "requirements": [
+    [
+      "item.stonecraft.stone_apple"
+    ],
+    [
+      "item.stonecraft.stone_bread"
+    ],
+    [
+      "item.stonecraft.stone_carrot"
+    ],
+    [
+      "item.stonecraft.stone_kelp"
+    ],
+    [
+      "item.stonecraft.stone_melon_slice"
+    ],
+    [
+      "item.stonecraft.stone_potato"
+    ],
+    [
+      "item.stonecraft.stone_hodgepodge"
+    ],
+    [
+      "item.stonecraft.stonickers"
+    ],
+    [
+      "item.stonecraft.stone_cooked_cod"
+    ],
+    [
+      "item.stonecraft.stone_cookie"
+    ],
+    [
+      "item.stonecraft.stone_cooked_beef"
+    ],
+    [
+      "item.stonecraft.stone_glow_berries"
+    ],
+    [
+      "item.stonecraft.stone_sweet_berries"
+    ],
+    [
+      "item.stonecraft.compressed_stonickers_lv1"
+    ],
+    [
+      "item.stonecraft.compressed_stonickers_lv2"
+    ],
+    [
+      "item.stonecraft.compressed_stonickers_lv3"
+    ],
+    [
+      "item.stonecraft.compressed_stonickers_lv4"
+    ],
+    [
+      "item.stonecraft.compressed_stonickers_lv5"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

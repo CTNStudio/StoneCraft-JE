@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "stonecraft:versatile_stone_tool_packed"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "item.stonecraft.versatile_compressed_stone_tool_lv1": {
+      "conditions": {
+        "items": [
+          {
+            "items": "stonecraft:versatile_compressed_stone_tool_lv1"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "item.stonecraft.versatile_stone_tool": {
+      "conditions": {
+        "items": [
+          {
+            "items": "stonecraft:versatile_stone_tool"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "item.stonecraft.versatile_compressed_stone_tool_lv1",
+      "item.stonecraft.versatile_stone_tool"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "stonecraft:versatile_stone_tool_packed"
+    ]
+  }
+}

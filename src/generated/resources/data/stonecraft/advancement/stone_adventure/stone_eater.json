@@ -1,0 +1,31 @@
+{
+  "parent": "stonecraft:stone_adventure/root",
+  "criteria": {
+    "eater_stone_food": {
+      "conditions": {
+        "item": {
+          "items": "#stonecraft:stone_food"
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.stonecraft.stone_adventure/stone_eater.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "stonecraft:stone_apple"
+    },
+    "title": {
+      "translate": "advancements.stonecraft.stone_adventure/stone_eater.title"
+    }
+  },
+  "requirements": [
+    [
+      "eater_stone_food"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

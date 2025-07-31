@@ -1,0 +1,33 @@
+{
+  "parent": "stonecraft:stone_adventure/root",
+  "criteria": {
+    "stone_adventure/get_cobblestone": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:cobblestone"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.stonecraft.stone_adventure/get_cobblestone.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:cobblestone"
+    },
+    "title": {
+      "translate": "advancements.stonecraft.stone_adventure/get_cobblestone.title"
+    }
+  },
+  "requirements": [
+    [
+      "stone_adventure/get_cobblestone"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

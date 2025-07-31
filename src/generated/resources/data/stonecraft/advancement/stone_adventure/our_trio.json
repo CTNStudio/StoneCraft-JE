@@ -1,0 +1,59 @@
+{
+  "parent": "stonecraft:stone_adventure/root",
+  "criteria": {
+    "get_andesite": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:andesite"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "get_diorite": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:diorite"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "get_granite": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:granite"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.stonecraft.stone_adventure/our_trio.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:cobblestone"
+    },
+    "title": {
+      "translate": "advancements.stonecraft.stone_adventure/our_trio.title"
+    }
+  },
+  "requirements": [
+    [
+      "get_granite"
+    ],
+    [
+      "get_andesite"
+    ],
+    [
+      "get_diorite"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

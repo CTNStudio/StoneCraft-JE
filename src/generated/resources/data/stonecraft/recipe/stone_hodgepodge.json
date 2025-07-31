@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "stone_food",
+  "ingredients": [
+    {
+      "item": "minecraft:bowl"
+    },
+    {
+      "item": "stonecraft:stone_apple"
+    },
+    {
+      "item": "stonecraft:stone_bread"
+    },
+    {
+      "item": "stonecraft:stone_carrot"
+    },
+    {
+      "item": "stonecraft:stone_kelp"
+    },
+    {
+      "item": "stonecraft:stone_melon_slice"
+    },
+    {
+      "item": "stonecraft:stone_potato"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "stonecraft:stone_hodgepodge"
+  }
+}

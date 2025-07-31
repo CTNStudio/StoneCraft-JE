@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "block.stonecraft.compressed_glowingobsidian_lv1": {
+      "conditions": {
+        "items": [
+          {
+            "items": "stonecraft:compressed_glowingobsidian_lv1"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "block.stonecraft.compressed_glowingobsidian_lv2": {
+      "conditions": {
+        "items": [
+          {
+            "items": "stonecraft:compressed_glowingobsidian_lv2"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "stonecraft:compressed_glowingobsidian_lv1_packed"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "block.stonecraft.compressed_glowingobsidian_lv2",
+      "block.stonecraft.compressed_glowingobsidian_lv1"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "stonecraft:compressed_glowingobsidian_lv1_packed"
+    ]
+  }
+}
