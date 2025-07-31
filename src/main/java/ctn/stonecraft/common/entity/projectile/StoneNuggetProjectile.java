@@ -35,10 +35,14 @@ import static ctn.stonecraft.init.ScEntityTypes.STONE_NUGGET;
  */
 public class StoneNuggetProjectile extends ThrowableItemProjectile {
 	/// 水漂次数
-	private int              hydroplaningCount;
-	
-	private int     time              = 0;
+	protected int              hydroplaningCount;
+	protected int     time              = 0;
 	private boolean isAnnounceResults = false;
+	
+	// 弹射参数
+	protected float maxAngle = 20.0f;
+	protected float minAngle = 0.0f;
+	protected float minSpeed = 0.001f;
 	
 	//region 构建方法
 	public StoneNuggetProjectile(double x, double y, double z, Level level) {
@@ -71,29 +75,26 @@ public class StoneNuggetProjectile extends ThrowableItemProjectile {
 	@Override
 	public void tick() {
 		super.tick();
-		Level level = this.level();
 		time++;
-		Vec3 movement = getDeltaMovement();
-		double length = movement.length();
-		Vec3 pos = position();
-		AABB aabb = this.getBoundingBox();
-		double aabbBottomY = aabb.minY;
-		double aabbTopY = aabb.maxY;
+		Level level = this.level();
 		liquidContact:
 		{
+			Vec3 movement = getDeltaMovement();
 			float pitchFromVelocity = getPitchFromVelocity(movement);
 			float abs = Math.abs(pitchFromVelocity);
 			
-			// 角度判断：打水漂的最佳角度通常在5-20度之间
-			if (abs < 0 || abs > 20 || length < 0.001) {
+			double length = movement.length();
+			if (abs < minAngle || abs > maxAngle || length < minSpeed) {
 				break liquidContact;
 			}
 			
+			Vec3 pos = position();
+			AABB aabb = this.getBoundingBox();
+			double aabbBottomY = aabb.minY;
 			Vec3 posBottomY = new Vec3(pos.x, aabbBottomY, pos.z);
-			Vec3 posTopY = new Vec3(pos.x, aabbTopY * Math.max(1, 0.01 * length), pos.z);
 			FluidState fluidState = getFluidState(level, posBottomY);
 			
-			// 检查是否找到液体
+			// 检查当前格子是否找到液体
 			if (fluidState.isEmpty()) {
 				break liquidContact;
 			}
@@ -104,52 +105,39 @@ public class StoneNuggetProjectile extends ThrowableItemProjectile {
 			}
 			
 			// 检查是否浸入过深
+			Vec3 posTopY = new Vec3(pos.x, aabb.maxY * Math.max(1, 0.01 * length), pos.z);
 			if (isInFluid(level, fluidState, posTopY)) {
 				break liquidContact;
 			}
+			
+			// 成功
+			// TODO 增加事件
+			
 			if (!level.isClientSide) {
 				if (level instanceof ServerLevel serverLevel){
 					BlockPos blockpos = getOnPos();
 					for (int i = 0; i < Math.max(5, movement.lengthSqr()); i++) {
-						serverLevel.sendParticles(
-								ParticleTypes.SPLASH,
-								(double)blockpos.getX() + level.random.nextDouble(),
-								blockpos.getY() + 1,
-								(double)blockpos.getZ() + level.random.nextDouble(),
-								1,
-								0.0,
-								0.0,
-								0.0,
-								1.0
-						);
+						double random = level.random.nextDouble();
+						double posX = (double) blockpos.getX() + random;
+						double posZ = (double) blockpos.getZ() + random;
+						int posY = blockpos.getY() + 1;
+						serverLevel.sendParticles(ParticleTypes.SPLASH, posX, posY, posZ, 1, 0.0, 0.0, 0.0, 1.0);
 					}
 				}
 			}
 			float floatHeight = getFloatHeight(level, fluidState, posBottomY);
 			
-			// 计算入射角和反射角
-			double velocityY = movement.y;
+			double angleFactor = abs / maxAngle;
+			double restitution = 0.8 - (angleFactor * 0.2);
+			double newYVelocity = -movement.y * restitution;
 			
-			// 反射角近似等于入射角，但会因为能量损失而减小
-			// 垂直速度反向并乘以恢复系数（0.6-0.8之间）
-			// 根据入射角度调整恢复系数，角度越小恢复系数越大
-			double angleFactor = abs / 30.0; // 基于最大角度30度
-			double restitution = 0.8 - (angleFactor * 0.2); // 角度越小恢复系数越大(0.6-0.8)
-			double newYVelocity = -velocityY * restitution;
-			
-			// 水平速度也会有损失，且与入射角相关
-			// 入射角越大，水平速度损失越多
-			double horizontalDamping = 0.98 - (0.08 * angleFactor); // 减少水平速度损失以提高游戏性
+			double horizontalDamping = 0.98 - (0.08 * angleFactor);
 			double newXVelocity = movement.x * horizontalDamping;
 			double newZVelocity = movement.z * horizontalDamping;
 			
-			// 根据角度调整新的垂直速度，使弹跳更符合物理规律
-			// 角度越小，垂直速度应该越小以保持贴近水面
 			if (abs < 10) {
-				// 对于较小角度，进一步减小垂直速度以保持贴近水面
 				newYVelocity *= 0.7;
 			} else if (abs > 10) {
-				// 对于较大角度，增加垂直速度以确保能跳出水面
 				newYVelocity *= 1.3;
 			}
 			
@@ -163,8 +151,15 @@ public class StoneNuggetProjectile extends ThrowableItemProjectile {
 		}
 		if (!level.isClientSide && time >= 20 * 2 && !isAnnounceResults) {
 			isAnnounceResults = true;
-			o("你的成绩是：" + hydroplaningCount + "次！");
+			sendGrades();
 		}
+	}
+	
+	/**
+	 * 发送成绩
+ 	 */
+	private void sendGrades() {
+		Minecraft.getInstance().gui.setOverlayMessage(Component.literal(("你的成绩是：" + hydroplaningCount + "次！")), false);
 	}
 	
 	/**
@@ -176,16 +171,13 @@ public class StoneNuggetProjectile extends ThrowableItemProjectile {
 			ParticleOptions particleoptions = this.getParticle();
 			Vec3 movement = getDeltaMovement();
 			Level level = this.level();
+			double random = level.random.nextDouble();
 			for (int i = 0; i < Math.max(8, movement.lengthSqr()); i++) {
 				level.addParticle(particleoptions,
 						this.getX(), this.getY(), this.getZ(),
-						movement.x, movement.y, movement.z);
+						movement.x + random, movement.y + random, movement.z + random);
 			}
 		}
-	}
-	
-	private static void o(String text) {
-		Minecraft.getInstance().gui.setOverlayMessage(Component.literal(text), false);
 	}
 	
 	/**
@@ -224,7 +216,7 @@ public class StoneNuggetProjectile extends ThrowableItemProjectile {
 			this.discard();
 			if (hydroplaningCount > 0 && !isAnnounceResults) {
 				isAnnounceResults = true;
-				o("你的成绩是：" + hydroplaningCount + "次！");
+				sendGrades();
 			}
 		}
 	}
@@ -302,6 +294,10 @@ public class StoneNuggetProjectile extends ThrowableItemProjectile {
 	@Override
 	protected @NotNull StoneNuggetItem getDefaultItem() {
 		return ScItems.STONE_NUGGET.get();
+	}
+	
+	public int getHydroplaningCount() {
+		return hydroplaningCount;
 	}
 	//endregion
 }
