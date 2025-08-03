@@ -11,21 +11,23 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Supplier;
 
+import static ctn.stonecraft.datagen.tag.ScTags.ScItems.*;
+
 public enum ScTiers implements Tier {
 	LV1(BlockTags.INCORRECT_FOR_IRON_TOOL,
-			350, 6.0F, 6, 6, () -> Ingredient.of(ScItemTags.COMPRESSED_STONE_MATERIAL_LV1)
+			350, 6.0F, 6, 6, () -> Ingredient.of(COMPRESSED_STONE_MATERIAL_LV1)
 	),
 	LV2(BlockTags.INCORRECT_FOR_IRON_TOOL,
-			500, 7.0F, 7, 7, () -> Ingredient.of(ScItemTags.COMPRESSED_STONE_MATERIAL_LV2)
+			500, 7.0F, 7, 7, () -> Ingredient.of(COMPRESSED_STONE_MATERIAL_LV2)
 	),
 	LV3(BlockTags.INCORRECT_FOR_DIAMOND_TOOL,
-			700, 8.0F, 8, 8, () -> Ingredient.of(ScItemTags.COMPRESSED_STONE_MATERIAL_LV3)
+			700, 8.0F, 8, 8, () -> Ingredient.of(COMPRESSED_STONE_MATERIAL_LV3)
 	),
 	LV4(BlockTags.INCORRECT_FOR_DIAMOND_TOOL,
-			1500, 9.0F, 9, 10, () -> Ingredient.of(ScItemTags.COMPRESSED_STONE_MATERIAL_LV4)
+			1500, 9.0F, 9, 10, () -> Ingredient.of(COMPRESSED_STONE_MATERIAL_LV4)
 	),
 	LV5(BlockTags.INCORRECT_FOR_NETHERITE_TOOL,
-			3500, 10.0F, 10, 15, () -> Ingredient.of(ScItemTags.COMPRESSED_STONE_MATERIAL_LV5)
+			3500, 10.0F, 10, 15, () -> Ingredient.of(COMPRESSED_STONE_MATERIAL_LV5)
 	);
 	
 	private final TagKey<Block>        incorrectBlocksForDrops;

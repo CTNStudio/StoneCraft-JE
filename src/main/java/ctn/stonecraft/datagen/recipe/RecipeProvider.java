@@ -1,6 +1,8 @@
 package ctn.stonecraft.datagen.recipe;
 
+import com.jcraft.jorbis.Block;
 import ctn.stonecraft.datagen.tag.ScItemTags;
+import ctn.stonecraft.init.ScBlocks;
 import ctn.stonecraft.init.ScItems;
 import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
@@ -10,6 +12,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -17,6 +20,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
+import net.neoforged.neoforge.common.Tags;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
@@ -25,6 +29,7 @@ import java.util.concurrent.CompletableFuture;
 
 import static ctn.stonecraft.StoneCraft.SC_ID;
 import static ctn.stonecraft.datagen.recipe.RecipeTool.*;
+import static ctn.stonecraft.datagen.tag.ScTags.ScItems.*;
 
 /**
  * @author 尽
@@ -37,6 +42,20 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 		super(output, registries);
 		modId = SC_ID;
 	}
+	
+	//region 静态方法
+	public static @NotNull Criterion<InventoryChangeTrigger.TriggerInstance> has(MinMaxBounds.@NotNull Ints count, @NotNull ItemLike item) {
+		return net.minecraft.data.recipes.RecipeProvider.has(count, item);
+	}
+	
+	public static @NotNull Criterion<InventoryChangeTrigger.TriggerInstance> has(@NotNull TagKey<Item> tag) {
+		return net.minecraft.data.recipes.RecipeProvider.has(tag);
+	}
+	
+	public static @NotNull Criterion<InventoryChangeTrigger.TriggerInstance> has(@NotNull ItemLike itemLike) {
+		return net.minecraft.data.recipes.RecipeProvider.has(itemLike);
+	}
+	//endregion
 	
 	// 注册
 	@Override
@@ -51,7 +70,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 		unpackedPackedRecipes(output, Items.BEDROCK, ScItems.COMPRESSED_BEDROCK);
 		unpackedPackedRecipes(output, Items.END_STONE, ScItems.COMPRESSED_END_STONE);
 		unpackedPackedRecipes(output, Items.OBSIDIAN, ScItems.COMPRESSED_OBSIDIAN);
-		unpackedPackedRecipes(output, ScItems.COMPRESSED_GLOWINGOBSIDIAN);
+		unpackedPackedRecipes(output, ScItems.GLOWINGOBSIDIAN, ScItems.COMPRESSED_GLOWINGOBSIDIAN);
 		unpackedPackedRecipes(output, Items.CRYING_OBSIDIAN, ScItems.COMPRESSED_CRYING_OBSIDIAN);
 		unpackedPackedRecipes(output, Items.PRISMARINE, ScItems.COMPRESSED_PRISMARINE);
 		unpackedPackedRecipes(output, Items.DARK_PRISMARINE, ScItems.COMPRESSED_DARK_PRISMARINE);
@@ -109,19 +128,19 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 		//region 剑
 		swordRecipe(output, ScItems.COMPRESSED_STONE_SWORD_LV1,
 				Items.STONE_SWORD,
-				getIngredient(ScItemTags.COMPRESSED_STONE_MATERIAL_LV1));
+				getIngredient(COMPRESSED_STONE_MATERIAL_LV1));
 		swordRecipe(output, ScItems.COMPRESSED_STONE_SWORD_LV2,
 				ScItems.COMPRESSED_STONE_SWORD_LV1,
-				getIngredient(ScItemTags.COMPRESSED_STONE_MATERIAL_LV2));
+				getIngredient(COMPRESSED_STONE_MATERIAL_LV2));
 		swordRecipe(output, ScItems.COMPRESSED_STONE_SWORD_LV3,
 				ScItems.COMPRESSED_STONE_SWORD_LV2,
-				getIngredient(ScItemTags.COMPRESSED_STONE_MATERIAL_LV3));
+				getIngredient(COMPRESSED_STONE_MATERIAL_LV3));
 		swordRecipe(output, ScItems.COMPRESSED_STONE_SWORD_LV4,
 				ScItems.COMPRESSED_STONE_SWORD_LV3,
-				getIngredient(ScItemTags.COMPRESSED_STONE_MATERIAL_LV4));
+				getIngredient(COMPRESSED_STONE_MATERIAL_LV4));
 		swordRecipe(output, ScItems.COMPRESSED_STONE_SWORD_LV5,
 				ScItems.COMPRESSED_STONE_SWORD_LV4,
-				getIngredient(ScItemTags.COMPRESSED_STONE_MATERIAL_LV5));
+				getIngredient(COMPRESSED_STONE_MATERIAL_LV5));
 		//region 终极压缩剑
 		ShapedBuilder.basicBuilder(output, ScItems.ULTIMATE_COMPRESSED_STONE_SWORD_ACT1, RecipeCategory.MISC,
 				shapedBuilder -> shapedBuilder
@@ -150,73 +169,73 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 		//region 斧
 		axeRecipe(output, ScItems.COMPRESSED_STONE_AXE_LV1,
 				Items.STONE_AXE,
-				getIngredient(ScItemTags.COMPRESSED_STONE_MATERIAL_LV1));
+				getIngredient(COMPRESSED_STONE_MATERIAL_LV1));
 		axeRecipe(output, ScItems.COMPRESSED_STONE_AXE_LV2,
 				ScItems.COMPRESSED_STONE_AXE_LV1,
-				getIngredient(ScItemTags.COMPRESSED_STONE_MATERIAL_LV2));
+				getIngredient(COMPRESSED_STONE_MATERIAL_LV2));
 		axeRecipe(output, ScItems.COMPRESSED_STONE_AXE_LV3,
 				ScItems.COMPRESSED_STONE_AXE_LV2,
-				getIngredient(ScItemTags.COMPRESSED_STONE_MATERIAL_LV3));
+				getIngredient(COMPRESSED_STONE_MATERIAL_LV3));
 		axeRecipe(output, ScItems.COMPRESSED_STONE_AXE_LV4,
 				ScItems.COMPRESSED_STONE_AXE_LV3,
-				getIngredient(ScItemTags.COMPRESSED_STONE_MATERIAL_LV4));
+				getIngredient(COMPRESSED_STONE_MATERIAL_LV4));
 		axeRecipe(output, ScItems.COMPRESSED_STONE_AXE_LV5,
 				ScItems.COMPRESSED_STONE_AXE_LV4,
-				getIngredient(ScItemTags.COMPRESSED_STONE_MATERIAL_LV5));
+				getIngredient(COMPRESSED_STONE_MATERIAL_LV5));
 		//endregion
 		
 		//region 镐
 		pickaxeRecipe(output, ScItems.COMPRESSED_STONE_PICKAXE_LV1,
 				Items.STONE_PICKAXE,
-				getIngredient(ScItemTags.COMPRESSED_STONE_MATERIAL_LV1));
+				getIngredient(COMPRESSED_STONE_MATERIAL_LV1));
 		pickaxeRecipe(output, ScItems.COMPRESSED_STONE_PICKAXE_LV2,
 				ScItems.COMPRESSED_STONE_PICKAXE_LV1,
-				getIngredient(ScItemTags.COMPRESSED_STONE_MATERIAL_LV2));
+				getIngredient(COMPRESSED_STONE_MATERIAL_LV2));
 		pickaxeRecipe(output, ScItems.COMPRESSED_STONE_PICKAXE_LV3,
 				ScItems.COMPRESSED_STONE_PICKAXE_LV2,
-				getIngredient(ScItemTags.COMPRESSED_STONE_MATERIAL_LV3));
+				getIngredient(COMPRESSED_STONE_MATERIAL_LV3));
 		pickaxeRecipe(output, ScItems.COMPRESSED_STONE_PICKAXE_LV4,
 				ScItems.COMPRESSED_STONE_PICKAXE_LV3,
-				getIngredient(ScItemTags.COMPRESSED_STONE_MATERIAL_LV4));
+				getIngredient(COMPRESSED_STONE_MATERIAL_LV4));
 		pickaxeRecipe(output, ScItems.COMPRESSED_STONE_PICKAXE_LV5,
 				ScItems.COMPRESSED_STONE_PICKAXE_LV4,
-				getIngredient(ScItemTags.COMPRESSED_STONE_MATERIAL_LV5));
+				getIngredient(COMPRESSED_STONE_MATERIAL_LV5));
 		//endregion
 		
 		//region 锹
 		shovelRecipe(output, ScItems.COMPRESSED_STONE_SHOVEL_LV1,
 				Items.STONE_SHOVEL,
-				getIngredient(ScItemTags.COMPRESSED_STONE_MATERIAL_LV1));
+				getIngredient(COMPRESSED_STONE_MATERIAL_LV1));
 		shovelRecipe(output, ScItems.COMPRESSED_STONE_SHOVEL_LV2,
 				ScItems.COMPRESSED_STONE_SHOVEL_LV1,
-				getIngredient(ScItemTags.COMPRESSED_STONE_MATERIAL_LV2));
+				getIngredient(COMPRESSED_STONE_MATERIAL_LV2));
 		shovelRecipe(output, ScItems.COMPRESSED_STONE_SHOVEL_LV3,
 				ScItems.COMPRESSED_STONE_SHOVEL_LV2,
-				getIngredient(ScItemTags.COMPRESSED_STONE_MATERIAL_LV3));
+				getIngredient(COMPRESSED_STONE_MATERIAL_LV3));
 		shovelRecipe(output, ScItems.COMPRESSED_STONE_SHOVEL_LV4,
 				ScItems.COMPRESSED_STONE_SHOVEL_LV3,
-				getIngredient(ScItemTags.COMPRESSED_STONE_MATERIAL_LV4));
+				getIngredient(COMPRESSED_STONE_MATERIAL_LV4));
 		shovelRecipe(output, ScItems.COMPRESSED_STONE_SHOVEL_LV5,
 				ScItems.COMPRESSED_STONE_SHOVEL_LV4,
-				getIngredient(ScItemTags.COMPRESSED_STONE_MATERIAL_LV5));
+				getIngredient(COMPRESSED_STONE_MATERIAL_LV5));
 		//endregion
 		
 		//region 锄
 		hoeRecipe(output, ScItems.COMPRESSED_STONE_HOE_LV1,
 				Items.STONE_HOE,
-				getIngredient(ScItemTags.COMPRESSED_STONE_MATERIAL_LV1));
+				getIngredient(COMPRESSED_STONE_MATERIAL_LV1));
 		hoeRecipe(output, ScItems.COMPRESSED_STONE_HOE_LV2,
 				ScItems.COMPRESSED_STONE_HOE_LV1,
-				getIngredient(ScItemTags.COMPRESSED_STONE_MATERIAL_LV2));
+				getIngredient(COMPRESSED_STONE_MATERIAL_LV2));
 		hoeRecipe(output, ScItems.COMPRESSED_STONE_HOE_LV3,
 				ScItems.COMPRESSED_STONE_HOE_LV2,
-				getIngredient(ScItemTags.COMPRESSED_STONE_MATERIAL_LV3));
+				getIngredient(COMPRESSED_STONE_MATERIAL_LV3));
 		hoeRecipe(output, ScItems.COMPRESSED_STONE_HOE_LV4,
 				ScItems.COMPRESSED_STONE_HOE_LV3,
-				getIngredient(ScItemTags.COMPRESSED_STONE_MATERIAL_LV4));
+				getIngredient(COMPRESSED_STONE_MATERIAL_LV4));
 		hoeRecipe(output, ScItems.COMPRESSED_STONE_HOE_LV5,
 				ScItems.COMPRESSED_STONE_HOE_LV4,
-				getIngredient(ScItemTags.COMPRESSED_STONE_MATERIAL_LV5));
+				getIngredient(COMPRESSED_STONE_MATERIAL_LV5));
 		//endregion
 		//endregion
 		
@@ -233,11 +252,11 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 		coreFrameRecipe(output, RecipeCategory.FOOD, ScItems.STONE_COOKED_BEEF, getIngredient(ItemTags.STONE_CRAFTING_MATERIALS), getIngredient(Items.COOKED_BEEF), "stone_food");
 		coreFrameRecipe(output, RecipeCategory.FOOD, ScItems.STONE_SWEET_BERRIES, getIngredient(ItemTags.STONE_CRAFTING_MATERIALS), getIngredient(Items.SWEET_BERRIES), "stone_food");
 		
-		coreFrameRecipe(output, RecipeCategory.FOOD, ScItems.STONICKERS, getIngredient(ScItemTags.COMPRESSED_STONE_MATERIAL_LV1), getIngredient(Items.COOKIE), "stone_food");
-		coreFrameRecipe(output, RecipeCategory.FOOD, ScItems.COMPRESSED_STONICKERS_LV1, getIngredient(ScItemTags.COMPRESSED_STONE_MATERIAL_LV2), getIngredient(Items.COOKIE), "stone_food");
-		coreFrameRecipe(output, RecipeCategory.FOOD, ScItems.COMPRESSED_STONICKERS_LV2, getIngredient(ScItemTags.COMPRESSED_STONE_MATERIAL_LV3), getIngredient(Items.COOKIE), "stone_food");
-		coreFrameRecipe(output, RecipeCategory.FOOD, ScItems.COMPRESSED_STONICKERS_LV3, getIngredient(ScItemTags.COMPRESSED_STONE_MATERIAL_LV4), getIngredient(Items.COOKIE), "stone_food");
-		coreFrameRecipe(output, RecipeCategory.FOOD, ScItems.COMPRESSED_STONICKERS_LV4, getIngredient(ScItemTags.COMPRESSED_STONE_MATERIAL_LV5), getIngredient(Items.COOKIE), "stone_food");
+		coreFrameRecipe(output, RecipeCategory.FOOD, ScItems.STONICKERS, getIngredient(COMPRESSED_STONE_MATERIAL_LV1), getIngredient(Items.COOKIE), "stone_food");
+		coreFrameRecipe(output, RecipeCategory.FOOD, ScItems.COMPRESSED_STONICKERS_LV1, getIngredient(COMPRESSED_STONE_MATERIAL_LV2), getIngredient(Items.COOKIE), "stone_food");
+		coreFrameRecipe(output, RecipeCategory.FOOD, ScItems.COMPRESSED_STONICKERS_LV2, getIngredient(COMPRESSED_STONE_MATERIAL_LV3), getIngredient(Items.COOKIE), "stone_food");
+		coreFrameRecipe(output, RecipeCategory.FOOD, ScItems.COMPRESSED_STONICKERS_LV3, getIngredient(COMPRESSED_STONE_MATERIAL_LV4), getIngredient(Items.COOKIE), "stone_food");
+		coreFrameRecipe(output, RecipeCategory.FOOD, ScItems.COMPRESSED_STONICKERS_LV4, getIngredient(COMPRESSED_STONE_MATERIAL_LV5), getIngredient(Items.COOKIE), "stone_food");
 		packedRecipes(output, RecipeCategory.FOOD, ScItems.COMPRESSED_STONICKERS_LV5, ScItems.COMPRESSED_STONICKERS_LV4, "stone_food");
 		
 		{
@@ -260,7 +279,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 		//region 材料
 		ShapedBuilder.basicBuilder(output, ScItems.STONE_STAR, RecipeCategory.MISC,
 				shapedBuilder -> shapedBuilder
-						.define('*', ScItemTags.COMPRESSED_STONE_MATERIAL_LV5)
+						.define('*', COMPRESSED_STONE_MATERIAL_LV5)
 						.pattern(" * ")
 						.pattern("***")
 						.pattern(" * "));
@@ -287,29 +306,29 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 		
 		helmetRecipe(output, ScItems.COMPRESSED_STONE_HELMET_LV1,
 				ScItems.STONE_HELMET,
-				getIngredient(ScItemTags.COMPRESSED_STONE_MATERIAL_LV1));
+				getIngredient(COMPRESSED_STONE_MATERIAL_LV1));
 		chestplateRecipe(output, ScItems.COMPRESSED_STONE_CHESTPLATE_LV1,
 				ScItems.STONE_CHESTPLATE,
-				getIngredient(ScItemTags.COMPRESSED_STONE_MATERIAL_LV1));
+				getIngredient(COMPRESSED_STONE_MATERIAL_LV1));
 		leggingsRecipe(output, ScItems.COMPRESSED_STONE_LEGGINGS_LV1,
 				ScItems.STONE_LEGGINGS,
-				getIngredient(ScItemTags.COMPRESSED_STONE_MATERIAL_LV1));
+				getIngredient(COMPRESSED_STONE_MATERIAL_LV1));
 		bootsRecipe(output, ScItems.COMPRESSED_STONE_BOOTS_LV1,
 				ScItems.STONE_BOOTS,
-				getIngredient(ScItemTags.COMPRESSED_STONE_MATERIAL_LV1));
+				getIngredient(COMPRESSED_STONE_MATERIAL_LV1));
 		
 		helmetRecipe(output, ScItems.COMPRESSED_STONE_HELMET_LV2,
 				ScItems.COMPRESSED_STONE_HELMET_LV1,
-				getIngredient(ScItemTags.COMPRESSED_STONE_MATERIAL_LV2));
+				getIngredient(COMPRESSED_STONE_MATERIAL_LV2));
 		chestplateRecipe(output, ScItems.COMPRESSED_STONE_CHESTPLATE_LV2,
 				ScItems.COMPRESSED_STONE_CHESTPLATE_LV1,
-				getIngredient(ScItemTags.COMPRESSED_STONE_MATERIAL_LV2));
+				getIngredient(COMPRESSED_STONE_MATERIAL_LV2));
 		leggingsRecipe(output, ScItems.COMPRESSED_STONE_LEGGINGS_LV2,
 				ScItems.COMPRESSED_STONE_LEGGINGS_LV1,
-				getIngredient(ScItemTags.COMPRESSED_STONE_MATERIAL_LV2));
+				getIngredient(COMPRESSED_STONE_MATERIAL_LV2));
 		bootsRecipe(output, ScItems.COMPRESSED_STONE_BOOTS_LV2,
 				ScItems.COMPRESSED_STONE_BOOTS_LV1,
-				getIngredient(ScItemTags.COMPRESSED_STONE_MATERIAL_LV2));
+				getIngredient(COMPRESSED_STONE_MATERIAL_LV2));
 		
 		helmetRecipe(output, ScItems.COMPRESSED_STONE_HELMET_LV3,
 				getIngredient(ScItems.COMPRESSED_OBSIDIAN.get(1)), "helmet");
@@ -346,21 +365,29 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 				ScItems.COMPRESSED_STONE_BOOTS_LV4,
 				getIngredient(ScItems.COMPRESSED_OBSIDIAN.get(3)));
 		//endregion
+		
+		//region 方块
+		ShapedBuilder.basicBuilder(output, ScItems.GLOWINGOBSIDIAN, RecipeCategory.BUILDING_BLOCKS, shapedBuilder -> shapedBuilder
+				.define('*', Tags.Items.OBSIDIANS)
+				.define('A', Items.REDSTONE)
+				.define('B', Items.GLOWSTONE_DUST)
+				.pattern("BAB")
+				.pattern("A*A")
+				.pattern("BAB")
+				.setRecipesId(getLocation("%s_%d".formatted(getItemName(ScItems.GLOWINGOBSIDIAN), 1))
+				));
+		
+		ShapedBuilder.basicBuilder(output, ScItems.GLOWINGOBSIDIAN, RecipeCategory.BUILDING_BLOCKS, shapedBuilder -> shapedBuilder
+				.define('*', Tags.Items.OBSIDIANS)
+				.define('A', Items.REDSTONE)
+				.define('B', Items.GLOWSTONE_DUST)
+				.pattern("ABA")
+				.pattern("B*B")
+				.pattern("ABA")
+				.setRecipesId(getLocation("%s_%d".formatted(getItemName(ScItems.GLOWINGOBSIDIAN), 2))
+				));
+		//endregion
 	}
-	
-	//region 静态方法
-	public static @NotNull Criterion<InventoryChangeTrigger.TriggerInstance> has(MinMaxBounds.@NotNull Ints count, @NotNull ItemLike item) {
-		return net.minecraft.data.recipes.RecipeProvider.has(count, item);
-	}
-	
-	public static @NotNull Criterion<InventoryChangeTrigger.TriggerInstance> has(@NotNull TagKey<Item> tag) {
-		return net.minecraft.data.recipes.RecipeProvider.has(tag);
-	}
-	
-	public static @NotNull Criterion<InventoryChangeTrigger.TriggerInstance> has(@NotNull ItemLike itemLike) {
-		return net.minecraft.data.recipes.RecipeProvider.has(itemLike);
-	}
-	//endregion
 	
 	//region 预制方法
 	public @NotNull ShapedBuilder buildingRecipeBuilder(ItemLike result) {

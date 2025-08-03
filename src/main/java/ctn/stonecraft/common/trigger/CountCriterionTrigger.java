@@ -38,10 +38,10 @@ import static ctn.stonecraft.init.ScTriggerTypes.COUNT_CRITERION_TRIGGER;
  * 该类通过NBT数据持久化存储玩家已获得的物品，防止重复触发同一进度条件
  */
 public class CountCriterionTrigger extends SimpleCriterionTrigger<CountCriterionTrigger.TriggerInstance> {
-	private static final Logger LOG            = LogUtils.getLogger();
 	public static final  String ADVANCEMENT    = "advancement";
 	public static final  String ITEM_DATA_LIST = "itemDataList";
 	public static final  String ITEM_ID        = "itemId";
+	private static final Logger LOG            = LogUtils.getLogger();
 	
 	/**
 	 * 获取触发器实例的编解码器

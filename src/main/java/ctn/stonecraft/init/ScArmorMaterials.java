@@ -18,6 +18,7 @@ import java.util.function.Supplier;
 
 import static ctn.stonecraft.StoneCraft.SC_ID;
 import static ctn.stonecraft.StoneCraft.path;
+import static ctn.stonecraft.datagen.tag.ScTags.ScItems.*;
 
 public class ScArmorMaterials {
 	public static final DeferredRegister<ArmorMaterial> ARMOR_MATERIALS = DeferredRegister.create(Registries.ARMOR_MATERIAL, SC_ID);
@@ -28,23 +29,23 @@ public class ScArmorMaterials {
 	);
 	public static final Holder<ArmorMaterial> LV1 = register(
 			"compressed_stone_lv1", 2, 5, 6, 2, 10, 1.0F, 0.1F,
-			() -> Ingredient.of(ScItemTags.COMPRESSED_STONE_MATERIAL_LV1)
+			() -> Ingredient.of(COMPRESSED_STONE_MATERIAL_LV1)
 	);
 	public static final Holder<ArmorMaterial> LV2 = register(
 			"compressed_stone_lv2", 3, 6, 7, 3, 11, 2.5F, 0.15F,
-			() -> Ingredient.of(ScItemTags.COMPRESSED_STONE_MATERIAL_LV2)
+			() -> Ingredient.of(COMPRESSED_STONE_MATERIAL_LV2)
 	);
 	public static final Holder<ArmorMaterial> LV3 = register(
 			"compressed_stone_lv3", 4, 7, 8, 4, 12, 3.5F, 0.2F,
-			() -> Ingredient.of(ScItemTags.COMPRESSED_STONE_MATERIAL_LV3)
+			() -> Ingredient.of(COMPRESSED_STONE_MATERIAL_LV3)
 	);
 	public static final Holder<ArmorMaterial> LV4 = register(
 			"compressed_stone_lv4", 5, 8, 9, 5, 13, 4.0F, 0.3F,
-			() -> Ingredient.of(ScItemTags.COMPRESSED_STONE_MATERIAL_LV4)
+			() -> Ingredient.of(COMPRESSED_STONE_MATERIAL_LV4)
 	);
 	public static final Holder<ArmorMaterial> LV5 = register(
 			"compressed_stone_lv5", 6, 9, 10, 6, 14, 5.4F, 0.4F,
-			() -> Ingredient.of(ScItemTags.COMPRESSED_STONE_MATERIAL_LV5)
+			() -> Ingredient.of(COMPRESSED_STONE_MATERIAL_LV5)
 	);
 	
 	private static Holder<ArmorMaterial> register(

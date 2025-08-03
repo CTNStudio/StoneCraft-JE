@@ -23,7 +23,7 @@ public class FileGenerator {
 	}
 	
 	// 在这生成
-	public void generate(){
+	public void generate() {
 	
 	}
 	

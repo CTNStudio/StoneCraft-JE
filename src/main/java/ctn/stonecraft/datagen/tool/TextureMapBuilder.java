@@ -14,6 +14,13 @@ public class TextureMapBuilder {
 	private final        float              correct;
 	
 	/**
+	 * 默认构造函数，创建最大数量为64的纹理映射构建器
+	 */
+	public TextureMapBuilder() {
+		this(64);
+	}
+	
+	/**
 	 * 构造函数，创建指定最大数量的纹理映射构建器
 	 *
 	 * @param maxCount 纹理映射的最大数量，必须大于0
@@ -37,10 +44,13 @@ public class TextureMapBuilder {
 	}
 	
 	/**
-	 * 默认构造函数，创建最大数量为64的纹理映射构建器
+	 * 四舍五入到两位小数
+	 *
+	 * @param value 需要四舍五入的值
+	 * @return 四舍五入后的值
 	 */
-	public TextureMapBuilder() {
-		this(64);
+	public static float round(float value) {
+		return Math.round(value * ROUNDING_FACTOR) / ROUNDING_FACTOR;
 	}
 	
 	/**
@@ -70,6 +80,13 @@ public class TextureMapBuilder {
 		return this;
 	}
 	
+	// 提取重复的验证逻辑
+	private void validateNamesArray(String[] names) {
+		if (names == null || names.length == 0) {
+			throw new IllegalArgumentException("names array cannot be null or empty");
+		}
+	}
+	
 	/**
 	 * 按指定分组数量均匀分配纹理映射
 	 *
@@ -79,21 +96,6 @@ public class TextureMapBuilder {
 	 */
 	public TextureMapBuilder sharing(int sharingCount) {
 		return sharingInternal("", sharingCount);
-	}
-	
-	/**
-	 * 按指定分组数量均匀分配纹理映射
-	 *
-	 * @param additional   前缀字符串，会添加到分组数字前
-	 * @param sharingCount 分组数量，必须大于0
-	 * @return 纹理映射构建器实例
-	 * @throws IllegalArgumentException 当sharingCount小于等于0时抛出
-	 */
-	public TextureMapBuilder sharing(String additional, int sharingCount) {
-		if (additional == null) {
-			additional = "";
-		}
-		return sharingInternal(additional, sharingCount);
 	}
 	
 	/**
@@ -118,6 +120,43 @@ public class TextureMapBuilder {
 			textureMap.put(round(i * correct), name);
 		}
 		return this;
+	}
+	
+	private void validateSharingCount(int sharingCount) {
+		if (sharingCount <= 0) {
+			throw new IllegalArgumentException("sharingCount must be greater than 0");
+		}
+	}
+	
+	/**
+	 * 按指定分组数量均匀分配纹理映射
+	 *
+	 * @param additional   前缀字符串，会添加到分组数字前
+	 * @param sharingCount 分组数量，必须大于0
+	 * @return 纹理映射构建器实例
+	 * @throws IllegalArgumentException 当sharingCount小于等于0时抛出
+	 */
+	public TextureMapBuilder sharing(String additional, int sharingCount) {
+		if (additional == null) {
+			additional = "";
+		}
+		return sharingInternal(additional, sharingCount);
+	}
+	
+	/**
+	 * 在去除头尾的区域内将纹理均匀分配给指定的名称数组
+	 *
+	 * @param names 名称数组
+	 * @return 纹理映射构建器实例
+	 */
+	public TextureMapBuilder sharingWithoutHeadAndTail(String[] names) {
+		validateNamesArray(names);
+		
+		if (maxCount <= 2) {
+			return this;
+		}
+		
+		return sharing(1, maxCount - 2, names);
 	}
 	
 	/**
@@ -146,20 +185,10 @@ public class TextureMapBuilder {
 		return this;
 	}
 	
-	/**
-	 * 在去除头尾的区域内将纹理均匀分配给指定的名称数组
-	 *
-	 * @param names 名称数组
-	 * @return 纹理映射构建器实例
-	 */
-	public TextureMapBuilder sharingWithoutHeadAndTail(String[] names) {
-		validateNamesArray(names);
-		
-		if (maxCount <= 2) {
-			return this;
+	private void validateIndexRange(int startIndex, int endIndex) {
+		if (startIndex < 0 || endIndex >= maxCount || startIndex > endIndex) {
+			throw new IllegalArgumentException("startIndex and endIndex must be valid range");
 		}
-		
-		return sharing(1, maxCount - 2, names);
 	}
 	
 	/**
@@ -189,18 +218,6 @@ public class TextureMapBuilder {
 		}
 		
 		return sharing(1, maxCount - 2, additional, sharingCount);
-	}
-	
-	/**
-	 * 在指定区域内将纹理均匀分配给指定数量的数字分组
-	 *
-	 * @param startIndex   起始索引
-	 * @param endIndex     结束索引
-	 * @param sharingCount 分组数量
-	 * @return 纹理映射构建器实例
-	 */
-	public TextureMapBuilder sharing(int startIndex, int endIndex, int sharingCount) {
-		return sharingInternal(startIndex, endIndex, "", sharingCount);
 	}
 	
 	/**
@@ -243,6 +260,18 @@ public class TextureMapBuilder {
 			textureMap.put(round(i * correct), name);
 		}
 		return this;
+	}
+	
+	/**
+	 * 在指定区域内将纹理均匀分配给指定数量的数字分组
+	 *
+	 * @param startIndex   起始索引
+	 * @param endIndex     结束索引
+	 * @param sharingCount 分组数量
+	 * @return 纹理映射构建器实例
+	 */
+	public TextureMapBuilder sharing(int startIndex, int endIndex, int sharingCount) {
+		return sharingInternal(startIndex, endIndex, "", sharingCount);
 	}
 	
 	/**
@@ -298,9 +327,11 @@ public class TextureMapBuilder {
 	 * @param name  纹理名称
 	 * @return 纹理映射构建器实例
 	 */
-	public TextureMapBuilder set(float index, String name) {
-		textureMap.put(index, name);
-		return this;
+	public TextureMapBuilder set(int index, String name) {
+		if (index < 0) {
+			throw new IllegalArgumentException("index must be greater than or equal to 0");
+		}
+		return set(round(index * correct), name);
 	}
 	
 	/**
@@ -310,11 +341,9 @@ public class TextureMapBuilder {
 	 * @param name  纹理名称
 	 * @return 纹理映射构建器实例
 	 */
-	public TextureMapBuilder set(int index, String name) {
-		if (index < 0) {
-			throw new IllegalArgumentException("index must be greater than or equal to 0");
-		}
-		return set(round(index * correct), name);
+	public TextureMapBuilder set(float index, String name) {
+		textureMap.put(index, name);
+		return this;
 	}
 	
 	/**
@@ -324,34 +353,5 @@ public class TextureMapBuilder {
 	 */
 	public Map<Float, String> builder() {
 		return textureMap;
-	}
-	
-	/**
-	 * 四舍五入到两位小数
-	 *
-	 * @param value 需要四舍五入的值
-	 * @return 四舍五入后的值
-	 */
-	public static float round(float value) {
-		return Math.round(value * ROUNDING_FACTOR) / ROUNDING_FACTOR;
-	}
-	
-	// 提取重复的验证逻辑
-	private void validateNamesArray(String[] names) {
-		if (names == null || names.length == 0) {
-			throw new IllegalArgumentException("names array cannot be null or empty");
-		}
-	}
-	
-	private void validateSharingCount(int sharingCount) {
-		if (sharingCount <= 0) {
-			throw new IllegalArgumentException("sharingCount must be greater than 0");
-		}
-	}
-	
-	private void validateIndexRange(int startIndex, int endIndex) {
-		if (startIndex < 0 || endIndex >= maxCount || startIndex > endIndex) {
-			throw new IllegalArgumentException("startIndex and endIndex must be valid range");
-		}
 	}
 }

@@ -19,63 +19,11 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 import static ctn.stonecraft.StoneCraft.SC_ID;
-import static ctn.stonecraft.StoneCraft.path;
+import static ctn.stonecraft.datagen.tag.ScTags.ScBlocks.*;
 
 public class ScBlockTags extends BlockTagsProvider {
-	public static final TagKey<Block> COMPRESSED_BLOCK     = createTag("compressed_lv/compressed_blocks");
-	public static final TagKey<Block> COMPRESSED_BLOCK_LV1 = createTag("compressed_lv/lv1");
-	public static final TagKey<Block> COMPRESSED_BLOCK_LV2 = createTag("compressed_lv/lv2");
-	public static final TagKey<Block> COMPRESSED_BLOCK_LV3 = createTag("compressed_lv/lv3");
-	public static final TagKey<Block> COMPRESSED_BLOCK_LV4 = createTag("compressed_lv/lv4");
-	public static final TagKey<Block> COMPRESSED_BLOCK_LV5 = createTag("compressed_lv/lv5");
-	
-	public static final TagKey<Block> COMPRESSED_COBBLESTONE       = createTag("compressed/cobblestone");
-	public static final TagKey<Block> COMPRESSED_MOSSY_COBBLESTONE = createTag("compressed/mossy_cobblestone");
-	public static final TagKey<Block> COMPRESSED_STONE             = createTag("compressed/stone");
-	public static final TagKey<Block> COMPRESSED_GRANITE           = createTag("compressed/granite");
-	public static final TagKey<Block> COMPRESSED_ANDESITE          = createTag("compressed/andesite");
-	public static final TagKey<Block> COMPRESSED_DIORITE           = createTag("compressed/diorite");
-	public static final TagKey<Block> COMPRESSED_BEDROCK           = createTag("compressed/bedrock");
-	public static final TagKey<Block> COMPRESSED_END_STONE         = createTag("compressed/end_stone");
-	public static final TagKey<Block> COMPRESSED_OBSIDIAN          = createTag("compressed/obsidian");
-	public static final TagKey<Block> COMPRESSED_GLOWINGOBSIDIAN   = createTag("compressed/glowingobsidian");
-	public static final TagKey<Block> COMPRESSED_CRYING_OBSIDIAN   = createTag("compressed/crying_obsidian");
-	public static final TagKey<Block> COMPRESSED_PRISMARINE        = createTag("compressed/prismarine");
-	public static final TagKey<Block> COMPRESSED_DARK_PRISMARINE   = createTag("compressed/dark_prismarine");
-	public static final TagKey<Block> COMPRESSED_NETHERRACK        = createTag("compressed/netherrack");
-	public static final TagKey<Block> COMPRESSED_GLOWSTONE         = createTag("compressed/glowstone");
-	public static final TagKey<Block> COMPRESSED_BLACKSTONE        = createTag("compressed/blackstone");
-	public static final TagKey<Block> COMPRESSED_CALCITE           = createTag("compressed/calcite");
-	public static final TagKey<Block> COMPRESSED_DEEPSLATE         = createTag("compressed/deepslate");
-	public static final TagKey<Block> COMPRESSED_COBBLED_DEEPSLATE = createTag("compressed/cobbled_deepslate");
-	public static final TagKey<Block> COMPRESSED_BASALT            = createTag("compressed/basalt");
-	public static final TagKey<Block> COMPRESSED_TUFF              = createTag("compressed/tuff");
-	public static final TagKey<Block> COMPRESSED_DRIPSTONE_BLOCK   = createTag("compressed/dripstone_block");
-	
-	public static final TagKey<Block> MINEABLE_WITH_VERSATILE       = createTag("mineable/versatile");
-	// 可以掉落石粒的方块
-	public static final TagKey<Block> FALL_AWAY_STONE_NUGGET        = createTag("fall_away_stone_nugget");
-	// 可以受到 石力挖掘 附魔影响的方块
-	public static final TagKey<Block> STONE_DESTROYER_EFFECT_BLOCKS = createTag("enchantment/stone_destroyer_effect_blocks");
-	// 受到 石之缓冲 附魔免疫影响的方块
-	public static final TagKey<Block> STONE_BUFFER_EFFECT_BLOCKS    = createTag("enchantment/stone_buffer_effect_blocks");
-	
-	public static final TagKey<Block> ADVANCEMENT_ROOT_BLOCK = createTag("advancement/root_block");
-	
 	public ScBlockTags(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, @CheckForNull ExistingFileHelper existingFileHelper) {
 		super(output, lookupProvider, SC_ID, existingFileHelper);
-	}
-	
-	protected static TagKey<Block> createTag(String name) {
-		return BlockTags.create(path(name));
-	}
-	
-	protected static TagKey<Block> createCTag(String name) {
-		return BlockTags.create(ResourceLocation.fromNamespaceAndPath("c", name));
-	}
-	
-	protected static TagKey<Block> createMcTag(String name) {
-		return BlockTags.create(ResourceLocation.withDefaultNamespace(name));
 	}
 	
 	@Override
@@ -340,7 +288,8 @@ public class ScBlockTags extends BlockTagsProvider {
 				ScBlocks.COMPRESSED_DRIPSTONE_BLOCK.get(3),
 				ScBlocks.COMPRESSED_OBSIDIAN.get(0),
 				ScBlocks.COMPRESSED_GLOWINGOBSIDIAN.get(0),
-				ScBlocks.COMPRESSED_CRYING_OBSIDIAN.get(0)
+				ScBlocks.COMPRESSED_CRYING_OBSIDIAN.get(0),
+				ScBlocks.GLOWINGOBSIDIAN
 		);
 		addTags(Tags.Blocks.NEEDS_NETHERITE_TOOL,
 				ScBlocks.COMPRESSED_COBBLESTONE.get(4),
@@ -404,6 +353,10 @@ public class ScBlockTags extends BlockTagsProvider {
 		tag(BlockTags.BASE_STONE_OVERWORLD);
 		
 		tag(ADVANCEMENT_ROOT_BLOCK).addTag(STONE_DESTROYER_EFFECT_BLOCKS);
+		
+		tag(Tags.Blocks.OBSIDIANS).add(
+				ScBlocks.GLOWINGOBSIDIAN.get()
+		);
 	}
 	
 	protected final void addTags(TagKey<Block> tagKey, List<DeferredBlock<Block>> blocks) {

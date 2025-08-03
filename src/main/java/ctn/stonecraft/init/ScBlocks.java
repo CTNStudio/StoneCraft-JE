@@ -27,6 +27,7 @@ public class ScBlocks {
 	public static final List<DeferredBlock<Block>> COMPRESSED_BEDROCK           = registerGradeBlock("compressed_bedrock_lv", Blocks.BEDROCK, -1, 3600000);
 	public static final List<DeferredBlock<Block>> COMPRESSED_END_STONE         = registerGradeBlock("compressed_end_stone_lv", Blocks.END_STONE, 3, 9);
 	public static final List<DeferredBlock<Block>> COMPRESSED_OBSIDIAN          = registerGradeBlock("compressed_obsidian_lv", Blocks.OBSIDIAN, 50, 1200);
+	public static final DeferredBlock<Block>       GLOWINGOBSIDIAN              = registerBlock("glowingobsidian", Block::new, BlockBehaviour.Properties.ofLegacyCopy(Blocks.CRYING_OBSIDIAN).requiresCorrectToolForDrops().strength(50, 1200));
 	public static final List<DeferredBlock<Block>> COMPRESSED_GLOWINGOBSIDIAN   = registerGradeBlock("compressed_glowingobsidian_lv", Blocks.CRYING_OBSIDIAN, 50, 1200);
 	public static final List<DeferredBlock<Block>> COMPRESSED_CRYING_OBSIDIAN   = registerGradeBlock("compressed_crying_obsidian_lv", Blocks.CRYING_OBSIDIAN, CryingObsidianBlock::new, 50, 1200);
 	public static final List<DeferredBlock<Block>> COMPRESSED_PRISMARINE        = registerGradeBlock("compressed_prismarine_lv", Blocks.PRISMARINE, 1.5f, 6);

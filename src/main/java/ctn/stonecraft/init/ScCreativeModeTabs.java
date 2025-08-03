@@ -5,7 +5,10 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.EnchantedBookItem;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentInstance;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -27,28 +30,29 @@ public class ScCreativeModeTabs {
 			register("block", (name) -> registerCreativeModeTab(
 					name,
 					(parameters, output) -> {
-						registerBlockItems(output, ScItems.COMPRESSED_COBBLESTONE);
-						registerBlockItems(output, ScItems.COMPRESSED_MOSSY_COBBLESTONE);
-						registerBlockItems(output, ScItems.COMPRESSED_STONE);
-						registerBlockItems(output, ScItems.COMPRESSED_GRANITE);
-						registerBlockItems(output, ScItems.COMPRESSED_ANDESITE);
-						registerBlockItems(output, ScItems.COMPRESSED_DIORITE);
-						registerBlockItems(output, ScItems.COMPRESSED_BEDROCK);
-						registerBlockItems(output, ScItems.COMPRESSED_END_STONE);
-						registerBlockItems(output, ScItems.COMPRESSED_OBSIDIAN);
-						registerBlockItems(output, ScItems.COMPRESSED_GLOWINGOBSIDIAN);
-						registerBlockItems(output, ScItems.COMPRESSED_CRYING_OBSIDIAN);
-						registerBlockItems(output, ScItems.COMPRESSED_PRISMARINE);
-						registerBlockItems(output, ScItems.COMPRESSED_DARK_PRISMARINE);
-						registerBlockItems(output, ScItems.COMPRESSED_NETHERRACK);
-						registerBlockItems(output, ScItems.COMPRESSED_GLOWSTONE);
-						registerBlockItems(output, ScItems.COMPRESSED_BLACKSTONE);
-						registerBlockItems(output, ScItems.COMPRESSED_CALCITE);
-						registerBlockItems(output, ScItems.COMPRESSED_DEEPSLATE);
-						registerBlockItems(output, ScItems.COMPRESSED_COBBLED_DEEPSLATE);
-						registerBlockItems(output, ScItems.COMPRESSED_BASALT);
-						registerBlockItems(output, ScItems.COMPRESSED_TUFF);
-						registerBlockItems(output, ScItems.COMPRESSED_DRIPSTONE_BLOCK);
+						registerBlockListItems(output, ScItems.COMPRESSED_COBBLESTONE);
+						registerBlockListItems(output, ScItems.COMPRESSED_MOSSY_COBBLESTONE);
+						registerBlockListItems(output, ScItems.COMPRESSED_STONE);
+						registerBlockListItems(output, ScItems.COMPRESSED_GRANITE);
+						registerBlockListItems(output, ScItems.COMPRESSED_ANDESITE);
+						registerBlockListItems(output, ScItems.COMPRESSED_DIORITE);
+						registerBlockListItems(output, ScItems.COMPRESSED_BEDROCK);
+						registerBlockListItems(output, ScItems.COMPRESSED_END_STONE);
+						registerBlockListItems(output, ScItems.COMPRESSED_OBSIDIAN);
+						output.accept(ScItems.GLOWINGOBSIDIAN);
+						registerBlockListItems(output, ScItems.COMPRESSED_GLOWINGOBSIDIAN);
+						registerBlockListItems(output, ScItems.COMPRESSED_CRYING_OBSIDIAN);
+						registerBlockListItems(output, ScItems.COMPRESSED_PRISMARINE);
+						registerBlockListItems(output, ScItems.COMPRESSED_DARK_PRISMARINE);
+						registerBlockListItems(output, ScItems.COMPRESSED_NETHERRACK);
+						registerBlockListItems(output, ScItems.COMPRESSED_GLOWSTONE);
+						registerBlockListItems(output, ScItems.COMPRESSED_BLACKSTONE);
+						registerBlockListItems(output, ScItems.COMPRESSED_CALCITE);
+						registerBlockListItems(output, ScItems.COMPRESSED_DEEPSLATE);
+						registerBlockListItems(output, ScItems.COMPRESSED_COBBLED_DEEPSLATE);
+						registerBlockListItems(output, ScItems.COMPRESSED_BASALT);
+						registerBlockListItems(output, ScItems.COMPRESSED_TUFF);
+						registerBlockListItems(output, ScItems.COMPRESSED_DRIPSTONE_BLOCK);
 					}, () -> ScItems.COMPRESSED_COBBLESTONE.getFirst().get().getDefaultInstance()));
 	
 	public static final DeferredHolder<CreativeModeTab, CreativeModeTab> ITEM      =
@@ -168,12 +172,8 @@ public class ScCreativeModeTabs {
 				.forEach(output::accept);
 	}
 	
-	public static void registerBlockItems(CreativeModeTab.Output output, List<DeferredItem<BlockItem>> listItem) {
-		registerItems(output, listItem);
-	}
-	
-	public static <I extends Item> void registerItems(CreativeModeTab.Output output, List<DeferredItem<I>> listItem) {
-		for (DeferredItem<I> item : listItem) {
+	public static void registerBlockListItems(CreativeModeTab.Output output, List<DeferredItem<BlockItem>> listItem) {
+		for (DeferredItem<BlockItem> item : listItem) {
 			output.accept(item);
 		}
 	}

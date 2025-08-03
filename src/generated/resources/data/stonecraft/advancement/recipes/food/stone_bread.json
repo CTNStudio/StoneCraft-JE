@@ -42,8 +42,8 @@
     [
       "has_the_recipe",
       "item.stonecraft.stone_bread",
-      "minecraft:stone_crafting_materials",
-      "item.minecraft.bread"
+      "item.minecraft.bread",
+      "minecraft:stone_crafting_materials"
     ]
   ],
   "rewards": {

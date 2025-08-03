@@ -129,14 +129,6 @@ public class VillagerEvents {
 		
 	}
 	
-	private static @NotNull BasicItemListing stoneBuffer(RegistryAccess registryAccess) {
-		ItemStack forSaleBook = Items.ENCHANTED_BOOK.getDefaultInstance();
-		ItemStack priceBook = Items.ENCHANTED_BOOK.getDefaultInstance();
-		forSaleBook.enchant(registryAccess.holderOrThrow(ScEnchantments.STONE_BUFFER), 1);
-		priceBook.enchant(registryAccess.holderOrThrow(Enchantments.FEATHER_FALLING), 4);
-		return new BasicItemListing(new ItemStack(STONE_COIN.get(), 64), priceBook, forSaleBook, 3, 10, 0.5f);
-	}
-	
 	private static @NotNull VillagerTrades.ItemListing itemsForStoneCoin(List<DeferredItem<BlockItem>> blockItems, int coinCost) {
 		return new ItemsForStoneCoin(blockItems.getFirst().get(), 1, 20, coinCost, coinCost);
 	}
@@ -145,8 +137,8 @@ public class VillagerEvents {
 		return new StoneCoinForItems(item, coinCost, numberOfItems, 20, coinCost);
 	}
 	
-	private static @NotNull VillagerTrades.ItemListing itemsForStoneCoin(Item item, int numberOfItems, int coinCost) {
-		return new ItemsForStoneCoin(item, numberOfItems, 20, coinCost, coinCost);
+	private static @NotNull VillagerTrades.ItemListing itemsForStoneCoin(Item item, int coinCost) {
+		return new ItemsForStoneCoin(item, 1, 20, coinCost, coinCost);
 	}
 	
 	private static VillagerTrades.ItemListing stoneCoinForEnchantedBook(RegistryAccess registryAccess, int cost, int cost2, int level) {
@@ -156,7 +148,15 @@ public class VillagerEvents {
 		return new BasicItemListing(new ItemStack(stoneCoin, cost), new ItemStack(stoneCoin, cost2), forSaleBook, 3, 10, 0.5f);
 	}
 	
-	private static @NotNull VillagerTrades.ItemListing itemsForStoneCoin(Item item, int coinCost) {
-		return new ItemsForStoneCoin(item, 1, 20, coinCost, coinCost);
+	private static @NotNull BasicItemListing stoneBuffer(RegistryAccess registryAccess) {
+		ItemStack forSaleBook = Items.ENCHANTED_BOOK.getDefaultInstance();
+		ItemStack priceBook = Items.ENCHANTED_BOOK.getDefaultInstance();
+		forSaleBook.enchant(registryAccess.holderOrThrow(ScEnchantments.STONE_BUFFER), 1);
+		priceBook.enchant(registryAccess.holderOrThrow(Enchantments.FEATHER_FALLING), 4);
+		return new BasicItemListing(new ItemStack(STONE_COIN.get(), 64), priceBook, forSaleBook, 3, 10, 0.5f);
+	}
+	
+	private static @NotNull VillagerTrades.ItemListing itemsForStoneCoin(Item item, int numberOfItems, int coinCost) {
+		return new ItemsForStoneCoin(item, numberOfItems, 20, coinCost, coinCost);
 	}
 }

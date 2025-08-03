@@ -35,6 +35,7 @@ public class ScItems {
 	public static final List<DeferredItem<BlockItem>> COMPRESSED_BEDROCK           = registerGradeBlockItem(ScBlocks.COMPRESSED_BEDROCK);
 	public static final List<DeferredItem<BlockItem>> COMPRESSED_END_STONE         = registerGradeBlockItem(ScBlocks.COMPRESSED_END_STONE);
 	public static final List<DeferredItem<BlockItem>> COMPRESSED_OBSIDIAN          = registerGradeBlockItem(ScBlocks.COMPRESSED_OBSIDIAN);
+	public static final DeferredItem<BlockItem>       GLOWINGOBSIDIAN              = registerBlockItem(ScBlocks.GLOWINGOBSIDIAN);
 	public static final List<DeferredItem<BlockItem>> COMPRESSED_GLOWINGOBSIDIAN   = registerGradeBlockItem(ScBlocks.COMPRESSED_GLOWINGOBSIDIAN);
 	public static final List<DeferredItem<BlockItem>> COMPRESSED_CRYING_OBSIDIAN   = registerGradeBlockItem(ScBlocks.COMPRESSED_CRYING_OBSIDIAN);
 	public static final List<DeferredItem<BlockItem>> COMPRESSED_PRISMARINE        = registerGradeBlockItem(ScBlocks.COMPRESSED_PRISMARINE);
@@ -179,45 +180,39 @@ public class ScItems {
 	public static final DeferredItem<Item> VERSATILE_COMPRESSED_STONE_TOOL_LV4 = registerDiggerItem("versatile_compressed_stone_tool_lv4", VersatileTool::new, new Item.Properties(), ScTiers.LV4, 5, -3.2f);
 	public static final DeferredItem<Item> VERSATILE_COMPRESSED_STONE_TOOL_LV5 = registerDiggerItem("versatile_compressed_stone_tool_lv5", VersatileTool::new, new Item.Properties(), ScTiers.LV5, 5, -3.2f);
 	
-	private static final int   BASE_HELMET_MAX_DAMAGE     = 165;
-	private static final int   BASE_CHESTPLATE_MAX_DAMAGE = 240;
-	private static final int   BASE_LEGGINGS_MAX_DAMAGE   = 225;
-	private static final int   BASE_BOOTS_MAX_DAMAGE      = 195;
-	private static final float LV1_MAX_DAMAGE             = 2f;
-	private static final float LV2_MAX_DAMAGE             = 3.5f;
-	private static final float LV3_MAX_DAMAGE             = 4.5f;
-	private static final float LV4_MAX_DAMAGE             = 6f;
-	private static final float LV5_MAX_DAMAGE             = 7.5f;
-	
-	public static final DeferredItem<Item> STONE_HELMET     = registerHelmet("stone_helmet", ScArmorMaterials.LV0, BASE_HELMET_MAX_DAMAGE);
-	public static final DeferredItem<Item> STONE_CHESTPLATE = registerChestplate("stone_chestplate", ScArmorMaterials.LV0, BASE_CHESTPLATE_MAX_DAMAGE);
-	public static final DeferredItem<Item> STONE_LEGGINGS   = registerLeggings("stone_leggings", ScArmorMaterials.LV0, BASE_LEGGINGS_MAX_DAMAGE);
-	public static final DeferredItem<Item> STONE_BOOTS      = registerBoots("stone_boots", ScArmorMaterials.LV0, BASE_BOOTS_MAX_DAMAGE);
-	
-	public static final DeferredItem<Item> COMPRESSED_STONE_HELMET_LV1     = registerHelmet("compressed_stone_helmet_lv1", ScArmorMaterials.LV1, (int) (BASE_HELMET_MAX_DAMAGE * LV1_MAX_DAMAGE));
-	public static final DeferredItem<Item> COMPRESSED_STONE_CHESTPLATE_LV1 = registerChestplate("compressed_stone_chestplate_lv1", ScArmorMaterials.LV1, (int) (BASE_CHESTPLATE_MAX_DAMAGE * LV1_MAX_DAMAGE));
-	public static final DeferredItem<Item> COMPRESSED_STONE_LEGGINGS_LV1   = registerLeggings("compressed_stone_leggings_lv1", ScArmorMaterials.LV1, (int) (BASE_LEGGINGS_MAX_DAMAGE * LV1_MAX_DAMAGE));
-	public static final DeferredItem<Item> COMPRESSED_STONE_BOOTS_LV1      = registerBoots("compressed_stone_boots_lv1", ScArmorMaterials.LV1, (int) (BASE_BOOTS_MAX_DAMAGE * LV1_MAX_DAMAGE));
-	
-	public static final DeferredItem<Item> COMPRESSED_STONE_HELMET_LV2     = registerHelmet("compressed_stone_helmet_lv2", ScArmorMaterials.LV2, (int) (BASE_HELMET_MAX_DAMAGE * LV2_MAX_DAMAGE));
-	public static final DeferredItem<Item> COMPRESSED_STONE_CHESTPLATE_LV2 = registerChestplate("compressed_stone_chestplate_lv2", ScArmorMaterials.LV2, (int) (BASE_CHESTPLATE_MAX_DAMAGE * LV2_MAX_DAMAGE));
-	public static final DeferredItem<Item> COMPRESSED_STONE_LEGGINGS_LV2   = registerLeggings("compressed_stone_leggings_lv2", ScArmorMaterials.LV2, (int) (BASE_LEGGINGS_MAX_DAMAGE * LV2_MAX_DAMAGE));
-	public static final DeferredItem<Item> COMPRESSED_STONE_BOOTS_LV2      = registerBoots("compressed_stone_boots_lv2", ScArmorMaterials.LV2, (int) (BASE_BOOTS_MAX_DAMAGE * LV2_MAX_DAMAGE));
-	
-	public static final DeferredItem<Item> COMPRESSED_STONE_HELMET_LV3     = registerHelmet("compressed_stone_helmet_lv3", ScArmorMaterials.LV3, (int) (BASE_HELMET_MAX_DAMAGE * LV3_MAX_DAMAGE));
-	public static final DeferredItem<Item> COMPRESSED_STONE_CHESTPLATE_LV3 = registerChestplate("compressed_stone_chestplate_lv3", ScArmorMaterials.LV3, (int) (BASE_CHESTPLATE_MAX_DAMAGE * LV3_MAX_DAMAGE));
-	public static final DeferredItem<Item> COMPRESSED_STONE_LEGGINGS_LV3   = registerLeggings("compressed_stone_leggings_lv3", ScArmorMaterials.LV3, (int) (BASE_LEGGINGS_MAX_DAMAGE * LV3_MAX_DAMAGE));
-	public static final DeferredItem<Item> COMPRESSED_STONE_BOOTS_LV3      = registerBoots("compressed_stone_boots_lv3", ScArmorMaterials.LV3, (int) (BASE_BOOTS_MAX_DAMAGE * LV3_MAX_DAMAGE));
-	
-	public static final DeferredItem<Item> COMPRESSED_STONE_HELMET_LV4     = registerHelmet("compressed_stone_helmet_lv4", ScArmorMaterials.LV4, (int) (BASE_HELMET_MAX_DAMAGE * LV4_MAX_DAMAGE));
-	public static final DeferredItem<Item> COMPRESSED_STONE_CHESTPLATE_LV4 = registerChestplate("compressed_stone_chestplate_lv4", ScArmorMaterials.LV4, (int) (BASE_CHESTPLATE_MAX_DAMAGE * LV4_MAX_DAMAGE));
-	public static final DeferredItem<Item> COMPRESSED_STONE_LEGGINGS_LV4   = registerLeggings("compressed_stone_leggings_lv4", ScArmorMaterials.LV4, (int) (BASE_LEGGINGS_MAX_DAMAGE * LV4_MAX_DAMAGE));
-	public static final DeferredItem<Item> COMPRESSED_STONE_BOOTS_LV4      = registerBoots("compressed_stone_boots_lv4", ScArmorMaterials.LV4, (int) (BASE_BOOTS_MAX_DAMAGE * LV4_MAX_DAMAGE));
-	
-	public static final DeferredItem<Item> COMPRESSED_STONE_HELMET_LV5     = registerHelmet("compressed_stone_helmet_lv5", ScArmorMaterials.LV5, (int) (BASE_HELMET_MAX_DAMAGE * LV5_MAX_DAMAGE));
-	public static final DeferredItem<Item> COMPRESSED_STONE_CHESTPLATE_LV5 = registerChestplate("compressed_stone_chestplate_lv5", ScArmorMaterials.LV5, (int) (BASE_CHESTPLATE_MAX_DAMAGE * LV5_MAX_DAMAGE));
-	public static final DeferredItem<Item> COMPRESSED_STONE_LEGGINGS_LV5   = registerLeggings("compressed_stone_leggings_lv5", ScArmorMaterials.LV5, (int) (BASE_LEGGINGS_MAX_DAMAGE * LV5_MAX_DAMAGE));
-	public static final DeferredItem<Item> COMPRESSED_STONE_BOOTS_LV5      = registerBoots("compressed_stone_boots_lv5", ScArmorMaterials.LV5, (int) (BASE_BOOTS_MAX_DAMAGE * LV5_MAX_DAMAGE));
+	private static final int                BASE_HELMET_MAX_DAMAGE          = 165;
+	public static final  DeferredItem<Item> STONE_HELMET                    = registerHelmet("stone_helmet", ScArmorMaterials.LV0, BASE_HELMET_MAX_DAMAGE);
+	private static final int                BASE_CHESTPLATE_MAX_DAMAGE      = 240;
+	public static final  DeferredItem<Item> STONE_CHESTPLATE                = registerChestplate("stone_chestplate", ScArmorMaterials.LV0, BASE_CHESTPLATE_MAX_DAMAGE);
+	private static final int                BASE_LEGGINGS_MAX_DAMAGE        = 225;
+	public static final  DeferredItem<Item> STONE_LEGGINGS                  = registerLeggings("stone_leggings", ScArmorMaterials.LV0, BASE_LEGGINGS_MAX_DAMAGE);
+	private static final int                BASE_BOOTS_MAX_DAMAGE           = 195;
+	public static final  DeferredItem<Item> STONE_BOOTS                     = registerBoots("stone_boots", ScArmorMaterials.LV0, BASE_BOOTS_MAX_DAMAGE);
+	private static final float              LV1_MAX_DAMAGE                  = 2f;
+	public static final  DeferredItem<Item> COMPRESSED_STONE_HELMET_LV1     = registerHelmet("compressed_stone_helmet_lv1", ScArmorMaterials.LV1, (int) (BASE_HELMET_MAX_DAMAGE * LV1_MAX_DAMAGE));
+	public static final  DeferredItem<Item> COMPRESSED_STONE_CHESTPLATE_LV1 = registerChestplate("compressed_stone_chestplate_lv1", ScArmorMaterials.LV1, (int) (BASE_CHESTPLATE_MAX_DAMAGE * LV1_MAX_DAMAGE));
+	public static final  DeferredItem<Item> COMPRESSED_STONE_LEGGINGS_LV1   = registerLeggings("compressed_stone_leggings_lv1", ScArmorMaterials.LV1, (int) (BASE_LEGGINGS_MAX_DAMAGE * LV1_MAX_DAMAGE));
+	public static final  DeferredItem<Item> COMPRESSED_STONE_BOOTS_LV1      = registerBoots("compressed_stone_boots_lv1", ScArmorMaterials.LV1, (int) (BASE_BOOTS_MAX_DAMAGE * LV1_MAX_DAMAGE));
+	private static final float              LV2_MAX_DAMAGE                  = 3.5f;
+	public static final  DeferredItem<Item> COMPRESSED_STONE_HELMET_LV2     = registerHelmet("compressed_stone_helmet_lv2", ScArmorMaterials.LV2, (int) (BASE_HELMET_MAX_DAMAGE * LV2_MAX_DAMAGE));
+	public static final  DeferredItem<Item> COMPRESSED_STONE_CHESTPLATE_LV2 = registerChestplate("compressed_stone_chestplate_lv2", ScArmorMaterials.LV2, (int) (BASE_CHESTPLATE_MAX_DAMAGE * LV2_MAX_DAMAGE));
+	public static final  DeferredItem<Item> COMPRESSED_STONE_LEGGINGS_LV2   = registerLeggings("compressed_stone_leggings_lv2", ScArmorMaterials.LV2, (int) (BASE_LEGGINGS_MAX_DAMAGE * LV2_MAX_DAMAGE));
+	public static final  DeferredItem<Item> COMPRESSED_STONE_BOOTS_LV2      = registerBoots("compressed_stone_boots_lv2", ScArmorMaterials.LV2, (int) (BASE_BOOTS_MAX_DAMAGE * LV2_MAX_DAMAGE));
+	private static final float              LV3_MAX_DAMAGE                  = 4.5f;
+	public static final  DeferredItem<Item> COMPRESSED_STONE_HELMET_LV3     = registerHelmet("compressed_stone_helmet_lv3", ScArmorMaterials.LV3, (int) (BASE_HELMET_MAX_DAMAGE * LV3_MAX_DAMAGE));
+	public static final  DeferredItem<Item> COMPRESSED_STONE_CHESTPLATE_LV3 = registerChestplate("compressed_stone_chestplate_lv3", ScArmorMaterials.LV3, (int) (BASE_CHESTPLATE_MAX_DAMAGE * LV3_MAX_DAMAGE));
+	public static final  DeferredItem<Item> COMPRESSED_STONE_LEGGINGS_LV3   = registerLeggings("compressed_stone_leggings_lv3", ScArmorMaterials.LV3, (int) (BASE_LEGGINGS_MAX_DAMAGE * LV3_MAX_DAMAGE));
+	public static final  DeferredItem<Item> COMPRESSED_STONE_BOOTS_LV3      = registerBoots("compressed_stone_boots_lv3", ScArmorMaterials.LV3, (int) (BASE_BOOTS_MAX_DAMAGE * LV3_MAX_DAMAGE));
+	private static final float              LV4_MAX_DAMAGE                  = 6f;
+	public static final  DeferredItem<Item> COMPRESSED_STONE_HELMET_LV4     = registerHelmet("compressed_stone_helmet_lv4", ScArmorMaterials.LV4, (int) (BASE_HELMET_MAX_DAMAGE * LV4_MAX_DAMAGE));
+	public static final  DeferredItem<Item> COMPRESSED_STONE_CHESTPLATE_LV4 = registerChestplate("compressed_stone_chestplate_lv4", ScArmorMaterials.LV4, (int) (BASE_CHESTPLATE_MAX_DAMAGE * LV4_MAX_DAMAGE));
+	public static final  DeferredItem<Item> COMPRESSED_STONE_LEGGINGS_LV4   = registerLeggings("compressed_stone_leggings_lv4", ScArmorMaterials.LV4, (int) (BASE_LEGGINGS_MAX_DAMAGE * LV4_MAX_DAMAGE));
+	public static final  DeferredItem<Item> COMPRESSED_STONE_BOOTS_LV4      = registerBoots("compressed_stone_boots_lv4", ScArmorMaterials.LV4, (int) (BASE_BOOTS_MAX_DAMAGE * LV4_MAX_DAMAGE));
+	private static final float              LV5_MAX_DAMAGE                  = 7.5f;
+	public static final  DeferredItem<Item> COMPRESSED_STONE_HELMET_LV5     = registerHelmet("compressed_stone_helmet_lv5", ScArmorMaterials.LV5, (int) (BASE_HELMET_MAX_DAMAGE * LV5_MAX_DAMAGE));
+	public static final  DeferredItem<Item> COMPRESSED_STONE_CHESTPLATE_LV5 = registerChestplate("compressed_stone_chestplate_lv5", ScArmorMaterials.LV5, (int) (BASE_CHESTPLATE_MAX_DAMAGE * LV5_MAX_DAMAGE));
+	public static final  DeferredItem<Item> COMPRESSED_STONE_LEGGINGS_LV5   = registerLeggings("compressed_stone_leggings_lv5", ScArmorMaterials.LV5, (int) (BASE_LEGGINGS_MAX_DAMAGE * LV5_MAX_DAMAGE));
+	public static final  DeferredItem<Item> COMPRESSED_STONE_BOOTS_LV5      = registerBoots("compressed_stone_boots_lv5", ScArmorMaterials.LV5, (int) (BASE_BOOTS_MAX_DAMAGE * LV5_MAX_DAMAGE));
 	
 	private static DeferredItem<Item> registerHelmet(String name, Holder<ArmorMaterial> material, int maxDamage) {
 		return registerArmor(name, ArmorItem.Type.HELMET, material, maxDamage);
@@ -243,12 +238,12 @@ public class ScItems {
 		return ITEM_REGISTER.registerSimpleItem(name, props);
 	}
 	
-	public static <I extends Item> DeferredItem<I> registerItem(String name, Function<Item.Properties, ? extends I> func, Item.Properties props) {
-		return ITEM_REGISTER.registerItem(name, func, props);
-	}
-	
 	public static <I extends Item> DeferredItem<I> registerItem(String name, Function<Item.Properties, ? extends I> func) {
 		return registerItem(name, func, new Item.Properties());
+	}
+	
+	public static <I extends Item> DeferredItem<I> registerItem(String name, Function<Item.Properties, ? extends I> func, Item.Properties props) {
+		return ITEM_REGISTER.registerItem(name, func, props);
 	}
 	
 	public static DeferredItem<Item> registerItem(String name) {

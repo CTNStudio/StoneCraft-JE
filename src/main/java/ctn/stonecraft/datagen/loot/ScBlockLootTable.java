@@ -26,6 +26,7 @@ public class ScBlockLootTable extends BlockLootSubProvider {
 		dropSelf(ScBlocks.COMPRESSED_DIORITE);
 		dropSelf(ScBlocks.COMPRESSED_BEDROCK);
 		dropSelf(ScBlocks.COMPRESSED_END_STONE);
+		dropSelf(ScBlocks.GLOWINGOBSIDIAN.get());
 		dropSelf(ScBlocks.COMPRESSED_OBSIDIAN);
 		dropSelf(ScBlocks.COMPRESSED_GLOWINGOBSIDIAN);
 		dropSelf(ScBlocks.COMPRESSED_CRYING_OBSIDIAN);

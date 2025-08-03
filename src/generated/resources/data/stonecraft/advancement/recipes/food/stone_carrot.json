@@ -42,8 +42,8 @@
     [
       "has_the_recipe",
       "item.stonecraft.stone_carrot",
-      "minecraft:stone_crafting_materials",
-      "item.minecraft.carrot"
+      "item.minecraft.carrot",
+      "minecraft:stone_crafting_materials"
     ]
   ],
   "rewards": {

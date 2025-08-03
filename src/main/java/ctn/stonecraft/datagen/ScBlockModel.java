@@ -33,6 +33,7 @@ public class ScBlockModel extends BlockStateProvider {
 		blockItems(ScBlocks.COMPRESSED_END_STONE);
 		blockItems(ScBlocks.COMPRESSED_OBSIDIAN);
 		blockItems(ScBlocks.COMPRESSED_GLOWINGOBSIDIAN);
+		blockItems(ScBlocks.GLOWINGOBSIDIAN);
 		blockItems(ScBlocks.COMPRESSED_CRYING_OBSIDIAN);
 		blockItems(ScBlocks.COMPRESSED_PRISMARINE);
 		blockItems(ScBlocks.COMPRESSED_DARK_PRISMARINE);
@@ -45,6 +46,11 @@ public class ScBlockModel extends BlockStateProvider {
 		blockItems(ScBlocks.COMPRESSED_BASALT);
 		blockItems(ScBlocks.COMPRESSED_TUFF);
 		blockItems(ScBlocks.COMPRESSED_DRIPSTONE_BLOCK);
+	}
+	
+	private void blockItems(DeferredBlock<Block> blockItem) {
+		Block block = blockItem.get();
+		simpleBlockWithItem(block, cubeAll(block));
 	}
 	
 	private void blockItems(List<DeferredBlock<Block>> blockItems) {

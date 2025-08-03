@@ -23,10 +23,6 @@ public class ScEntityTypeTags extends EntityTypeTagsProvider {
 		super(output, lookupProvider, SC_ID, existingFileHelper);
 	}
 	
-	protected static TagKey<EntityType<?>> createTag(String name) {
-		return TagKey.create(Registries.ENTITY_TYPE, path(name));
-	}
-	
 	@Override
 	protected void addTags(HolderLookup.@NotNull Provider capability) {
 		tag(IMPACT_PROJECTILES).add(ScEntityTypes.STONE_NUGGET.get());

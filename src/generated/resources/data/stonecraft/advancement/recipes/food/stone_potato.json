@@ -42,8 +42,8 @@
     [
       "has_the_recipe",
       "item.stonecraft.stone_potato",
-      "minecraft:stone_crafting_materials",
-      "item.minecraft.potato"
+      "item.minecraft.potato",
+      "minecraft:stone_crafting_materials"
     ]
   ],
   "rewards": {

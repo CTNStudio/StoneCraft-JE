@@ -13,6 +13,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
+import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 import java.util.LinkedHashMap;
@@ -33,7 +34,8 @@ public class ShapedBuilder {
 	protected final List<String>               rows             = Lists.newArrayList(); // 配方排版
 	protected final Map<Character, Ingredient> key              = Maps.newLinkedHashMap(); // 配方键
 	protected final Map<String, Criterion<?>>  criteria         = new LinkedHashMap<>(); // 配方条件
-	protected final ResourceLocation           recipesId;
+	@NotNull
+	protected       ResourceLocation           recipesId;
 	protected       RecipeCategory             category         = RecipeCategory.MISC; // 配方分类
 	protected       ItemStack                  resultStack; // 输出物品
 	@Nullable
@@ -108,7 +110,7 @@ public class ShapedBuilder {
 	 * @param recipesId 配方资源位置
 	 */
 	public ShapedBuilder(ResourceLocation recipesId) {
-		this.recipesId = recipesId;
+		this.recipesId = recipesId;;
 	}
 	
 	/**
@@ -478,6 +480,15 @@ public class ShapedBuilder {
 	 */
 	public ShapedBuilder clearPattern() {
 		this.rows.clear();
+		return this;
+	}
+	
+	public @NotNull ResourceLocation getRecipesId() {
+		return recipesId;
+	}
+	
+	public ShapedBuilder setRecipesId(@NotNull ResourceLocation recipesId) {
+		this.recipesId = recipesId;
 		return this;
 	}
 }

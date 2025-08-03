@@ -40,6 +40,10 @@ public class FoodPropertiesBuilder {
 	 */
 	private       Optional<ItemStack>                                  usingConvertsTo = Optional.empty();
 	
+	public static FoodPropertiesBuilder foodBuilder() {
+		return new FoodPropertiesBuilder();
+	}
+	
 	/**
 	 * 设置食物的营养值。
 	 *
@@ -161,9 +165,5 @@ public class FoodPropertiesBuilder {
 	 */
 	public FoodProperties build() {
 		return new FoodProperties(this.nutrition, saturation, this.canAlwaysEat, this.eatSeconds, this.usingConvertsTo, this.effects.build());
-	}
-	
-	public static FoodPropertiesBuilder foodBuilder() {
-		return new FoodPropertiesBuilder();
 	}
 }

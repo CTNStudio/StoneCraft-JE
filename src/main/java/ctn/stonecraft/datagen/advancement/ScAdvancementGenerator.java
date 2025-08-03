@@ -21,6 +21,7 @@ import java.util.Optional;
 import java.util.function.Consumer;
 
 import static ctn.stonecraft.StoneCraft.path;
+import static ctn.stonecraft.datagen.tag.ScTags.ScItems.*;
 import static ctn.stonecraft.datagen.tool.AdvancementProviderTool.*;
 import static net.neoforged.neoforge.common.data.AdvancementProvider.AdvancementGenerator;
 
@@ -63,7 +64,7 @@ public final class ScAdvancementGenerator implements AdvancementGenerator {
 								true,
 								false)
 						.requirements(AdvancementRequirements.Strategy.OR)
-						.addCriterion("get_stone", obtainItem(matchItems(ScItemTags.ADVANCEMENT_ROOT_ITEM))),
+						.addCriterion("get_stone", obtainItem(matchItems(ADVANCEMENT_ROOT_ITEM))),
 				saver, advancementId("root"));
 		AdvancementHolder getCobblestone = createObtainAdv(
 				root, saver, advancementId("get_cobblestone"),
@@ -147,7 +148,7 @@ public final class ScAdvancementGenerator implements AdvancementGenerator {
 						true,
 						true,
 						false
-				).addCriterion("eater_stone_food", ConsumeItemTrigger.TriggerInstance.usedItem(matchItems(ScItemTags.STONE_FOOD))),
+				).addCriterion("eater_stone_food", ConsumeItemTrigger.TriggerInstance.usedItem(matchItems(STONE_FOOD))),
 				saver, advancementId("stone_eater"));
 		
 		Advancement.Builder edibleTenStoneFoodBuilder = Advancement.Builder.advancement().parent(edibleStoneFood).display(
@@ -165,7 +166,7 @@ public final class ScAdvancementGenerator implements AdvancementGenerator {
 			edibleTenStoneFoodBuilder.addCriterion(String.valueOf(i),
 					CountCriterionTrigger.TriggerInstance.createCriterion(
 							tenStonesEaten,
-							matchItems(ScItemTags.STONE_FOOD)));
+							matchItems(STONE_FOOD)));
 		}
 		
 		AdvancementHolder edibleTenStoneFood = save(edibleTenStoneFoodBuilder, saver, advancementId("ten_stones_eaten"));

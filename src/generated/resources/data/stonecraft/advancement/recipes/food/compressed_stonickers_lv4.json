@@ -42,8 +42,8 @@
     [
       "has_the_recipe",
       "item.stonecraft.compressed_stonickers_lv4",
-      "stonecraft:material/compressed_stone_lv5",
-      "item.minecraft.cookie"
+      "item.minecraft.cookie",
+      "stonecraft:material/compressed_stone_lv5"
     ]
   ],
   "rewards": {

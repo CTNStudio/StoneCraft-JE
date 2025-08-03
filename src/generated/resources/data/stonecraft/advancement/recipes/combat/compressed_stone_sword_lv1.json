@@ -42,8 +42,8 @@
     [
       "has_the_recipe",
       "item.stonecraft.compressed_stone_sword_lv1",
-      "stonecraft:material/compressed_stone_lv1",
-      "item.minecraft.stick"
+      "item.minecraft.stick",
+      "stonecraft:material/compressed_stone_lv1"
     ]
   ],
   "rewards": {

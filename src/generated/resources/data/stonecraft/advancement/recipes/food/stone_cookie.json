@@ -42,8 +42,8 @@
     [
       "has_the_recipe",
       "item.stonecraft.stone_cookie",
-      "minecraft:stone_crafting_materials",
-      "item.minecraft.cookie"
+      "item.minecraft.cookie",
+      "minecraft:stone_crafting_materials"
     ]
   ],
   "rewards": {

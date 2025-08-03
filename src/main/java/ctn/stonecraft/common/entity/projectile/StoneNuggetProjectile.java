@@ -35,34 +35,33 @@ import static ctn.stonecraft.init.ScEntityTypes.STONE_NUGGET;
  */
 public class StoneNuggetProjectile extends ThrowableItemProjectile {
 	/// 水漂次数
-	protected int              hydroplaningCount;
+	protected int     hydroplaningCount;
 	protected int     time              = 0;
-	private boolean isAnnounceResults = false;
-	
 	// 弹射参数
-	protected float maxAngle = 20.0f;
-	protected float minAngle = 0.0f;
-	protected float minSpeed = 0.001f;
+	protected float   maxAngle          = 20.0f;
+	protected float   minAngle          = 0.0f;
+	protected float   minSpeed          = 0.001f;
+	private   boolean isAnnounceResults = false;
 	
 	//region 构建方法
 	public StoneNuggetProjectile(double x, double y, double z, Level level) {
 		this(STONE_NUGGET.get(), x, y, z, level);
 	}
 	
-	public StoneNuggetProjectile(Level level) {
-		this(STONE_NUGGET.get(), level);
-	}
-	
-	public StoneNuggetProjectile(LivingEntity shooter, Level level) {
-		this(STONE_NUGGET.get(), shooter, level);
-	}
-	
 	public StoneNuggetProjectile(EntityType<StoneNuggetProjectile> entityType, double x, double y, double z, Level level) {
 		super(entityType, x, y, z, level);
 	}
 	
+	public StoneNuggetProjectile(Level level) {
+		this(STONE_NUGGET.get(), level);
+	}
+	
 	public StoneNuggetProjectile(EntityType<StoneNuggetProjectile> entityType, Level level) {
 		super(entityType, level);
+	}
+	
+	public StoneNuggetProjectile(LivingEntity shooter, Level level) {
+		this(STONE_NUGGET.get(), shooter, level);
 	}
 	
 	public StoneNuggetProjectile(EntityType<StoneNuggetProjectile> entityType, LivingEntity shooter, Level level) {
@@ -114,7 +113,7 @@ public class StoneNuggetProjectile extends ThrowableItemProjectile {
 			// TODO 增加事件
 			
 			if (!level.isClientSide) {
-				if (level instanceof ServerLevel serverLevel){
+				if (level instanceof ServerLevel serverLevel) {
 					BlockPos blockpos = getOnPos();
 					for (int i = 0; i < Math.max(5, movement.lengthSqr()); i++) {
 						double random = level.random.nextDouble();
@@ -157,9 +156,24 @@ public class StoneNuggetProjectile extends ThrowableItemProjectile {
 	
 	/**
 	 * 发送成绩
- 	 */
+	 */
 	private void sendGrades() {
 		Minecraft.getInstance().gui.setOverlayMessage(Component.literal(("你的成绩是：" + hydroplaningCount + "次！")), false);
+	}
+	
+	/**
+	 * 基本重力（下坠）
+	 */
+	@Override
+	public double getDefaultGravity() {
+		return getDefaultItem().getGravity() * getWeight();
+	}
+	
+	/**
+	 * 基本重量
+	 */
+	public float getWeight() {
+		return getDefaultItem().getWeight();
 	}
 	
 	/**
@@ -179,85 +193,9 @@ public class StoneNuggetProjectile extends ThrowableItemProjectile {
 			}
 		}
 	}
-	
-	/**
-	 * 击中生物调用
-	 */
-	@Override
-	protected void onHitEntity(EntityHitResult result) {
-		super.onHitEntity(result);
-		Entity entity = result.getEntity();
-		
-		// 当前速度
-		double movement = getDeltaMovement().length();
-		
-		// 伤害浮动
-		float randomHurt = getRandom().nextFloat() * getHurtRandom();
-		randomHurt = getRandom().nextBoolean() ? randomHurt : -randomHurt;
-		
-		// 获取发射者
-		Entity owner = getOwner();
-		
-		// 伤害计算
-		float hurt = (float) ((getBasicHurt() + randomHurt) * movement);
-		entity.hurt(this.damageSources().thrown(this, owner), hurt);
-	}
-	
-	/**
-	 * 击中调用
-	 */
-	@Override
-	protected void onHit(HitResult result) {
-		// TODO 增加更多效果：破坏玻璃，多次机打
-		super.onHit(result);
-		Level level = this.level();
-		if (!level.isClientSide) {
-			level.broadcastEntityEvent(this, (byte) 3);
-			this.discard();
-			if (hydroplaningCount > 0 && !isAnnounceResults) {
-				isAnnounceResults = true;
-				sendGrades();
-			}
-		}
-	}
 	//endregion
 	
 	//region get方法
-	/**
-	 * 基本重力（下坠）
-	 */
-	@Override
-	public double getDefaultGravity() {
-		return getDefaultItem().getGravity() * getWeight();
-	}
-	
-	/**
-	 * 基本伤害
-	 */
-	public float getBasicHurt() {
-		return getDefaultItem().getHurt();
-	}
-	
-	/**
-	 * 基本伤害浮动
-	 */
-	public float getHurtRandom() {
-		return getDefaultItem().getHurtRandom();
-	}
-	
-	/**
-	 * 基本重量
-	 */
-	public float getWeight() {
-		return getDefaultItem().getWeight();
-	}
-	
-	/**
-	 * 材料
-	 */
-	public ItemLike getMaterial() {
-		return getDefaultItem().getMaterial();
-	}
 	
 	/**
 	 * 获取破裂时产生的粒子效果
@@ -291,9 +229,71 @@ public class StoneNuggetProjectile extends ThrowableItemProjectile {
 		};
 	}
 	
+	/**
+	 * 材料
+	 */
+	public ItemLike getMaterial() {
+		return getDefaultItem().getMaterial();
+	}
+	
 	@Override
 	protected @NotNull StoneNuggetItem getDefaultItem() {
 		return ScItems.STONE_NUGGET.get();
+	}
+	
+	/**
+	 * 击中调用
+	 */
+	@Override
+	protected void onHit(HitResult result) {
+		// TODO 增加更多效果：破坏玻璃，多次机打
+		super.onHit(result);
+		Level level = this.level();
+		if (!level.isClientSide) {
+			level.broadcastEntityEvent(this, (byte) 3);
+			this.discard();
+			if (hydroplaningCount > 0 && !isAnnounceResults) {
+				isAnnounceResults = true;
+				sendGrades();
+			}
+		}
+	}
+	
+	/**
+	 * 击中生物调用
+	 */
+	@Override
+	protected void onHitEntity(EntityHitResult result) {
+		super.onHitEntity(result);
+		Entity entity = result.getEntity();
+		
+		// 当前速度
+		double movement = getDeltaMovement().length();
+		
+		// 伤害浮动
+		float randomHurt = getRandom().nextFloat() * getHurtRandom();
+		randomHurt = getRandom().nextBoolean() ? randomHurt : -randomHurt;
+		
+		// 获取发射者
+		Entity owner = getOwner();
+		
+		// 伤害计算
+		float hurt = (float) ((getBasicHurt() + randomHurt) * movement);
+		entity.hurt(this.damageSources().thrown(this, owner), hurt);
+	}
+	
+	/**
+	 * 基本伤害浮动
+	 */
+	public float getHurtRandom() {
+		return getDefaultItem().getHurtRandom();
+	}
+	
+	/**
+	 * 基本伤害
+	 */
+	public float getBasicHurt() {
+		return getDefaultItem().getHurt();
 	}
 	
 	public int getHydroplaningCount() {

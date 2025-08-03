@@ -42,8 +42,8 @@
     [
       "has_the_recipe",
       "item.stonecraft.compressed_stone_pickaxe_lv5",
-      "stonecraft:material/compressed_stone_lv5",
-      "item.minecraft.stick"
+      "item.minecraft.stick",
+      "stonecraft:material/compressed_stone_lv5"
     ]
   ],
   "rewards": {

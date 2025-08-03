@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "key": {
+    "*": {
+      "tag": "c:obsidians"
+    },
+    "A": {
+      "item": "minecraft:redstone"
+    },
+    "B": {
+      "item": "minecraft:glowstone_dust"
+    }
+  },
+  "pattern": [
+    "BAB",
+    "A*A",
+    "BAB"
+  ],
+  "result": {
+    "count": 1,
+    "id": "stonecraft:glowingobsidian"
+  }
+}

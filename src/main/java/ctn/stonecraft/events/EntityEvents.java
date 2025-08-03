@@ -16,6 +16,8 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.EntityInvulnerabilityCheckEvent;
 
+import static ctn.stonecraft.datagen.tag.ScTags.ScBlocks.STONE_BUFFER_EFFECT_BLOCKS;
+
 @EventBusSubscriber
 public class EntityEvents {
 	/**
@@ -35,7 +37,7 @@ public class EntityEvents {
 		
 		// 获取实体脚下位置的方块状态
 		BlockState blockState = level.getBlockState(livingEntity.getOnPos());
-		if (!blockState.is(ScBlockTags.STONE_BUFFER_EFFECT_BLOCKS)) {
+		if (!blockState.is(STONE_BUFFER_EFFECT_BLOCKS)) {
 			return;
 		}
 		

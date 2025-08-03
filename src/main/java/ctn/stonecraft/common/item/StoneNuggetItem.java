@@ -1,6 +1,5 @@
 package ctn.stonecraft.common.item;
 
-import ctn.stonecraft.api.tool.WorldTool;
 import ctn.stonecraft.common.entity.projectile.StoneNuggetProjectile;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Position;
@@ -16,10 +15,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ProjectileItem;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
 import org.jetbrains.annotations.NotNull;
-
-import static net.minecraft.world.item.alchemy.Potions.STRENGTH;
 
 /**
  * 石粒
@@ -39,24 +35,6 @@ public class StoneNuggetItem extends Item implements ProjectileItem {
 		this.weight     = snProperties.weight;
 		this.gravity    = snProperties.gravity;
 		this.material   = material;
-	}
-	
-	/**
-	 * 射弹
-	 */
-	protected Projectile getFreshEntity(Level level, Player player, ItemStack itemstack, InteractionHand hand) {
-		StoneNuggetProjectile projectile = new StoneNuggetProjectile(player, level);
-		projectile.setItem(itemstack);
-		float velocity = 1.5F;
-		if (player.hasEffect(MobEffects.DAMAGE_BOOST)) {
-			MobEffectInstance effect = player.getEffect(MobEffects.DAMAGE_BOOST);
-			if (effect != null) {
-				velocity += (effect.getAmplifier() + 1) * 0.01F;
-			}
-		}
-		velocity /= weight;
-		projectile.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, velocity, 0);
-		return projectile;
 	}
 	
 	@Override
@@ -87,6 +65,24 @@ public class StoneNuggetItem extends Item implements ProjectileItem {
 		player.awardStat(Stats.ITEM_USED.get(this));
 		itemstack.consume(1, player);
 		return InteractionResultHolder.sidedSuccess(itemstack, level.isClientSide());
+	}
+	
+	/**
+	 * 射弹
+	 */
+	protected Projectile getFreshEntity(Level level, Player player, ItemStack itemstack, InteractionHand hand) {
+		StoneNuggetProjectile projectile = new StoneNuggetProjectile(player, level);
+		projectile.setItem(itemstack);
+		float velocity = 1.5F;
+		if (player.hasEffect(MobEffects.DAMAGE_BOOST)) {
+			MobEffectInstance effect = player.getEffect(MobEffects.DAMAGE_BOOST);
+			if (effect != null) {
+				velocity += (effect.getAmplifier() + 1) * 0.01F;
+			}
+		}
+		velocity /= weight;
+		projectile.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, velocity, 0);
+		return projectile;
 	}
 	
 	//region get方法

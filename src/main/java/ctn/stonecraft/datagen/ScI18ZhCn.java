@@ -50,8 +50,9 @@ public class ScI18ZhCn extends LanguageProvider {
 		addBlocks(ScBlocks.COMPRESSED_BEDROCK, "基岩");
 		addBlocks(ScBlocks.COMPRESSED_END_STONE, "末地石");
 		addBlocks(ScBlocks.COMPRESSED_OBSIDIAN, "黑耀石");
-		addBlocks(ScBlocks.COMPRESSED_GLOWINGOBSIDIAN, "发光黑耀石");
-		addBlocks(ScBlocks.COMPRESSED_CRYING_OBSIDIAN, "哭泣黑耀石");
+		addBlock(ScBlocks.GLOWINGOBSIDIAN, "发光的黑耀石");
+		addBlocks(ScBlocks.COMPRESSED_GLOWINGOBSIDIAN, "发光的黑耀石");
+		addBlocks(ScBlocks.COMPRESSED_CRYING_OBSIDIAN, "哭泣的黑耀石");
 		addBlocks(ScBlocks.COMPRESSED_PRISMARINE, "海晶石");
 		addBlocks(ScBlocks.COMPRESSED_DARK_PRISMARINE, "暗海晶石");
 		addBlocks(ScBlocks.COMPRESSED_NETHERRACK, "下界岩");
@@ -192,27 +193,6 @@ public class ScI18ZhCn extends LanguageProvider {
 		addAdvancement(ScAdvancementGenerator.advancementId("grows_with_water"), "遇水变大吗？", "初次合成任意种类的压缩石");
 	}
 	
-	private void add(Component key, String name) {
-		add(key.getString(), name);
-	}
-	
-	private void addAdvancementTitle(String title, String name) {
-		add("advancements.%s.%s.title".formatted(SC_ID, title), name);
-	}
-	
-	private void addAdvancementDescription(String description, String name) {
-		add("advancements.%s.%s.description".formatted(SC_ID, description), name);
-	}
-	
-	private void addAdvancement(String key, String titleName, String descriptionName) {
-		addAdvancementTitle(key, titleName);
-		addAdvancementDescription(key, descriptionName);
-	}
-	
-	private void getModName(String modid, String name) {
-		add("pack." + modid + ".description", name);
-	}
-	
 	public void addBlocks(List<DeferredBlock<Block>> blocks, String name) {
 		for (int i = 0, blocksSize = blocks.size(); i < blocksSize; i++) {
 			add(blocks.get(i).get(), GRADE[i] + name);
@@ -226,8 +206,29 @@ public class ScI18ZhCn extends LanguageProvider {
 		add("itemGroup." + itemGroup.getId().toString().replace(":", "."), name);
 	}
 	
+	private void getModName(String modid, String name) {
+		add("pack." + modid + ".description", name);
+	}
+	
 	public void addEnchantment(ResourceKey<Enchantment> enchantment, String name) {
 		add(getEnchantmentTranslatable(enchantment), name);
+	}
+	
+	private void addAdvancement(String key, String titleName, String descriptionName) {
+		addAdvancementTitle(key, titleName);
+		addAdvancementDescription(key, descriptionName);
+	}
+	
+	private void addAdvancementTitle(String title, String name) {
+		add("advancements.%s.%s.title".formatted(SC_ID, title), name);
+	}
+	
+	private void addAdvancementDescription(String description, String name) {
+		add("advancements.%s.%s.description".formatted(SC_ID, description), name);
+	}
+	
+	private void add(Component key, String name) {
+		add(key.getString(), name);
 	}
 	
 	public void addItems(List<DeferredItem<Item>> item, String name) {

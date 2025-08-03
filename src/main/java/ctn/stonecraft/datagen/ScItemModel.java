@@ -129,17 +129,6 @@ public class ScItemModel extends ItemModelProvider {
 		createModelFile(ScItems.STONE_COIN, builder, ItemPropertyEvents.STACKING);
 	}
 	
-	
-	/**
-	 * 获取指定名称的父模型文件
-	 *
-	 * @param name 父模型名称
-	 * @return 未检查的模型文件
-	 */
-	private ModelFile.@NotNull UncheckedModelFile getParent(String name) {
-		return new ModelFile.UncheckedModelFile(ResourceLocation.withDefaultNamespace(name));
-	}
-	
 	/**
 	 * 多模型物品生成
 	 *
@@ -166,32 +155,6 @@ public class ScItemModel extends ItemModelProvider {
 			} else {
 				basicItem(Objects.requireNonNull(BuiltInRegistries.ITEM.getKey(itemItem)));
 			}
-		}
-	}
-	
-	/**
-	 * 多模型物品生成
-	 *
-	 * @param item       物品
-	 * @param texture    纹理集
-	 * @param parent     父模型
-	 * @param predicates 属性名
-	 */
-	public void createModelFile(ItemLike item, Map<Float, String> texture, ModelFile parent, ResourceLocation... predicates) {
-		Item itemItem = item.asItem();
-		ItemModelBuilder mod = basicItem(itemItem).parent(parent);
-		ResourceLocation predicate = predicates[0];
-		Iterator<Float> iteratorKey = texture.keySet().iterator();
-		Float key;
-		String value;
-		for (int i = 0; i < texture.size(); i++) {
-			key   = iteratorKey.next();
-			value = texture.get(key);
-			if (predicates.length > 1) {
-				predicate = predicates[i];
-			}
-			mod.override().model(createModelFile(itemItem, value)).predicate(predicate, key).end();
-			specialItem(itemItem, value).parent(parent);
 		}
 	}
 	
@@ -226,6 +189,42 @@ public class ScItemModel extends ItemModelProvider {
 	 */
 	private @NotNull ResourceLocation getItemResourceLocation(Item item, String name) {
 		return Objects.requireNonNull(BuiltInRegistries.ITEM.getKey(item)).withSuffix(name);
+	}
+	
+	/**
+	 * 获取指定名称的父模型文件
+	 *
+	 * @param name 父模型名称
+	 * @return 未检查的模型文件
+	 */
+	private ModelFile.@NotNull UncheckedModelFile getParent(String name) {
+		return new ModelFile.UncheckedModelFile(ResourceLocation.withDefaultNamespace(name));
+	}
+	
+	/**
+	 * 多模型物品生成
+	 *
+	 * @param item       物品
+	 * @param texture    纹理集
+	 * @param parent     父模型
+	 * @param predicates 属性名
+	 */
+	public void createModelFile(ItemLike item, Map<Float, String> texture, ModelFile parent, ResourceLocation... predicates) {
+		Item itemItem = item.asItem();
+		ItemModelBuilder mod = basicItem(itemItem).parent(parent);
+		ResourceLocation predicate = predicates[0];
+		Iterator<Float> iteratorKey = texture.keySet().iterator();
+		Float key;
+		String value;
+		for (int i = 0; i < texture.size(); i++) {
+			key   = iteratorKey.next();
+			value = texture.get(key);
+			if (predicates.length > 1) {
+				predicate = predicates[i];
+			}
+			mod.override().model(createModelFile(itemItem, value)).predicate(predicate, key).end();
+			specialItem(itemItem, value).parent(parent);
+		}
 	}
 	
 	/**

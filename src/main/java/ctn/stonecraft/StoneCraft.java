@@ -44,6 +44,9 @@ public class StoneCraft {
 		LOGGER.info("HELLO FROM COMMON SETUP");
 	}
 	
+	public static ResourceLocation path(String name) {
+		return ResourceLocation.fromNamespaceAndPath(SC_ID, name);
+	}
 	
 	@SubscribeEvent
 	public void onServerStarting(ServerStartingEvent event) {
@@ -57,9 +60,5 @@ public class StoneCraft {
 			LOGGER.info("HELLO FROM CLIENT SETUP");
 			LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
 		}
-	}
-	
-	public static ResourceLocation path(String name) {
-		return ResourceLocation.fromNamespaceAndPath(SC_ID, name);
 	}
 }

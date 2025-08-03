@@ -1,4 +1,4 @@
-// 1.21.1	2025-07-20T13:20:34.2853356	Loot Tables
+// 1.21.1	2025-08-03T14:59:06.3941543	Loot Tables
 42492b8d522dfccfe00f81cfb2f7713ec0ac1aad data/stonecraft/loot_table/blocks/compressed_andesite_lv1.json
 6e8e4f7ee076290de7e4ca44426eea76ac66f796 data/stonecraft/loot_table/blocks/compressed_andesite_lv2.json
 2963ac8780daadd1535a112c29561fa5a9ab371d data/stonecraft/loot_table/blocks/compressed_andesite_lv3.json
@@ -109,3 +109,4 @@ b09883d3aae39cee1b81e3c96365517852aeb6eb data/stonecraft/loot_table/blocks/compr
 6447bcae6c12e79824ef85f039ba50a658ef2f40 data/stonecraft/loot_table/blocks/compressed_tuff_lv3.json
 dad7f0d90875e5250c66c215bca7fd3f3f57593f data/stonecraft/loot_table/blocks/compressed_tuff_lv4.json
 31fb8ec222535918ca5f9f8e7b2b6ad1e2b70322 data/stonecraft/loot_table/blocks/compressed_tuff_lv5.json
+8846a50fc9606960773ec444358f04686291fd15 data/stonecraft/loot_table/blocks/glowingobsidian.json

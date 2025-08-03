@@ -18,8 +18,7 @@ import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
 
 import static ctn.stonecraft.api.tool.LevelTool.summonLootItems;
-import static ctn.stonecraft.datagen.tag.ScBlockTags.FALL_AWAY_STONE_NUGGET;
-import static ctn.stonecraft.datagen.tag.ScBlockTags.STONE_DESTROYER_EFFECT_BLOCKS;
+import static ctn.stonecraft.datagen.tag.ScTags.ScBlocks.*;
 import static ctn.stonecraft.init.ScEnchantments.STONE_DESTROYER;
 
 @EventBusSubscriber

@@ -42,8 +42,8 @@
     [
       "has_the_recipe",
       "item.stonecraft.stone_cooked_beef",
-      "minecraft:stone_crafting_materials",
-      "item.minecraft.cooked_beef"
+      "item.minecraft.cooked_beef",
+      "minecraft:stone_crafting_materials"
     ]
   ],
   "rewards": {
