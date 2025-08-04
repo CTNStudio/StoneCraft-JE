@@ -1,7 +1,7 @@
 package ctn.stonecraft.datagen;
 
 import ctn.stonecraft.datagen.tool.TextureMapBuilder;
-import ctn.stonecraft.events.ItemPropertyEvents;
+import ctn.stonecraft.events.client.ItemPropertyEvents;
 import ctn.stonecraft.init.ScItems;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;

@@ -11,6 +11,9 @@ import static ctn.stonecraft.StoneCraft.SC_ID;
 import static ctn.stonecraft.api.tool.NbtTool.getOrCreateCompoundTag;
 import static ctn.stonecraft.common.trigger.CountCriterionTrigger.ADVANCEMENT;
 
+/**
+ * 进度事件
+ */
 @EventBusSubscriber(modid = SC_ID)
 public class AdvancementProgressEvents {
 	

@@ -1,4 +1,4 @@
-package ctn.stonecraft.events;
+package ctn.stonecraft.events.client;
 
 import ctn.stonecraft.datagen.tool.TextureMapBuilder;
 import ctn.stonecraft.init.ScItems;

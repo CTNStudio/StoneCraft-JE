@@ -1,4 +1,4 @@
-// 1.21.1	2025-07-29T01:33:09.0346728	Advancements
+// 1.21.1	2025-08-04T01:38:08.117551	Advancements
 48e41a7ad584d8856c0c7f9e783e889f54db37ea data/stonecraft/advancement/stone_adventure/epic_stone_feast.json
 cfb2fc77b88f947c0f92fad8036995a06181becc data/stonecraft/advancement/stone_adventure/get_andesite.json
 11acfdf7365e8965e5a62fa5b0c4043738ab1bd1 data/stonecraft/advancement/stone_adventure/get_bedrock.json
@@ -16,6 +16,6 @@ f062e7c2e06a8235e985ee372ac7bc22e8c4ec51 data/stonecraft/advancement/stone_adven
 282de3275f2c74162acb0a12c0e34c75c69514ca data/stonecraft/advancement/stone_adventure/get_tuff.json
 2ae3623a63a743ab87c7be9c286be58c26503955 data/stonecraft/advancement/stone_adventure/our_trio.json
 9e628a156b9b098481384856cd38737f5f3686dd data/stonecraft/advancement/stone_adventure/root.json
-b593a05956bff7d82bcc5ab9a79832a645a5f645 data/stonecraft/advancement/stone_adventure/stone_eater.json
-db215ee72f46b6c0f653dd8ca7446141c52d402b data/stonecraft/advancement/stone_adventure/ten_stones_eaten.json
+3ae2146cfd5d2510e45599dd31204f1643f86e35 data/stonecraft/advancement/stone_adventure/stone_eater.json
+bf456bcccc4fe63c41c22d02866ab3d47c90d734 data/stonecraft/advancement/stone_adventure/ten_stones_eaten.json
 00392baa7fe699d1264419cebf3bec597a7b59ba data/stonecraft/advancement/stone_adventure/villager_mason_on_trades.json

@@ -1,5 +1,6 @@
 package ctn.stonecraft.init;
 
+import ctn.stonecraft.common.item.AbsStoneNuggetItem;
 import ctn.stonecraft.common.item.StoneNuggetItem;
 import ctn.stonecraft.common.item.VersatileTool;
 import net.minecraft.core.Holder;
@@ -84,10 +85,10 @@ public class ScItems {
 	public static final DeferredItem<Item> COMPRESSED_STONE_HOE_LV4 = registerDiggerItem("compressed_stone_hoe_lv4", HoeItem::new, ScTiers.LV4, -4f, -2f);
 	public static final DeferredItem<Item> COMPRESSED_STONE_HOE_LV5 = registerDiggerItem("compressed_stone_hoe_lv5", HoeItem::new, ScTiers.LV5, -4f, -2f);
 	
-	public static final DeferredItem<Item>            STONE_STAR   = registerItem("stone_star");
-	public static final DeferredItem<StoneNuggetItem> STONE_NUGGET = registerItem("stone_nugget", (properties) ->
-			new StoneNuggetItem(properties, new StoneNuggetItem.StoneNuggetProperties(), Blocks.STONE));
-	public static final DeferredItem<Item>            STONE_COIN   = registerItem("stone_coin");
+	public static final DeferredItem<Item>               STONE_STAR   = registerItem("stone_star");
+	public static final DeferredItem<AbsStoneNuggetItem> STONE_NUGGET = registerItem("stone_nugget", (properties) ->
+			new StoneNuggetItem(properties, new AbsStoneNuggetItem.Properties(), Blocks.STONE));
+	public static final DeferredItem<Item>               STONE_COIN   = registerItem("stone_coin");
 	
 	public static final DeferredItem<Item> STONE_APPLE         = registerFood("stone_apple",
 			foodBuilder().nutrition(6).saturation(4.8f).eatSeconds(2.1f).build());

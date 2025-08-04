@@ -1,9 +1,9 @@
-// 1.21.1	2025-08-03T14:59:06.4086982	Tags for minecraft:block mod id stonecraft
+// 1.21.1	2025-08-04T01:38:08.1143081	Tags for minecraft:block mod id stonecraft
 0aaaacfbfb69078f8af2fe3ed94655e7b5401388 data/c/tags/block/obsidians.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/minecraft/tags/block/base_stone_nether.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/minecraft/tags/block/base_stone_overworld.json
 5a044ca13f12bafad847e887faa959c61a9a3dba data/minecraft/tags/block/mineable/pickaxe.json
-ebe6843186df72967caed3d62e8c1abec64fe75c data/minecraft/tags/block/needs_diamond_tool.json
+f5a9dd3f38c652003483397281e7419b3d8cf0f3 data/minecraft/tags/block/needs_diamond_tool.json
 112623d31e0503e57fd88de02b0817a376585187 data/minecraft/tags/block/needs_iron_tool.json
 3034ae58732e134daa9b946e247e5ca632f4006e data/minecraft/tags/block/needs_stone_tool.json
 d6e40abfc7025ab829575a4b493ab92ae315e475 data/neoforge/tags/block/needs_netherite_tool.json

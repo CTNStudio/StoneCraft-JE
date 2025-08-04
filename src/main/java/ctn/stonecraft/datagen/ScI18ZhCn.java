@@ -41,11 +41,11 @@ public class ScI18ZhCn extends LanguageProvider {
 	
 	@Override
 	protected void addTranslations() {
-		addBlocks(ScBlocks.COMPRESSED_COBBLESTONE, "原石");
+		addBlocks(ScBlocks.COMPRESSED_COBBLESTONE, "圆石");
 		addBlocks(ScBlocks.COMPRESSED_MOSSY_COBBLESTONE, "苔石");
 		addBlocks(ScBlocks.COMPRESSED_STONE, "石头");
 		addBlocks(ScBlocks.COMPRESSED_GRANITE, "花岗岩");
-		addBlocks(ScBlocks.COMPRESSED_ANDESITE, "鞍山岩");
+		addBlocks(ScBlocks.COMPRESSED_ANDESITE, "安山岩");
 		addBlocks(ScBlocks.COMPRESSED_DIORITE, "闪长岩");
 		addBlocks(ScBlocks.COMPRESSED_BEDROCK, "基岩");
 		addBlocks(ScBlocks.COMPRESSED_END_STONE, "末地石");
@@ -60,7 +60,7 @@ public class ScI18ZhCn extends LanguageProvider {
 		addBlocks(ScBlocks.COMPRESSED_BLACKSTONE, "黑石");
 		addBlocks(ScBlocks.COMPRESSED_CALCITE, "方解石");
 		addBlocks(ScBlocks.COMPRESSED_DEEPSLATE, "深板岩");
-		addBlocks(ScBlocks.COMPRESSED_COBBLED_DEEPSLATE, "深板岩原石");
+		addBlocks(ScBlocks.COMPRESSED_COBBLED_DEEPSLATE, "深板岩圆石");
 		addBlocks(ScBlocks.COMPRESSED_BASALT, "玄武岩");
 		addBlocks(ScBlocks.COMPRESSED_TUFF, "凝灰岩");
 		addBlocks(ScBlocks.COMPRESSED_DRIPSTONE_BLOCK, "滴水石");

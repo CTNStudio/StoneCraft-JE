@@ -4,7 +4,26 @@
     "eater_stone_food": {
       "conditions": {
         "item": {
-          "items": "#stonecraft:stone_food"
+          "items": [
+            "stonecraft:stone_apple",
+            "stonecraft:stone_bread",
+            "stonecraft:stone_carrot",
+            "stonecraft:stone_kelp",
+            "stonecraft:stone_melon_slice",
+            "stonecraft:stone_potato",
+            "stonecraft:stone_hodgepodge",
+            "stonecraft:stonickers",
+            "stonecraft:stone_cooked_cod",
+            "stonecraft:stone_cookie",
+            "stonecraft:stone_cooked_beef",
+            "stonecraft:stone_glow_berries",
+            "stonecraft:stone_sweet_berries",
+            "stonecraft:compressed_stonickers_lv1",
+            "stonecraft:compressed_stonickers_lv2",
+            "stonecraft:compressed_stonickers_lv3",
+            "stonecraft:compressed_stonickers_lv4",
+            "stonecraft:compressed_stonickers_lv5"
+          ]
         }
       },
       "trigger": "minecraft:consume_item"
