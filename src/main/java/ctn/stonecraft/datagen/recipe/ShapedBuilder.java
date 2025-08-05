@@ -110,7 +110,7 @@ public class ShapedBuilder {
 	 * @param recipesId 配方资源位置
 	 */
 	public ShapedBuilder(ResourceLocation recipesId) {
-		this.recipesId = recipesId;;
+		this.recipesId = recipesId;
 	}
 	
 	/**

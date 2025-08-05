@@ -1,4 +1,4 @@
-package ctn.stonecraft.datagen.tag;
+package ctn.stonecraft.datagen;
 
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
@@ -18,7 +18,7 @@ import static ctn.stonecraft.StoneCraft.path;
  * @date 2025/8/3
  */
 public class ScTags {
-	public class ScItems {
+	public static class ScItems {
 		public static final TagKey<Item> COMPRESSED_STONE_TOOL     = createTag("compressed_stone_tools_vl/compressed_tools");
 		public static final TagKey<Item> COMPRESSED_STONE_TOOL_LV1 = createTag("compressed_stone_tools_vl/lv1");
 		public static final TagKey<Item> COMPRESSED_STONE_TOOL_LV2 = createTag("compressed_stone_tools_vl/lv2");
@@ -135,6 +135,8 @@ public class ScTags {
 		public static final TagKey<Item> ADVANCEMENT_ROOT_ITEM         = createTag("advancement/root_item");
 		public static final TagKey<Item> STONE_DESTROYER_EFFECT_BLOCKS = createTag("enchantment/stone_destroyer_effect_blocks");
 		
+		public static final TagKey<Item> STONE_NUGGET = createCTag("stone_nugget");
+		
 		protected static TagKey<Item> createTag(String name) {
 			return ItemTags.create(path(name));
 		}
@@ -148,7 +150,7 @@ public class ScTags {
 		}
 	}
 	
-	public class ScBlocks {
+	public static class ScBlocks {
 		public static final TagKey<Block> COMPRESSED_BLOCK     = createTag("compressed_lv/compressed_blocks");
 		public static final TagKey<Block> COMPRESSED_BLOCK_LV1 = createTag("compressed_lv/lv1");
 		public static final TagKey<Block> COMPRESSED_BLOCK_LV2 = createTag("compressed_lv/lv2");
@@ -202,13 +204,13 @@ public class ScTags {
 		}
 	}
 	
-	public class ScEntityTypes {
+	public static class ScEntityTypes {
 		protected static TagKey<EntityType<?>> createTag(String name) {
 			return TagKey.create(Registries.ENTITY_TYPE, path(name));
 		}
 	}
 	
-	public class ScEnchantmentTags {
+	public static class ScEnchantmentTags {
 	
 	}
 }

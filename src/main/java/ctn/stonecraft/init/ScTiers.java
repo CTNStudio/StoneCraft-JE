@@ -1,7 +1,6 @@
 package ctn.stonecraft.init;
 
 import com.google.common.base.Suppliers;
-import ctn.stonecraft.datagen.tag.ScItemTags;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Tier;
@@ -11,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Supplier;
 
-import static ctn.stonecraft.datagen.tag.ScTags.ScItems.*;
+import static ctn.stonecraft.datagen.ScTags.ScItems.*;
 
 public enum ScTiers implements Tier {
 	LV1(BlockTags.INCORRECT_FOR_IRON_TOOL,

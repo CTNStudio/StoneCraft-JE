@@ -36,7 +36,7 @@ base {
 java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(21) // 根据需要调整Java版本
-//        vendor = JvmVendorSpec.JETBRAINS // 指定JetBrains作为供应商
+        vendor = JvmVendorSpec.JETBRAINS // 指定JetBrains作为供应商
     }
 }
 

@@ -1,6 +1,5 @@
 package ctn.stonecraft.init;
 
-import ctn.stonecraft.datagen.tag.ScItemTags;
 import net.minecraft.Util;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
@@ -18,7 +17,7 @@ import java.util.function.Supplier;
 
 import static ctn.stonecraft.StoneCraft.SC_ID;
 import static ctn.stonecraft.StoneCraft.path;
-import static ctn.stonecraft.datagen.tag.ScTags.ScItems.*;
+import static ctn.stonecraft.datagen.ScTags.ScItems.*;
 
 public class ScArmorMaterials {
 	public static final DeferredRegister<ArmorMaterial> ARMOR_MATERIALS = DeferredRegister.create(Registries.ARMOR_MATERIAL, SC_ID);

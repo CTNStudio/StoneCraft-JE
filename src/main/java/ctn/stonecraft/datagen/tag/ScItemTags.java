@@ -1,14 +1,12 @@
 package ctn.stonecraft.datagen.tag;
 
+import ctn.stonecraft.datagen.ScTags;
 import ctn.stonecraft.init.ScItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -18,7 +16,7 @@ import javax.annotation.CheckForNull;
 import java.util.concurrent.CompletableFuture;
 
 import static ctn.stonecraft.StoneCraft.SC_ID;
-import static ctn.stonecraft.datagen.tag.ScTags.ScItems.*;
+import static ctn.stonecraft.datagen.ScTags.ScItems.*;
 import static net.minecraft.tags.ItemTags.*;
 
 public class ScItemTags extends ItemTagsProvider {
@@ -410,6 +408,10 @@ public class ScItemTags extends ItemTagsProvider {
 		
 		tag(Tags.Items.OBSIDIANS).add(
 				ScItems.GLOWINGOBSIDIAN.get()
+		);
+		
+		tag(STONE_NUGGET).add(
+				ScItems.STONE_NUGGET.get()
 		);
 	}
 }

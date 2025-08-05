@@ -1,4 +1,4 @@
-package ctn.stonecraft.api.non_game_files;
+package ctn.stonecraft.non_game_files;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;

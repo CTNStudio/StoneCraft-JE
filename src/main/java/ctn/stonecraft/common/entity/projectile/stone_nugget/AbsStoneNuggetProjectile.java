@@ -1,6 +1,6 @@
-package ctn.stonecraft.common.entity.projectile;
+package ctn.stonecraft.common.entity.projectile.stone_nugget;
 
-import ctn.stonecraft.common.item.AbsStoneNuggetItem;
+import ctn.stonecraft.common.item.stone_nugget.AbsStoneNuggetItem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Position;
@@ -23,13 +23,15 @@ import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.function.Supplier;
+
 import static ctn.stonecraft.api.tool.WorldTool.*;
 import static ctn.stonecraft.init.ScEntityTypes.STONE_NUGGET;
 
 /**
  * 抽象石粒投射物
  */
-public abstract class AbsStoneNuggetProjectile extends ThrowableItemProjectile {
+public abstract class AbsStoneNuggetProjectile<I extends AbsStoneNuggetItem> extends ThrowableItemProjectile {
 	protected static final int RESULT_DISPLAY_DELAY = 20 * 2; // 成绩显示延迟(ticks)
 	//region 属性变量
 	
@@ -43,67 +45,67 @@ public abstract class AbsStoneNuggetProjectile extends ThrowableItemProjectile {
 	protected float maxBounceAngle; // 最大弹射角度
 	protected float minBounceAngle; // 最小弹射角度
 	protected float minBounceSpeed; // 最小弹射速度
-	
 	//endregion
 	
 	//region 状态变量
-	
-	protected int skipCount = 0; // 水漂次数计数器
-	protected int time = 0; // 存活时间计数器
+	protected int     skipCount          = 0; // 水漂次数计数器
+	protected int     time               = 0; // 存活时间计数器
 	protected boolean hasAnnouncedResult = false; // 成绩公告状态标记
-	
 	//endregion
+	
+	protected Supplier<I> defaultItem;
 	
 	//region 构造方法
 	
-	public AbsStoneNuggetProjectile(Properties properties, Position pos, Level level) {
-		this(properties, pos.x(), pos.y(), pos.z(), level);
+	public AbsStoneNuggetProjectile(SnpProperties<I> snpProperties, Position pos, Level level) {
+		this(snpProperties, pos.x(), pos.y(), pos.z(), level);
 	}
 	
-	public AbsStoneNuggetProjectile(Properties properties, EntityType<AbsStoneNuggetProjectile> entityType, Position pos, Level level) {
-		this(properties, entityType, pos.x(), pos.y(), pos.z(), level);
+	public AbsStoneNuggetProjectile(SnpProperties<I> snpProperties, EntityType<AbsStoneNuggetProjectile> entityType, Position pos, Level level) {
+		this(snpProperties, entityType, pos.x(), pos.y(), pos.z(), level);
 	}
 	
-	public AbsStoneNuggetProjectile(Properties properties, double x, double y, double z, Level level) {
-		this(properties, STONE_NUGGET.get(), x, y, z, level);
+	public AbsStoneNuggetProjectile(SnpProperties<I> snpProperties, double x, double y, double z, Level level) {
+		this(snpProperties, STONE_NUGGET.get(), x, y, z, level);
 	}
 	
-	public AbsStoneNuggetProjectile(Properties properties, EntityType<AbsStoneNuggetProjectile> entityType, double x, double y, double z, Level level) {
+	public AbsStoneNuggetProjectile(SnpProperties<I> snpProperties, Level level) {
+		this(snpProperties, STONE_NUGGET.get(), level);
+	}
+	
+	public AbsStoneNuggetProjectile(SnpProperties<I> snpProperties, LivingEntity shooter, Level level) {
+		this(snpProperties, STONE_NUGGET.get(), shooter, level);
+	}
+	
+	public AbsStoneNuggetProjectile(SnpProperties<I> snpProperties, EntityType<AbsStoneNuggetProjectile> entityType, double x, double y, double z, Level level) {
 		super(entityType, x, y, z, level);
-		init(properties);
+		init(snpProperties);
 	}
 	
-	public AbsStoneNuggetProjectile(Properties properties, Level level) {
-		this(properties, STONE_NUGGET.get(), level);
-	}
-	
-	public AbsStoneNuggetProjectile(Properties properties, EntityType<AbsStoneNuggetProjectile> entityType, Level level) {
+	public AbsStoneNuggetProjectile(SnpProperties<I> snpProperties, EntityType<AbsStoneNuggetProjectile> entityType, Level level) {
 		super(entityType, level);
-		init(properties);
+		init(snpProperties);
 	}
 	
-	public AbsStoneNuggetProjectile(Properties properties, LivingEntity shooter, Level level) {
-		this(properties, STONE_NUGGET.get(), shooter, level);
-	}
-	
-	public AbsStoneNuggetProjectile(Properties properties, EntityType<AbsStoneNuggetProjectile> entityType, LivingEntity shooter, Level level) {
+	public AbsStoneNuggetProjectile(SnpProperties<I> snpProperties, EntityType<AbsStoneNuggetProjectile> entityType, LivingEntity shooter, Level level) {
 		super(entityType, shooter, level);
-		init(properties);
+		init(snpProperties);
 	}
 	
 	/**
 	 * 初始化配置属性
 	 *
-	 * @param properties 配置属性
+	 * @param snpProperties 配置属性
 	 */
-	private void init(Properties properties) {
-		verticalVelocityLowAngleFactor  = properties.verticalVelocityLowAngleFactor;
-		verticalVelocityHighAngleFactor = properties.verticalVelocityHighAngleFactor;
-		lowAngleThreshold               = properties.lowAngleThreshold;
-		highAngleThreshold              = properties.highAngleThreshold;
-		maxBounceAngle                  = properties.maxBounceAngle;
-		minBounceAngle                  = properties.minBounceAngle;
-		minBounceSpeed                  = properties.minBounceSpeed;
+	private void init(SnpProperties<I> snpProperties) {
+		verticalVelocityLowAngleFactor  = snpProperties.verticalVelocityLowAngleFactor;
+		verticalVelocityHighAngleFactor = snpProperties.verticalVelocityHighAngleFactor;
+		lowAngleThreshold               = snpProperties.lowAngleThreshold;
+		highAngleThreshold              = snpProperties.highAngleThreshold;
+		maxBounceAngle                  = snpProperties.maxBounceAngle;
+		minBounceAngle                  = snpProperties.minBounceAngle;
+		minBounceSpeed                  = snpProperties.minBounceSpeed;
+		defaultItem                     = snpProperties.defaultItem;
 	}
 	
 	//endregion
@@ -314,18 +316,16 @@ public abstract class AbsStoneNuggetProjectile extends ThrowableItemProjectile {
 			return;
 		}
 		ParticleOptions particleOptions = this.getParticle();
-		Vec3 movement = getDeltaMovement();
+		
 		Level level = this.level();
-		double random = level.random.nextDouble();
 		// 生成碰撞粒子效果
-		int particleCount = Math.max(8, (int) movement.lengthSqr());
-		for (int i = 0; i < particleCount; i++) {
-			double xSpeed = movement.x + random;
-			double ySpeed = movement.y + random;
-			double zSpeed = movement.z + random;
-			level.addParticle(particleOptions,
-					this.getX(), this.getY(), this.getZ(),
-					xSpeed, ySpeed, zSpeed);
+		for (int i = 0; i < 8; i++) {
+			level.addParticle(particleOptions, this.getX(),
+					this.getY(),
+					this.getZ(),
+					((double) this.random.nextFloat() - 0.5) * 0.08,
+					((double) this.random.nextFloat() - 0.5) * 0.08,
+					((double) this.random.nextFloat() - 0.5) * 0.08);
 		}
 	}
 	
@@ -341,9 +341,8 @@ public abstract class AbsStoneNuggetProjectile extends ThrowableItemProjectile {
 	public ParticleOptions getParticle() {
 		// 获取材料类型
 		ItemStack itemstack = this.getItem();
-		AbsStoneNuggetItem defaultItem = this.getDefaultItem();
-		// 如果当前物品不为空且不是默认物品，则使用当前物品的粒子效果
-		if (!itemstack.isEmpty() && !itemstack.is(defaultItem)) {
+		I defaultItem = this.getDefaultItem();
+		if (!itemstack.isEmpty() && itemstack.is(defaultItem)) {
 			return new ItemParticleOption(ParticleTypes.ITEM, itemstack);
 		}
 		// 如果材料为空，返回默认的雪球粒子效果
@@ -351,7 +350,9 @@ public abstract class AbsStoneNuggetProjectile extends ThrowableItemProjectile {
 	}
 	
 	@Override
-	protected abstract @NotNull AbsStoneNuggetItem getDefaultItem();
+	protected @NotNull I getDefaultItem() {
+		return defaultItem.get();
+	}
 	
 	/**
 	 * 击中目标时的处理逻辑
@@ -408,61 +409,6 @@ public abstract class AbsStoneNuggetProjectile extends ThrowableItemProjectile {
 	 */
 	public int getSkipCount() {
 		return skipCount;
-	}
-	
-	//endregion
-	
-	//region 配置属性构建器
-	
-	public static class Properties {
-		protected double verticalVelocityLowAngleFactor  = 0.7;
-		protected double verticalVelocityHighAngleFactor = 1.3;
-		protected double lowAngleThreshold               = 10.0;
-		protected double highAngleThreshold              = 10.0;
-		protected float  maxBounceAngle                  = 20.0f;
-		protected float  minBounceAngle                  = 0.0f;
-		protected float  minBounceSpeed                  = 0.001f;
-		
-		private Properties() {}
-		
-		public static Properties builder() {
-			return new Properties();
-		}
-		
-		public Properties verticalVelocityLowAngleFactor(double factor) {
-			this.verticalVelocityLowAngleFactor = factor;
-			return this;
-		}
-		
-		public Properties verticalVelocityHighAngleFactor(double factor) {
-			this.verticalVelocityHighAngleFactor = factor;
-			return this;
-		}
-		
-		public Properties lowAngleThreshold(double threshold) {
-			this.lowAngleThreshold = threshold;
-			return this;
-		}
-		
-		public Properties highAngleThreshold(double threshold) {
-			this.highAngleThreshold = threshold;
-			return this;
-		}
-		
-		public Properties maxBounceAngle(float angle) {
-			this.maxBounceAngle = angle;
-			return this;
-		}
-		
-		public Properties minBounceAngle(float angle) {
-			this.minBounceAngle = angle;
-			return this;
-		}
-		
-		public Properties minBounceSpeed(float speed) {
-			this.minBounceSpeed = speed;
-			return this;
-		}
 	}
 	
 	//endregion

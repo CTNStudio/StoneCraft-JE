@@ -1,8 +1,5 @@
 package ctn.stonecraft.datagen.recipe;
 
-import com.jcraft.jorbis.Block;
-import ctn.stonecraft.datagen.tag.ScItemTags;
-import ctn.stonecraft.init.ScBlocks;
 import ctn.stonecraft.init.ScItems;
 import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
@@ -12,7 +9,6 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -28,8 +24,8 @@ import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 import static ctn.stonecraft.StoneCraft.SC_ID;
+import static ctn.stonecraft.datagen.ScTags.ScItems.*;
 import static ctn.stonecraft.datagen.recipe.RecipeTool.*;
-import static ctn.stonecraft.datagen.tag.ScTags.ScItems.*;
 
 /**
  * @author 尽

@@ -1,7 +1,6 @@
-package ctn.stonecraft.common.item;
+package ctn.stonecraft.common.item.stone_nugget;
 
-import ctn.stonecraft.common.entity.projectile.AbsStoneNuggetProjectile;
-import ctn.stonecraft.common.entity.projectile.StoneNuggetProjectile;
+import ctn.stonecraft.common.entity.projectile.stone_nugget.AbsStoneNuggetProjectile;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Position;
 import net.minecraft.stats.Stats;
@@ -14,34 +13,39 @@ import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ProjectileItem;
-import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.function.BiFunction;
+import java.util.function.Supplier;
 
 /**
  * 抽象石粒物品
  */
-public abstract class AbsStoneNuggetItem extends Item implements ProjectileItem {
-	private final float damage;
-	private final float damageRandom;
-	private final float weight;
-	private final double   gravity;
+public abstract class AbsStoneNuggetItem<P extends AbsStoneNuggetProjectile, I extends AbsStoneNuggetItem> extends Item implements ProjectileItem {
+	private final     float                                    damage;
+	private final     float                                    damageRandom;
+	private final     float                                    weight;
+	private final     double                                   gravity;
+	private final     BiFunction<Level, Player, Supplier<P>>   projectile1;
+	private final     BiFunction<Level, Position, Supplier<P>> projectile2;
 	
-	public AbsStoneNuggetItem(Item.Properties properties, Properties snProperties, ItemLike material) {
+	public AbsStoneNuggetItem(Item.Properties properties, SnProperties<I, P> snSnProperties) {
 		super(properties);
-		this.damage       = snProperties.damage;
-		this.damageRandom = snProperties.damageRandom;
-		this.weight       = snProperties.weight;
-		this.gravity    = snProperties.gravity;
+		this.damage       = snSnProperties.damage;
+		this.damageRandom = snSnProperties.damageRandom;
+		this.weight       = snSnProperties.weight;
+		this.gravity      = snSnProperties.gravity;
+		this.projectile1 = snSnProperties.projectile1;
+		this.projectile2 = snSnProperties.projectile2;
 	}
 	
 	@Override
 	public @NotNull Projectile asProjectile(@NotNull Level level, @NotNull Position pos, @NotNull ItemStack stack, @NotNull Direction direction) {
-		AbsStoneNuggetProjectile projectile = getStoneNuggetProjectile(level, pos);
+		@NotNull P projectile = getProjectile(level, pos);
 		projectile.setItem(stack);
 		return projectile;
 	}
-	
 	
 	@Override
 	public @NotNull InteractionResultHolder<ItemStack> use(@NotNull Level level, @NotNull Player player, @NotNull InteractionHand hand) {
@@ -70,7 +74,7 @@ public abstract class AbsStoneNuggetItem extends Item implements ProjectileItem 
 	 * 射弹
 	 */
 	protected Projectile getFreshEntity(Level level, Player player, ItemStack itemstack, InteractionHand hand) {
-		AbsStoneNuggetProjectile projectile = getStoneNuggetProjectile(level, player);
+		P projectile = getProjectile(level, player);
 		projectile.setItem(itemstack);
 		float velocity = 1.5F;
 		if (player.hasEffect(MobEffects.DAMAGE_BOOST)) {
@@ -79,15 +83,19 @@ public abstract class AbsStoneNuggetItem extends Item implements ProjectileItem 
 				velocity += (effect.getAmplifier() + 1) * 0.01F;
 			}
 		}
-		velocity /= weight;
+		velocity *= weight;
 		projectile.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, velocity, 0);
 		return projectile;
 	}
 	
 	
-	public abstract @NotNull StoneNuggetProjectile getStoneNuggetProjectile(@NotNull Level level,@NotNull Player player);
-	public abstract @NotNull StoneNuggetProjectile getStoneNuggetProjectile(@NotNull Level level, @NotNull Position pos);
+	public @NotNull P getProjectile(@NotNull Level level, @NotNull Player player) {
+		return projectile1.apply(level, player).get();
+	}
 	
+	public @NotNull P getProjectile(@NotNull Level level, @NotNull Position pos) {
+		return projectile2.apply(level, pos).get();
+	}
 	
 	//region get方法
 	public float getDamage() {
@@ -107,33 +115,5 @@ public abstract class AbsStoneNuggetItem extends Item implements ProjectileItem 
 	}
 	//endregion
 	
-	/**
-	 * 石粒属性构建器
-	 */
-	public static class Properties {
-		/// 伤害
-		private float damage       = 4.0f;
-		/// 伤害浮动
-		private float damageRandom = 0.0f;
-		/// 重量
-		private float weight       = 1f;
-		/// 重力（下坠）
-		private double gravity    = 0.03f;
-		
-		public void hurt(float hurt) {
-			this.damage = hurt;
-		}
-		
-		public void weight(float weight) {
-			this.weight = weight;
-		}
-		
-		public void gravity(double gravity) {
-			this.gravity = gravity;
-		}
-		
-		public void hurtRandom(float hurtRandom) {
-			this.damageRandom = hurtRandom;
-		}
-	}
+	
 }

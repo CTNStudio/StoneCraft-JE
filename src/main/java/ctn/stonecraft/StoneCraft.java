@@ -20,6 +20,7 @@ import static ctn.stonecraft.init.ScCreativeModeTabs.PROJECT_MOON_TAB_REGISTER;
 import static ctn.stonecraft.init.ScEnchantments.ENCHANTMENT_REGISTER;
 import static ctn.stonecraft.init.ScEntityTypes.ENTITY_TYPE;
 import static ctn.stonecraft.init.ScItems.ITEM_REGISTER;
+import static ctn.stonecraft.init.ScParticleTypes.PARTICLE_TYPES;
 import static ctn.stonecraft.init.ScTriggerTypes.TRIGGER_TYPES;
 
 @Mod(StoneCraft.SC_ID)
@@ -37,6 +38,7 @@ public class StoneCraft {
 		ENCHANTMENT_REGISTER.register(eventBus);
 		PROJECT_MOON_TAB_REGISTER.register(eventBus);
 		TRIGGER_TYPES.register(eventBus);
+		PARTICLE_TYPES.register(eventBus);
 		NeoForge.EVENT_BUS.register(this);
 	}
 	

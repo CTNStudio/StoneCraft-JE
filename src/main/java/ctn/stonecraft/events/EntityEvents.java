@@ -1,6 +1,5 @@
 package ctn.stonecraft.events;
 
-import ctn.stonecraft.datagen.tag.ScBlockTags;
 import ctn.stonecraft.init.ScEnchantments;
 import net.minecraft.core.Holder;
 import net.minecraft.core.RegistryAccess;
@@ -16,7 +15,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.EntityInvulnerabilityCheckEvent;
 
-import static ctn.stonecraft.datagen.tag.ScTags.ScBlocks.STONE_BUFFER_EFFECT_BLOCKS;
+import static ctn.stonecraft.datagen.ScTags.ScBlocks.STONE_BUFFER_EFFECT_BLOCKS;
 
 @EventBusSubscriber
 public class EntityEvents {

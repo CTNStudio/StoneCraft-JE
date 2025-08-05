@@ -1,7 +1,6 @@
 package ctn.stonecraft.datagen.advancement;
 
 import ctn.stonecraft.common.trigger.CountCriterionTrigger;
-import ctn.stonecraft.datagen.tag.ScItemTags;
 import ctn.stonecraft.datagen.tool.AdvancementProviderTool;
 import ctn.stonecraft.init.ScItems;
 import net.minecraft.advancements.*;
@@ -21,7 +20,7 @@ import java.util.Optional;
 import java.util.function.Consumer;
 
 import static ctn.stonecraft.StoneCraft.path;
-import static ctn.stonecraft.datagen.tag.ScTags.ScItems.*;
+import static ctn.stonecraft.datagen.ScTags.ScItems.ADVANCEMENT_ROOT_ITEM;
 import static ctn.stonecraft.datagen.tool.AdvancementProviderTool.*;
 import static net.neoforged.neoforge.common.data.AdvancementProvider.AdvancementGenerator;
 

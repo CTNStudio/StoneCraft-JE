@@ -28,7 +28,7 @@ import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 
-import static ctn.stonecraft.datagen.tag.ScTags.ScBlocks.MINEABLE_WITH_VERSATILE;
+import static ctn.stonecraft.datagen.ScTags.ScBlocks.MINEABLE_WITH_VERSATILE;
 import static net.minecraft.world.item.HoeItem.changeIntoState;
 import static net.neoforged.neoforge.common.ItemAbilities.*;
 

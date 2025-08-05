@@ -1,15 +1,18 @@
 package ctn.stonecraft.init;
 
-import ctn.stonecraft.common.item.AbsStoneNuggetItem;
-import ctn.stonecraft.common.item.StoneNuggetItem;
+import ctn.stonecraft.common.entity.projectile.stone_nugget.AbsStoneNuggetProjectile;
+import ctn.stonecraft.common.entity.projectile.stone_nugget.BasicStoneNuggetProjectile;
+import ctn.stonecraft.common.entity.projectile.stone_nugget.SnpProperties;
 import ctn.stonecraft.common.item.VersatileTool;
+import ctn.stonecraft.common.item.stone_nugget.AbsStoneNuggetItem;
+import ctn.stonecraft.common.item.stone_nugget.BasicStoneNuggetItem;
+import ctn.stonecraft.common.item.stone_nugget.SnProperties;
 import net.minecraft.core.Holder;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -20,6 +23,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.function.BiFunction;
 import java.util.function.Function;
+import java.util.function.Supplier;
 
 import static ctn.stonecraft.StoneCraft.SC_ID;
 import static ctn.stonecraft.builder.FoodPropertiesBuilder.foodBuilder;
@@ -27,6 +31,7 @@ import static ctn.stonecraft.builder.FoodPropertiesBuilder.foodBuilder;
 public class ScItems {
 	public static final DeferredRegister.Items ITEM_REGISTER = DeferredRegister.createItems(SC_ID);
 	
+	//region 压缩方块
 	public static final List<DeferredItem<BlockItem>> COMPRESSED_COBBLESTONE       = registerGradeBlockItem(ScBlocks.COMPRESSED_COBBLESTONE);
 	public static final List<DeferredItem<BlockItem>> COMPRESSED_MOSSY_COBBLESTONE = registerGradeBlockItem(ScBlocks.COMPRESSED_MOSSY_COBBLESTONE);
 	public static final List<DeferredItem<BlockItem>> COMPRESSED_STONE             = registerGradeBlockItem(ScBlocks.COMPRESSED_STONE);
@@ -50,16 +55,9 @@ public class ScItems {
 	public static final List<DeferredItem<BlockItem>> COMPRESSED_BASALT            = registerGradeBlockItem(ScBlocks.COMPRESSED_BASALT);
 	public static final List<DeferredItem<BlockItem>> COMPRESSED_TUFF              = registerGradeBlockItem(ScBlocks.COMPRESSED_TUFF);
 	public static final List<DeferredItem<BlockItem>> COMPRESSED_DRIPSTONE_BLOCK   = registerGradeBlockItem(ScBlocks.COMPRESSED_DRIPSTONE_BLOCK);
+	//endregion
 	
-	public static final DeferredItem<Item> COMPRESSED_STONE_SWORD_LV1 = registerSwordItem("compressed_stone_sword_lv1", SwordItem::new, ScTiers.LV1, 0, -2.4f);
-	public static final DeferredItem<Item> COMPRESSED_STONE_SWORD_LV2 = registerSwordItem("compressed_stone_sword_lv2", SwordItem::new, ScTiers.LV2, 0, -2.4f);
-	public static final DeferredItem<Item> COMPRESSED_STONE_SWORD_LV3 = registerSwordItem("compressed_stone_sword_lv3", SwordItem::new, ScTiers.LV3, 0, -2.4f);
-	public static final DeferredItem<Item> COMPRESSED_STONE_SWORD_LV4 = registerSwordItem("compressed_stone_sword_lv4", SwordItem::new, ScTiers.LV4, 0, -2.4f);
-	public static final DeferredItem<Item> COMPRESSED_STONE_SWORD_LV5 = registerSwordItem("compressed_stone_sword_lv5", SwordItem::new, ScTiers.LV5, 0, -2.4f);
-	
-	public static final DeferredItem<Item> ULTIMATE_COMPRESSED_STONE_SWORD_ACT1 = registerSwordItem("ultimate_compressed_stone_sword_act1", SwordItem::new, ScTiers.LV5, 4, -2.4f);
-	public static final DeferredItem<Item> ULTIMATE_COMPRESSED_STONE_SWORD_ACT2 = registerSwordItem("ultimate_compressed_stone_sword_act2", SwordItem::new, ScTiers.LV5, 7, -2.4f);
-	public static final DeferredItem<Item> ULTIMATE_COMPRESSED_STONE_SWORD_ACT3 = registerSwordItem("ultimate_compressed_stone_sword_act3", SwordItem::new, ScTiers.LV5, 11, -2.4f);
+	//region 工具
 	
 	public static final DeferredItem<Item> COMPRESSED_STONE_AXE_LV1 = registerDiggerItem("compressed_stone_axe_lv1", AxeItem::new, ScTiers.LV1, 5, -3.2f);
 	public static final DeferredItem<Item> COMPRESSED_STONE_AXE_LV2 = registerDiggerItem("compressed_stone_axe_lv2", AxeItem::new, ScTiers.LV2, 5, -3.2f);
@@ -85,11 +83,38 @@ public class ScItems {
 	public static final DeferredItem<Item> COMPRESSED_STONE_HOE_LV4 = registerDiggerItem("compressed_stone_hoe_lv4", HoeItem::new, ScTiers.LV4, -4f, -2f);
 	public static final DeferredItem<Item> COMPRESSED_STONE_HOE_LV5 = registerDiggerItem("compressed_stone_hoe_lv5", HoeItem::new, ScTiers.LV5, -4f, -2f);
 	
-	public static final DeferredItem<Item>               STONE_STAR   = registerItem("stone_star");
-	public static final DeferredItem<AbsStoneNuggetItem> STONE_NUGGET = registerItem("stone_nugget", (properties) ->
-			new StoneNuggetItem(properties, new AbsStoneNuggetItem.Properties(), Blocks.STONE));
-	public static final DeferredItem<Item>               STONE_COIN   = registerItem("stone_coin");
+	public static final DeferredItem<Item> VERSATILE_STONE_TOOL                = registerDiggerItem("versatile_stone_tool", VersatileTool::new, new Item.Properties(), Tiers.STONE, 10, -2.0f);
+	public static final DeferredItem<Item> VERSATILE_COMPRESSED_STONE_TOOL_LV1 = registerDiggerItem("versatile_compressed_stone_tool_lv1", VersatileTool::new, new Item.Properties(), ScTiers.LV1, 5, -3.2f);
+	public static final DeferredItem<Item> VERSATILE_COMPRESSED_STONE_TOOL_LV2 = registerDiggerItem("versatile_compressed_stone_tool_lv2", VersatileTool::new, new Item.Properties(), ScTiers.LV2, 5, -3.2f);
+	public static final DeferredItem<Item> VERSATILE_COMPRESSED_STONE_TOOL_LV3 = registerDiggerItem("versatile_compressed_stone_tool_lv3", VersatileTool::new, new Item.Properties(), ScTiers.LV3, 5, -3.2f);
+	public static final DeferredItem<Item> VERSATILE_COMPRESSED_STONE_TOOL_LV4 = registerDiggerItem("versatile_compressed_stone_tool_lv4", VersatileTool::new, new Item.Properties(), ScTiers.LV4, 5, -3.2f);
+	public static final DeferredItem<Item> VERSATILE_COMPRESSED_STONE_TOOL_LV5 = registerDiggerItem("versatile_compressed_stone_tool_lv5", VersatileTool::new, new Item.Properties(), ScTiers.LV5, 5, -3.2f);
+	//endregion
 	
+	//region 战斗用品
+	public static final DeferredItem<Item> COMPRESSED_STONE_SWORD_LV1 = registerSwordItem("compressed_stone_sword_lv1", SwordItem::new, ScTiers.LV1, 0, -2.4f);
+	public static final DeferredItem<Item> COMPRESSED_STONE_SWORD_LV2 = registerSwordItem("compressed_stone_sword_lv2", SwordItem::new, ScTiers.LV2, 0, -2.4f);
+	public static final DeferredItem<Item> COMPRESSED_STONE_SWORD_LV3 = registerSwordItem("compressed_stone_sword_lv3", SwordItem::new, ScTiers.LV3, 0, -2.4f);
+	public static final DeferredItem<Item> COMPRESSED_STONE_SWORD_LV4 = registerSwordItem("compressed_stone_sword_lv4", SwordItem::new, ScTiers.LV4, 0, -2.4f);
+	public static final DeferredItem<Item> COMPRESSED_STONE_SWORD_LV5 = registerSwordItem("compressed_stone_sword_lv5", SwordItem::new, ScTiers.LV5, 0, -2.4f);
+	
+	public static final DeferredItem<Item> ULTIMATE_COMPRESSED_STONE_SWORD_ACT1 = registerSwordItem("ultimate_compressed_stone_sword_act1", SwordItem::new, ScTiers.LV5, 4, -2.4f);
+	public static final DeferredItem<Item> ULTIMATE_COMPRESSED_STONE_SWORD_ACT2 = registerSwordItem("ultimate_compressed_stone_sword_act2", SwordItem::new, ScTiers.LV5, 7, -2.4f);
+	public static final DeferredItem<Item> ULTIMATE_COMPRESSED_STONE_SWORD_ACT3 = registerSwordItem("ultimate_compressed_stone_sword_act3", SwordItem::new, ScTiers.LV5, 11, -2.4f);
+	//endregion
+	
+	//region 材料
+	public static final DeferredItem<Item> STONE_STAR = registerItem("stone_star");
+	public static final DeferredItem<Item> STONE_COIN = registerItem("stone_coin");
+	//endregion
+	
+	//region 石粒
+	public static final DeferredItem<AbsStoneNuggetItem> STONE_NUGGET = registerStoneNuggetItem("stone_nugget",
+			new SnProperties<>(() -> STONE_NUGGET, new SnpProperties<>(() -> STONE_NUGGET)), BasicStoneNuggetProjectile::new, BasicStoneNuggetProjectile::new), new Item.Properties();
+	
+	//endregion
+	
+	//region 食物
 	public static final DeferredItem<Item> STONE_APPLE         = registerFood("stone_apple",
 			foodBuilder().nutrition(6).saturation(4.8f).eatSeconds(2.1f).build());
 	public static final DeferredItem<Item> STONE_BREAD         = registerFood("stone_bread",
@@ -173,47 +198,48 @@ public class ScItems {
 					.alwaysEdible()
 					.build()
 	);
+	//endregion
 	
-	public static final DeferredItem<Item> VERSATILE_STONE_TOOL                = registerDiggerItem("versatile_stone_tool", VersatileTool::new, new Item.Properties(), Tiers.STONE, 10, -2.0f);
-	public static final DeferredItem<Item> VERSATILE_COMPRESSED_STONE_TOOL_LV1 = registerDiggerItem("versatile_compressed_stone_tool_lv1", VersatileTool::new, new Item.Properties(), ScTiers.LV1, 5, -3.2f);
-	public static final DeferredItem<Item> VERSATILE_COMPRESSED_STONE_TOOL_LV2 = registerDiggerItem("versatile_compressed_stone_tool_lv2", VersatileTool::new, new Item.Properties(), ScTiers.LV2, 5, -3.2f);
-	public static final DeferredItem<Item> VERSATILE_COMPRESSED_STONE_TOOL_LV3 = registerDiggerItem("versatile_compressed_stone_tool_lv3", VersatileTool::new, new Item.Properties(), ScTiers.LV3, 5, -3.2f);
-	public static final DeferredItem<Item> VERSATILE_COMPRESSED_STONE_TOOL_LV4 = registerDiggerItem("versatile_compressed_stone_tool_lv4", VersatileTool::new, new Item.Properties(), ScTiers.LV4, 5, -3.2f);
-	public static final DeferredItem<Item> VERSATILE_COMPRESSED_STONE_TOOL_LV5 = registerDiggerItem("versatile_compressed_stone_tool_lv5", VersatileTool::new, new Item.Properties(), ScTiers.LV5, 5, -3.2f);
+	//region 盔甲
+	private static final int                BASE_HELMET_MAX_DAMAGE     = 165;
+	public static final  DeferredItem<Item> STONE_HELMET               = registerHelmet("stone_helmet", ScArmorMaterials.LV0, BASE_HELMET_MAX_DAMAGE);
+	private static final int                BASE_CHESTPLATE_MAX_DAMAGE = 240;
+	public static final  DeferredItem<Item> STONE_CHESTPLATE           = registerChestplate("stone_chestplate", ScArmorMaterials.LV0, BASE_CHESTPLATE_MAX_DAMAGE);
+	private static final int                BASE_LEGGINGS_MAX_DAMAGE   = 225;
+	public static final  DeferredItem<Item> STONE_LEGGINGS             = registerLeggings("stone_leggings", ScArmorMaterials.LV0, BASE_LEGGINGS_MAX_DAMAGE);
+	private static final int                BASE_BOOTS_MAX_DAMAGE      = 195;
+	public static final  DeferredItem<Item> STONE_BOOTS                = registerBoots("stone_boots", ScArmorMaterials.LV0, BASE_BOOTS_MAX_DAMAGE);
 	
-	private static final int                BASE_HELMET_MAX_DAMAGE          = 165;
-	public static final  DeferredItem<Item> STONE_HELMET                    = registerHelmet("stone_helmet", ScArmorMaterials.LV0, BASE_HELMET_MAX_DAMAGE);
-	private static final int                BASE_CHESTPLATE_MAX_DAMAGE      = 240;
-	public static final  DeferredItem<Item> STONE_CHESTPLATE                = registerChestplate("stone_chestplate", ScArmorMaterials.LV0, BASE_CHESTPLATE_MAX_DAMAGE);
-	private static final int                BASE_LEGGINGS_MAX_DAMAGE        = 225;
-	public static final  DeferredItem<Item> STONE_LEGGINGS                  = registerLeggings("stone_leggings", ScArmorMaterials.LV0, BASE_LEGGINGS_MAX_DAMAGE);
-	private static final int                BASE_BOOTS_MAX_DAMAGE           = 195;
-	public static final  DeferredItem<Item> STONE_BOOTS                     = registerBoots("stone_boots", ScArmorMaterials.LV0, BASE_BOOTS_MAX_DAMAGE);
 	private static final float              LV1_MAX_DAMAGE                  = 2f;
 	public static final  DeferredItem<Item> COMPRESSED_STONE_HELMET_LV1     = registerHelmet("compressed_stone_helmet_lv1", ScArmorMaterials.LV1, (int) (BASE_HELMET_MAX_DAMAGE * LV1_MAX_DAMAGE));
 	public static final  DeferredItem<Item> COMPRESSED_STONE_CHESTPLATE_LV1 = registerChestplate("compressed_stone_chestplate_lv1", ScArmorMaterials.LV1, (int) (BASE_CHESTPLATE_MAX_DAMAGE * LV1_MAX_DAMAGE));
 	public static final  DeferredItem<Item> COMPRESSED_STONE_LEGGINGS_LV1   = registerLeggings("compressed_stone_leggings_lv1", ScArmorMaterials.LV1, (int) (BASE_LEGGINGS_MAX_DAMAGE * LV1_MAX_DAMAGE));
 	public static final  DeferredItem<Item> COMPRESSED_STONE_BOOTS_LV1      = registerBoots("compressed_stone_boots_lv1", ScArmorMaterials.LV1, (int) (BASE_BOOTS_MAX_DAMAGE * LV1_MAX_DAMAGE));
+	
 	private static final float              LV2_MAX_DAMAGE                  = 3.5f;
 	public static final  DeferredItem<Item> COMPRESSED_STONE_HELMET_LV2     = registerHelmet("compressed_stone_helmet_lv2", ScArmorMaterials.LV2, (int) (BASE_HELMET_MAX_DAMAGE * LV2_MAX_DAMAGE));
 	public static final  DeferredItem<Item> COMPRESSED_STONE_CHESTPLATE_LV2 = registerChestplate("compressed_stone_chestplate_lv2", ScArmorMaterials.LV2, (int) (BASE_CHESTPLATE_MAX_DAMAGE * LV2_MAX_DAMAGE));
 	public static final  DeferredItem<Item> COMPRESSED_STONE_LEGGINGS_LV2   = registerLeggings("compressed_stone_leggings_lv2", ScArmorMaterials.LV2, (int) (BASE_LEGGINGS_MAX_DAMAGE * LV2_MAX_DAMAGE));
 	public static final  DeferredItem<Item> COMPRESSED_STONE_BOOTS_LV2      = registerBoots("compressed_stone_boots_lv2", ScArmorMaterials.LV2, (int) (BASE_BOOTS_MAX_DAMAGE * LV2_MAX_DAMAGE));
+	
 	private static final float              LV3_MAX_DAMAGE                  = 4.5f;
 	public static final  DeferredItem<Item> COMPRESSED_STONE_HELMET_LV3     = registerHelmet("compressed_stone_helmet_lv3", ScArmorMaterials.LV3, (int) (BASE_HELMET_MAX_DAMAGE * LV3_MAX_DAMAGE));
 	public static final  DeferredItem<Item> COMPRESSED_STONE_CHESTPLATE_LV3 = registerChestplate("compressed_stone_chestplate_lv3", ScArmorMaterials.LV3, (int) (BASE_CHESTPLATE_MAX_DAMAGE * LV3_MAX_DAMAGE));
 	public static final  DeferredItem<Item> COMPRESSED_STONE_LEGGINGS_LV3   = registerLeggings("compressed_stone_leggings_lv3", ScArmorMaterials.LV3, (int) (BASE_LEGGINGS_MAX_DAMAGE * LV3_MAX_DAMAGE));
 	public static final  DeferredItem<Item> COMPRESSED_STONE_BOOTS_LV3      = registerBoots("compressed_stone_boots_lv3", ScArmorMaterials.LV3, (int) (BASE_BOOTS_MAX_DAMAGE * LV3_MAX_DAMAGE));
+	
 	private static final float              LV4_MAX_DAMAGE                  = 6f;
 	public static final  DeferredItem<Item> COMPRESSED_STONE_HELMET_LV4     = registerHelmet("compressed_stone_helmet_lv4", ScArmorMaterials.LV4, (int) (BASE_HELMET_MAX_DAMAGE * LV4_MAX_DAMAGE));
 	public static final  DeferredItem<Item> COMPRESSED_STONE_CHESTPLATE_LV4 = registerChestplate("compressed_stone_chestplate_lv4", ScArmorMaterials.LV4, (int) (BASE_CHESTPLATE_MAX_DAMAGE * LV4_MAX_DAMAGE));
 	public static final  DeferredItem<Item> COMPRESSED_STONE_LEGGINGS_LV4   = registerLeggings("compressed_stone_leggings_lv4", ScArmorMaterials.LV4, (int) (BASE_LEGGINGS_MAX_DAMAGE * LV4_MAX_DAMAGE));
 	public static final  DeferredItem<Item> COMPRESSED_STONE_BOOTS_LV4      = registerBoots("compressed_stone_boots_lv4", ScArmorMaterials.LV4, (int) (BASE_BOOTS_MAX_DAMAGE * LV4_MAX_DAMAGE));
+	
 	private static final float              LV5_MAX_DAMAGE                  = 7.5f;
 	public static final  DeferredItem<Item> COMPRESSED_STONE_HELMET_LV5     = registerHelmet("compressed_stone_helmet_lv5", ScArmorMaterials.LV5, (int) (BASE_HELMET_MAX_DAMAGE * LV5_MAX_DAMAGE));
 	public static final  DeferredItem<Item> COMPRESSED_STONE_CHESTPLATE_LV5 = registerChestplate("compressed_stone_chestplate_lv5", ScArmorMaterials.LV5, (int) (BASE_CHESTPLATE_MAX_DAMAGE * LV5_MAX_DAMAGE));
 	public static final  DeferredItem<Item> COMPRESSED_STONE_LEGGINGS_LV5   = registerLeggings("compressed_stone_leggings_lv5", ScArmorMaterials.LV5, (int) (BASE_LEGGINGS_MAX_DAMAGE * LV5_MAX_DAMAGE));
 	public static final  DeferredItem<Item> COMPRESSED_STONE_BOOTS_LV5      = registerBoots("compressed_stone_boots_lv5", ScArmorMaterials.LV5, (int) (BASE_BOOTS_MAX_DAMAGE * LV5_MAX_DAMAGE));
+	//endregion
 	
 	private static DeferredItem<Item> registerHelmet(String name, Holder<ArmorMaterial> material, int maxDamage) {
 		return registerArmor(name, ArmorItem.Type.HELMET, material, maxDamage);
@@ -235,19 +261,28 @@ public class ScItems {
 		return registerArmor(name, ArmorItem.Type.BOOTS, material, maxDamage);
 	}
 	
-	public static DeferredItem<Item> registerItem(String name, Item.Properties props) {
+	private static DeferredItem<Item> registerItem(String name, Item.Properties props) {
 		return ITEM_REGISTER.registerSimpleItem(name, props);
 	}
 	
-	public static <I extends Item> DeferredItem<I> registerItem(String name, Function<Item.Properties, ? extends I> func) {
+	private static <I extends Item> DeferredItem<I> registerItem(String name, Function<Item.Properties, ? extends I> func) {
 		return registerItem(name, func, new Item.Properties());
 	}
 	
-	public static <I extends Item> DeferredItem<I> registerItem(String name, Function<Item.Properties, ? extends I> func, Item.Properties props) {
+	private static <P extends AbsStoneNuggetProjectile, I extends AbsStoneNuggetItem> DeferredItem<I> registerStoneNuggetItem(String name,
+			BiFunction<Item.Properties, SnProperties<I, P>, I> item, SnProperties<I, P> snProperties, Item.Properties properties) {
+		return ITEM_REGISTER.registerItem(name, (p) -> item.apply(p, snProperties), properties);
+	}
+	
+	private static DeferredItem<BasicStoneNuggetItem> registerStoneNuggetItem(String name, SnProperties<BasicStoneNuggetItem, AbsStoneNuggetProjectile> snProperties, Item.Properties properties) {
+		return registerStoneNuggetItem(name, BasicStoneNuggetItem::new, snProperties, properties);
+	}
+	
+	private static <I extends Item> DeferredItem<I> registerItem(String name, Function<Item.Properties, ? extends I> func, Item.Properties props) {
 		return ITEM_REGISTER.registerItem(name, func, props);
 	}
 	
-	public static DeferredItem<Item> registerItem(String name) {
+	private static DeferredItem<Item> registerItem(String name) {
 		return ITEM_REGISTER.registerSimpleItem(name, new Item.Properties());
 	}
 	
