@@ -1,5 +1,6 @@
 package ctn.stonecraft.datagen;
 
+import ctn.stonecraft.StoneCraft;
 import ctn.stonecraft.datagen.tool.TextureMapBuilder;
 import ctn.stonecraft.events.client.ItemPropertyEvents;
 import ctn.stonecraft.init.ScItems;
@@ -14,13 +15,12 @@ import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 import static ctn.stonecraft.StoneCraft.SC_ID;
-import static net.minecraft.resources.ResourceLocation.fromNamespaceAndPath;
-import static net.minecraft.resources.ResourceLocation.parse;
+import static ctn.stonecraft.events.client.ItemPropertyEvents.PULL;
+import static ctn.stonecraft.events.client.ItemPropertyEvents.PULLING;
+import static net.minecraft.resources.ResourceLocation.*;
 
 
 /**
@@ -122,11 +122,46 @@ public class ScItemModel extends ItemModelProvider {
 		basicItem(ScItems.COMPRESSED_STONE_LEGGINGS_LV5.get());
 		basicItem(ScItems.COMPRESSED_STONE_BOOTS_LV5.get());
 		
-		Map<Float, String> builder = new TextureMapBuilder().sharingWithoutHeadAndTail("_", 3)
-				.head("")
-				.tail("_" + 4)
-				.builder();
-		createModelFile(ScItems.STONE_COIN, builder, ItemPropertyEvents.STACKING);
+		{
+			Map<Float, String> builder = new TextureMapBuilder().sharingWithoutHeadAndTail("_", 3)
+					.head("")
+					.tail("_" + 4)
+					.builder();
+			createModelFile(ScItems.STONE_COIN, builder, ItemPropertyEvents.STACKING);
+		}
+		
+		{
+			List<Float> slingshot = List.of(-1f, 0.5f, 1f);
+			slingshot(ScItems.WOOD_SLINGSHOT, slingshot);
+			slingshot(ScItems.STONE_SLINGSHOT, slingshot);
+			slingshot(ScItems.IRON_SLINGSHOT, slingshot);
+			slingshot(ScItems.GOLD_SLINGSHOT, slingshot);
+			slingshot(ScItems.DIAMOND_SLINGSHOT, slingshot);
+			slingshot(ScItems.NETHERITE_SLINGSHOT, slingshot);
+		}
+	}
+	
+	private void slingshot(ItemLike itemLike, List<Float> suffix) {
+		var item = itemLike.asItem(); // 获取物品
+		var slingshotModelFile = new ModelFile.UncheckedModelFile(StoneCraft.path("item/slingshot")); // 获取弹弓模版模型
+		var mod = basicItem(item).parent(slingshotModelFile);
+		int count = 1;
+		for (Float f : suffix){
+			String name = "_" + count;
+			
+			var modOverride = mod.override();
+			var model = createModelFile(item, name);
+			modOverride.model(model);
+			modOverride.predicate(PULLING, 1f);
+			
+			if (f != -1f) {
+				modOverride.predicate(PULL, f);
+			}
+			
+			modOverride.end();
+			count++;
+			getBuilder(item + name).parent(mod).texture("layer0", getItemTextureResourceLocation(item, name));
+		}
 	}
 	
 	/**
@@ -149,7 +184,8 @@ public class ScItemModel extends ItemModelProvider {
 			if (predicates.length > 1) {
 				predicate = predicates[i];
 			}
-			mod.override().model(createModelFile(itemItem, value)).predicate(predicate, key).end();
+			mod.override()
+					.model(createModelFile(itemItem, value)).predicate(predicate, key).end();
 			if (!(value.isEmpty() || value.equals(String.valueOf(0)) || value.equals("_"))) {
 				specialItem(itemItem, value);
 			} else {
@@ -166,7 +202,7 @@ public class ScItemModel extends ItemModelProvider {
 	 * @return 未检查的模型文件
 	 */
 	public ModelFile.UncheckedModelFile createModelFile(Item item, String name) {
-		return new ModelFile.UncheckedModelFile(getItemResourceLocation(item, name).withPrefix("item/"));
+		return new ModelFile.UncheckedModelFile(getItemTexture(item, name).withPrefix("item/"));
 	}
 	
 	/**
@@ -177,8 +213,9 @@ public class ScItemModel extends ItemModelProvider {
 	 * @return 物品模型构建器
 	 */
 	public ItemModelBuilder specialItem(Item item, String name) {
-		return basicItem(getItemResourceLocation(item, name));
+		return basicItem(getItemTexture(item, name));
 	}
+	
 	
 	/**
 	 * 获取物品的资源位置
@@ -187,7 +224,21 @@ public class ScItemModel extends ItemModelProvider {
 	 * @param name 名称后缀
 	 * @return 资源位置
 	 */
-	private @NotNull ResourceLocation getItemResourceLocation(Item item, String name) {
+	private @NotNull ResourceLocation getItemTextureResourceLocation(Item item, String name) {
+		ResourceLocation texture = getItemTexture(item, name);
+		return ResourceLocation.fromNamespaceAndPath(texture.getNamespace(), "item/" + texture.getPath());
+	}
+	
+	
+	
+	/**
+	 * 获取物品的资源位置
+	 *
+	 * @param item 物品
+	 * @param name 名称后缀
+	 * @return 资源位置
+	 */
+	private @NotNull ResourceLocation getItemTexture(Item item, String name) {
 		return Objects.requireNonNull(BuiltInRegistries.ITEM.getKey(item)).withSuffix(name);
 	}
 	

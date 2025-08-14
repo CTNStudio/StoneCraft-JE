@@ -16,8 +16,7 @@ import java.util.function.Function;
 import static ctn.stonecraft.StoneCraft.SC_ID;
 
 public class ScBlocks {
-	public static final DeferredRegister.Blocks BLOCK_REGISTER = DeferredRegister.createBlocks(SC_ID);
-	
+	public static final DeferredRegister.Blocks    BLOCK_REGISTER               = DeferredRegister.createBlocks(SC_ID);
 	public static final List<DeferredBlock<Block>> COMPRESSED_COBBLESTONE       = registerGradeBlock("compressed_cobblestone_lv", Blocks.COBBLESTONE, 2, 6);
 	public static final List<DeferredBlock<Block>> COMPRESSED_MOSSY_COBBLESTONE = registerGradeBlock("compressed_mossy_cobblestone_lv", Blocks.MOSSY_COBBLESTONE, 2, 6);
 	public static final List<DeferredBlock<Block>> COMPRESSED_STONE             = registerGradeBlock("compressed_stone_lv", Blocks.STONE, 1.5f, 6);

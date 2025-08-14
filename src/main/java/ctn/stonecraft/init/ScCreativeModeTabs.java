@@ -55,7 +55,7 @@ public class ScCreativeModeTabs {
 						registerBlockListItems(output, ScItems.COMPRESSED_DRIPSTONE_BLOCK);
 					}, () -> ScItems.COMPRESSED_COBBLESTONE.getFirst().get().getDefaultInstance()));
 	
-	public static final DeferredHolder<CreativeModeTab, CreativeModeTab> ITEM      =
+	public static final DeferredHolder<CreativeModeTab, CreativeModeTab> ITEM =
 			register("item", (name) -> registerCreativeModeTab(
 					name,
 					(parameters, output) -> {
@@ -66,48 +66,22 @@ public class ScCreativeModeTabs {
 						output.accept(ScItems.STONE_NUGGET);
 						output.accept(ScItems.STONE_COIN);
 					}, () -> ScItems.STONE_COIN.get().getDefaultInstance()));
-	public static final DeferredHolder<CreativeModeTab, CreativeModeTab> EQUIPMENT =
-			register("equipment", (name) -> registerCreativeModeTab(
+	public static final DeferredHolder<CreativeModeTab, CreativeModeTab> TOOL =
+			register("tool", (name) -> registerCreativeModeTab(
 					name,
 					(parameters, output) -> {
+						
 						output.accept(ScItems.STONE_HELMET);
 						output.accept(ScItems.STONE_CHESTPLATE);
 						output.accept(ScItems.STONE_LEGGINGS);
 						output.accept(ScItems.STONE_BOOTS);
-						output.accept(ScItems.COMPRESSED_STONE_HELMET_LV1);
-						output.accept(ScItems.COMPRESSED_STONE_CHESTPLATE_LV1);
-						output.accept(ScItems.COMPRESSED_STONE_LEGGINGS_LV1);
-						output.accept(ScItems.COMPRESSED_STONE_BOOTS_LV1);
-						output.accept(ScItems.COMPRESSED_STONE_HELMET_LV2);
-						output.accept(ScItems.COMPRESSED_STONE_CHESTPLATE_LV2);
-						output.accept(ScItems.COMPRESSED_STONE_LEGGINGS_LV2);
-						output.accept(ScItems.COMPRESSED_STONE_BOOTS_LV2);
-						output.accept(ScItems.COMPRESSED_STONE_HELMET_LV3);
-						output.accept(ScItems.COMPRESSED_STONE_CHESTPLATE_LV3);
-						output.accept(ScItems.COMPRESSED_STONE_LEGGINGS_LV3);
-						output.accept(ScItems.COMPRESSED_STONE_BOOTS_LV3);
-						output.accept(ScItems.COMPRESSED_STONE_HELMET_LV4);
-						output.accept(ScItems.COMPRESSED_STONE_CHESTPLATE_LV4);
-						output.accept(ScItems.COMPRESSED_STONE_LEGGINGS_LV4);
-						output.accept(ScItems.COMPRESSED_STONE_BOOTS_LV4);
-						output.accept(ScItems.COMPRESSED_STONE_HELMET_LV5);
-						output.accept(ScItems.COMPRESSED_STONE_CHESTPLATE_LV5);
-						output.accept(ScItems.COMPRESSED_STONE_LEGGINGS_LV5);
-						output.accept(ScItems.COMPRESSED_STONE_BOOTS_LV5);
+						
 						output.accept(ScItems.VERSATILE_STONE_TOOL);
 						output.accept(ScItems.VERSATILE_COMPRESSED_STONE_TOOL_LV1);
 						output.accept(ScItems.VERSATILE_COMPRESSED_STONE_TOOL_LV2);
 						output.accept(ScItems.VERSATILE_COMPRESSED_STONE_TOOL_LV3);
 						output.accept(ScItems.VERSATILE_COMPRESSED_STONE_TOOL_LV4);
 						output.accept(ScItems.VERSATILE_COMPRESSED_STONE_TOOL_LV5);
-						output.accept(ScItems.COMPRESSED_STONE_SWORD_LV1);
-						output.accept(ScItems.COMPRESSED_STONE_SWORD_LV2);
-						output.accept(ScItems.COMPRESSED_STONE_SWORD_LV3);
-						output.accept(ScItems.COMPRESSED_STONE_SWORD_LV4);
-						output.accept(ScItems.COMPRESSED_STONE_SWORD_LV5);
-						output.accept(ScItems.ULTIMATE_COMPRESSED_STONE_SWORD_ACT1);
-						output.accept(ScItems.ULTIMATE_COMPRESSED_STONE_SWORD_ACT2);
-						output.accept(ScItems.ULTIMATE_COMPRESSED_STONE_SWORD_ACT3);
 						
 						output.accept(ScItems.COMPRESSED_STONE_AXE_LV1);
 						output.accept(ScItems.COMPRESSED_STONE_AXE_LV2);
@@ -156,6 +130,53 @@ public class ScCreativeModeTabs {
 						output.accept(ScItems.COMPRESSED_STONICKERS_LV3);
 						output.accept(ScItems.COMPRESSED_STONICKERS_LV4);
 						output.accept(ScItems.COMPRESSED_STONICKERS_LV5);
+					}, () -> ScItems.STONE_APPLE.get().getDefaultInstance()));
+	
+	public static final DeferredHolder<CreativeModeTab, CreativeModeTab> COMBAT_SUPPLIES =
+			register("combat_supplies", (name) -> registerCreativeModeTab(
+					name,
+					(parameters, output) -> {
+						output.accept(ScItems.COMPRESSED_STONE_SWORD_LV1);
+						output.accept(ScItems.COMPRESSED_STONE_SWORD_LV2);
+						output.accept(ScItems.COMPRESSED_STONE_SWORD_LV3);
+						output.accept(ScItems.COMPRESSED_STONE_SWORD_LV4);
+						output.accept(ScItems.COMPRESSED_STONE_SWORD_LV5);
+						
+						output.accept(ScItems.ULTIMATE_COMPRESSED_STONE_SWORD_ACT1);
+						output.accept(ScItems.ULTIMATE_COMPRESSED_STONE_SWORD_ACT2);
+						output.accept(ScItems.ULTIMATE_COMPRESSED_STONE_SWORD_ACT3);
+						
+						output.accept(ScItems.WOOD_SLINGSHOT);
+						output.accept(ScItems.STONE_SLINGSHOT);
+						output.accept(ScItems.IRON_SLINGSHOT);
+						output.accept(ScItems.GOLD_SLINGSHOT);
+						output.accept(ScItems.DIAMOND_SLINGSHOT);
+						output.accept(ScItems.NETHERITE_SLINGSHOT);
+						
+						output.accept(ScItems.COMPRESSED_STONE_HELMET_LV1);
+						output.accept(ScItems.COMPRESSED_STONE_CHESTPLATE_LV1);
+						output.accept(ScItems.COMPRESSED_STONE_LEGGINGS_LV1);
+						output.accept(ScItems.COMPRESSED_STONE_BOOTS_LV1);
+						
+						output.accept(ScItems.COMPRESSED_STONE_HELMET_LV2);
+						output.accept(ScItems.COMPRESSED_STONE_CHESTPLATE_LV2);
+						output.accept(ScItems.COMPRESSED_STONE_LEGGINGS_LV2);
+						output.accept(ScItems.COMPRESSED_STONE_BOOTS_LV2);
+						
+						output.accept(ScItems.COMPRESSED_STONE_HELMET_LV3);
+						output.accept(ScItems.COMPRESSED_STONE_CHESTPLATE_LV3);
+						output.accept(ScItems.COMPRESSED_STONE_LEGGINGS_LV3);
+						output.accept(ScItems.COMPRESSED_STONE_BOOTS_LV3);
+						
+						output.accept(ScItems.COMPRESSED_STONE_HELMET_LV4);
+						output.accept(ScItems.COMPRESSED_STONE_CHESTPLATE_LV4);
+						output.accept(ScItems.COMPRESSED_STONE_LEGGINGS_LV4);
+						output.accept(ScItems.COMPRESSED_STONE_BOOTS_LV4);
+						
+						output.accept(ScItems.COMPRESSED_STONE_HELMET_LV5);
+						output.accept(ScItems.COMPRESSED_STONE_CHESTPLATE_LV5);
+						output.accept(ScItems.COMPRESSED_STONE_LEGGINGS_LV5);
+						output.accept(ScItems.COMPRESSED_STONE_BOOTS_LV5);
 					}, () -> ScItems.STONE_APPLE.get().getDefaultInstance()));
 	
 	private static void outputEnchantmentBook(CreativeModeTab.ItemDisplayParameters parameters, CreativeModeTab.Output output, ResourceKey<Enchantment> stoneDestroyer) {

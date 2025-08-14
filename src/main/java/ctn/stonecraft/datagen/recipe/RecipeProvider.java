@@ -8,12 +8,14 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.RecipeOutput;
+import net.minecraft.data.recipes.SingleItemRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.Tiers;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.neoforged.neoforge.common.Tags;
@@ -26,6 +28,8 @@ import java.util.concurrent.CompletableFuture;
 import static ctn.stonecraft.StoneCraft.SC_ID;
 import static ctn.stonecraft.datagen.ScTags.ScItems.*;
 import static ctn.stonecraft.datagen.recipe.RecipeTool.*;
+import static net.minecraft.tags.ItemTags.STONE_CRAFTING_MATERIALS;
+import static net.minecraft.world.item.Items.LEATHER;
 
 /**
  * @author 尽
@@ -56,6 +60,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 	// 注册
 	@Override
 	protected void buildRecipes(@NotNull RecipeOutput output) {
+		//region 工作台合成配方
 		//region 压缩方块
 		unpackedPackedRecipes(output, Items.COBBLESTONE, ScItems.COMPRESSED_COBBLESTONE);
 		unpackedPackedRecipes(output, Items.MOSSY_COBBLESTONE, ScItems.COMPRESSED_MOSSY_COBBLESTONE);
@@ -383,9 +388,66 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 				.setRecipesId(getLocation("%s_%d".formatted(getItemName(ScItems.GLOWINGOBSIDIAN), 2))
 				));
 		//endregion
+		
+		slingshot(output, Tiers.WOOD.getRepairIngredient(), getIngredient(Tags.Items.LEATHERS), ScItems.WOOD_SLINGSHOT);
+		slingshot(output, Tiers.STONE.getRepairIngredient(), getIngredient(Tags.Items.LEATHERS), ScItems.STONE_SLINGSHOT);
+		slingshot(output, Tiers.IRON.getRepairIngredient(), getIngredient(Tags.Items.LEATHERS), ScItems.IRON_SLINGSHOT);
+		slingshot(output, Tiers.GOLD.getRepairIngredient(), getIngredient(Tags.Items.LEATHERS), ScItems.GOLD_SLINGSHOT);
+		slingshot(output, Tiers.DIAMOND.getRepairIngredient(), getIngredient(Tags.Items.LEATHERS), ScItems.DIAMOND_SLINGSHOT);
+		netheriteSmithing(output, ScItems.DIAMOND_SLINGSHOT.asItem(), RecipeCategory.COMBAT, ScItems.NETHERITE_SLINGSHOT.asItem());
+		//endregion
+		
+		//region 切石机配方
+		stonecutting(output, STONE_CRAFTING_MATERIALS, RecipeCategory.COMBAT, ScItems.STONE_NUGGET, 2);
+		stonecutting(output, getIngredient(Items.STONE, Items.DEEPSLATE), RecipeCategory.COMBAT, ScItems.STONE_NUGGET, 4);
+		stonecutting(output, getIngredient(Items.BEDROCK), RecipeCategory.COMBAT, ScItems.STONE_NUGGET, 64);
+		stonecutting(output, getIngredient(
+						Items.OBSIDIAN, ScItems.GLOWINGOBSIDIAN, Items.CRYING_OBSIDIAN),
+				RecipeCategory.COMBAT, ScItems.STONE_NUGGET, 16);
+		//endregion
 	}
 	
-	//region 预制方法
+	//region 切石机合成预制方法
+	public void stonecutting(RecipeOutput output, Ingredient ingredient, RecipeCategory category, ItemLike result, int count, String id) {
+		StringBuilder prefix = new StringBuilder();
+		for (ItemStack itemStack : ingredient.getItems()) {
+			prefix.append(getItemName(itemStack.getItem())).append("_");
+		}
+		String itemName = getItemName(result);
+		SingleItemRecipeBuilder
+				.stonecutting(ingredient, category, result, count)
+				.unlockedBy(itemName, has(result))
+				.save(output, modId + ":" + prefix + "via_" + itemName + id);
+	}
+	
+	public void stonecutting(RecipeOutput output, Ingredient ingredient, RecipeCategory category, ItemLike result, int count) {
+		stonecutting(output, ingredient, category, result, count, "");
+	}
+	
+	public void stonecutting(RecipeOutput output, TagKey<Item> tag, RecipeCategory category, ItemLike result, int count, String id) {
+		String itemName = getItemName(result);
+		SingleItemRecipeBuilder
+				.stonecutting(getIngredient(tag), category, result, count)
+				.unlockedBy(itemName, has(result))
+				.save(output, modId + ":" + "tag_" + tag.location().getNamespace() + "_via_" + itemName + id);
+	}
+	
+	public void stonecutting(RecipeOutput output, TagKey<Item> tag, RecipeCategory category, ItemLike result, int count) {
+		stonecutting(output, tag, category, result, count, "");
+	}
+	//endregion
+	
+	//region 工作台合成预制方法
+	public void slingshot(RecipeOutput output, Ingredient manager, Ingredient manager2, ItemLike result) {
+		ShapedBuilder.basicBuilder(output, result, RecipeCategory.COMBAT, "slingshot", shapedBuilder -> shapedBuilder
+				.pattern("#G#")
+				.pattern(" # ")
+				.pattern(" # ")
+				.define('#', manager)
+				.define('G', manager2)
+		);
+	}
+	
 	public @NotNull ShapedBuilder buildingRecipeBuilder(ItemLike result) {
 		return buildingRecipeBuilder(result, 1);
 	}

@@ -26,9 +26,7 @@ import static net.neoforged.neoforge.common.data.AdvancementProvider.Advancement
 
 public final class ScAdvancementGenerator implements AdvancementGenerator {
 	public static final String STONE_ADVENTURE_ID = "stone_adventure";
-	public static final String TEN_STONES_EATEN   = advancementId("ten_stones_eaten");
-	
-	public static final Item[] STONE_FOOD = {
+	public static final Item[] ALL_STONE_FOOD     = {
 			ScItems.STONE_APPLE.get(),
 			ScItems.STONE_BREAD.get(),
 			ScItems.STONE_CARROT.get(),
@@ -49,6 +47,26 @@ public final class ScAdvancementGenerator implements AdvancementGenerator {
 			ScItems.COMPRESSED_STONICKERS_LV5.get()
 	};
 	
+	public static final String TEN_STONES_EATEN         = "ten_stones_eaten";
+	public static final String GET_COBBLESTONE          = "get_cobblestone";
+	public static final String GET_BLACKSTONE           = "get_blackstone";
+	public static final String GET_ANDESITE             = "get_andesite";
+	public static final String GET_DIORITE              = "get_diorite";
+	public static final String GET_TUFF                 = "get_tuff";
+	public static final String GET_CALCITE              = "get_calcite";
+	public static final String GET_COBBLED_DEEPSLATE    = "get_cobbled_deepslate";
+	public static final String GET_OBSIDIAN             = "get_obsidian";
+	public static final String GET_BEDROCK              = "get_bedrock";
+	public static final String GET_END_STONE            = "get_end_stone";
+	public static final String GET_NETHERRACK           = "get_netherrack";
+	public static final String GET_MOSSY_COBBLESTONE    = "get_mossy_cobblestone";
+	public static final String GET_GRANITE              = "get_granite";
+	public static final String GET_FLINT                = "get_flint";
+	public static final String OUR_TRIO                 = "our_trio";
+	public static final String STONE_EATER              = "stone_eater";
+	public static final String EPIC_STONE_FEAST         = "epic_stone_feast";
+	public static final String VILLAGER_MASON_ON_TRADES = "villager_mason_on_trades";
+	
 	@Override
 	public void generate(HolderLookup.@NotNull Provider provider,
 			@NotNull Consumer<AdvancementHolder> saver,
@@ -64,128 +82,128 @@ public final class ScAdvancementGenerator implements AdvancementGenerator {
 								false)
 						.requirements(AdvancementRequirements.Strategy.OR)
 						.addCriterion("get_stone", obtainItem(matchItems(ADVANCEMENT_ROOT_ITEM))),
-				saver, advancementId("root"));
+				saver, saAdvancementId("root"));
 		AdvancementHolder getCobblestone = createObtainAdv(
-				root, saver, advancementId("get_cobblestone"),
+				root, saver, saAdvancementId(GET_COBBLESTONE),
 				Items.COBBLESTONE, AdvancementType.TASK,
 				false);
 		AdvancementHolder getBlackstone = createObtainAdv(
-				getCobblestone, saver, advancementId("get_blackstone"),
+				getCobblestone, saver, saAdvancementId(GET_BLACKSTONE),
 				Items.BLACKSTONE, AdvancementType.TASK,
 				false);
 		AdvancementHolder getAndesite = createObtainAdv(
-				root, saver, advancementId("get_andesite"),
+				root, saver, saAdvancementId(GET_ANDESITE),
 				Items.ANDESITE, AdvancementType.TASK,
 				false);
 		AdvancementHolder getDiorite = createObtainAdv(
-				root, saver, advancementId("get_diorite"),
+				root, saver, saAdvancementId(GET_DIORITE),
 				Items.DIORITE, AdvancementType.TASK,
 				false);
 		AdvancementHolder getTuff = createObtainAdv(
-				root, saver, advancementId("get_tuff"),
+				root, saver, saAdvancementId(GET_TUFF),
 				Items.TUFF, AdvancementType.TASK,
 				false);
 		AdvancementHolder getCalcite = createObtainAdv(
-				root, saver, advancementId("get_calcite"),
+				root, saver, saAdvancementId(GET_CALCITE),
 				Items.CALCITE, AdvancementType.TASK,
 				false);
 		AdvancementHolder getCobbledDeepslate = createObtainAdv(
-				root, saver, advancementId("get_cobbled_deepslate"),
+				root, saver, saAdvancementId(GET_COBBLED_DEEPSLATE),
 				Items.COBBLED_DEEPSLATE, AdvancementType.TASK,
 				false);
 		AdvancementHolder getObsidian = createObtainAdv(
-				getCobbledDeepslate, saver, advancementId("get_obsidian"),
+				getCobbledDeepslate, saver, saAdvancementId(GET_OBSIDIAN),
 				Items.OBSIDIAN, AdvancementType.TASK,
 				false);
 		AdvancementHolder getBedrock = createObtainAdv(
-				getObsidian, saver, advancementId("get_bedrock"),
+				getObsidian, saver, saAdvancementId(GET_BEDROCK),
 				Items.BEDROCK, AdvancementType.TASK,
 				false);
 		AdvancementHolder getEndStone = createObtainAdv(
-				root, saver, advancementId("get_end_stone"),
+				root, saver, saAdvancementId(GET_END_STONE),
 				Items.END_STONE, AdvancementType.TASK,
 				false);
 		AdvancementHolder getNetherrack = createObtainAdv(
-				root, saver, advancementId("get_netherrack"),
+				root, saver, saAdvancementId(GET_NETHERRACK),
 				Items.NETHERRACK, AdvancementType.TASK,
 				false);
 		AdvancementHolder getMossyCobblestone = createObtainAdv(
-				root, saver, advancementId("get_mossy_cobblestone"),
+				root, saver, saAdvancementId(GET_MOSSY_COBBLESTONE),
 				Items.MOSSY_COBBLESTONE, AdvancementType.TASK,
 				false);
 		AdvancementHolder getGranite = createObtainAdv(
-				root, saver, advancementId("get_granite"),
+				root, saver, saAdvancementId(GET_GRANITE),
 				Items.GRANITE, AdvancementType.TASK,
 				false);
 		AdvancementHolder getFlint = createObtainAdv(
-				root, saver, advancementId("get_flint"),
+				root, saver, saAdvancementId(GET_FLINT),
 				Items.FLINT, AdvancementType.TASK,
 				false);
 		AdvancementHolder ourTrio = save(
 				Advancement.Builder.advancement().parent(root).display(
 								Items.COBBLESTONE,
-								titleText(advancementId("our_trio")),
-								descriptionText(advancementId("our_trio")),
+								titleText(saAdvancementId(OUR_TRIO)),
+								descriptionText(saAdvancementId(OUR_TRIO)),
 								null,
 								AdvancementType.TASK,
 								true,
 								true,
 								false)
-						.addCriterion("get_granite", obtainItem(matchItems(Items.GRANITE)))
-						.addCriterion("get_andesite", obtainItem(matchItems(Items.ANDESITE)))
-						.addCriterion("get_diorite", obtainItem(matchItems(Items.DIORITE))),
-				saver, advancementId("our_trio"));
+						.addCriterion(GET_GRANITE, obtainItem(matchItems(Items.GRANITE)))
+						.addCriterion(GET_ANDESITE, obtainItem(matchItems(Items.ANDESITE)))
+						.addCriterion(GET_DIORITE, obtainItem(matchItems(Items.DIORITE))),
+				saver, saAdvancementId(OUR_TRIO));
 		
 		/// 食石
 		AdvancementHolder edibleStoneFood = save(
 				Advancement.Builder.advancement().parent(root).display(
 						ScItems.STONE_APPLE,
-						titleText(advancementId("stone_eater")),
-						descriptionText(advancementId("stone_eater")),
+						titleText(saAdvancementId(STONE_EATER)),
+						descriptionText(saAdvancementId(STONE_EATER)),
 						null,
 						AdvancementType.TASK,
 						true,
 						true,
 						false
-				).addCriterion("eater_stone_food", ConsumeItemTrigger.TriggerInstance.usedItem(matchItems(STONE_FOOD))),
-				saver, advancementId("stone_eater"));
+				).addCriterion("eater_stone_food", ConsumeItemTrigger.TriggerInstance.usedItem(matchItems(ALL_STONE_FOOD))),
+				saver, saAdvancementId(STONE_EATER));
 		
 		Advancement.Builder edibleTenStoneFoodBuilder = Advancement.Builder.advancement().parent(edibleStoneFood).display(
 				ScItems.STONE_HODGEPODGE,
-				titleText(advancementId("ten_stones_eaten")),
-				descriptionText(advancementId("ten_stones_eaten")),
+				titleText(saAdvancementId(TEN_STONES_EATEN)),
+				descriptionText(saAdvancementId(TEN_STONES_EATEN)),
 				null,
 				AdvancementType.TASK,
 				true,
 				true,
 				false);
 		
-		ResourceLocation tenStonesEaten = path("ten_stones_eaten");
+		ResourceLocation tenStonesEaten = path(TEN_STONES_EATEN);
 		for (int i = 0; i < 10; i++) {
 			edibleTenStoneFoodBuilder.addCriterion(String.valueOf(i),
 					CountCriterionTrigger.TriggerInstance.createCriterion(
 							tenStonesEaten,
-							matchItems(STONE_FOOD)));
+							matchItems(ALL_STONE_FOOD)));
 		}
 		
-		AdvancementHolder edibleTenStoneFood = save(edibleTenStoneFoodBuilder, saver, advancementId("ten_stones_eaten"));
+		AdvancementHolder edibleTenStoneFood = save(edibleTenStoneFoodBuilder, saver, saAdvancementId(TEN_STONES_EATEN));
 		
 		Advancement.Builder edibleAllStoneFoodBuilder = Advancement.Builder.advancement().parent(edibleTenStoneFood).display(
 				ScItems.STONICKERS,
-				titleText(advancementId("epic_stone_feast")),
-				descriptionText(advancementId("epic_stone_feast")),
+				titleText(saAdvancementId(EPIC_STONE_FEAST)),
+				descriptionText(saAdvancementId(EPIC_STONE_FEAST)),
 				null,
 				AdvancementType.CHALLENGE,
 				true,
 				true,
 				false);
 		
-		for (Item item : STONE_FOOD) {
+		for (Item item : ALL_STONE_FOOD) {
 			edibleAllStoneFoodBuilder.addCriterion(item.getDescriptionId(),
 					ConsumeItemTrigger.TriggerInstance.usedItem(matchItems(item)));
 		}
 		
-		AdvancementHolder edibleAllStoneFood = save(edibleAllStoneFoodBuilder, saver, advancementId("epic_stone_feast"));
+		AdvancementHolder edibleAllStoneFood = save(edibleAllStoneFoodBuilder, saver, saAdvancementId(EPIC_STONE_FEAST));
 		
 		AdvancementHolder villagerMasonOnTrades;
 		{
@@ -199,19 +217,19 @@ public final class ScAdvancementGenerator implements AdvancementGenerator {
 			villagerMasonOnTrades = save(
 					Advancement.Builder.advancement().parent(root).display(
 							ScItems.STONE_COIN,
-							titleText(advancementId("villager_mason_on_trades")),
-							descriptionText(advancementId("villager_mason_on_trades")),
+							titleText(saAdvancementId(VILLAGER_MASON_ON_TRADES)),
+							descriptionText(saAdvancementId(VILLAGER_MASON_ON_TRADES)),
 							null,
 							AdvancementType.TASK,
 							true,
 							true,
 							false
 					).addCriterion("mason", CriteriaTriggers.TRADE.createCriterion(triggerInstance)),
-					saver, advancementId("villager_mason_on_trades"));
+					saver, saAdvancementId(VILLAGER_MASON_ON_TRADES));
 		}
 	}
 	
-	public static @NotNull String advancementId(String id) {
+	public static @NotNull String saAdvancementId(String id) {
 		return AdvancementProviderTool.advancementId(STONE_ADVENTURE_ID, id);
 	}
 }

@@ -3,11 +3,13 @@ package ctn.stonecraft.datagen.recipe;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
+import java.util.stream.Stream;
 
 /**
  * @author 尽
@@ -256,8 +258,16 @@ public class RecipeTool {
 				.pattern("###");
 	}
 	
-	public static @NotNull Ingredient getIngredient(ItemLike item) {
+	public static @NotNull Ingredient getIngredient(ItemLike... item) {
 		return Ingredient.of(item);
+	}
+	
+	public static @NotNull Ingredient getIngredient(ItemStack... stacks) {
+		return Ingredient.of(stacks);
+	}
+	
+	public static @NotNull Ingredient getIngredient(Stream<ItemStack> stacks) {
+		return Ingredient.of(stacks);
 	}
 	
 	public static @NotNull Ingredient getIngredient(TagKey<Item> tag) {

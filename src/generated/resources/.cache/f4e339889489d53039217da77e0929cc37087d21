@@ -1,5 +1,6 @@
-// 1.21.1	2025-08-04T01:38:08.1041588	Tags for minecraft:item mod id stonecraft
+// 1.21.1	2025-08-11T17:54:04.9789624	Tags for minecraft:item mod id stonecraft
 0aaaacfbfb69078f8af2fe3ed94655e7b5401388 data/c/tags/item/obsidians.json
+0f6979589c32158e4e45368d57285c7cee1a3a99 data/c/tags/item/stone_nugget.json
 824f4f58db05a6504268b726ae5a041a705a0912 data/c/tags/item/tools.json
 13d6eeea2a637ef16f5c8659c758b67b7da56da3 data/c/tags/item/tools/melee_weapon.json
 75ca5b599518cd2d997ed687986dff5d3891f2b8 data/c/tags/item/tools/mining_tool.json
@@ -8,12 +9,14 @@
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/minecraft/tags/item/base_stone_overworld.json
 8d4ce4434f0f174e3cd90e03b366142d14de364d data/minecraft/tags/item/chest_armor.json
 75ca5b599518cd2d997ed687986dff5d3891f2b8 data/minecraft/tags/item/cluster_max_harvestables.json
+cf4c3d1163aa19551b94ab5eaff7374554e4b801 data/minecraft/tags/item/enchantable/durability.json
 c46d371200e6b3353d2ee92bc3bf4ede015cef5c data/minecraft/tags/item/foot_armor.json
 ed61850294888eeedacd38e7750ff2d21cd8a101 data/minecraft/tags/item/head_armor.json
 761baf6adb3317ab26f75bcdd544e2afb79f8c08 data/minecraft/tags/item/hoes.json
 634875ea1d7ba44ed92a0b3e1e5311f183338c44 data/minecraft/tags/item/leg_armor.json
 75ca5b599518cd2d997ed687986dff5d3891f2b8 data/minecraft/tags/item/pickaxes.json
 ef9ee2ccc88d81fe9dbeca3ad06c9188b91b5204 data/minecraft/tags/item/shovels.json
+0c731af120f7011caf59b3ec58a888841395bca2 data/minecraft/tags/item/stone_crafting_materials.json
 f5e5995058447869e8873a0a5480f97acfce2110 data/minecraft/tags/item/swords.json
 89671b1d11244b308786baf3382893cc3bb59cf5 data/minecraft/tags/item/trimmable_armor.json
 20be86fec4f9302b1f76d022e46e80712150b57c data/minecraft/tags/item/wolf_food.json
@@ -32,6 +35,7 @@ eabb2de29c0d9e8b92d98bf8f271b99f78d5dc0d data/stonecraft/tags/item/boots/compres
 47246797893314bd6ebc0bc2e7bab8a2910d72bb data/stonecraft/tags/item/boots/compressed_stone_lv4.json
 4dc7b9dd33b31ca54275d1cdf7829445915e5cb3 data/stonecraft/tags/item/boots/compressed_stone_lv5.json
 87f6e3b79ebd2769cb90af08d326f50c0e6b0a94 data/stonecraft/tags/item/boots/stone.json
+0b8dc777f12e3ac734cab3b6b1382caa0aff238e data/stonecraft/tags/item/breakable_by_stone_nugget.json
 d7bda1e38e7489a073238569f972bb0aa78898b1 data/stonecraft/tags/item/chestplate/compressed_stone.json
 07b1eeec215c5ab68d157c187a154871b6c7e2d8 data/stonecraft/tags/item/chestplate/compressed_stone_lv1.json
 459134b5dbe5d9fadb71dd4c0710b2bdda18bedb data/stonecraft/tags/item/chestplate/compressed_stone_lv2.json
@@ -108,5 +112,6 @@ e1f48b86cc5624b25a4ac004a0d39cacae12f31b data/stonecraft/tags/item/material/comp
 7e9d4383374782ede67dcbf17004aae005e7c1aa data/stonecraft/tags/item/material/compressed_stone_lv3.json
 2f48213a1ef3da6ee3245e531b373accd424623a data/stonecraft/tags/item/material/compressed_stone_lv4.json
 945d0e59b49f1a60423ff9ee009306f03d7fe8c6 data/stonecraft/tags/item/material/compressed_stone_lv5.json
+d1a203a6c25257d1b6a98a5af782cd42ec5b13f7 data/stonecraft/tags/item/slingshot.json
 0a5d48f6836f94a2f85b5ed76b46769108291c6e data/stonecraft/tags/item/stone_food.json
 6aae8993d4eeab84c6a261ee3c06e99dc560e233 data/stonecraft/tags/item/tools/versatile.json

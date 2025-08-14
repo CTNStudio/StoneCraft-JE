@@ -18,6 +18,7 @@ import java.util.concurrent.CompletableFuture;
 import static ctn.stonecraft.StoneCraft.SC_ID;
 import static ctn.stonecraft.datagen.ScTags.ScItems.*;
 import static net.minecraft.tags.ItemTags.*;
+import static net.minecraft.world.item.Items.*;
 
 public class ScItemTags extends ItemTagsProvider {
 	public ScItemTags(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider,
@@ -284,7 +285,20 @@ public class ScItemTags extends ItemTagsProvider {
 		copy(ScTags.ScBlocks.COMPRESSED_BASALT, COMPRESSED_BASALT);
 		copy(ScTags.ScBlocks.COMPRESSED_TUFF, COMPRESSED_TUFF);
 		copy(ScTags.ScBlocks.COMPRESSED_DRIPSTONE_BLOCK, COMPRESSED_DRIPSTONE_BLOCK);
-		
+		tag(STONE_CRAFTING_MATERIALS).add(
+				COBBLESTONE,
+				GRANITE,
+				ANDESITE,
+				DIORITE,
+				END_STONE,
+				NETHERRACK,
+				BLACKSTONE,
+				CALCITE,
+				COBBLED_DEEPSLATE,
+				BASALT,
+				TUFF,
+				DRIPSTONE_BLOCK
+		);
 		tag(COMPRESSED_STONE_MATERIAL).addTags(
 				COMPRESSED_COBBLESTONE,
 				COMPRESSED_GRANITE,
@@ -405,6 +419,7 @@ public class ScItemTags extends ItemTagsProvider {
 		
 		copy(ScTags.ScBlocks.STONE_DESTROYER_EFFECT_BLOCKS, STONE_DESTROYER_EFFECT_BLOCKS);
 		copy(ScTags.ScBlocks.ADVANCEMENT_ROOT_BLOCK, ADVANCEMENT_ROOT_ITEM);
+		copy(ScTags.ScBlocks.BREAKABLE_BY_STONE_NUGGET, BREAKABLE_BY_STONE_NUGGET);
 		
 		tag(Tags.Items.OBSIDIANS).add(
 				ScItems.GLOWINGOBSIDIAN.get()
@@ -413,5 +428,17 @@ public class ScItemTags extends ItemTagsProvider {
 		tag(STONE_NUGGET).add(
 				ScItems.STONE_NUGGET.get()
 		);
+		
+		tag(SLINGSHOT).add(
+				ScItems.WOOD_SLINGSHOT.get(),
+				ScItems.STONE_SLINGSHOT.get(),
+				ScItems.IRON_SLINGSHOT.get(),
+				ScItems.GOLD_SLINGSHOT.get(),
+				ScItems.DIAMOND_SLINGSHOT.get(),
+				ScItems.NETHERITE_SLINGSHOT.get()
+		);
+		
+		
+		tag(ItemTags.DURABILITY_ENCHANTABLE).addTag(SLINGSHOT);
 	}
 }

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "slingshot",
+  "key": {
+    "#": {
+      "item": "minecraft:gold_ingot"
+    },
+    "G": {
+      "tag": "c:leathers"
+    }
+  },
+  "pattern": [
+    "#G#",
+    " # ",
+    " # "
+  ],
+  "result": {
+    "count": 1,
+    "id": "stonecraft:gold_slingshot"
+  }
+}

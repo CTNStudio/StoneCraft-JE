@@ -1,0 +1,54 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "c:leathers": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#c:leathers"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "stonecraft:stone_slingshot"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "item.stonecraft.stone_slingshot": {
+      "conditions": {
+        "items": [
+          {
+            "items": "stonecraft:stone_slingshot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "minecraft:stone_tool_materials": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#minecraft:stone_tool_materials"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "item.stonecraft.stone_slingshot",
+      "minecraft:stone_tool_materials",
+      "c:leathers"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "stonecraft:stone_slingshot"
+    ]
+  }
+}
