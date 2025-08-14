@@ -7,7 +7,7 @@ import java.util.function.Supplier;
 /**
  * 石粒投射物构建器
  */
-public final class SnpProperties<I extends AbsStoneNuggetItem> {
+public final class StoneNuggetProjectileBuilder {
 	double verticalVelocityLowAngleFactor  = 0.7;
 	double verticalVelocityHighAngleFactor = 1.3;
 	double lowAngleThreshold               = 10.0;
@@ -15,43 +15,47 @@ public final class SnpProperties<I extends AbsStoneNuggetItem> {
 	float  maxBounceAngle                  = 20.0f;
 	float  minBounceAngle                  = 0.0f;
 	float  minBounceSpeed                  = 0.001f;
-	Supplier<I> defaultItem;
+	final Supplier<AbsStoneNuggetItem> projectileItem;
 	
-	public SnpProperties(Supplier<I> defaultItem) {
-		this.defaultItem = defaultItem;
+	public StoneNuggetProjectileBuilder(Supplier<AbsStoneNuggetItem> projectileItem) {
+		this.projectileItem = projectileItem;
 	}
 	
-	public SnpProperties<I> verticalVelocityLowAngleFactor(double factor) {
+	public StoneNuggetProjectileBuilder(AbsStoneNuggetItem absStoneNuggetItem) {
+		projectileItem = () -> absStoneNuggetItem;
+	}
+	
+	public StoneNuggetProjectileBuilder verticalVelocityLowAngleFactor(double factor) {
 		this.verticalVelocityLowAngleFactor = factor;
 		return this;
 	}
 	
-	public SnpProperties<I> verticalVelocityHighAngleFactor(double factor) {
+	public StoneNuggetProjectileBuilder verticalVelocityHighAngleFactor(double factor) {
 		this.verticalVelocityHighAngleFactor = factor;
 		return this;
 	}
 	
-	public SnpProperties<I> lowAngleThreshold(double threshold) {
+	public StoneNuggetProjectileBuilder lowAngleThreshold(double threshold) {
 		this.lowAngleThreshold = threshold;
 		return this;
 	}
 	
-	public SnpProperties<I> highAngleThreshold(double threshold) {
+	public StoneNuggetProjectileBuilder highAngleThreshold(double threshold) {
 		this.highAngleThreshold = threshold;
 		return this;
 	}
 	
-	public SnpProperties<I> maxBounceAngle(float angle) {
+	public StoneNuggetProjectileBuilder maxBounceAngle(float angle) {
 		this.maxBounceAngle = angle;
 		return this;
 	}
 	
-	public SnpProperties<I> minBounceAngle(float angle) {
+	public StoneNuggetProjectileBuilder minBounceAngle(float angle) {
 		this.minBounceAngle = angle;
 		return this;
 	}
 	
-	public SnpProperties<I> minBounceSpeed(float speed) {
+	public StoneNuggetProjectileBuilder minBounceSpeed(float speed) {
 		this.minBounceSpeed = speed;
 		return this;
 	}

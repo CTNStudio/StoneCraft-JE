@@ -1,0 +1,54 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "c:leathers": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#c:leathers"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "stonecraft:wood_slingshot"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "item.stonecraft.wood_slingshot": {
+      "conditions": {
+        "items": [
+          {
+            "items": "stonecraft:wood_slingshot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "minecraft:planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#minecraft:planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "item.stonecraft.wood_slingshot",
+      "minecraft:planks",
+      "c:leathers"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "stonecraft:wood_slingshot"
+    ]
+  }
+}

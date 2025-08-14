@@ -1,12 +1,14 @@
 package ctn.stonecraft.init;
 
-import ctn.stonecraft.common.entity.projectile.stone_nugget.AbsStoneNuggetProjectile;
+import com.mojang.datafixers.util.Function3;
 import ctn.stonecraft.common.entity.projectile.stone_nugget.BasicStoneNuggetProjectile;
-import ctn.stonecraft.common.entity.projectile.stone_nugget.SnpProperties;
+import ctn.stonecraft.common.entity.projectile.stone_nugget.StoneNuggetProjectileBuilder;
 import ctn.stonecraft.common.item.VersatileTool;
+import ctn.stonecraft.common.item.slingshot.Slingshot;
+import ctn.stonecraft.common.item.slingshot.SlingshotBuilder;
 import ctn.stonecraft.common.item.stone_nugget.AbsStoneNuggetItem;
 import ctn.stonecraft.common.item.stone_nugget.BasicStoneNuggetItem;
-import ctn.stonecraft.common.item.stone_nugget.SnProperties;
+import ctn.stonecraft.common.item.stone_nugget.StoneNuggetBuilder;
 import net.minecraft.core.Holder;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -23,7 +25,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.function.BiFunction;
 import java.util.function.Function;
-import java.util.function.Supplier;
 
 import static ctn.stonecraft.StoneCraft.SC_ID;
 import static ctn.stonecraft.builder.FoodPropertiesBuilder.foodBuilder;
@@ -91,7 +92,7 @@ public class ScItems {
 	public static final DeferredItem<Item> VERSATILE_COMPRESSED_STONE_TOOL_LV5 = registerDiggerItem("versatile_compressed_stone_tool_lv5", VersatileTool::new, new Item.Properties(), ScTiers.LV5, 5, -3.2f);
 	//endregion
 	
-	//region 战斗用品
+	//region 剑
 	public static final DeferredItem<Item> COMPRESSED_STONE_SWORD_LV1 = registerSwordItem("compressed_stone_sword_lv1", SwordItem::new, ScTiers.LV1, 0, -2.4f);
 	public static final DeferredItem<Item> COMPRESSED_STONE_SWORD_LV2 = registerSwordItem("compressed_stone_sword_lv2", SwordItem::new, ScTiers.LV2, 0, -2.4f);
 	public static final DeferredItem<Item> COMPRESSED_STONE_SWORD_LV3 = registerSwordItem("compressed_stone_sword_lv3", SwordItem::new, ScTiers.LV3, 0, -2.4f);
@@ -103,6 +104,21 @@ public class ScItems {
 	public static final DeferredItem<Item> ULTIMATE_COMPRESSED_STONE_SWORD_ACT3 = registerSwordItem("ultimate_compressed_stone_sword_act3", SwordItem::new, ScTiers.LV5, 11, -2.4f);
 	//endregion
 	
+	//region 弹弓
+	public static final DeferredItem<Slingshot> WOOD_SLINGSHOT      = registerSlingshot("wood_slingshot", Tiers.WOOD,
+			new Item.Properties(), new SlingshotBuilder().damageBonus(-1f).chargingTime(15).speedBonus(0.14f));
+	public static final DeferredItem<Slingshot> STONE_SLINGSHOT     = registerSlingshot("stone_slingshot", Tiers.STONE,
+			new Item.Properties(), new SlingshotBuilder().damageBonus(0f).chargingTime(25).speedBonus(0.16f));
+	public static final DeferredItem<Slingshot> IRON_SLINGSHOT      = registerSlingshot("iron_slingshot", Tiers.IRON,
+			new Item.Properties(), new SlingshotBuilder().damageBonus(1).speedBonus(0.24f));
+	public static final DeferredItem<Slingshot> GOLD_SLINGSHOT      = registerSlingshot("gold_slingshot", Tiers.GOLD,
+			new Item.Properties(), new SlingshotBuilder().damageBonus(-0.5f).chargingTime(10).speedBonus(0.15f));
+	public static final DeferredItem<Slingshot> DIAMOND_SLINGSHOT   = registerSlingshot("diamond_slingshot", Tiers.DIAMOND,
+			new Item.Properties(), new SlingshotBuilder().damageBonus(2f).speedBonus(0.25f));
+	public static final DeferredItem<Slingshot> NETHERITE_SLINGSHOT = registerSlingshot("netherite_slingshot", Tiers.NETHERITE,
+			new Item.Properties(), new SlingshotBuilder().damageBonus(3f).speedBonus(0.27f));
+	//endregion
+	
 	//region 材料
 	public static final DeferredItem<Item> STONE_STAR = registerItem("stone_star");
 	public static final DeferredItem<Item> STONE_COIN = registerItem("stone_coin");
@@ -110,7 +126,7 @@ public class ScItems {
 	
 	//region 石粒
 	public static final DeferredItem<AbsStoneNuggetItem> STONE_NUGGET = registerStoneNuggetItem("stone_nugget",
-			new SnProperties<>(() -> STONE_NUGGET, new SnpProperties<>(() -> STONE_NUGGET)), BasicStoneNuggetProjectile::new, BasicStoneNuggetProjectile::new), new Item.Properties();
+			new StoneNuggetBuilder(StoneNuggetProjectileBuilder::new, BasicStoneNuggetProjectile::new, BasicStoneNuggetProjectile::new), new Item.Properties());
 	
 	//endregion
 	
@@ -202,12 +218,12 @@ public class ScItems {
 	
 	//region 盔甲
 	private static final int                BASE_HELMET_MAX_DAMAGE     = 165;
-	public static final  DeferredItem<Item> STONE_HELMET               = registerHelmet("stone_helmet", ScArmorMaterials.LV0, BASE_HELMET_MAX_DAMAGE);
 	private static final int                BASE_CHESTPLATE_MAX_DAMAGE = 240;
-	public static final  DeferredItem<Item> STONE_CHESTPLATE           = registerChestplate("stone_chestplate", ScArmorMaterials.LV0, BASE_CHESTPLATE_MAX_DAMAGE);
 	private static final int                BASE_LEGGINGS_MAX_DAMAGE   = 225;
-	public static final  DeferredItem<Item> STONE_LEGGINGS             = registerLeggings("stone_leggings", ScArmorMaterials.LV0, BASE_LEGGINGS_MAX_DAMAGE);
 	private static final int                BASE_BOOTS_MAX_DAMAGE      = 195;
+	public static final  DeferredItem<Item> STONE_LEGGINGS             = registerLeggings("stone_leggings", ScArmorMaterials.LV0, BASE_LEGGINGS_MAX_DAMAGE);
+	public static final  DeferredItem<Item> STONE_CHESTPLATE           = registerChestplate("stone_chestplate", ScArmorMaterials.LV0, BASE_CHESTPLATE_MAX_DAMAGE);
+	public static final  DeferredItem<Item> STONE_HELMET               = registerHelmet("stone_helmet", ScArmorMaterials.LV0, BASE_HELMET_MAX_DAMAGE);
 	public static final  DeferredItem<Item> STONE_BOOTS                = registerBoots("stone_boots", ScArmorMaterials.LV0, BASE_BOOTS_MAX_DAMAGE);
 	
 	private static final float              LV1_MAX_DAMAGE                  = 2f;
@@ -241,6 +257,15 @@ public class ScItems {
 	public static final  DeferredItem<Item> COMPRESSED_STONE_BOOTS_LV5      = registerBoots("compressed_stone_boots_lv5", ScArmorMaterials.LV5, (int) (BASE_BOOTS_MAX_DAMAGE * LV5_MAX_DAMAGE));
 	//endregion
 	
+	//region 注册方法
+	private static DeferredItem<Slingshot> registerSlingshot(String name, Tier tier, Item.Properties properties, SlingshotBuilder builder) {
+		return registerSlingshot(name, Slingshot::new, tier, properties, builder);
+	}
+	
+	private static DeferredItem<Slingshot> registerSlingshot(String name, Function3<Tier, Item.Properties, SlingshotBuilder, Slingshot> supplier, Tier tier, Item.Properties properties, SlingshotBuilder builder) {
+		return ITEM_REGISTER.register(name, () -> supplier.apply(tier, properties, builder));
+	}
+	
 	private static DeferredItem<Item> registerHelmet(String name, Holder<ArmorMaterial> material, int maxDamage) {
 		return registerArmor(name, ArmorItem.Type.HELMET, material, maxDamage);
 	}
@@ -269,13 +294,14 @@ public class ScItems {
 		return registerItem(name, func, new Item.Properties());
 	}
 	
-	private static <P extends AbsStoneNuggetProjectile, I extends AbsStoneNuggetItem> DeferredItem<I> registerStoneNuggetItem(String name,
-			BiFunction<Item.Properties, SnProperties<I, P>, I> item, SnProperties<I, P> snProperties, Item.Properties properties) {
-		return ITEM_REGISTER.registerItem(name, (p) -> item.apply(p, snProperties), properties);
+	private static DeferredItem<AbsStoneNuggetItem> registerStoneNuggetItem(String name,
+			BiFunction<Item.Properties, StoneNuggetBuilder, AbsStoneNuggetItem> item, StoneNuggetBuilder stoneNuggetBuilder, Item.Properties properties) {
+		return ITEM_REGISTER.registerItem(name, (p) -> item.apply(p, stoneNuggetBuilder), properties);
 	}
 	
-	private static DeferredItem<BasicStoneNuggetItem> registerStoneNuggetItem(String name, SnProperties<BasicStoneNuggetItem, AbsStoneNuggetProjectile> snProperties, Item.Properties properties) {
-		return registerStoneNuggetItem(name, BasicStoneNuggetItem::new, snProperties, properties);
+	private static DeferredItem<AbsStoneNuggetItem> registerStoneNuggetItem(String name,
+			StoneNuggetBuilder stoneNuggetBuilder, Item.Properties properties) {
+		return registerStoneNuggetItem(name, BasicStoneNuggetItem::new, stoneNuggetBuilder, properties);
 	}
 	
 	private static <I extends Item> DeferredItem<I> registerItem(String name, Function<Item.Properties, ? extends I> func, Item.Properties props) {
@@ -332,4 +358,5 @@ public class ScItems {
 	private static DeferredItem<BlockItem> registerBlockItem(Holder<Block> block) {
 		return ITEM_REGISTER.registerSimpleBlockItem(block);
 	}
+	//endregion
 }

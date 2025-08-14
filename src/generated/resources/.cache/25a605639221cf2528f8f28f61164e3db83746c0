@@ -1,4 +1,4 @@
-// 1.21.1	2025-08-04T01:38:08.1143081	Tags for minecraft:block mod id stonecraft
+// 1.21.1	2025-08-06T23:18:54.7421542	Tags for minecraft:block mod id stonecraft
 0aaaacfbfb69078f8af2fe3ed94655e7b5401388 data/c/tags/block/obsidians.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/minecraft/tags/block/base_stone_nether.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/minecraft/tags/block/base_stone_overworld.json
@@ -9,6 +9,7 @@ f5a9dd3f38c652003483397281e7419b3d8cf0f3 data/minecraft/tags/block/needs_diamond
 d6e40abfc7025ab829575a4b493ab92ae315e475 data/neoforge/tags/block/needs_netherite_tool.json
 0f5b8945e6234505850720b56cedc1a36c18d9f1 data/neoforge/tags/block/needs_wood_tool.json
 7f856aed0d4643abf24e76b602cff200aa309f36 data/stonecraft/tags/block/advancement/root_block.json
+0b8dc777f12e3ac734cab3b6b1382caa0aff238e data/stonecraft/tags/block/breakable_by_stone_nugget.json
 eadd33e25eac16458584684c34d664ab8ff236f2 data/stonecraft/tags/block/compressed/andesite.json
 47e5ec9474b8143adb416d45b794329082184cf0 data/stonecraft/tags/block/compressed/basalt.json
 7f6f31fe483de425a8a88868e91f96c4d503dc00 data/stonecraft/tags/block/compressed/bedrock.json

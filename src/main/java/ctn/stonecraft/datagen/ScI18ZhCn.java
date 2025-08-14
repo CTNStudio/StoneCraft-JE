@@ -1,8 +1,8 @@
 package ctn.stonecraft.datagen;
 
-import ctn.stonecraft.datagen.advancement.ScAdvancementGenerator;
 import ctn.stonecraft.init.ScBlocks;
 import ctn.stonecraft.init.ScCreativeModeTabs;
+import ctn.stonecraft.init.ScEntityTypes;
 import ctn.stonecraft.init.ScItems;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponentType;
@@ -23,17 +23,14 @@ import java.util.List;
 import java.util.function.Supplier;
 
 import static ctn.stonecraft.StoneCraft.SC_ID;
+import static ctn.stonecraft.common.entity.projectile.stone_nugget.AbsStoneNuggetProjectile.SHOW_SKIP_RESULT_OTHERS_TEXT;
+import static ctn.stonecraft.common.entity.projectile.stone_nugget.AbsStoneNuggetProjectile.SHOW_SKIP_RESULT_OWNER_TEXT;
+import static ctn.stonecraft.datagen.advancement.ScAdvancementGenerator.*;
 import static ctn.stonecraft.init.ScEnchantments.*;
 
 
 public class ScI18ZhCn extends LanguageProvider {
-	public static final String[] GRADE = {
-			"一级压缩",
-			"二级压缩",
-			"三级压缩",
-			"四级压缩",
-			"五级压缩"
-	};
+	public static final String[] GRADE = {"一级压缩", "二级压缩", "三级压缩", "四级压缩", "五级压缩"};
 	
 	public ScI18ZhCn(PackOutput output) {
 		super(output, SC_ID, "zh_cn");
@@ -41,6 +38,9 @@ public class ScI18ZhCn extends LanguageProvider {
 	
 	@Override
 	protected void addTranslations() {
+		getModName(SC_ID, "石头工艺");
+		
+		//region 方块
 		addBlocks(ScBlocks.COMPRESSED_COBBLESTONE, "圆石");
 		addBlocks(ScBlocks.COMPRESSED_MOSSY_COBBLESTONE, "苔石");
 		addBlocks(ScBlocks.COMPRESSED_STONE, "石头");
@@ -64,14 +64,17 @@ public class ScI18ZhCn extends LanguageProvider {
 		addBlocks(ScBlocks.COMPRESSED_BASALT, "玄武岩");
 		addBlocks(ScBlocks.COMPRESSED_TUFF, "凝灰岩");
 		addBlocks(ScBlocks.COMPRESSED_DRIPSTONE_BLOCK, "滴水石");
+		//endregion
 		
+		//region 创造模式分页面
 		add(ScCreativeModeTabs.BLOCK, "石头工艺-方块");
 		add(ScCreativeModeTabs.ITEM, "石头工艺-物品");
-		add(ScCreativeModeTabs.EQUIPMENT, "石头工艺-装备");
+		add(ScCreativeModeTabs.TOOL, "石头工艺-工具");
+		add(ScCreativeModeTabs.COMBAT_SUPPLIES, "石头工艺-战斗用品");
 		add(ScCreativeModeTabs.FOOD, "石头工艺-食物");
+		//endregion
 		
-		getModName(SC_ID, "石头工艺");
-		
+		//region 物品
 		add(ScItems.COMPRESSED_STONE_SWORD_LV1.get(), "一级压缩石剑");
 		add(ScItems.COMPRESSED_STONE_SWORD_LV2.get(), "二级压缩石剑");
 		add(ScItems.COMPRESSED_STONE_SWORD_LV3.get(), "三级压缩石剑");
@@ -151,48 +154,51 @@ public class ScI18ZhCn extends LanguageProvider {
 		add(ScItems.STONE_GLOW_BERRIES.get(), "石发光浆果");
 		add(ScItems.STONE_COOKED_BEEF.get(), "石牛排");
 		add(ScItems.STONE_SWEET_BERRIES.get(), "石甜浆果");
+		add(ScItems.WOOD_SLINGSHOT.get(), "木质弹弓");
+		add(ScItems.STONE_SLINGSHOT.get(), "石质弹弓");
+		add(ScItems.IRON_SLINGSHOT.get(), "铁质弹弓");
+		add(ScItems.GOLD_SLINGSHOT.get(), "金质弹弓");
+		add(ScItems.DIAMOND_SLINGSHOT.get(), "钻石质弹弓");
+		add(ScItems.NETHERITE_SLINGSHOT.get(), "下界合金质弹弓");
+		//endregion
+		
+		//region 附魔
 		addEnchantment(STONE_DESTROYER, "石力挖掘");
 		addEnchantment(STONE_BUFFER, "石之缓冲");
 		addEnchantment(OLDB, "oldb神力");
+		//endregion
 		
-		addAdvancement("stone_adventure", "石头工艺&磐石之旅", "获得“石头”");
+		//region 成就
+		addAdvancement(STONE_ADVENTURE_ID, "石头工艺&磐石之旅", "获得“石头”");
+		addAdvancement(saAdvancementId(GET_COBBLESTONE), "圆石人启动！", "获得圆石");
+		addAdvancement(saAdvancementId(GET_ANDESITE), "按w键进行进行思索.jpg！", "获得安山岩");
+		addAdvancement(saAdvancementId(GET_DIORITE), "你搞石英就为了这个？", "获得闪长岩");
+		addAdvancement(saAdvancementId(GET_TUFF), "紫水晶必定在此！", "获得凝灰岩");
+		addAdvancement(saAdvancementId(GET_CALCITE), "这玩意好看", "获得方解石");
+		addAdvancement(saAdvancementId(GET_COBBLED_DEEPSLATE), "真硬！", "获得深板岩圆石");
+		addAdvancement(saAdvancementId(GET_OBSIDIAN), "真硬！2.0", "获得黑曜石");
+		addAdvancement(saAdvancementId(GET_BEDROCK), "真硬！3.0", "获得基岩");
+		addAdvancement(saAdvancementId(GET_END_STONE), "防火，防龙！", "获得末地石");
+		addAdvancement(saAdvancementId(GET_NETHERRACK), "嘎嘣脆", "获得下界岩");
+		addAdvancement(saAdvancementId(GET_BLACKSTONE), "圆石人启动！2.0", "获得黑石");
+		addAdvancement(saAdvancementId(GET_MOSSY_COBBLESTONE), "绿绿的有好多海苔", "获得苔石");
+		addAdvancement(saAdvancementId(GET_GRANITE), "抱歉，我忘了", "获得花岗岩");
+		addAdvancement(saAdvancementId(OUR_TRIO), "《我们仨》", "获取安山岩、闪长岩和花岗岩");
+		addAdvancement(saAdvancementId(GET_FLINT), "这玩意...也算？", "获得燧石");
+		addAdvancement(saAdvancementId(VILLAGER_MASON_ON_TRADES), "这都是硬货！", "与石匠交易");
+		addAdvancement(saAdvancementId(STONE_EATER), "食石食", "吃掉任意一个石头食物");
+		addAdvancement(saAdvancementId(TEN_STONES_EATEN), "食十石食", "吃掉十种不一样的石头食物");
+		addAdvancement(saAdvancementId(EPIC_STONE_FEAST), "史诗食世石", "吃掉所有种类的石头食物");
+		//endregion
 		
-		addAdvancement(ScAdvancementGenerator.advancementId("get_cobblestone"), "圆石人启动！", "获得圆石");
-		addAdvancement(ScAdvancementGenerator.advancementId("get_andesite"), "按w键进行进行思索.jpg！", "获得安山岩");
-		addAdvancement(ScAdvancementGenerator.advancementId("get_diorite"), "你搞石英就为了这个？", "获得闪长岩");
-		addAdvancement(ScAdvancementGenerator.advancementId("get_tuff"), "紫水晶必定在此！", "获得凝灰岩");
-		addAdvancement(ScAdvancementGenerator.advancementId("get_calcite"), "这玩意好看", "获得方解石");
-		addAdvancement(ScAdvancementGenerator.advancementId("get_cobbled_deepslate"), "真硬！", "获得深板岩圆石");
-		addAdvancement(ScAdvancementGenerator.advancementId("get_obsidian"), "真硬！2.0", "获得黑曜石");
-		addAdvancement(ScAdvancementGenerator.advancementId("get_bedrock"), "真硬！3.0", "获得基岩");
-		addAdvancement(ScAdvancementGenerator.advancementId("get_end_stone"), "防火，防龙！", "获得末地石");
-		addAdvancement(ScAdvancementGenerator.advancementId("get_netherrack"), "嘎嘣脆", "获得下界岩");
-		addAdvancement(ScAdvancementGenerator.advancementId("get_blackstone"), "圆石人启动！2.0", "获得黑石");
-		addAdvancement(ScAdvancementGenerator.advancementId("get_mossy_cobblestone"), "绿绿的有好多海苔", "获得苔石");
-		addAdvancement(ScAdvancementGenerator.advancementId("get_granite"), "抱歉，我忘了", "获得花岗岩");
-		addAdvancement(ScAdvancementGenerator.advancementId("our_trio"), "《我们仨》", "获取安山岩、闪长岩和花岗岩");
-		addAdvancement(ScAdvancementGenerator.advancementId("get_flint"), "这玩意...也算？", "获得燧石");
-		
-		addAdvancement(ScAdvancementGenerator.advancementId("villager_mason_on_trades"), "这都是硬货！", "与石匠交易");
-		addAdvancement(ScAdvancementGenerator.advancementId("stone_eater"), "食石食", "吃掉任意一个石头食物");
-		addAdvancement(ScAdvancementGenerator.advancementId("ten_stones_eaten"), "食十石食", "吃掉十种不一样的石头食物");
-		addAdvancement(ScAdvancementGenerator.advancementId("epic_stone_feast"), "史诗食世石", "吃掉所有种类的石头食物");
-		addAdvancement(ScAdvancementGenerator.advancementId("one_stone_two_birds"), "一石二鸟", "使用弹弓或者石粒同时击中两个目标获得");
-		addAdvancement(ScAdvancementGenerator.advancementId("mischievous_child"), "调皮娃子", "使用弹弓或者石粒搞破坏！");
-		addAdvancement(ScAdvancementGenerator.advancementId("stone_skipping"), "打水漂", "将石粒投掷水中获得");
-		addAdvancement(ScAdvancementGenerator.advancementId("perfect_ten"), "十全十美", "获取所有至少10种压缩石头");
-		addAdvancement(ScAdvancementGenerator.advancementId("tears_of_the_stone_age"), "石代眼泪", "利用合成获取发光黑曜石");
-		addAdvancement(ScAdvancementGenerator.advancementId("alchemy_of_stone"), "炼石术", "初次使用石头转化台");
-		addAdvancement(ScAdvancementGenerator.advancementId("absolute_hardness"), "绝对硬度！", "初次使用石头转化台获取基岩");
-		addAdvancement(ScAdvancementGenerator.advancementId("peak_of_obsidian"), "黑曜之巅", "初次使用石头转化台获取黑曜石");
-		addAdvancement(ScAdvancementGenerator.advancementId("armor_of_bedrock"), "磐石之甲", "初次获取五级压缩石甲");
-		addAdvancement(ScAdvancementGenerator.advancementId("as_hard_as_bedrock"), "坚如磐石", "初次获取任意种类的五级压缩石");
-		addAdvancement(ScAdvancementGenerator.advancementId("king_of_children_born"), "孩子王诞生！", "打水漂打出十米之外");
-		addAdvancement(ScAdvancementGenerator.advancementId("neighbors_glass_in_trouble"), "邻居家的玻璃要遭殃了！", "初次获取弹弓");
-		addAdvancement(ScAdvancementGenerator.advancementId("stone_free_reference"), "免费石头", "将石粒抛出三十米以上");
-		addAdvancement(ScAdvancementGenerator.advancementId("grows_with_water"), "遇水变大吗？", "初次合成任意种类的压缩石");
+		//region 实体
+		addEntityType(ScEntityTypes.STONE_NUGGET, "石粒");
+		add(SHOW_SKIP_RESULT_OWNER_TEXT, "你的成绩是：%d次！");
+		add(SHOW_SKIP_RESULT_OTHERS_TEXT, "%s的成绩是：%d次！");
+		//endregion
 	}
 	
+	//region 工具
 	public void addBlocks(List<DeferredBlock<Block>> blocks, String name) {
 		for (int i = 0, blocksSize = blocks.size(); i < blocksSize; i++) {
 			add(blocks.get(i).get(), GRADE[i] + name);
@@ -271,4 +277,5 @@ public class ScI18ZhCn extends LanguageProvider {
 	public void addDeathMessage(ResourceKey<DamageType> damageType, String name) {
 		add("death.attack." + damageType.location().getPath(), name);
 	}
+	//endregion
 }

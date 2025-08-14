@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": [
+    {
+      "item": "minecraft:obsidian"
+    },
+    {
+      "item": "stonecraft:glowingobsidian"
+    },
+    {
+      "item": "minecraft:crying_obsidian"
+    }
+  ],
+  "result": {
+    "count": 16,
+    "id": "stonecraft:stone_nugget"
+  }
+}

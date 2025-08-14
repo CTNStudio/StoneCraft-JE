@@ -19,6 +19,8 @@ import java.util.concurrent.CompletableFuture;
 
 import static ctn.stonecraft.StoneCraft.SC_ID;
 import static ctn.stonecraft.datagen.ScTags.ScBlocks.*;
+import static net.neoforged.neoforge.common.Tags.Blocks.GLASS_BLOCKS;
+import static net.neoforged.neoforge.common.Tags.Blocks.GLASS_PANES;
 
 public class ScBlockTags extends BlockTagsProvider {
 	public ScBlockTags(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, @CheckForNull ExistingFileHelper existingFileHelper) {
@@ -352,6 +354,8 @@ public class ScBlockTags extends BlockTagsProvider {
 		tag(BlockTags.BASE_STONE_OVERWORLD);
 		
 		tag(ADVANCEMENT_ROOT_BLOCK).addTag(STONE_DESTROYER_EFFECT_BLOCKS);
+		
+		tag(BREAKABLE_BY_STONE_NUGGET).addTags(GLASS_BLOCKS, GLASS_PANES);
 		
 		tag(Tags.Blocks.OBSIDIANS).add(
 				ScBlocks.GLOWINGOBSIDIAN.get()

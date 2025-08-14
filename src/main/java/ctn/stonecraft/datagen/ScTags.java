@@ -133,9 +133,12 @@ public class ScTags {
 		
 		// 根进度可触发物品
 		public static final TagKey<Item> ADVANCEMENT_ROOT_ITEM         = createTag("advancement/root_item");
+		public static final TagKey<Item> BREAKABLE_BY_STONE_NUGGET     = createTag("breakable_by_stone_nugget");
 		public static final TagKey<Item> STONE_DESTROYER_EFFECT_BLOCKS = createTag("enchantment/stone_destroyer_effect_blocks");
 		
 		public static final TagKey<Item> STONE_NUGGET = createCTag("stone_nugget");
+		
+		public static final TagKey<Item> SLINGSHOT = createTag("slingshot");
 		
 		protected static TagKey<Item> createTag(String name) {
 			return ItemTags.create(path(name));
@@ -181,15 +184,18 @@ public class ScTags {
 		public static final TagKey<Block> COMPRESSED_TUFF              = createTag("compressed/tuff");
 		public static final TagKey<Block> COMPRESSED_DRIPSTONE_BLOCK   = createTag("compressed/dripstone_block");
 		
-		public static final TagKey<Block> MINEABLE_WITH_VERSATILE       = createTag("mineable/versatile");
+		public static final TagKey<Block> MINEABLE_WITH_VERSATILE = createTag("mineable/versatile");
+		
 		// 可以掉落石粒的方块
 		public static final TagKey<Block> FALL_AWAY_STONE_NUGGET        = createTag("fall_away_stone_nugget");
 		// 可以受到 石力挖掘 附魔影响的方块
 		public static final TagKey<Block> STONE_DESTROYER_EFFECT_BLOCKS = createTag("enchantment/stone_destroyer_effect_blocks");
 		// 受到 石之缓冲 附魔免疫影响的方块
 		public static final TagKey<Block> STONE_BUFFER_EFFECT_BLOCKS    = createTag("enchantment/stone_buffer_effect_blocks");
-		
-		public static final TagKey<Block> ADVANCEMENT_ROOT_BLOCK = createTag("advancement/root_block");
+		// 根进度可触发方块
+		public static final TagKey<Block> ADVANCEMENT_ROOT_BLOCK        = createTag("advancement/root_block");
+		// 可以被石粒破坏的方块
+		public static final TagKey<Block> BREAKABLE_BY_STONE_NUGGET     = createTag("breakable_by_stone_nugget");
 		
 		protected static TagKey<Block> createTag(String name) {
 			return BlockTags.create(path(name));

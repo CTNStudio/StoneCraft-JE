@@ -2,7 +2,7 @@ package ctn.stonecraft.init;
 
 import ctn.stonecraft.common.entity.projectile.stone_nugget.AbsStoneNuggetProjectile;
 import ctn.stonecraft.common.entity.projectile.stone_nugget.BasicStoneNuggetProjectile;
-import ctn.stonecraft.common.entity.projectile.stone_nugget.SnpProperties;
+import ctn.stonecraft.common.entity.projectile.stone_nugget.StoneNuggetProjectileBuilder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -29,13 +29,11 @@ public class ScEntityTypes {
 	public static final DeferredRegister<EntityType<?>> ENTITY_TYPE = DeferredRegister.create(Registries.ENTITY_TYPE, SC_ID);
 	
 	/**
-	 * 石头粒投射物实体类型
-	 * 用于注册石头粒投射物实体
+	 * 石粒
 	 */
 	public static final Supplier<EntityType<AbsStoneNuggetProjectile>> STONE_NUGGET =
-			registerDefaultStoneNugget("stone_nugget",
-					(entityType, level) ->
-							new BasicStoneNuggetProjectile(SnpProperties.builder(), entityType, level));
+			registerDefaultStoneNugget("stone_nugget", (entityType, level) ->
+					new BasicStoneNuggetProjectile(new StoneNuggetProjectileBuilder(() -> ScItems.STONE_NUGGET.get()), entityType, level, null));
 	
 	/**
 	 * 注册投射物实体类型（使用自定义构建器）
