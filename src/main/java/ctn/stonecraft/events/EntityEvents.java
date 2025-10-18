@@ -13,7 +13,10 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.client.event.MovementInputUpdateEvent;
 import net.neoforged.neoforge.event.entity.EntityInvulnerabilityCheckEvent;
+import net.neoforged.neoforge.event.entity.living.LivingBreatheEvent;
+import net.neoforged.neoforge.event.entity.player.AttackEntityEvent;
 
 import static ctn.stonecraft.datagen.ScTags.ScBlocks.STONE_BUFFER_EFFECT_BLOCKS;
 
@@ -52,4 +55,9 @@ public class EntityEvents {
 		// 满足条件：穿戴了石之缓冲附魔靴子且位于支持方块上，设置为免疫坠落伤害
 		event.setInvulnerable(true);
 	}
+
+  public static void onEntityAttackEvent(AttackEntityEvent event) {
+    // TODO 实体攻击被石化的生物时，如果不适用剑，镐，斧，将会有伤害减免（局部石化时）或免疫（完全石化时）。
+  }
+
 }

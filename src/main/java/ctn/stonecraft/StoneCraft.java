@@ -17,6 +17,7 @@ import org.slf4j.Logger;
 import static ctn.stonecraft.init.ScArmorMaterials.ARMOR_MATERIALS;
 import static ctn.stonecraft.init.ScBlocks.BLOCK_REGISTER;
 import static ctn.stonecraft.init.ScCreativeModeTabs.PROJECT_MOON_TAB_REGISTER;
+import static ctn.stonecraft.init.ScDamageType.DAMAGE_TYPE;
 import static ctn.stonecraft.init.ScEnchantments.ENCHANTMENT_REGISTER;
 import static ctn.stonecraft.init.ScEntityTypes.ENTITY_TYPE;
 import static ctn.stonecraft.init.ScItems.ITEM_REGISTER;
@@ -41,6 +42,7 @@ public class StoneCraft {
 		TRIGGER_TYPES.register(eventBus);
 		PARTICLE_TYPES.register(eventBus);
 		SOUND_EVENT.register(eventBus);
+    DAMAGE_TYPE.register(eventBus);
 		NeoForge.EVENT_BUS.register(this);
 	}
 	
