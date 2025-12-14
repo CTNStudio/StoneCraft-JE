@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/handheld",
   "textures": {
-    "layer0": "stonecraft:item/ultimate_compressed_stone_sword_act1"
+    "layer0": "stonecraft:item/weapon/ultimate_compressed_stone_sword_act1"
   }
 }

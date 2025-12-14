@@ -17,16 +17,16 @@ import javax.annotation.CheckForNull;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-import static ctn.stonecraft.StoneCraft.SC_ID;
+import static ctn.stonecraft.core.StoneCraft.ID;
 import static ctn.stonecraft.datagen.ScTags.ScBlocks.*;
 import static net.neoforged.neoforge.common.Tags.Blocks.GLASS_BLOCKS;
 import static net.neoforged.neoforge.common.Tags.Blocks.GLASS_PANES;
 
 public class ScBlockTags extends BlockTagsProvider {
 	public ScBlockTags(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, @CheckForNull ExistingFileHelper existingFileHelper) {
-		super(output, lookupProvider, SC_ID, existingFileHelper);
+		super(output, lookupProvider, ID, existingFileHelper);
 	}
-	
+
 	@Override
 	protected void addTags(HolderLookup.@NotNull Provider capability) {
 		tag(MINEABLE_WITH_VERSATILE).addTags(
@@ -349,25 +349,25 @@ public class ScBlockTags extends BlockTagsProvider {
 				Blocks.OBSIDIAN,
 				Blocks.CRYING_OBSIDIAN);
 		tag(STONE_BUFFER_EFFECT_BLOCKS).addTag(STONE_DESTROYER_EFFECT_BLOCKS);
-		
+
 		tag(BlockTags.BASE_STONE_NETHER);
 		tag(BlockTags.BASE_STONE_OVERWORLD);
-		
+
 		tag(ADVANCEMENT_ROOT_BLOCK).addTag(STONE_DESTROYER_EFFECT_BLOCKS);
-		
+
 		tag(BREAKABLE_BY_STONE_NUGGET).addTags(GLASS_BLOCKS, GLASS_PANES);
-		
+
 		tag(Tags.Blocks.OBSIDIANS).add(
 				ScBlocks.GLOWINGOBSIDIAN.get()
 		);
 	}
-	
+
 	protected final void addTags(TagKey<Block> tagKey, List<DeferredBlock<Block>> blocks) {
 		for (DeferredBlock<Block> block : blocks) {
 			tag(tagKey).add(block.getKey());
 		}
 	}
-	
+
 	@SafeVarargs
 	protected final void addTags(TagKey<Block> tagKey,
 			List<DeferredBlock<Block>>... blocks) {
@@ -375,7 +375,7 @@ public class ScBlockTags extends BlockTagsProvider {
 			addTags(tagKey, block);
 		}
 	}
-	
+
 	@SafeVarargs
 	protected final void addTags(TagKey<Block> tagKey, DeferredBlock<Block>... blocks) {
 		for (DeferredBlock<Block> block : blocks) {

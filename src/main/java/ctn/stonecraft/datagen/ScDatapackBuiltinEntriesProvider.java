@@ -10,13 +10,13 @@ import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
-import static ctn.stonecraft.StoneCraft.SC_ID;
+import static ctn.stonecraft.core.StoneCraft.ID;
 
 public class ScDatapackBuiltinEntriesProvider extends DatapackBuiltinEntriesProvider {
 	public static final RegistrySetBuilder BUILDER = new RegistrySetBuilder()
 			.add(Registries.ENCHANTMENT, ScEnchantments::bootstrap);
-	
+
 	public ScDatapackBuiltinEntriesProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
-		super(output, registries, BUILDER, Set.of(SC_ID));
+		super(output, registries, BUILDER, Set.of(ID));
 	}
 }

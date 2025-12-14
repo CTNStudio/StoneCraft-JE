@@ -10,15 +10,15 @@ import org.jetbrains.annotations.NotNull;
 import javax.annotation.CheckForNull;
 import java.util.concurrent.CompletableFuture;
 
-import static ctn.stonecraft.StoneCraft.SC_ID;
+import static ctn.stonecraft.core.StoneCraft.ID;
 import static net.minecraft.tags.EntityTypeTags.IMPACT_PROJECTILES;
 
 public class ScEntityTypeTags extends EntityTypeTagsProvider {
-	
+
 	public ScEntityTypeTags(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, @CheckForNull ExistingFileHelper existingFileHelper) {
-		super(output, lookupProvider, SC_ID, existingFileHelper);
+		super(output, lookupProvider, ID, existingFileHelper);
 	}
-	
+
 	@Override
 	protected void addTags(HolderLookup.@NotNull Provider capability) {
 		tag(IMPACT_PROJECTILES).add(ScEntityTypes.STONE_NUGGET.get());

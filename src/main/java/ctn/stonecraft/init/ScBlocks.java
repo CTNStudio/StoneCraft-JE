@@ -13,10 +13,10 @@ import java.util.Collections;
 import java.util.List;
 import java.util.function.Function;
 
-import static ctn.stonecraft.StoneCraft.SC_ID;
+import static ctn.stonecraft.core.StoneCraft.ID;
 
 public class ScBlocks {
-	public static final DeferredRegister.Blocks    BLOCK_REGISTER               = DeferredRegister.createBlocks(SC_ID);
+	public static final DeferredRegister.Blocks REGISTER = DeferredRegister.createBlocks(ID);
 	public static final List<DeferredBlock<Block>> COMPRESSED_COBBLESTONE       = registerGradeBlock("compressed_cobblestone_lv", Blocks.COBBLESTONE, 2, 6);
 	public static final List<DeferredBlock<Block>> COMPRESSED_MOSSY_COBBLESTONE = registerGradeBlock("compressed_mossy_cobblestone_lv", Blocks.MOSSY_COBBLESTONE, 2, 6);
 	public static final List<DeferredBlock<Block>> COMPRESSED_STONE             = registerGradeBlock("compressed_stone_lv", Blocks.STONE, 1.5f, 6);
@@ -40,12 +40,12 @@ public class ScBlocks {
 	public static final List<DeferredBlock<Block>> COMPRESSED_BASALT            = registerGradeBlock("compressed_basalt_lv", Blocks.BASALT, 1.25f, 4.2f);
 	public static final List<DeferredBlock<Block>> COMPRESSED_TUFF              = registerGradeBlock("compressed_tuff_lv", Blocks.TUFF, 1.5f, 6);
 	public static final List<DeferredBlock<Block>> COMPRESSED_DRIPSTONE_BLOCK   = registerGradeBlock("compressed_dripstone_block_lv", Blocks.DRIPSTONE_BLOCK, 1.5f, 6);
-	
+
 	private static <B extends Block> List<DeferredBlock<B>> registerGradeBlock(@NotNull String name, Block block,
 			Function<BlockBehaviour.Properties, ? extends B> func, float destroyTime, float explosionResistance) {
 		return registerGradeBlock(name, block, func, destroyTime, explosionResistance, 5);
 	}
-	
+
 	private static <B extends Block> List<DeferredBlock<B>> registerGradeBlock(@NotNull String name, Block block,
 			Function<BlockBehaviour.Properties, ? extends B> func,
 			float destroyTime, float explosionResistance, int count) {
@@ -62,11 +62,11 @@ public class ScBlocks {
 		}
 		return Collections.unmodifiableList(blocks);
 	}
-	
+
 	private static <B extends Block> DeferredBlock<B> registerBlock(String name, Function<BlockBehaviour.Properties, ? extends B> func, BlockBehaviour.Properties props) {
-		return BLOCK_REGISTER.registerBlock(name, func, props);
+		return REGISTER.registerBlock(name, func, props);
 	}
-	
+
 	private static List<DeferredBlock<Block>> registerGradeBlock(@NotNull String name, Block block, float destroyTime, float explosionResistance) {
 		return registerGradeBlock(name, block, Block::new, destroyTime, explosionResistance, 5);
 	}

@@ -14,17 +14,17 @@ import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.jetbrains.annotations.NotNull;
 
-import static ctn.stonecraft.StoneCraft.SC_ID;
-import static ctn.stonecraft.StoneCraft.path;
+import static ctn.stonecraft.core.StoneCraft.ID;
+import static ctn.stonecraft.core.StoneCraft.modRL;
 import static net.minecraft.core.registries.Registries.ENCHANTMENT;
 
 public class ScEnchantments {
-	public static final DeferredRegister<Enchantment> ENCHANTMENT_REGISTER = DeferredRegister.create(ENCHANTMENT, SC_ID);
-	
+	public static final DeferredRegister<Enchantment> REGISTER = DeferredRegister.create(ENCHANTMENT, ID);
+
 	public static final ResourceKey<Enchantment> STONE_DESTROYER = key("stone_destroyer");
 	public static final ResourceKey<Enchantment> STONE_BUFFER    = key("stone_buffer");
 	public static final ResourceKey<Enchantment> OLDB            = key("oldb");
-	
+
 	public static void bootstrap(BootstrapContext<Enchantment> context) {
 		HolderGetter<DamageType> holdergetter = context.lookup(Registries.DAMAGE_TYPE);
 		HolderGetter<Enchantment> holdergetter1 = context.lookup(ENCHANTMENT);
@@ -61,18 +61,18 @@ public class ScEnchantments {
 						EquipmentSlotGroup.FEET)
 		));
 	}
-	
+
 	private static void register(BootstrapContext<Enchantment> context, ResourceKey<Enchantment> key, Enchantment.Builder builder) {
 		Enchantment enchantment = builder.build(key.location());
 		context.register(key, enchantment);
-		ENCHANTMENT_REGISTER.register(key.location().getPath(), () -> enchantment);
+		REGISTER.register(key.location().getPath(), () -> enchantment);
 	}
-	
+
 	public static @NotNull String getEnchantmentTranslatable(ResourceKey<Enchantment> enchantment) {
 		return "enchantment." + enchantment.location().toString().replace(":", ".");
 	}
-	
+
 	public static @NotNull ResourceKey<Enchantment> key(String name) {
-		return ResourceKey.create(ENCHANTMENT, path(name));
+		return ResourceKey.create(ENCHANTMENT, modRL(name));
 	}
 }

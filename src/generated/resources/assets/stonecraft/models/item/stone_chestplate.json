@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "stonecraft:item/stone_chestplate"
+    "layer0": "stonecraft:item/armor/stone_chestplate"
   }
 }

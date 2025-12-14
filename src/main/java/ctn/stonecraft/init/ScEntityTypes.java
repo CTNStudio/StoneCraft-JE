@@ -14,7 +14,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.function.BiFunction;
 import java.util.function.Supplier;
 
-import static ctn.stonecraft.StoneCraft.SC_ID;
+import static ctn.stonecraft.core.StoneCraft.ID;
 
 /**
  * 实体类型注册类
@@ -26,15 +26,15 @@ public class ScEntityTypes {
 	 * 实体类型注册器
 	 * 用于向Minecraft注册实体类型
 	 */
-	public static final DeferredRegister<EntityType<?>> ENTITY_TYPE = DeferredRegister.create(Registries.ENTITY_TYPE, SC_ID);
-	
+	public static final DeferredRegister<EntityType<?>> REGISTER = DeferredRegister.create(Registries.ENTITY_TYPE, ID);
+
 	/**
 	 * 石粒
 	 */
 	public static final Supplier<EntityType<AbsStoneNuggetProjectile>> STONE_NUGGET =
 			registerDefaultStoneNugget("stone_nugget", (entityType, level) ->
 					new BasicStoneNuggetProjectile(new StoneNuggetProjectileBuilder(() -> ScItems.STONE_NUGGET.get()), entityType, level, null));
-	
+
 	/**
 	 * 注册投射物实体类型（使用自定义构建器）
 	 *
@@ -51,7 +51,7 @@ public class ScEntityTypes {
 				.clientTrackingRange(4)
 				.updateInterval(10));
 	}
-	
+
 	/**
 	 * 注册默认配置的投射物实体类型
 	 *
@@ -64,7 +64,7 @@ public class ScEntityTypes {
 		// 使用默认大小(0.25f, 0.15f)注册投射物实体
 		return registerStoneNugget(name, (b, f) -> b.sized(0.25f, 0.15f), factory);
 	}
-	
+
 	/**
 	 * 注册实体类型
 	 *
@@ -76,7 +76,7 @@ public class ScEntityTypes {
 	private static <I extends Entity> Supplier<EntityType<I>> registerEntity(final String name, final EntityType.Builder<I> sup) {
 		return register(name, () -> sup.build(name));
 	}
-	
+
 	/**
 	 * 向注册器注册实体类型
 	 *
@@ -86,6 +86,6 @@ public class ScEntityTypes {
 	 * @return 注册后的实体类型持有者
 	 */
 	private static <I extends EntityType<?>> DeferredHolder<EntityType<?>, I> register(final String name, final Supplier<? extends I> sup) {
-		return ENTITY_TYPE.register(name, sup);
+		return REGISTER.register(name, sup);
 	}
 }

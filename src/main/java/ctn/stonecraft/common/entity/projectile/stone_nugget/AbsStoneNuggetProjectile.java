@@ -3,10 +3,11 @@ package ctn.stonecraft.common.entity.projectile.stone_nugget;
 import ctn.stonecraft.common.item.slingshot.Slingshot;
 import ctn.stonecraft.common.item.stone_nugget.AbsStoneNuggetItem;
 import ctn.stonecraft.datagen.ScTags;
-import ctn.stonecraft.event.stone_nugget.StoneNuggetOnHitBlockEvent;
-import ctn.stonecraft.event.stone_nugget.StoneNuggetOnHitEntityEvent;
-import ctn.stonecraft.event.stone_nugget.StoneNuggetSkipEvent;
+import ctn.stonecraft.events.stonenugget.StoneNuggetOnHitBlockEvent;
+import ctn.stonecraft.events.stonenugget.StoneNuggetOnHitEntityEvent;
+import ctn.stonecraft.events.stonenugget.StoneNuggetSkipEvent;
 import ctn.stonecraft.init.ScItems;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Position;
 import net.minecraft.core.RegistryAccess;
@@ -18,7 +19,6 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
@@ -39,12 +39,10 @@ import net.minecraft.world.phys.*;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.List;
 import java.util.UUID;
 
-import static ctn.stonecraft.ScEvents.*;
-import static ctn.stonecraft.api.tool.PlayerTool.sendChatMessageAllPlayers;
-import static ctn.stonecraft.api.tool.WorldTool.*;
+import static ctn.stonecraft.core.StoneCraftEventHooks.*;
+import static ctn.stonecraft.api.util.WorldUtil.*;
 
 /**
  * 抽象石粒投射物类，实现石粒的基本行为和物理特性
@@ -52,21 +50,21 @@ import static ctn.stonecraft.api.tool.WorldTool.*;
 public abstract class AbsStoneNuggetProjectile extends ThrowableItemProjectile {
 	public static final String SHOW_SKIP_RESULT_OWNER_TEXT  = "stonecraft:stone_nugget.show_skip_result.owner";
 	public static final String SHOW_SKIP_RESULT_OTHERS_TEXT = "stonecraft:stone_nugget.show_skip_result.others";
-	
+
 	protected static final int RESULT_DISPLAY_DELAY = 20 * 2; // 成绩显示延迟(ticks)
-	
+
 	// region 物理模拟相关参数
 	private double verticalVelocityLowAngleFactor;  // 垂直速度-低角度因子
 	private double verticalVelocityHighAngleFactor; // 垂直速度-高角度因子
 	private double lowAngleThreshold;               // 低角度阈值
 	private double highAngleThreshold;              // 高角度阈值
-	
+
 	// 弹射相关参数
 	private float maxBounceAngle; // 最大弹射角度
 	private float minBounceAngle; // 最小弹射角度
 	private float minBounceSpeed; // 最小弹射速度
 	// endregion
-	
+
 	// region 状态变量
 	private float   basicDamage        = 0;     // 基础伤害
 	private double  basicGravity       = 0;     // 基础重力
@@ -79,7 +77,7 @@ public abstract class AbsStoneNuggetProjectile extends ThrowableItemProjectile {
 	private int     impactsCount       = 1;     // 剩余撞击次数
 	private int     bouncesCount       = 0;     // 剩余弹射次数
 	// endregion
-	
+
 	// region 其他变量
 	@Nullable
 	private UUID               hitEntityUUID;
@@ -89,27 +87,27 @@ public abstract class AbsStoneNuggetProjectile extends ThrowableItemProjectile {
 	private ItemStack          weapon;
 	private AbsStoneNuggetItem projectileItem;
 	// endregion
-	
+
 	// region 构造方法
 	public AbsStoneNuggetProjectile(StoneNuggetProjectileBuilder stoneNuggetProjectileBuilder,
 			EntityType<AbsStoneNuggetProjectile> entityType, Position pos, Level level, @Nullable ItemStack weapon) {
 		this(stoneNuggetProjectileBuilder, entityType, pos.x(), pos.y(), pos.z(), level, weapon);
 	}
-	
+
 	public AbsStoneNuggetProjectile(StoneNuggetProjectileBuilder stoneNuggetProjectileBuilder,
 			EntityType<AbsStoneNuggetProjectile> entityType, double x, double y, double z, Level level, @Nullable ItemStack weapon) {
 		super(entityType, x, y, z, level);
 		this.weapon = weapon;
 		init(stoneNuggetProjectileBuilder, weapon);
 	}
-	
+
 	public AbsStoneNuggetProjectile(StoneNuggetProjectileBuilder stoneNuggetProjectileBuilder,
 			EntityType<AbsStoneNuggetProjectile> entityType, Level level, @Nullable ItemStack weapon) {
 		super(entityType, level);
 		this.weapon = weapon;
 		init(stoneNuggetProjectileBuilder, weapon);
 	}
-	
+
 	public AbsStoneNuggetProjectile(StoneNuggetProjectileBuilder stoneNuggetProjectileBuilder,
 			EntityType<AbsStoneNuggetProjectile> entityType, LivingEntity shooter, Level level, @Nullable ItemStack weapon) {
 		super(entityType, shooter, level);
@@ -117,12 +115,12 @@ public abstract class AbsStoneNuggetProjectile extends ThrowableItemProjectile {
 		init(stoneNuggetProjectileBuilder, weapon);
 	}
 	// endregion
-	
+
 	// region 初始化和数据保存
 	public static int getResultDisplayDelay() {
 		return RESULT_DISPLAY_DELAY;
 	}
-	
+
 	/**
 	 * 初始化配置属性
 	 */
@@ -145,7 +143,7 @@ public abstract class AbsStoneNuggetProjectile extends ThrowableItemProjectile {
 			damageMultiplier = slingshot.getDamageMultiplier();
 		}
 	}
-	
+
 	/**
 	 * 写入NBT数据
 	 */
@@ -175,7 +173,7 @@ public abstract class AbsStoneNuggetProjectile extends ThrowableItemProjectile {
 		}
 		compound.putString("item", getItem().getDescriptionId());
 	}
-	
+
 	/**
 	 * 读取NBT数据
 	 */
@@ -226,9 +224,9 @@ public abstract class AbsStoneNuggetProjectile extends ThrowableItemProjectile {
 		basicWeight  = getProjectileItem().getWeight();
 	}
 	// endregion
-	
+
 	// region 主要游戏逻辑
-	
+
 	/**
 	 * 每tick更新逻辑
 	 */
@@ -237,17 +235,17 @@ public abstract class AbsStoneNuggetProjectile extends ThrowableItemProjectile {
 		super.tick();
 		time = getTime() + 1;
 		Level level = this.level();
-		
+
 		// 进行打水漂逻辑
 		handleSkipLogic(level);
-		
+
 		checkEntityCollisions();
-		
+
 		if (getOwner() != null && getOwner() instanceof Player && getSkipCount() > 0 && !level.isClientSide && getTime() >= getResultDisplayDelay() && !isHasAnnouncedResult()) {
 			checkAndDisplaySkipResult();
 		}
 	}
-	
+
 	/**
 	 * 检查实体碰撞
 	 * 检测投射物与实体的碰撞，并处理碰撞结果
@@ -268,7 +266,7 @@ public abstract class AbsStoneNuggetProjectile extends ThrowableItemProjectile {
 			clearHitEntity();
 		}
 	}
-	
+
 	/**
 	 * 处理实体事件
 	 */
@@ -278,7 +276,7 @@ public abstract class AbsStoneNuggetProjectile extends ThrowableItemProjectile {
 			return;
 		}
 		ParticleOptions particleOptions = this.getParticle();
-		
+
 		Level level = this.level();
 		// 生成碰撞粒子效果
 		for (int i = 0; i < 8; i++) {
@@ -291,9 +289,9 @@ public abstract class AbsStoneNuggetProjectile extends ThrowableItemProjectile {
 		}
 	}
 	// endregion
-	
+
 	// region 水漂逻辑
-	
+
 	/**
 	 * 检查并显示水漂成绩
 	 */
@@ -301,7 +299,7 @@ public abstract class AbsStoneNuggetProjectile extends ThrowableItemProjectile {
 		hasAnnouncedResult = true;
 		showSkipResult();
 	}
-	
+
 	/**
 	 * 执行水漂逻辑
 	 */
@@ -315,16 +313,16 @@ public abstract class AbsStoneNuggetProjectile extends ThrowableItemProjectile {
 		double bottomY = boundingBox.minY;
 		Vec3 bottomPos = new Vec3(pos.x, bottomY, pos.z);
 		FluidState fluidState = getFluidState(level, bottomPos);
-		
+
 		// 检查是否满足弹射条件
 		if (!canSkipBounce(level, absPitch, speed, fluidState, bottomPos, boundingBox, pos)) {
 			return;
 		}
-		
+
 		// 水漂成功，执行弹射逻辑
 		performSkipBounce(level, movement, fluidState, bottomPos, absPitch, pos);
 	}
-	
+
 	/**
 	 * 判断是否可以水漂弹射
 	 */
@@ -335,23 +333,23 @@ public abstract class AbsStoneNuggetProjectile extends ThrowableItemProjectile {
 		    speed < getMinBounceSpeed()) {
 			return false;
 		}
-		
+
 		// 检查当前格子是否找到液体
 		if (fluidState.isEmpty()) {
 			return false;
 		}
-		
+
 		// 检查是否接触液体表面
 		if (!isInFluid(level, fluidState, bottomPos)) {
 			return false;
 		}
-		
+
 		// 检查是否浸入过深
 		double y = boundingBox.maxY * Math.max(1, 0.001 * speed);
 		Vec3 topPos = new Vec3(pos.x, y, pos.z);
 		return !isInFluid(level, fluidState, topPos);
 	}
-	
+
 	/**
 	 * 执行水漂弹射
 	 */
@@ -364,22 +362,22 @@ public abstract class AbsStoneNuggetProjectile extends ThrowableItemProjectile {
 		}
 		deltaMovement = event.getNewDeltaMovement();
 		floatHeight   = event.getNewFloatHeight();
-		
+
 		// 弹射前
 		onBeforeBounce(level, movement, fluidState, bottomPos, absPitch, pos);
-		
+
 		// 设置位置并进行弹射
 		setPos(pos.x, floatHeight, pos.z);
 		setDeltaMovement(deltaMovement);
-		
+
 		// 更新水漂计数和重置状态
 		skipCount          = getSkipCount() + 1;
 		hasAnnouncedResult = false;
 		time               = 0;
-		
+
 		stoneNuggetSkipPost(level, movement, fluidState, bottomPos, absPitch, pos, deltaMovement, floatHeight, this);
 	}
-	
+
 	/**
 	 * 弹射前回调
 	 */
@@ -399,49 +397,44 @@ public abstract class AbsStoneNuggetProjectile extends ThrowableItemProjectile {
 			}
 		}
 	}
-	
+
 	/**
 	 * 显示水漂成绩
 	 */
 	public void showSkipResult() {
-		Entity owner = getOwner();
-		if (!(owner instanceof Player player) || !(level() instanceof ServerLevel serverLevel)) {
-			return;
+		if (level().isClientSide) {
+			Minecraft.getInstance().gui.setOverlayMessage(Component.translatable(SHOW_SKIP_RESULT_OWNER_TEXT, getSkipCount()), false);
 		}
-		List<ServerPlayer> Players = serverLevel.getPlayers(serverPlayer -> !serverPlayer.getUUID().equals(owner.getUUID()));
-		sendChatMessageAllPlayers(
-				player, Component.translatable(SHOW_SKIP_RESULT_OWNER_TEXT, getSkipCount()),
-				Players, Component.translatable(SHOW_SKIP_RESULT_OTHERS_TEXT, owner.getDisplayName(), getSkipCount()));
 	}
-	
+
 	/**
 	 * 计算弹射后的物理参数
 	 */
 	protected @NotNull Vec3 calculateBounceMovement(Vec3 movement, float absPitch) {
 		double angleFactor = absPitch / getMaxBounceAngle();
-		
+
 		// 计算恢复系数（弹性系数）
 		double restitution = 0.8 - (angleFactor * 0.2);
 		double newYVelocity = -movement.y * restitution;
-		
+
 		// 计算水平阻尼
 		double horizontalDamping = 0.98 - (0.08 * angleFactor);
 		double newXVelocity = movement.x * horizontalDamping;
 		double newZVelocity = movement.z * horizontalDamping;
-		
+
 		// 根据入射角度调整垂直速度
 		if (absPitch < getLowAngleThreshold()) {
 			newYVelocity *= getVerticalVelocityLowAngleFactor();
 		} else if (absPitch > getHighAngleThreshold()) {
 			newYVelocity *= getVerticalVelocityHighAngleFactor();
 		}
-		
+
 		return new Vec3(newXVelocity, newYVelocity, newZVelocity);
 	}
 	// endregion
-	
+
 	// region 碰撞处理
-	
+
 	/**
 	 * 碰撞时的处理逻辑
 	 */
@@ -460,7 +453,7 @@ public abstract class AbsStoneNuggetProjectile extends ThrowableItemProjectile {
 				0.4F / (level.getRandom().nextFloat() * 0.4F + 0.8F)
 		);
 	}
-	
+
 	/**
 	 * 命中偏移处理
 	 */
@@ -471,7 +464,7 @@ public abstract class AbsStoneNuggetProjectile extends ThrowableItemProjectile {
 		ProjectileDeflection deflection2 = super.hitTargetOrDeflectSelf(hitResult);
 		return is ? deflection : deflection2;
 	}
-	
+
 	/**
 	 * 获取破裂时产生的粒子效果
 	 */
@@ -485,9 +478,9 @@ public abstract class AbsStoneNuggetProjectile extends ThrowableItemProjectile {
 		}
 		return ParticleTypes.ITEM_SNOWBALL;
 	}
-	
+
 	//region 命中方块
-	
+
 	/**
 	 * 击中方块时的处理逻辑
 	 */
@@ -495,11 +488,11 @@ public abstract class AbsStoneNuggetProjectile extends ThrowableItemProjectile {
 	protected void onHitBlock(@NotNull BlockHitResult result) {
 		Level level = this.level();
 		BlockPos blockpos = result.getBlockPos();
-		
+
 		boolean shouldDiscard = true;
 		BlockState blockState = level.getBlockState(blockpos);
 		boolean isBreakable = isBreakable(blockState);
-		
+
 		StoneNuggetOnHitBlockEvent.Pre eventPre = stoneNuggetOnHitBlockPre(this, result, level, blockpos, blockState, isBreakable, impactsCount, bouncesCount);
 		if (eventPre.isCanceled()) {
 			return;
@@ -507,7 +500,7 @@ public abstract class AbsStoneNuggetProjectile extends ThrowableItemProjectile {
 		isBreakable  = eventPre.isNewIsBreakable();
 		impactsCount = eventPre.getNewImpactsCount();
 		bouncesCount = eventPre.getNewBouncesCount();
-		
+
 		if (!level.isClientSide) {
 			if (isBreakable) {
 				// 进行破坏
@@ -516,22 +509,22 @@ public abstract class AbsStoneNuggetProjectile extends ThrowableItemProjectile {
 				// 进行弹跳
 				shouldDiscard = blocksBounce();
 			}
-			
+
 			if (shouldDiscard) {
 				level.broadcastEntityEvent(this, (byte) 3);
 				this.discard();
 			} else if (isRemoved()) {
 				super.onHitBlock(result);
 			}
-			
+
 			if (getOwner() instanceof Player && getSkipCount() > 0 && !isHasAnnouncedResult()) {
 				checkAndDisplaySkipResult();
 			}
 		}
-		
+
 		stoneNuggetOnHitBlockPost(result, level, blockpos, blockState, isBreakable, this, impactsCount, bouncesCount);
 	}
-	
+
 	/**
 	 * 方块破坏逻辑
 	 *
@@ -544,16 +537,16 @@ public abstract class AbsStoneNuggetProjectile extends ThrowableItemProjectile {
 			return true;
 		}
 		level.destroyBlock(blockpos, true, this, 512);
-		
+
 		if (impactsCount > 0) {
 			hitSpeedReduction(movement);
 			impactsCount--;
 			return false;
 		}
-		
+
 		return true;
 	}
-	
+
 	/**
 	 * 命中时进行速度缩减
 	 *
@@ -563,7 +556,7 @@ public abstract class AbsStoneNuggetProjectile extends ThrowableItemProjectile {
 		int factor = impactsCount + 1;
 		setDeltaMovement(new Vec3(movement.x / factor, movement.y / factor, movement.z / factor));
 	}
-	
+
 	/**
 	 * 是否可以破坏该方块判断逻辑
 	 *
@@ -573,7 +566,7 @@ public abstract class AbsStoneNuggetProjectile extends ThrowableItemProjectile {
 	protected boolean isBreakable(BlockState blockState) {
 		return blockState.is(ScTags.ScBlocks.BREAKABLE_BY_STONE_NUGGET);
 	}
-	
+
 	/**
 	 * 命中方块时进行弹跳
 	 *
@@ -582,14 +575,14 @@ public abstract class AbsStoneNuggetProjectile extends ThrowableItemProjectile {
 	protected boolean blocksBounce() {
 		boolean shouldDiscard = false;
 		// TODO 完成 v1.1 的方块弹跳
-		
+
 		bouncesCount--;
 		return shouldDiscard;
 	}
 	//endregion
-	
+
 	//region 命中实体
-	
+
 	/**
 	 * 击中实体时的处理逻辑
 	 */
@@ -600,18 +593,18 @@ public abstract class AbsStoneNuggetProjectile extends ThrowableItemProjectile {
 		if (level.isClientSide || !canHitEntity(entity)) {
 			return;
 		}
-		
+
 		// 计算伤害值
 		double speed = getDeltaMovement().lengthSqr();
-		
+
 		// 伤害计算
 		// 基础伤害 * 速度 + (伤害加成 * 速度 不超过伤害加成) * 伤害倍数
 		double damageBonus = Math.min(getDamageBonus(), Math.max(getDamageBonus(), getDamageBonus() * speed));
 		float hurt = (float) ((getBasicDamage() * speed + damageBonus) * getDamageMultiplier());
-		
+
 		Entity owner = getOwner();
 		DamageSource damageSource = this.damageSources().thrown(this, owner);
-		
+
 		// 进行处理前
 		StoneNuggetOnHitEntityEvent.Pre preEvent = stoneNuggetOnHitEntityPre(this, result, level, entity, speed, owner, hurt, damageSource, impactsCount);
 		if (preEvent.isCanceled()) {
@@ -619,20 +612,20 @@ public abstract class AbsStoneNuggetProjectile extends ThrowableItemProjectile {
 		}
 		hurt         = preEvent.getNewHurt();
 		impactsCount = preEvent.getNewImpactsCount();
-		
+
 		boolean shouldDiscard = hurtEntity(entity, damageSource, hurt);
-		
+
 		if (shouldDiscard) {
 			level.broadcastEntityEvent(this, (byte) 3);
 			this.discard();
 		} else if (isRemoved()) {
 			super.onHitEntity(result);
 		}
-		
+
 		// 结束处理
 		stoneNuggetOnHitEntityPost(result, level, entity, speed, owner, hurt, damageSource, this, impactsCount);
 	}
-	
+
 	/**
 	 * 伤害实体
 	 */
@@ -644,18 +637,18 @@ public abstract class AbsStoneNuggetProjectile extends ThrowableItemProjectile {
 		if (speed < 0.5) {
 			return true;
 		}
-		
+
 		// 如果还有穿透次数，则将当前实体加入忽略列表，减少穿透次数并返回false表示不删除投射物
 		if (impactsCount > 0) {
 			hitSpeedReduction(movement);
 			impactsCount--;
 			return false;
 		}
-		
+
 		// 如果没有穿透次数了，则返回true表示应该删除投射物
 		return true;
 	}
-	
+
 	/**
 	 * 判断是否可以命中指定实体
 	 */
@@ -667,7 +660,7 @@ public abstract class AbsStoneNuggetProjectile extends ThrowableItemProjectile {
 		}
 		return is && !cachedHitEntity.equals(target) && !hitEntityBy(target);
 	}
-	
+
 	/**
 	 * 获取表示实体命中的 EntityRayTraceResult
 	 */
@@ -679,7 +672,7 @@ public abstract class AbsStoneNuggetProjectile extends ThrowableItemProjectile {
 	}
 	//endregion
 	// endregion
-	
+
 	// region 获取器和设置器
 	@Override
 	protected @NotNull AbsStoneNuggetItem getDefaultItem() {
@@ -688,7 +681,7 @@ public abstract class AbsStoneNuggetProjectile extends ThrowableItemProjectile {
 		}
 		return getProjectileItem();
 	}
-	
+
 	/**
 	 * 获取投射物默认重力值
 	 */
@@ -696,121 +689,121 @@ public abstract class AbsStoneNuggetProjectile extends ThrowableItemProjectile {
 	public double getDefaultGravity() {
 		return getBasicGravity() * getWeight();
 	}
-	
+
 	/**
 	 * 获取投射物重量
 	 */
 	public float getWeight() {
 		return getBasicWeight();
 	}
-	
+
 	/**
 	 * 获取水漂次数
 	 */
 	public int getSkipCount() {
 		return skipCount;
 	}
-	
+
 	/**
 	 * 获取伤害加成
 	 */
 	public float getDamageBonus() {
 		return damageBonus;
 	}
-	
+
 	/**
 	 * 设置伤害加成
 	 */
 	public void setDamageBonus(float damageBonus) {
 		this.damageBonus = damageBonus;
 	}
-	
+
 	/**
 	 * 获取伤害加成倍数
 	 */
 	public float getDamageMultiplier() {
 		return damageMultiplier;
 	}
-	
+
 	/**
 	 * 设置伤害加成倍数
 	 */
 	public void setDamageMultiplier(float damageMultiplier) {
 		this.damageMultiplier = damageMultiplier;
 	}
-	
+
 	public double getVerticalVelocityLowAngleFactor() {
 		return verticalVelocityLowAngleFactor;
 	}
-	
+
 	public double getVerticalVelocityHighAngleFactor() {
 		return verticalVelocityHighAngleFactor;
 	}
-	
+
 	public double getLowAngleThreshold() {
 		return lowAngleThreshold;
 	}
-	
+
 	public double getHighAngleThreshold() {
 		return highAngleThreshold;
 	}
-	
+
 	public float getMaxBounceAngle() {
 		return maxBounceAngle;
 	}
-	
+
 	public float getMinBounceAngle() {
 		return minBounceAngle;
 	}
-	
+
 	public float getMinBounceSpeed() {
 		return minBounceSpeed;
 	}
-	
+
 	public float getBasicDamage() {
 		return basicDamage;
 	}
-	
+
 	public double getBasicGravity() {
 		return basicGravity;
 	}
-	
+
 	public float getBasicWeight() {
 		return basicWeight;
 	}
-	
+
 	public int getTime() {
 		return time;
 	}
-	
+
 	public boolean isHasAnnouncedResult() {
 		return hasAnnouncedResult;
 	}
-	
+
 	public int getImpactsCount() {
 		return impactsCount;
 	}
-	
+
 	public int getBouncesCount() {
 		return bouncesCount;
 	}
-	
+
 	public @Nullable ItemStack getWeapon() {
 		return weapon;
 	}
-	
+
 	public AbsStoneNuggetItem getProjectileItem() {
 		return projectileItem;
 	}
-	
+
 	public void setImpactsCount(int impactsCount) {
 		this.impactsCount = impactsCount;
 	}
-	
+
 	public void setBouncesCount(int bouncesCount) {
 		this.bouncesCount = bouncesCount;
 	}
-	
+
 	public @Nullable Entity getCachedHitEntity() {
 		if (cachedHitEntity != null && !cachedHitEntity.isRemoved()) {
 			return cachedHitEntity;
@@ -821,7 +814,7 @@ public abstract class AbsStoneNuggetProjectile extends ThrowableItemProjectile {
 			return null;
 		}
 	}
-	
+
 	public void setHitEntity(@Nullable Entity hitEntity) {
 		if (hitEntity == null) {
 			return;
@@ -829,7 +822,7 @@ public abstract class AbsStoneNuggetProjectile extends ThrowableItemProjectile {
 		cachedHitEntity = hitEntity;
 		hitEntityUUID   = hitEntity.getUUID();
 	}
-	
+
 	public @Nullable UUID getHitEntityUUID() {
 		if (hitEntityUUID == null) {
 			if (cachedHitEntity == null) {
@@ -839,12 +832,12 @@ public abstract class AbsStoneNuggetProjectile extends ThrowableItemProjectile {
 		}
 		return hitEntityUUID;
 	}
-	
+
 	public void clearHitEntity() {
 		hitEntityUUID   = null;
 		cachedHitEntity = null;
 	}
-	
+
 	public boolean hitEntityBy(Entity entity) {
 		return entity.getUUID().equals(hitEntityUUID);
 	}

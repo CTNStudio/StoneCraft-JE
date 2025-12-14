@@ -26,9 +26,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static ctn.stonecraft.StoneCraft.SC_ID;
-import static ctn.stonecraft.api.tool.NbtTool.getOrCreateCompoundTag;
-import static ctn.stonecraft.api.tool.ResourceLocationTool.getResourceLocation;
+import static ctn.stonecraft.core.StoneCraft.ID;
+import static ctn.stonecraft.api.util.NbtUtil.getOrCreateCompoundTag;
+import static ctn.stonecraft.api.util.ResourceLocationUtil.getResourceLocation;
 import static ctn.stonecraft.init.ScTriggerTypes.COUNT_CRITERION_TRIGGER;
 
 /**
@@ -42,7 +42,7 @@ public class CountCriterionTrigger extends SimpleCriterionTrigger<CountCriterion
 	public static final  String ITEM_DATA_LIST = "itemDataList";
 	public static final  String ITEM_ID        = "itemId";
 	private static final Logger LOG            = LogUtils.getLogger();
-	
+
 	/**
 	 * 获取触发器实例的编解码器
 	 *
@@ -52,7 +52,7 @@ public class CountCriterionTrigger extends SimpleCriterionTrigger<CountCriterion
 	public @NotNull Codec<TriggerInstance> codec() {
 		return TriggerInstance.CODEC;
 	}
-	
+
 	/**
 	 * 触发计数条件检查
 	 * 当玩家获得一个物品时调用此方法，检查是否满足进度条件
@@ -73,21 +73,21 @@ public class CountCriterionTrigger extends SimpleCriterionTrigger<CountCriterion
 		if (itemRegistry == null) {
 			return;
 		}
-		
+
 		// 获取或创建必要的NBT结构
-		CompoundTag scNbt = getOrCreateCompoundTag(player.getPersistentData(), SC_ID);
+		CompoundTag scNbt = getOrCreateCompoundTag(player.getPersistentData(), ID);
 		CompoundTag advancementNbt = getOrCreateCompoundTag(scNbt, ADVANCEMENT);
-		
+
 		// 触发条件检查
 		trigger(player, triggerInstance -> {
 			CompoundTag advancementIdNbt = getOrCreateCompoundTag(advancementNbt, triggerInstance.advancementId().toString());
-			
+
 			if (!advancementIdNbt.contains(ITEM_DATA_LIST)) advancementIdNbt.put(ITEM_DATA_LIST, new ListTag());
 			ListTag listNbt = advancementIdNbt.getList(ITEM_DATA_LIST, 10);
-			
+
 			// 解析物品列表
 			List<Item> excludesList = new ArrayList<>();
-			
+
 			// 遍历列表中的每个NBT元素
 			for (int i = 0; i < listNbt.size(); i++) {
 				CompoundTag compoundtag = listNbt.getCompound(i);
@@ -107,12 +107,12 @@ public class CountCriterionTrigger extends SimpleCriterionTrigger<CountCriterion
 					LOG.warn("Invalid itemId: {}", itemId, e);
 				}
 			}
-			
+
 			boolean result = triggerInstance.matches(excludesList, stack);
-			
+
 			// 保存更新后的物品列表
 			ListTag listNbt2 = new ListTag();
-			
+
 			for (Item item : excludesList) {
 				if (item == null) {
 					continue;
@@ -126,11 +126,11 @@ public class CountCriterionTrigger extends SimpleCriterionTrigger<CountCriterion
 				listNbt2.add(compoundtag);
 			}
 			advancementIdNbt.put(ITEM_DATA_LIST, listNbt2);
-			
+
 			return result;
 		});
 	}
-	
+
 	/**
 	 * 计数触发器实例
 	 * 定义具体的触发条件和匹配逻辑
@@ -144,7 +144,7 @@ public class CountCriterionTrigger extends SimpleCriterionTrigger<CountCriterion
 								ItemPredicate.CODEC.optionalFieldOf("item").forGetter(TriggerInstance::item))
 						.apply(instance, TriggerInstance::new)
 		);
-		
+
 		/**
 		 * 创建进度条件
 		 *
@@ -154,12 +154,12 @@ public class CountCriterionTrigger extends SimpleCriterionTrigger<CountCriterion
 		public static Criterion<TriggerInstance> createCriterion(ResourceLocation advancementId, ItemPredicate.Builder item) {
 			return COUNT_CRITERION_TRIGGER.get().createCriterion(new TriggerInstance(advancementId, Optional.empty(), Optional.of(item.build())));
 		}
-		
+
 		@Override
 		public @NotNull Optional<ContextAwarePredicate> player() {
 			return player;
 		}
-		
+
 		public boolean matches(List<Item> excludesList, ItemStack stack) {
 			if (item.isEmpty()) {
 				return false;
@@ -167,7 +167,7 @@ public class CountCriterionTrigger extends SimpleCriterionTrigger<CountCriterion
 			// 遍历排除列表
 			Item triggerItem = stack.getItem();
 			boolean isExcludes = excludesList.contains(triggerItem);
-			
+
 			if (!isExcludes && item.get().test(stack)) {
 				excludesList.add(triggerItem);
 				return true;

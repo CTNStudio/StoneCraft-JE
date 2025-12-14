@@ -2,20 +2,20 @@
   "parent": "stonecraft:item/slingshot",
   "overrides": [
     {
-      "model": "stonecraft:item/wood_slingshot_1",
+      "model": "stonecraft:item/wood_slingshot1",
       "predicate": {
         "minecraft:pulling": 1.0
       }
     },
     {
-      "model": "stonecraft:item/wood_slingshot_2",
+      "model": "stonecraft:item/wood_slingshot2",
       "predicate": {
         "minecraft:pull": 0.5,
         "minecraft:pulling": 1.0
       }
     },
     {
-      "model": "stonecraft:item/wood_slingshot_3",
+      "model": "stonecraft:item/wood_slingshot3",
       "predicate": {
         "minecraft:pull": 1.0,
         "minecraft:pulling": 1.0
@@ -23,6 +23,6 @@
     }
   ],
   "textures": {
-    "layer0": "stonecraft:item/wood_slingshot"
+    "layer0": "stonecraft:item/weapon/wood_slingshot"
   }
 }

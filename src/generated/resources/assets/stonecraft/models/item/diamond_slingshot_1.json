@@ -1,6 +1,0 @@
-{
-  "parent": "stonecraft:item/diamond_slingshot",
-  "textures": {
-    "layer0": "stonecraft:item/diamond_slingshot_1"
-  }
-}

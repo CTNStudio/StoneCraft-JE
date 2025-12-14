@@ -22,7 +22,7 @@ import net.neoforged.neoforge.registries.DeferredItem;
 import java.util.List;
 import java.util.function.Supplier;
 
-import static ctn.stonecraft.StoneCraft.SC_ID;
+import static ctn.stonecraft.core.StoneCraft.ID;
 import static ctn.stonecraft.common.entity.projectile.stone_nugget.AbsStoneNuggetProjectile.SHOW_SKIP_RESULT_OTHERS_TEXT;
 import static ctn.stonecraft.common.entity.projectile.stone_nugget.AbsStoneNuggetProjectile.SHOW_SKIP_RESULT_OWNER_TEXT;
 import static ctn.stonecraft.datagen.advancement.ScAdvancementGenerator.*;
@@ -31,15 +31,15 @@ import static ctn.stonecraft.init.ScEnchantments.*;
 
 public class ScI18ZhCn extends LanguageProvider {
 	public static final String[] GRADE = {"一级压缩", "二级压缩", "三级压缩", "四级压缩", "五级压缩"};
-	
+
 	public ScI18ZhCn(PackOutput output) {
-		super(output, SC_ID, "zh_cn");
+		super(output, ID, "zh_cn");
 	}
-	
+
 	@Override
 	protected void addTranslations() {
-		getModName(SC_ID, "石头工艺");
-		
+		getModName(ID, "石头工艺");
+
 		//region 方块
 		addBlocks(ScBlocks.COMPRESSED_COBBLESTONE, "圆石");
 		addBlocks(ScBlocks.COMPRESSED_MOSSY_COBBLESTONE, "苔石");
@@ -65,7 +65,7 @@ public class ScI18ZhCn extends LanguageProvider {
 		addBlocks(ScBlocks.COMPRESSED_TUFF, "凝灰岩");
 		addBlocks(ScBlocks.COMPRESSED_DRIPSTONE_BLOCK, "滴水石");
 		//endregion
-		
+
 		//region 创造模式分页面
 		add(ScCreativeModeTabs.BLOCK, "石头工艺-方块");
 		add(ScCreativeModeTabs.ITEM, "石头工艺-物品");
@@ -73,7 +73,7 @@ public class ScI18ZhCn extends LanguageProvider {
 		add(ScCreativeModeTabs.COMBAT_SUPPLIES, "石头工艺-战斗用品");
 		add(ScCreativeModeTabs.FOOD, "石头工艺-食物");
 		//endregion
-		
+
 		//region 物品
 		add(ScItems.COMPRESSED_STONE_SWORD_LV1.get(), "一级压缩石剑");
 		add(ScItems.COMPRESSED_STONE_SWORD_LV2.get(), "二级压缩石剑");
@@ -161,13 +161,13 @@ public class ScI18ZhCn extends LanguageProvider {
 		add(ScItems.DIAMOND_SLINGSHOT.get(), "钻石质弹弓");
 		add(ScItems.NETHERITE_SLINGSHOT.get(), "下界合金质弹弓");
 		//endregion
-		
+
 		//region 附魔
 		addEnchantment(STONE_DESTROYER, "石力挖掘");
-		addEnchantment(STONE_BUFFER, "石之缓冲");
+		addEnchantment(STONE_BUFFER, "地母之拥");
 		addEnchantment(OLDB, "oldb神力");
 		//endregion
-		
+
 		//region 成就
 		addAdvancement(STONE_ADVENTURE_ID, "石头工艺&磐石之旅", "获得“石头”");
 		addAdvancement(saAdvancementId(GET_COBBLESTONE), "圆石人启动！", "获得圆石");
@@ -190,87 +190,87 @@ public class ScI18ZhCn extends LanguageProvider {
 		addAdvancement(saAdvancementId(TEN_STONES_EATEN), "食十石食", "吃掉十种不一样的石头食物");
 		addAdvancement(saAdvancementId(EPIC_STONE_FEAST), "史诗食世石", "吃掉所有种类的石头食物");
 		//endregion
-		
+
 		//region 实体
 		addEntityType(ScEntityTypes.STONE_NUGGET, "石粒");
 		add(SHOW_SKIP_RESULT_OWNER_TEXT, "你的成绩是：%d次！");
 		add(SHOW_SKIP_RESULT_OTHERS_TEXT, "%s的成绩是：%d次！");
 		//endregion
 	}
-	
+
 	//region 工具
 	public void addBlocks(List<DeferredBlock<Block>> blocks, String name) {
 		for (int i = 0, blocksSize = blocks.size(); i < blocksSize; i++) {
 			add(blocks.get(i).get(), GRADE[i] + name);
 		}
 	}
-	
+
 	/**
 	 * 创造模式物品栏名称翻译
 	 */
 	public <R, T extends R> void add(DeferredHolder<R, T> itemGroup, String name) {
 		add("itemGroup." + itemGroup.getId().toString().replace(":", "."), name);
 	}
-	
+
 	private void getModName(String modid, String name) {
 		add("pack." + modid + ".description", name);
 	}
-	
+
 	public void addEnchantment(ResourceKey<Enchantment> enchantment, String name) {
 		add(getEnchantmentTranslatable(enchantment), name);
 	}
-	
+
 	private void addAdvancement(String key, String titleName, String descriptionName) {
 		addAdvancementTitle(key, titleName);
 		addAdvancementDescription(key, descriptionName);
 	}
-	
+
 	private void addAdvancementTitle(String title, String name) {
-		add("advancements.%s.%s.title".formatted(SC_ID, title), name);
+		add("advancements.%s.%s.title".formatted(ID, title), name);
 	}
-	
+
 	private void addAdvancementDescription(String description, String name) {
-		add("advancements.%s.%s.description".formatted(SC_ID, description), name);
+		add("advancements.%s.%s.description".formatted(ID, description), name);
 	}
-	
+
 	private void add(Component key, String name) {
 		add(key.getString(), name);
 	}
-	
+
 	public void addItems(List<DeferredItem<Item>> item, String name) {
 		for (int i = 0, blocksSize = item.size(); i < blocksSize; i++) {
 			add(item.get(i).asItem(), GRADE[i] + name);
 		}
 	}
-	
+
 	public void addConfig(String configKey, String translationDescribe, String commentDescribe) {
 		add(translationKey(configKey), translationDescribe);
 		add(commentKey(configKey), commentDescribe);
 	}
-	
+
 	public static String translationKey(String string) {
-		return SC_ID + ".configgui." + string;
+		return ID + ".configgui." + string;
 	}
-	
+
 	public static String commentKey(String string) {
-		return SC_ID + ".configgui." + string + ".tooltip";
+		return ID + ".configgui." + string + ".tooltip";
 	}
-	
+
 	public void addConfig(String configKey, String translationDescribe) {
 		add(translationKey(configKey), translationDescribe);
 	}
-	
+
 	public <T> void addAttribute(Supplier<DataComponentType<T>> dataComponentType, String name) {
 		add(dataComponentType.get().toString(), name);
 	}
-	
+
 	/**
 	 * 生物属性翻译
 	 */
 	public void addAttribute(Holder<Attribute> attributeHolder, String name) {
 		add(attributeHolder.value().getDescriptionId(), name);
 	}
-	
+
 	/**
 	 * 死亡消息翻译
 	 */

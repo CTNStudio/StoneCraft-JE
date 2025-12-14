@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/handheld",
   "textures": {
-    "layer0": "stonecraft:item/compressed_stone_axe_lv3"
+    "layer0": "stonecraft:item/tool/compressed_stone_axe_lv3"
   }
 }

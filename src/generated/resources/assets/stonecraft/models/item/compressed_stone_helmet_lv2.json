@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "stonecraft:item/compressed_stone_helmet_lv2"
+    "layer0": "stonecraft:item/armor/compressed_stone_helmet_lv2"
   }
 }

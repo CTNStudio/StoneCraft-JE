@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "stonecraft:item/stone_sweet_berries"
+    "layer0": "stonecraft:item/food/stone_sweet_berries"
   }
 }

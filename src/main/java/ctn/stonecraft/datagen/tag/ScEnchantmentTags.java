@@ -8,15 +8,15 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper;
 
 import java.util.concurrent.CompletableFuture;
 
-import static ctn.stonecraft.StoneCraft.SC_ID;
+import static ctn.stonecraft.core.StoneCraft.ID;
 import static ctn.stonecraft.init.ScEnchantments.STONE_BUFFER;
 import static ctn.stonecraft.init.ScEnchantments.STONE_DESTROYER;
 
 public class ScEnchantmentTags extends EnchantmentTagsProvider {
 	public ScEnchantmentTags(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, ExistingFileHelper existingFileHelper) {
-		super(output, lookupProvider, SC_ID, existingFileHelper);
+		super(output, lookupProvider, ID, existingFileHelper);
 	}
-	
+
 	@Override
 	protected void addTags(HolderLookup.Provider provider) {
 		tag(EnchantmentTags.TRADEABLE).add(

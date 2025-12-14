@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "stonecraft:item/stone_cooked_cod"
+    "layer0": "stonecraft:item/food/stone_cooked_cod"
   }
 }

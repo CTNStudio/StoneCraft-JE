@@ -13,18 +13,26 @@ version = mod_version
 group = mod_group_id
 
 repositories {
-    // Curse Maven (用于 CurseForge 模组)
-    maven {
-        url = uri("https://www.cursemaven.com")
-        content {
-            includeGroup "curse.maven"
-        }
-    }
+  mavenLocal()
+  mavenCentral()
 
-    // BlameJared 的 Forge 相关仓库
-    maven {
-        url = uri("https://maven.blamejared.com/")
-    }
+  maven {
+    name = "JitPack"
+    url = 'https://jitpack.io'
+  }
+
+  // Curse Maven (用于 CurseForge 模组)
+  maven {
+      url = uri("https://www.cursemaven.com")
+      content {
+          includeGroup "curse.maven"
+      }
+  }
+
+  // BlameJared 的 Forge 相关仓库
+  maven {
+      url = uri("https://maven.blamejared.com/")
+  }
 }
 
 base {
@@ -96,13 +104,21 @@ configurations {
 }
 
 dependencies {
-    compileOnly "curse.maven:jade-api-324717:6291517"
-    implementation "curse.maven:jade-324717:6291517"
-    compileOnly "mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"
-    compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
-    localRuntime "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
+  compileOnly "curse.maven:jade-api-324717:6291517"
+  implementation "curse.maven:jade-324717:6291517"
+  compileOnly "mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"
+  compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
+  localRuntime "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
+  runtimeOnly "curse.maven:appleskin-248787:5586600"
+
+  jarJar(implementation(group: "com.github.CTNStudio", name: "Ctn-Api")) {
+    version { prefer ctn_api_version }
+  }
 }
 
+jarJar {
+  enabled = true
+}
 
 var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {
     var replaceProperties = [

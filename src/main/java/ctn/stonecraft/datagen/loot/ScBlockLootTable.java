@@ -15,7 +15,7 @@ public class ScBlockLootTable extends BlockLootSubProvider {
 	public ScBlockLootTable(HolderLookup.Provider lookupProvider) {
 		super(Set.of(), FeatureFlags.DEFAULT_FLAGS, lookupProvider);
 	}
-	
+
 	@Override
 	protected void generate() {
 		dropSelf(ScBlocks.COMPRESSED_COBBLESTONE);
@@ -42,17 +42,17 @@ public class ScBlockLootTable extends BlockLootSubProvider {
 		dropSelf(ScBlocks.COMPRESSED_TUFF);
 		dropSelf(ScBlocks.COMPRESSED_DRIPSTONE_BLOCK);
 	}
-	
+
 	@Override
 	protected @NotNull Iterable<Block> getKnownBlocks() {
 		@SuppressWarnings("UnnecessaryLocalVariable")
-		List<Block> blocks = new java.util.ArrayList<>(ScBlocks.BLOCK_REGISTER.getEntries()
+		List<Block> blocks = new java.util.ArrayList<>(ScBlocks.REGISTER.getEntries()
 				.stream()
 				.map(e -> (Block) e.value())
 				.toList());
 		return blocks;
 	}
-	
+
 	protected void dropSelf(List<DeferredBlock<Block>> blocks) {
 		for (DeferredBlock<Block> block : blocks) {
 			dropSelf(block.get());

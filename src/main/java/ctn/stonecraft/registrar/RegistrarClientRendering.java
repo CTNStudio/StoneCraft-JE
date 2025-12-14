@@ -9,11 +9,11 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 
-import static ctn.stonecraft.StoneCraft.SC_ID;
+import static ctn.stonecraft.core.StoneCraft.ID;
 
-@EventBusSubscriber(modid = SC_ID)
+@EventBusSubscriber(modid = ID)
 public class RegistrarClientRendering {
-	
+
 	/**
 	 * 注册实体渲染器
 	 */
@@ -21,12 +21,12 @@ public class RegistrarClientRendering {
 	public static void onClientSetup(FMLClientSetupEvent event) {
 		EntityRenderers.register(ScEntityTypes.STONE_NUGGET.get(), ThrownItemRenderer::new);
 	}
-	
+
 	/** 注册粒子渲染器 */
 	@SubscribeEvent
 	public static void registerParticleProviders(RegisterParticleProvidersEvent event) {
 	}
-	
+
 	/**
 	 * 注册菜单渲染器
 	 */

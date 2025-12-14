@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/handheld",
   "textures": {
-    "layer0": "stonecraft:item/stonickers"
+    "layer0": "stonecraft:item/food/stonickers"
   }
 }

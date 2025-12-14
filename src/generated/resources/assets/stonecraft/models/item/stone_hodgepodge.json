@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "stonecraft:item/stone_hodgepodge"
+    "layer0": "stonecraft:item/food/stone_hodgepodge"
   }
 }

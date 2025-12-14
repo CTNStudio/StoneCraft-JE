@@ -21,9 +21,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 
-import static ctn.stonecraft.StoneCraft.SC_ID;
+import static ctn.stonecraft.core.StoneCraft.ID;
 import static ctn.stonecraft.datagen.recipe.RecipeProvider.getItemName;
-import static ctn.stonecraft.datagen.recipe.RecipeTool.getIngredient;
+import static ctn.stonecraft.datagen.recipe.RecipeUtil.getIngredient;
 
 /**
  * 有序配方构建器封装
@@ -41,12 +41,12 @@ public class ShapedBuilder {
 	@Nullable
 	protected       String                     group; // 配方分组
 	protected       boolean                    showNotification = true; // 是否显示配方获得提示通知
-	
+
 	public ShapedBuilder(ResourceLocation recipesId, RecipeCategory category, ItemLike result) {
 		this(recipesId, category);
 		this.resultStack = new ItemStack(result);
 	}
-	
+
 	/**
 	 * 构造函数，指定配方ID、分类
 	 *
@@ -57,7 +57,7 @@ public class ShapedBuilder {
 		this.recipesId = recipesId;
 		this.category  = category;
 	}
-	
+
 	/**
 	 * 构造函数，指定配方ID、分类、物品及数量
 	 *
@@ -70,7 +70,7 @@ public class ShapedBuilder {
 			ItemLike result, int count) {
 		this(recipesId, category, new ItemStack(result, count));
 	}
-	
+
 	/**
 	 * 构造函数，指定配方ID、分类及输出物品堆
 	 *
@@ -82,7 +82,7 @@ public class ShapedBuilder {
 		this(recipesId, category);
 		this.resultStack = resultStack;
 	}
-	
+
 	/**
 	 * 构造函数，仅指定配方ID和物品
 	 *
@@ -92,7 +92,7 @@ public class ShapedBuilder {
 	public ShapedBuilder(ResourceLocation recipesId, ItemLike result) {
 		this(recipesId, new ItemStack(result));
 	}
-	
+
 	/**
 	 * 构造函数，指定配方ID和物品堆
 	 *
@@ -103,7 +103,7 @@ public class ShapedBuilder {
 		this(recipesId);
 		this.resultStack = resultStack;
 	}
-	
+
 	/**
 	 * 构造函数，仅指定配方ID
 	 *
@@ -112,7 +112,7 @@ public class ShapedBuilder {
 	public ShapedBuilder(ResourceLocation recipesId) {
 		this.recipesId = recipesId;
 	}
-	
+
 	/**
 	 * 构造函数，指定配方ID和物品及数量
 	 *
@@ -123,7 +123,7 @@ public class ShapedBuilder {
 	public ShapedBuilder(ResourceLocation recipesId, ItemLike result, int count) {
 		this(recipesId, new ItemStack(result, count));
 	}
-	
+
 	/**
 	 * 创建一个指定ID和分类的有序配方构建器
 	 *
@@ -134,7 +134,7 @@ public class ShapedBuilder {
 	public static ShapedBuilder shaped(ResourceLocation recipesId, RecipeCategory category) {
 		return new ShapedBuilder(recipesId, category);
 	}
-	
+
 	/**
 	 * 创建一个带有结果物品及数量的有序配方构建器
 	 *
@@ -148,7 +148,7 @@ public class ShapedBuilder {
 			ItemLike result, int count) {
 		return new ShapedBuilder(recipesId, category, result, count);
 	}
-	
+
 	/**
 	 * 创建一个带有结果物品堆的有序配方构建器
 	 *
@@ -161,7 +161,7 @@ public class ShapedBuilder {
 			ItemStack resultStack) {
 		return new ShapedBuilder(recipesId, category, resultStack);
 	}
-	
+
 	/**
 	 * 创建一个仅指定配方ID的有序配方构建器
 	 *
@@ -171,7 +171,7 @@ public class ShapedBuilder {
 	public static ShapedBuilder shaped(ResourceLocation recipesId) {
 		return new ShapedBuilder(recipesId);
 	}
-	
+
 	/**
 	 * 创建一个带有结果物品的有序配方构建器
 	 *
@@ -182,7 +182,7 @@ public class ShapedBuilder {
 	public static ShapedBuilder shaped(ResourceLocation recipesId, ItemLike result) {
 		return new ShapedBuilder(recipesId, result);
 	}
-	
+
 	/**
 	 * 创建一个带有结果物品及数量的有序配方构建器
 	 *
@@ -194,7 +194,7 @@ public class ShapedBuilder {
 	public static ShapedBuilder shaped(ResourceLocation recipesId, ItemLike result, int count) {
 		return new ShapedBuilder(recipesId, result, count);
 	}
-	
+
 	/**
 	 * 创建一个带有结果物品堆的有序配方构建器
 	 *
@@ -205,12 +205,12 @@ public class ShapedBuilder {
 	public static ShapedBuilder shaped(ResourceLocation recipesId, ItemStack resultStack) {
 		return new ShapedBuilder(recipesId, resultStack);
 	}
-	
+
 	public static void basicBuilder(RecipeOutput output, ItemLike result, RecipeCategory category,
 			Function<ShapedBuilder, ShapedBuilder> additional) {
 		basicBuilder(output, result, category, null, additional);
 	}
-	
+
 	public static void basicBuilder(RecipeOutput output, ItemLike result, RecipeCategory category, String group,
 			Function<ShapedBuilder, ShapedBuilder> additional) {
 		var builder = ShapedBuilder.shaped(getLocation(getItemName(result)),
@@ -220,7 +220,7 @@ public class ShapedBuilder {
 				.group(group)
 				.save(output);
 	}
-	
+
 	/**
 	 * 创建一个带有结果物品的有序配方构建器
 	 *
@@ -232,11 +232,11 @@ public class ShapedBuilder {
 	public static ShapedBuilder shaped(ResourceLocation recipesId, RecipeCategory category, ItemLike result) {
 		return new ShapedBuilder(recipesId, category, result);
 	}
-	
+
 	private static ResourceLocation getLocation(String name) {
-		return ResourceLocation.fromNamespaceAndPath(SC_ID, name);
+		return ResourceLocation.fromNamespaceAndPath(ID, name);
 	}
-	
+
 	/**
 	 * 保存配方到指定输出
 	 *
@@ -245,7 +245,7 @@ public class ShapedBuilder {
 	public void save(RecipeOutput recipeOutput) {
 		builder().save(recipeOutput, recipesId);
 	}
-	
+
 	/**
 	 * 设置配方分组
 	 *
@@ -256,7 +256,7 @@ public class ShapedBuilder {
 		group = groupName;
 		return this;
 	}
-	
+
 	/**
 	 * 根据配方的键字符和对应物品或标签来设置解锁条件
 	 *
@@ -269,9 +269,9 @@ public class ShapedBuilder {
 		// 遍历配方的键值对，设置每个键字符对应的解锁条件
 		for (Map.Entry<Character, Ingredient> entry : key.entrySet()) {
 			Ingredient ingredient = entry.getValue();
-			
+
 			Ingredient.Value[] ingredientTag = ingredient.getValues();
-			
+
 			for (Ingredient.Value value : ingredientTag) {
 				if (value instanceof Ingredient.TagValue(TagKey<Item> tag)) {
 					Criterion<InventoryChangeTrigger.TriggerInstance> has = RecipeProvider.has(tag);
@@ -288,7 +288,7 @@ public class ShapedBuilder {
 		}
 		return this;
 	}
-	
+
 	/**
 	 * 导出后允许二次修改
 	 *
@@ -305,7 +305,7 @@ public class ShapedBuilder {
 		builder.group(group);
 		return builder;
 	}
-	
+
 	/**
 	 * 添加解锁条件
 	 *
@@ -317,7 +317,7 @@ public class ShapedBuilder {
 		this.criteria.put(name, criterion);
 		return this;
 	}
-	
+
 	/**
 	 * 清除所有解锁条件
 	 *
@@ -327,7 +327,7 @@ public class ShapedBuilder {
 		this.criteria.clear();
 		return this;
 	}
-	
+
 	/**
 	 * 关闭配方获得提示通知
 	 *
@@ -337,7 +337,7 @@ public class ShapedBuilder {
 		showNotification = false;
 		return this;
 	}
-	
+
 	/**
 	 * 设置配方分类
 	 *
@@ -348,7 +348,7 @@ public class ShapedBuilder {
 		this.category = category;
 		return this;
 	}
-	
+
 	/**
 	 * 设置输出物品
 	 *
@@ -359,7 +359,7 @@ public class ShapedBuilder {
 		resultStack = new ItemStack(item);
 		return this;
 	}
-	
+
 	/**
 	 * 设置输出物品及数量
 	 *
@@ -371,7 +371,7 @@ public class ShapedBuilder {
 		resultStack = new ItemStack(item, count);
 		return this;
 	}
-	
+
 	/**
 	 * 设置输出物品堆
 	 *
@@ -382,7 +382,7 @@ public class ShapedBuilder {
 		resultStack = itemStack;
 		return this;
 	}
-	
+
 	/**
 	 * 修改输出物品数量
 	 *
@@ -393,7 +393,7 @@ public class ShapedBuilder {
 		resultStack.setCount(count);
 		return this;
 	}
-	
+
 	/**
 	 * 定义配方符号与标签的映射
 	 *
@@ -404,7 +404,7 @@ public class ShapedBuilder {
 	public ShapedBuilder define(Character symbol, TagKey<Item> tag) {
 		return this.define(symbol, getIngredient(tag));
 	}
-	
+
 	/**
 	 * 定义配方符号与原料的映射
 	 *
@@ -422,7 +422,7 @@ public class ShapedBuilder {
 			return this;
 		}
 	}
-	
+
 	/**
 	 * 定义配方符号与物品的映射
 	 *
@@ -433,7 +433,7 @@ public class ShapedBuilder {
 	public ShapedBuilder define(Character symbol, ItemLike item) {
 		return this.define(symbol, getIngredient(item));
 	}
-	
+
 	/**
 	 * 清除所有定义的符号映射
 	 *
@@ -443,7 +443,7 @@ public class ShapedBuilder {
 		this.key.clear();
 		return this;
 	}
-	
+
 	/**
 	 * 添加一行图案模式
 	 *
@@ -458,7 +458,7 @@ public class ShapedBuilder {
 			return this;
 		}
 	}
-	
+
 	/**
 	 * 移除指定索引处的图案模式
 	 *
@@ -472,7 +472,7 @@ public class ShapedBuilder {
 		this.rows.remove(index);
 		return this;
 	}
-	
+
 	/**
 	 * 清除所有图案模式
 	 *
@@ -482,11 +482,11 @@ public class ShapedBuilder {
 		this.rows.clear();
 		return this;
 	}
-	
+
 	public @NotNull ResourceLocation getRecipesId() {
 		return recipesId;
 	}
-	
+
 	public ShapedBuilder setRecipesId(@NotNull ResourceLocation recipesId) {
 		this.recipesId = recipesId;
 		return this;

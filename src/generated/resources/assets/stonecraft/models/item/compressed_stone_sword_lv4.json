@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/handheld",
   "textures": {
-    "layer0": "stonecraft:item/compressed_stone_sword_lv4"
+    "layer0": "stonecraft:item/weapon/compressed_stone_sword_lv4"
   }
 }

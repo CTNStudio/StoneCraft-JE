@@ -25,11 +25,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
-import static ctn.stonecraft.StoneCraft.SC_ID;
+import static ctn.stonecraft.core.StoneCraft.ID;
 import static ctn.stonecraft.datagen.ScTags.ScItems.*;
-import static ctn.stonecraft.datagen.recipe.RecipeTool.*;
+import static ctn.stonecraft.datagen.recipe.RecipeUtil.*;
 import static net.minecraft.tags.ItemTags.STONE_CRAFTING_MATERIALS;
-import static net.minecraft.world.item.Items.LEATHER;
 
 /**
  * @author 尽
@@ -37,26 +36,26 @@ import static net.minecraft.world.item.Items.LEATHER;
 @SuppressWarnings("UnusedReturnValue")
 public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 	private final String modId;
-	
+
 	public RecipeProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
 		super(output, registries);
-		modId = SC_ID;
+		modId = ID;
 	}
-	
+
 	//region 静态方法
 	public static @NotNull Criterion<InventoryChangeTrigger.TriggerInstance> has(MinMaxBounds.@NotNull Ints count, @NotNull ItemLike item) {
 		return net.minecraft.data.recipes.RecipeProvider.has(count, item);
 	}
-	
+
 	public static @NotNull Criterion<InventoryChangeTrigger.TriggerInstance> has(@NotNull TagKey<Item> tag) {
 		return net.minecraft.data.recipes.RecipeProvider.has(tag);
 	}
-	
+
 	public static @NotNull Criterion<InventoryChangeTrigger.TriggerInstance> has(@NotNull ItemLike itemLike) {
 		return net.minecraft.data.recipes.RecipeProvider.has(itemLike);
 	}
 	//endregion
-	
+
 	// 注册
 	@Override
 	protected void buildRecipes(@NotNull RecipeOutput output) {
@@ -85,7 +84,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 		unpackedPackedRecipes(output, Items.TUFF, ScItems.COMPRESSED_TUFF);
 		unpackedPackedRecipes(output, Items.DRIPSTONE_BLOCK, ScItems.COMPRESSED_DRIPSTONE_BLOCK);
 		//endregion
-		
+
 		//region 工具
 		//region 多功能工具
 		versatileTool(output, null,
@@ -125,7 +124,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 				ScItems.COMPRESSED_STONE_SHOVEL_LV5,
 				ScItems.COMPRESSED_STONE_HOE_LV5);
 		//endregion
-		
+
 		//region 剑
 		swordRecipe(output, ScItems.COMPRESSED_STONE_SWORD_LV1,
 				Items.STONE_SWORD,
@@ -166,7 +165,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 						.pattern(" * "));
 		//endregion
 		//endregion
-		
+
 		//region 斧
 		axeRecipe(output, ScItems.COMPRESSED_STONE_AXE_LV1,
 				Items.STONE_AXE,
@@ -184,7 +183,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 				ScItems.COMPRESSED_STONE_AXE_LV4,
 				getIngredient(COMPRESSED_STONE_MATERIAL_LV5));
 		//endregion
-		
+
 		//region 镐
 		pickaxeRecipe(output, ScItems.COMPRESSED_STONE_PICKAXE_LV1,
 				Items.STONE_PICKAXE,
@@ -202,7 +201,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 				ScItems.COMPRESSED_STONE_PICKAXE_LV4,
 				getIngredient(COMPRESSED_STONE_MATERIAL_LV5));
 		//endregion
-		
+
 		//region 锹
 		shovelRecipe(output, ScItems.COMPRESSED_STONE_SHOVEL_LV1,
 				Items.STONE_SHOVEL,
@@ -220,7 +219,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 				ScItems.COMPRESSED_STONE_SHOVEL_LV4,
 				getIngredient(COMPRESSED_STONE_MATERIAL_LV5));
 		//endregion
-		
+
 		//region 锄
 		hoeRecipe(output, ScItems.COMPRESSED_STONE_HOE_LV1,
 				Items.STONE_HOE,
@@ -239,7 +238,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 				getIngredient(COMPRESSED_STONE_MATERIAL_LV5));
 		//endregion
 		//endregion
-		
+
 		//region 食物
 		coreFrameRecipe(output, RecipeCategory.FOOD, ScItems.STONE_APPLE, getIngredient(ItemTags.STONE_CRAFTING_MATERIALS), getIngredient(Items.APPLE), "stone_food");
 		coreFrameRecipe(output, RecipeCategory.FOOD, ScItems.STONE_BREAD, getIngredient(ItemTags.STONE_CRAFTING_MATERIALS), getIngredient(Items.BREAD), "stone_food");
@@ -252,14 +251,14 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 		coreFrameRecipe(output, RecipeCategory.FOOD, ScItems.STONE_GLOW_BERRIES, getIngredient(ItemTags.STONE_CRAFTING_MATERIALS), getIngredient(Items.GLOW_BERRIES), "stone_food");
 		coreFrameRecipe(output, RecipeCategory.FOOD, ScItems.STONE_COOKED_BEEF, getIngredient(ItemTags.STONE_CRAFTING_MATERIALS), getIngredient(Items.COOKED_BEEF), "stone_food");
 		coreFrameRecipe(output, RecipeCategory.FOOD, ScItems.STONE_SWEET_BERRIES, getIngredient(ItemTags.STONE_CRAFTING_MATERIALS), getIngredient(Items.SWEET_BERRIES), "stone_food");
-		
+
 		coreFrameRecipe(output, RecipeCategory.FOOD, ScItems.STONICKERS, getIngredient(COMPRESSED_STONE_MATERIAL_LV1), getIngredient(Items.COOKIE), "stone_food");
 		coreFrameRecipe(output, RecipeCategory.FOOD, ScItems.COMPRESSED_STONICKERS_LV1, getIngredient(COMPRESSED_STONE_MATERIAL_LV2), getIngredient(Items.COOKIE), "stone_food");
 		coreFrameRecipe(output, RecipeCategory.FOOD, ScItems.COMPRESSED_STONICKERS_LV2, getIngredient(COMPRESSED_STONE_MATERIAL_LV3), getIngredient(Items.COOKIE), "stone_food");
 		coreFrameRecipe(output, RecipeCategory.FOOD, ScItems.COMPRESSED_STONICKERS_LV3, getIngredient(COMPRESSED_STONE_MATERIAL_LV4), getIngredient(Items.COOKIE), "stone_food");
 		coreFrameRecipe(output, RecipeCategory.FOOD, ScItems.COMPRESSED_STONICKERS_LV4, getIngredient(COMPRESSED_STONE_MATERIAL_LV5), getIngredient(Items.COOKIE), "stone_food");
 		packedRecipes(output, RecipeCategory.FOOD, ScItems.COMPRESSED_STONICKERS_LV5, ScItems.COMPRESSED_STONICKERS_LV4, "stone_food");
-		
+
 		{
 			var item = ScItems.STONE_HODGEPODGE;
 			ShapelessBuilder.shaped(getLocation(getItemName(item)), RecipeCategory.FOOD, new ItemStack(item.get()))
@@ -274,9 +273,9 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 					.basicUnlockedBy()
 					.save(output);
 		}
-		
+
 		//endregion
-		
+
 		//region 材料
 		ShapedBuilder.basicBuilder(output, ScItems.STONE_STAR, RecipeCategory.MISC,
 				shapedBuilder -> shapedBuilder
@@ -290,7 +289,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 						.pattern("**")
 						.pattern("**"));
 		//endregion
-		
+
 		//region 盔甲
 		helmetRecipe(output, ScItems.STONE_HELMET,
 				null,
@@ -304,7 +303,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 		bootsRecipe(output, ScItems.STONE_BOOTS,
 				null,
 				getIngredient(ItemTags.STONE_CRAFTING_MATERIALS));
-		
+
 		helmetRecipe(output, ScItems.COMPRESSED_STONE_HELMET_LV1,
 				ScItems.STONE_HELMET,
 				getIngredient(COMPRESSED_STONE_MATERIAL_LV1));
@@ -317,7 +316,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 		bootsRecipe(output, ScItems.COMPRESSED_STONE_BOOTS_LV1,
 				ScItems.STONE_BOOTS,
 				getIngredient(COMPRESSED_STONE_MATERIAL_LV1));
-		
+
 		helmetRecipe(output, ScItems.COMPRESSED_STONE_HELMET_LV2,
 				ScItems.COMPRESSED_STONE_HELMET_LV1,
 				getIngredient(COMPRESSED_STONE_MATERIAL_LV2));
@@ -330,7 +329,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 		bootsRecipe(output, ScItems.COMPRESSED_STONE_BOOTS_LV2,
 				ScItems.COMPRESSED_STONE_BOOTS_LV1,
 				getIngredient(COMPRESSED_STONE_MATERIAL_LV2));
-		
+
 		helmetRecipe(output, ScItems.COMPRESSED_STONE_HELMET_LV3,
 				getIngredient(ScItems.COMPRESSED_OBSIDIAN.get(1)), "helmet");
 		chestplateRecipe(output, ScItems.COMPRESSED_STONE_CHESTPLATE_LV3,
@@ -339,7 +338,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 				getIngredient(ScItems.COMPRESSED_OBSIDIAN.get(1)), "leggings");
 		bootsRecipe(output, ScItems.COMPRESSED_STONE_BOOTS_LV3,
 				getIngredient(ScItems.COMPRESSED_OBSIDIAN.get(1)), "boots");
-		
+
 		helmetRecipe(output, ScItems.COMPRESSED_STONE_HELMET_LV4,
 				ScItems.COMPRESSED_STONE_HELMET_LV3,
 				getIngredient(ScItems.COMPRESSED_OBSIDIAN.get(2)));
@@ -352,7 +351,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 		bootsRecipe(output, ScItems.COMPRESSED_STONE_BOOTS_LV4,
 				ScItems.COMPRESSED_STONE_BOOTS_LV3,
 				getIngredient(ScItems.COMPRESSED_OBSIDIAN.get(2)));
-		
+
 		helmetRecipe(output, ScItems.COMPRESSED_STONE_HELMET_LV5,
 				ScItems.COMPRESSED_STONE_HELMET_LV4,
 				getIngredient(ScItems.COMPRESSED_OBSIDIAN.get(3)));
@@ -366,7 +365,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 				ScItems.COMPRESSED_STONE_BOOTS_LV4,
 				getIngredient(ScItems.COMPRESSED_OBSIDIAN.get(3)));
 		//endregion
-		
+
 		//region 方块
 		ShapedBuilder.basicBuilder(output, ScItems.GLOWINGOBSIDIAN, RecipeCategory.BUILDING_BLOCKS, shapedBuilder -> shapedBuilder
 				.define('*', Tags.Items.OBSIDIANS)
@@ -377,7 +376,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 				.pattern("BAB")
 				.setRecipesId(getLocation("%s_%d".formatted(getItemName(ScItems.GLOWINGOBSIDIAN), 1))
 				));
-		
+
 		ShapedBuilder.basicBuilder(output, ScItems.GLOWINGOBSIDIAN, RecipeCategory.BUILDING_BLOCKS, shapedBuilder -> shapedBuilder
 				.define('*', Tags.Items.OBSIDIANS)
 				.define('A', Items.REDSTONE)
@@ -388,7 +387,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 				.setRecipesId(getLocation("%s_%d".formatted(getItemName(ScItems.GLOWINGOBSIDIAN), 2))
 				));
 		//endregion
-		
+
 		slingshot(output, Tiers.WOOD.getRepairIngredient(), getIngredient(Tags.Items.LEATHERS), ScItems.WOOD_SLINGSHOT);
 		slingshot(output, Tiers.STONE.getRepairIngredient(), getIngredient(Tags.Items.LEATHERS), ScItems.STONE_SLINGSHOT);
 		slingshot(output, Tiers.IRON.getRepairIngredient(), getIngredient(Tags.Items.LEATHERS), ScItems.IRON_SLINGSHOT);
@@ -396,7 +395,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 		slingshot(output, Tiers.DIAMOND.getRepairIngredient(), getIngredient(Tags.Items.LEATHERS), ScItems.DIAMOND_SLINGSHOT);
 		netheriteSmithing(output, ScItems.DIAMOND_SLINGSHOT.asItem(), RecipeCategory.COMBAT, ScItems.NETHERITE_SLINGSHOT.asItem());
 		//endregion
-		
+
 		//region 切石机配方
 		stonecutting(output, STONE_CRAFTING_MATERIALS, RecipeCategory.COMBAT, ScItems.STONE_NUGGET, 2);
 		stonecutting(output, getIngredient(Items.STONE, Items.DEEPSLATE), RecipeCategory.COMBAT, ScItems.STONE_NUGGET, 4);
@@ -406,7 +405,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 				RecipeCategory.COMBAT, ScItems.STONE_NUGGET, 16);
 		//endregion
 	}
-	
+
 	//region 切石机合成预制方法
 	public void stonecutting(RecipeOutput output, Ingredient ingredient, RecipeCategory category, ItemLike result, int count, String id) {
 		StringBuilder prefix = new StringBuilder();
@@ -419,11 +418,11 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 				.unlockedBy(itemName, has(result))
 				.save(output, modId + ":" + prefix + "via_" + itemName + id);
 	}
-	
+
 	public void stonecutting(RecipeOutput output, Ingredient ingredient, RecipeCategory category, ItemLike result, int count) {
 		stonecutting(output, ingredient, category, result, count, "");
 	}
-	
+
 	public void stonecutting(RecipeOutput output, TagKey<Item> tag, RecipeCategory category, ItemLike result, int count, String id) {
 		String itemName = getItemName(result);
 		SingleItemRecipeBuilder
@@ -431,12 +430,12 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 				.unlockedBy(itemName, has(result))
 				.save(output, modId + ":" + "tag_" + tag.location().getNamespace() + "_via_" + itemName + id);
 	}
-	
+
 	public void stonecutting(RecipeOutput output, TagKey<Item> tag, RecipeCategory category, ItemLike result, int count) {
 		stonecutting(output, tag, category, result, count, "");
 	}
 	//endregion
-	
+
 	//region 工作台合成预制方法
 	public void slingshot(RecipeOutput output, Ingredient manager, Ingredient manager2, ItemLike result) {
 		ShapedBuilder.basicBuilder(output, result, RecipeCategory.COMBAT, "slingshot", shapedBuilder -> shapedBuilder
@@ -447,11 +446,11 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 				.define('G', manager2)
 		);
 	}
-	
+
 	public @NotNull ShapedBuilder buildingRecipeBuilder(ItemLike result) {
 		return buildingRecipeBuilder(result, 1);
 	}
-	
+
 	protected void helmetRecipe(RecipeOutput recipeOutput, ItemLike result, ItemLike manager, Ingredient material) {
 		final RecipeCategory category = RecipeCategory.TOOLS;
 		final String group = "helmet";
@@ -461,7 +460,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 		}
 		packedRecipes(recipeOutput, category, result, manager, group);
 	}
-	
+
 	protected void chestplateRecipe(RecipeOutput recipeOutput, ItemLike result, ItemLike manager, Ingredient material) {
 		final RecipeCategory category = RecipeCategory.TOOLS;
 		final String group = "chestplate";
@@ -471,7 +470,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 		}
 		packedRecipes(recipeOutput, category, result, manager, group);
 	}
-	
+
 	protected void leggingsRecipe(RecipeOutput recipeOutput, ItemLike result, ItemLike manager, Ingredient material) {
 		final RecipeCategory category = RecipeCategory.TOOLS;
 		final String group = "leggings";
@@ -481,7 +480,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 		}
 		packedRecipes(recipeOutput, category, result, manager, group);
 	}
-	
+
 	protected void bootsRecipe(RecipeOutput recipeOutput, ItemLike result, ItemLike manager, Ingredient material) {
 		final RecipeCategory category = RecipeCategory.TOOLS;
 		final String group = "boots";
@@ -491,7 +490,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 		}
 		packedRecipes(recipeOutput, category, result, manager, group);
 	}
-	
+
 	protected void versatileTool(RecipeOutput output,
 			ItemLike upOneLevel, ItemLike result, ItemLike axe, ItemLike pickaxe, ItemLike shovel, ItemLike hoe) {
 		final String groupName = "versatileTool";
@@ -510,14 +509,14 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 		}
 		packedRecipes(output, RecipeCategory.TOOLS, result, upOneLevel, groupName);
 	}
-	
+
 	protected <I extends ItemLike> void unpackedPackedRecipes(RecipeOutput output, ItemLike packed, List<I> unpacked) {
 		ItemLike unpackedItem = unpacked.getFirst();
 		final RecipeCategory category = RecipeCategory.BUILDING_BLOCKS;
 		unpackedPackedRecipes(output, category, unpackedItem, null, category, packed, null);
 		unpackedPackedRecipes(output, unpacked);
 	}
-	
+
 	/**
 	 * 创建一个解压和压缩的配方
 	 */
@@ -527,7 +526,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 		this.packedRecipes(recipeOutput, packedCategory, unpacked, packed, packedGroup);
 		this.unpackedRecipes(recipeOutput, unpackedCategory, packed, unpacked, unpackedGroup);
 	}
-	
+
 	/**
 	 * 创建解压配方
 	 */
@@ -540,7 +539,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 				.group(recipeGroup)
 				.save(recipeOutput);
 	}
-	
+
 	protected <I extends ItemLike> void unpackedPackedRecipes(RecipeOutput output, List<I> material) {
 		final RecipeCategory category = RecipeCategory.BUILDING_BLOCKS;
 		for (int i = 0, deferredBlocksSize = material.size() - 1; i < deferredBlocksSize; i++) {
@@ -549,7 +548,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 			unpackedPackedRecipes(output, category, unpacked, null, category, packed, null);
 		}
 	}
-	
+
 	/**
 	 * 矿物块类型压缩配方
 	 */
@@ -564,7 +563,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 				.group(recipeGroup)
 				.save(recipeOutput);
 	}
-	
+
 	protected void swordRecipe(RecipeOutput recipeOutput, ItemLike result, ItemLike manager, Ingredient material) {
 		final RecipeCategory category = RecipeCategory.TOOLS;
 		final String group = "sword";
@@ -574,7 +573,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 		}
 		packedRecipes(recipeOutput, category, result, manager, group);
 	}
-	
+
 	/**
 	 * 创建剑配方
 	 */
@@ -585,7 +584,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 		swordFramePattern(builder);
 		requires(builder, Map.of('#', requires, 'O', secondaryRequires), group, recipeOutput);
 	}
-	
+
 	protected void axeRecipe(RecipeOutput recipeOutput, ItemLike result, ItemLike manager, Ingredient material) {
 		final RecipeCategory category = RecipeCategory.TOOLS;
 		final String group = "axe";
@@ -595,7 +594,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 		}
 		packedRecipes(recipeOutput, category, result, manager, group);
 	}
-	
+
 	/**
 	 * 创建斧头配方
 	 */
@@ -606,7 +605,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 		axeFramePattern(builder);
 		requires(builder, Map.of('#', requires, 'O', secondaryRequires), group, recipeOutput);
 	}
-	
+
 	protected void pickaxeRecipe(RecipeOutput recipeOutput, ItemLike result, ItemLike manager, Ingredient material) {
 		final RecipeCategory category = RecipeCategory.TOOLS;
 		final String group = "pickaxe";
@@ -616,7 +615,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 		}
 		packedRecipes(recipeOutput, category, result, manager, group);
 	}
-	
+
 	/**
 	 * 创建镐类配方
 	 */
@@ -627,7 +626,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 		pickaxeFramePattern(builder);
 		requires(builder, Map.of('#', requires, 'O', secondaryRequires), group, recipeOutput);
 	}
-	
+
 	protected void shovelRecipe(RecipeOutput recipeOutput, ItemLike result, ItemLike manager, Ingredient material) {
 		final RecipeCategory category = RecipeCategory.TOOLS;
 		final String group = "shove";
@@ -637,7 +636,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 		}
 		packedRecipes(recipeOutput, category, result, manager, group);
 	}
-	
+
 	/**
 	 * 创建锹类配方
 	 */
@@ -648,7 +647,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 		shovelFramePattern(builder);
 		requires(builder, Map.of('#', requires, 'O', secondaryRequires), group, recipeOutput);
 	}
-	
+
 	protected void hoeRecipe(RecipeOutput recipeOutput, ItemLike result, ItemLike manager, Ingredient material) {
 		final RecipeCategory category = RecipeCategory.TOOLS;
 		final String group = "hoe";
@@ -658,7 +657,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 		}
 		packedRecipes(recipeOutput, category, result, manager, group);
 	}
-	
+
 	/**
 	 * 创建锄类配方
 	 */
@@ -670,7 +669,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 		hoeFramePattern(builder);
 		requires(builder, Map.of('#', requires, 'O', secondaryRequires), group, recipeOutput);
 	}
-	
+
 	protected void armorRecipe(RecipeOutput output,
 			ItemLike helmet,
 			ItemLike chestplate,
@@ -690,7 +689,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 			bootsRecipe(output, helmet, requires, "boots");
 		}
 	}
-	
+
 	/**
 	 * 创建头盔配方
 	 */
@@ -701,7 +700,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 		helmetPattern(builder);
 		requires(builder, Map.of('#', requires), group, recipeOutput);
 	}
-	
+
 	/**
 	 * 创建胸甲配方
 	 */
@@ -712,7 +711,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 		chestplatePattern(builder);
 		requires(builder, Map.of('#', requires), group, recipeOutput);
 	}
-	
+
 	/**
 	 * 创建护腿配方
 	 */
@@ -723,7 +722,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 		leggingsPattern(builder);
 		requires(builder, Map.of('#', requires), group, recipeOutput);
 	}
-	
+
 	/**
 	 * 创建靴子配方
 	 */
@@ -734,15 +733,15 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 		bootsPattern(builder);
 		requires(builder, Map.of('#', requires), group, recipeOutput);
 	}
-	
+
 	private @NotNull ResourceLocation getLocation(String unpackedName) {
 		return ResourceLocation.fromNamespaceAndPath(modId, unpackedName);
 	}
-	
+
 	public static @NotNull String getItemName(ItemLike itemLike) {
 		return net.minecraft.data.recipes.RecipeProvider.getItemName(itemLike);
 	}
-	
+
 	/**
 	 * 创建盾牌配方
 	 */
@@ -753,7 +752,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 		shieldPattern(builder);
 		requires(builder, Map.of('#', requires, 'O', secondaryRequires), group, recipeOutput);
 	}
-	
+
 	/**
 	 * 创建核心框架配方（如末影箱）
 	 */
@@ -764,7 +763,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 		coreFramePattern(builder);
 		requires(builder, Map.of('#', requires, 'O', secondaryRequires), group, recipeOutput);
 	}
-	
+
 	/**
 	 * 创建环形配方（如箱子）
 	 */
@@ -775,7 +774,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 		circularFramePattern(builder);
 		requires(builder, Map.of('#', requires), group, recipeOutput);
 	}
-	
+
 	/**
 	 * 创建解压配方
 	 */
@@ -788,7 +787,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 				.group(recipeGroup)
 				.save(recipeOutput);
 	}
-	
+
 	/**
 	 * 矿物块类型压缩配方
 	 */
@@ -799,7 +798,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 		fullWrapPattern(builder);
 		requires(builder, Map.of('#', requires), recipeGroup, recipeOutput);
 	}
-	
+
 	/**
 	 * 创建3x3全包裹式配方（如矿物块）
 	 */
@@ -810,7 +809,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 		fullWrapPattern(builder);
 		requires(builder, Map.of('#', requires), group, recipeOutput);
 	}
-	
+
 	/**
 	 * 创建一个单格物品的配方
 	 */
@@ -823,7 +822,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 				.group(group)
 				.save(recipeOutput);
 	}
-	
+
 	private void buildingBlockRecipe(RecipeOutput recipeOutput,
 			ItemLike singlePlate,
 			ItemLike stair,
@@ -861,7 +860,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 			singleRecipe(recipeOutput, RecipeCategory.BUILDING_BLOCKS, button, 1, requires, "button");
 		}
 	}
-	
+
 	/**
 	 * 创建楼梯配方
 	 */
@@ -871,7 +870,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 		stairPattern(builder);
 		requires(builder, Map.of('#', requires), group, recipeOutput);
 	}
-	
+
 	/**
 	 * 创建栅栏配方
 	 */
@@ -881,7 +880,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 		fencePattern(builder);
 		requires(builder, Map.of('#', requires, 'O', secondaryRequires), group, recipeOutput);
 	}
-	
+
 	/**
 	 * 创建栅栏门配方
 	 */
@@ -891,7 +890,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 		fenceDoorPattern(builder);
 		requires(builder, Map.of('#', requires, 'O', secondaryRequires), group, recipeOutput);
 	}
-	
+
 	/**
 	 * 创建活板门配方
 	 */
@@ -901,7 +900,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 		trapdoorPattern(builder);
 		requires(builder, Map.of('#', requires), group, recipeOutput);
 	}
-	
+
 	/**
 	 * 创建台阶配方
 	 */
@@ -911,12 +910,12 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 		singlePlatePattern(builder);
 		requires(builder, Map.of('#', requires), group, recipeOutput);
 	}
-	
+
 	public @NotNull ShapedBuilder buildingRecipeBuilder(ItemLike result, int count) {
 		ResourceLocation location = getLocation(getItemName(result));
 		return ShapedBuilder.shaped(location, RecipeCategory.BUILDING_BLOCKS, result, count);
 	}
-	
+
 	/**
 	 * 创建门配方
 	 */
@@ -926,7 +925,7 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 		singlePlatePattern(builder);
 		requires(builder, Map.of('#', requires), group, recipeOutput);
 	}
-	
+
 	/**
 	 * 创建压力板配方
 	 */

@@ -11,7 +11,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-import static ctn.stonecraft.StoneCraft.SC_ID;
+import static ctn.stonecraft.core.StoneCraft.ID;
 
 public class ScAdvancementProvider extends AdvancementProvider {
 	public ScAdvancementProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries, ExistingFileHelper existingFileHelper) {
@@ -19,8 +19,8 @@ public class ScAdvancementProvider extends AdvancementProvider {
 				new ScAdvancementGenerator()
 		));
 	}
-	
+
 	public static @NotNull AdvancementHolder createPlaceholder(String location) {
-		return AdvancementSubProvider.createPlaceholder("%s:location".formatted(SC_ID));
+		return AdvancementSubProvider.createPlaceholder("%s:location".formatted(ID));
 	}
 }

@@ -1,7 +1,7 @@
 package ctn.stonecraft.datagen.advancement;
 
 import ctn.stonecraft.common.trigger.CountCriterionTrigger;
-import ctn.stonecraft.datagen.tool.AdvancementProviderTool;
+import ctn.stonecraft.datagen.util.AdvancementProviderUtil;
 import ctn.stonecraft.init.ScItems;
 import net.minecraft.advancements.*;
 import net.minecraft.advancements.critereon.ConsumeItemTrigger;
@@ -19,9 +19,9 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Optional;
 import java.util.function.Consumer;
 
-import static ctn.stonecraft.StoneCraft.path;
+import static ctn.stonecraft.core.StoneCraft.modRL;
 import static ctn.stonecraft.datagen.ScTags.ScItems.ADVANCEMENT_ROOT_ITEM;
-import static ctn.stonecraft.datagen.tool.AdvancementProviderTool.*;
+import static ctn.stonecraft.datagen.util.AdvancementProviderUtil.*;
 import static net.neoforged.neoforge.common.data.AdvancementProvider.AdvancementGenerator;
 
 public final class ScAdvancementGenerator implements AdvancementGenerator {
@@ -46,7 +46,7 @@ public final class ScAdvancementGenerator implements AdvancementGenerator {
 			ScItems.COMPRESSED_STONICKERS_LV4.get(),
 			ScItems.COMPRESSED_STONICKERS_LV5.get()
 	};
-	
+
 	public static final String TEN_STONES_EATEN         = "ten_stones_eaten";
 	public static final String GET_COBBLESTONE          = "get_cobblestone";
 	public static final String GET_BLACKSTONE           = "get_blackstone";
@@ -66,7 +66,7 @@ public final class ScAdvancementGenerator implements AdvancementGenerator {
 	public static final String STONE_EATER              = "stone_eater";
 	public static final String EPIC_STONE_FEAST         = "epic_stone_feast";
 	public static final String VILLAGER_MASON_ON_TRADES = "villager_mason_on_trades";
-	
+
 	@Override
 	public void generate(HolderLookup.@NotNull Provider provider,
 			@NotNull Consumer<AdvancementHolder> saver,
@@ -75,7 +75,7 @@ public final class ScAdvancementGenerator implements AdvancementGenerator {
 								Items.COBBLESTONE,
 								titleText(STONE_ADVENTURE_ID),
 								descriptionText(STONE_ADVENTURE_ID),
-								path("textures/block/compressed_cobblestone/lv1.png"),
+								modRL("textures/block/compressed_cobblestone/lv1.png"),
 								AdvancementType.TASK,
 								true,
 								true,
@@ -153,7 +153,7 @@ public final class ScAdvancementGenerator implements AdvancementGenerator {
 						.addCriterion(GET_ANDESITE, obtainItem(matchItems(Items.ANDESITE)))
 						.addCriterion(GET_DIORITE, obtainItem(matchItems(Items.DIORITE))),
 				saver, saAdvancementId(OUR_TRIO));
-		
+
 		/// 食石
 		AdvancementHolder edibleStoneFood = save(
 				Advancement.Builder.advancement().parent(root).display(
@@ -167,7 +167,7 @@ public final class ScAdvancementGenerator implements AdvancementGenerator {
 						false
 				).addCriterion("eater_stone_food", ConsumeItemTrigger.TriggerInstance.usedItem(matchItems(ALL_STONE_FOOD))),
 				saver, saAdvancementId(STONE_EATER));
-		
+
 		Advancement.Builder edibleTenStoneFoodBuilder = Advancement.Builder.advancement().parent(edibleStoneFood).display(
 				ScItems.STONE_HODGEPODGE,
 				titleText(saAdvancementId(TEN_STONES_EATEN)),
@@ -177,17 +177,17 @@ public final class ScAdvancementGenerator implements AdvancementGenerator {
 				true,
 				true,
 				false);
-		
-		ResourceLocation tenStonesEaten = path(TEN_STONES_EATEN);
+
+		ResourceLocation tenStonesEaten = modRL(TEN_STONES_EATEN);
 		for (int i = 0; i < 10; i++) {
 			edibleTenStoneFoodBuilder.addCriterion(String.valueOf(i),
 					CountCriterionTrigger.TriggerInstance.createCriterion(
 							tenStonesEaten,
 							matchItems(ALL_STONE_FOOD)));
 		}
-		
+
 		AdvancementHolder edibleTenStoneFood = save(edibleTenStoneFoodBuilder, saver, saAdvancementId(TEN_STONES_EATEN));
-		
+
 		Advancement.Builder edibleAllStoneFoodBuilder = Advancement.Builder.advancement().parent(edibleTenStoneFood).display(
 				ScItems.STONICKERS,
 				titleText(saAdvancementId(EPIC_STONE_FEAST)),
@@ -197,14 +197,14 @@ public final class ScAdvancementGenerator implements AdvancementGenerator {
 				true,
 				true,
 				false);
-		
+
 		for (Item item : ALL_STONE_FOOD) {
 			edibleAllStoneFoodBuilder.addCriterion(item.getDescriptionId(),
 					ConsumeItemTrigger.TriggerInstance.usedItem(matchItems(item)));
 		}
-		
+
 		AdvancementHolder edibleAllStoneFood = save(edibleAllStoneFoodBuilder, saver, saAdvancementId(EPIC_STONE_FEAST));
-		
+
 		AdvancementHolder villagerMasonOnTrades;
 		{
 			CompoundTag nbt = new CompoundTag();
@@ -228,8 +228,8 @@ public final class ScAdvancementGenerator implements AdvancementGenerator {
 					saver, saAdvancementId(VILLAGER_MASON_ON_TRADES));
 		}
 	}
-	
+
 	public static @NotNull String saAdvancementId(String id) {
-		return AdvancementProviderTool.advancementId(STONE_ADVENTURE_ID, id);
+		return AdvancementProviderUtil.advancementId(STONE_ADVENTURE_ID, id);
 	}
 }

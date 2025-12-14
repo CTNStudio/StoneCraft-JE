@@ -21,11 +21,11 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.IntStream;
 
-import static ctn.stonecraft.StoneCraft.SC_ID;
+import static ctn.stonecraft.core.StoneCraft.ID;
 import static ctn.stonecraft.init.ScEnchantments.*;
 
 public class ScCreativeModeTabs {
-	public static final DeferredRegister<CreativeModeTab>                PROJECT_MOON_TAB_REGISTER = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, SC_ID);
+	public static final DeferredRegister<CreativeModeTab> REGISTER = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, ID);
 	public static final DeferredHolder<CreativeModeTab, CreativeModeTab> BLOCK                     =
 			register("block", (name) -> registerCreativeModeTab(
 					name,
@@ -54,7 +54,7 @@ public class ScCreativeModeTabs {
 						registerBlockListItems(output, ScItems.COMPRESSED_TUFF);
 						registerBlockListItems(output, ScItems.COMPRESSED_DRIPSTONE_BLOCK);
 					}, () -> ScItems.COMPRESSED_COBBLESTONE.getFirst().get().getDefaultInstance()));
-	
+
 	public static final DeferredHolder<CreativeModeTab, CreativeModeTab> ITEM =
 			register("item", (name) -> registerCreativeModeTab(
 					name,
@@ -70,44 +70,44 @@ public class ScCreativeModeTabs {
 			register("tool", (name) -> registerCreativeModeTab(
 					name,
 					(parameters, output) -> {
-						
+
 						output.accept(ScItems.STONE_HELMET);
 						output.accept(ScItems.STONE_CHESTPLATE);
 						output.accept(ScItems.STONE_LEGGINGS);
 						output.accept(ScItems.STONE_BOOTS);
-						
+
 						output.accept(ScItems.VERSATILE_STONE_TOOL);
 						output.accept(ScItems.VERSATILE_COMPRESSED_STONE_TOOL_LV1);
 						output.accept(ScItems.VERSATILE_COMPRESSED_STONE_TOOL_LV2);
 						output.accept(ScItems.VERSATILE_COMPRESSED_STONE_TOOL_LV3);
 						output.accept(ScItems.VERSATILE_COMPRESSED_STONE_TOOL_LV4);
 						output.accept(ScItems.VERSATILE_COMPRESSED_STONE_TOOL_LV5);
-						
+
 						output.accept(ScItems.COMPRESSED_STONE_AXE_LV1);
 						output.accept(ScItems.COMPRESSED_STONE_AXE_LV2);
 						output.accept(ScItems.COMPRESSED_STONE_AXE_LV3);
 						output.accept(ScItems.COMPRESSED_STONE_AXE_LV4);
 						output.accept(ScItems.COMPRESSED_STONE_AXE_LV5);
-						
+
 						output.accept(ScItems.COMPRESSED_STONE_PICKAXE_LV1);
 						output.accept(ScItems.COMPRESSED_STONE_PICKAXE_LV2);
 						output.accept(ScItems.COMPRESSED_STONE_PICKAXE_LV3);
 						output.accept(ScItems.COMPRESSED_STONE_PICKAXE_LV4);
 						output.accept(ScItems.COMPRESSED_STONE_PICKAXE_LV5);
-						
+
 						output.accept(ScItems.COMPRESSED_STONE_SHOVEL_LV1);
 						output.accept(ScItems.COMPRESSED_STONE_SHOVEL_LV2);
 						output.accept(ScItems.COMPRESSED_STONE_SHOVEL_LV3);
 						output.accept(ScItems.COMPRESSED_STONE_SHOVEL_LV4);
 						output.accept(ScItems.COMPRESSED_STONE_SHOVEL_LV5);
-						
+
 						output.accept(ScItems.COMPRESSED_STONE_HOE_LV1);
 						output.accept(ScItems.COMPRESSED_STONE_HOE_LV2);
 						output.accept(ScItems.COMPRESSED_STONE_HOE_LV3);
 						output.accept(ScItems.COMPRESSED_STONE_HOE_LV4);
 						output.accept(ScItems.COMPRESSED_STONE_HOE_LV5);
 					}, () -> ScItems.COMPRESSED_STONE_SWORD_LV1.get().getDefaultInstance()));
-	
+
 	public static final DeferredHolder<CreativeModeTab, CreativeModeTab> FOOD =
 			register("food", (name) -> registerCreativeModeTab(
 					name,
@@ -131,7 +131,7 @@ public class ScCreativeModeTabs {
 						output.accept(ScItems.COMPRESSED_STONICKERS_LV4);
 						output.accept(ScItems.COMPRESSED_STONICKERS_LV5);
 					}, () -> ScItems.STONE_APPLE.get().getDefaultInstance()));
-	
+
 	public static final DeferredHolder<CreativeModeTab, CreativeModeTab> COMBAT_SUPPLIES =
 			register("combat_supplies", (name) -> registerCreativeModeTab(
 					name,
@@ -141,49 +141,49 @@ public class ScCreativeModeTabs {
 						output.accept(ScItems.COMPRESSED_STONE_SWORD_LV3);
 						output.accept(ScItems.COMPRESSED_STONE_SWORD_LV4);
 						output.accept(ScItems.COMPRESSED_STONE_SWORD_LV5);
-						
+
 						output.accept(ScItems.ULTIMATE_COMPRESSED_STONE_SWORD_ACT1);
 						output.accept(ScItems.ULTIMATE_COMPRESSED_STONE_SWORD_ACT2);
 						output.accept(ScItems.ULTIMATE_COMPRESSED_STONE_SWORD_ACT3);
-						
+
 						output.accept(ScItems.WOOD_SLINGSHOT);
 						output.accept(ScItems.STONE_SLINGSHOT);
 						output.accept(ScItems.IRON_SLINGSHOT);
 						output.accept(ScItems.GOLD_SLINGSHOT);
 						output.accept(ScItems.DIAMOND_SLINGSHOT);
 						output.accept(ScItems.NETHERITE_SLINGSHOT);
-						
+
 						output.accept(ScItems.COMPRESSED_STONE_HELMET_LV1);
 						output.accept(ScItems.COMPRESSED_STONE_CHESTPLATE_LV1);
 						output.accept(ScItems.COMPRESSED_STONE_LEGGINGS_LV1);
 						output.accept(ScItems.COMPRESSED_STONE_BOOTS_LV1);
-						
+
 						output.accept(ScItems.COMPRESSED_STONE_HELMET_LV2);
 						output.accept(ScItems.COMPRESSED_STONE_CHESTPLATE_LV2);
 						output.accept(ScItems.COMPRESSED_STONE_LEGGINGS_LV2);
 						output.accept(ScItems.COMPRESSED_STONE_BOOTS_LV2);
-						
+
 						output.accept(ScItems.COMPRESSED_STONE_HELMET_LV3);
 						output.accept(ScItems.COMPRESSED_STONE_CHESTPLATE_LV3);
 						output.accept(ScItems.COMPRESSED_STONE_LEGGINGS_LV3);
 						output.accept(ScItems.COMPRESSED_STONE_BOOTS_LV3);
-						
+
 						output.accept(ScItems.COMPRESSED_STONE_HELMET_LV4);
 						output.accept(ScItems.COMPRESSED_STONE_CHESTPLATE_LV4);
 						output.accept(ScItems.COMPRESSED_STONE_LEGGINGS_LV4);
 						output.accept(ScItems.COMPRESSED_STONE_BOOTS_LV4);
-						
+
 						output.accept(ScItems.COMPRESSED_STONE_HELMET_LV5);
 						output.accept(ScItems.COMPRESSED_STONE_CHESTPLATE_LV5);
 						output.accept(ScItems.COMPRESSED_STONE_LEGGINGS_LV5);
 						output.accept(ScItems.COMPRESSED_STONE_BOOTS_LV5);
 					}, () -> ScItems.STONE_APPLE.get().getDefaultInstance()));
-	
+
 	private static void outputEnchantmentBook(CreativeModeTab.ItemDisplayParameters parameters, CreativeModeTab.Output output, ResourceKey<Enchantment> stoneDestroyer) {
 		parameters.holders().lookup(Registries.ENCHANTMENT).ifPresent(lookup ->
 				generateEnchantmentBookTypesAllLevels(output, lookup, stoneDestroyer));
 	}
-	
+
 	private static void generateEnchantmentBookTypesAllLevels(CreativeModeTab.Output output,
 			HolderLookup<Enchantment> enchantments,
 			ResourceKey<Enchantment> resourceKey) {
@@ -192,17 +192,17 @@ public class ScCreativeModeTabs {
 						.mapToObj(i -> EnchantedBookItem.createForEnchantment(new EnchantmentInstance(reference, i))))
 				.forEach(output::accept);
 	}
-	
+
 	public static void registerBlockListItems(CreativeModeTab.Output output, List<DeferredItem<BlockItem>> listItem) {
 		for (DeferredItem<BlockItem> item : listItem) {
 			output.accept(item);
 		}
 	}
-	
+
 	public static DeferredHolder<CreativeModeTab, CreativeModeTab> register(String name, Function<String, CreativeModeTab.Builder> builder) {
-		return PROJECT_MOON_TAB_REGISTER.register(name, builder.apply(name)::build);
+		return REGISTER.register(name, builder.apply(name)::build);
 	}
-	
+
 	public static CreativeModeTab.Builder registerCreativeModeTab(
 			String name,
 			CreativeModeTab.DisplayItemsGenerator displayItemsGenerator,
@@ -210,19 +210,19 @@ public class ScCreativeModeTabs {
 			ResourceKey<CreativeModeTab> withTabsBefore) {
 		return registerCreativeModeTab(name, displayItemsGenerator, icon).withTabsBefore(withTabsBefore);
 	}
-	
+
 	public static CreativeModeTab.Builder registerCreativeModeTab(
 			String name,
 			CreativeModeTab.DisplayItemsGenerator displayItemsGenerator,
 			Supplier<ItemStack> icon) {
 		return registerCreativeModeTab(name, displayItemsGenerator).icon(icon);
 	}
-	
+
 	public static CreativeModeTab.Builder registerCreativeModeTab(String name, CreativeModeTab.DisplayItemsGenerator displayItemsGenerator) {
 		return CreativeModeTab.builder().title(getComponent(name)).displayItems(displayItemsGenerator);
 	}
-	
+
 	private static @NotNull MutableComponent getComponent(String imagePath) {
-		return Component.translatable("itemGroup." + SC_ID + "." + imagePath);
+		return Component.translatable("itemGroup." + ID + "." + imagePath);
 	}
 }

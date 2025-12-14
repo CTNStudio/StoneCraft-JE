@@ -15,13 +15,13 @@ import java.util.EnumMap;
 import java.util.List;
 import java.util.function.Supplier;
 
-import static ctn.stonecraft.StoneCraft.SC_ID;
-import static ctn.stonecraft.StoneCraft.path;
+import static ctn.stonecraft.core.StoneCraft.ID;
+import static ctn.stonecraft.core.StoneCraft.modRL;
 import static ctn.stonecraft.datagen.ScTags.ScItems.*;
 
 public class ScArmorMaterials {
-	public static final DeferredRegister<ArmorMaterial> ARMOR_MATERIALS = DeferredRegister.create(Registries.ARMOR_MATERIAL, SC_ID);
-	
+	public static final DeferredRegister<ArmorMaterial> REGISTER = DeferredRegister.create(Registries.ARMOR_MATERIAL, ID);
+
 	public static final Holder<ArmorMaterial> LV0 = register(
 			"stone", 1, 4, 5, 2, 9, 0.5F, 0.05F,
 			() -> Ingredient.of(ItemTags.STONE_CRAFTING_MATERIALS)
@@ -46,7 +46,7 @@ public class ScArmorMaterials {
 			"compressed_stone_lv5", 6, 9, 10, 6, 14, 5.4F, 0.4F,
 			() -> Ingredient.of(COMPRESSED_STONE_MATERIAL_LV5)
 	);
-	
+
 	private static Holder<ArmorMaterial> register(
 			String name,
 			int boots,
@@ -58,7 +58,7 @@ public class ScArmorMaterials {
 			float knockbackResistance,
 			Supplier<Ingredient> repairIngredient
 	) {
-		List<ArmorMaterial.Layer> list = List.of(new ArmorMaterial.Layer(path(name)));
+		List<ArmorMaterial.Layer> list = List.of(new ArmorMaterial.Layer(modRL(name)));
 		EnumMap<ArmorItem.Type, Integer> enumMap = Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
 			map.put(ArmorItem.Type.BOOTS, boots);
 			map.put(ArmorItem.Type.LEGGINGS, leggings);
@@ -67,7 +67,7 @@ public class ScArmorMaterials {
 		});
 		return register(name, enumMap, enchantmentValue, SoundEvents.ARMOR_EQUIP_CHAIN, toughness, knockbackResistance, repairIngredient, list);
 	}
-	
+
 	private static Holder<ArmorMaterial> register(
 			String name,
 			EnumMap<ArmorItem.Type, Integer> defense,
@@ -79,11 +79,11 @@ public class ScArmorMaterials {
 			List<ArmorMaterial.Layer> layers
 	) {
 		EnumMap<ArmorItem.Type, Integer> enummap = new EnumMap<>(ArmorItem.Type.class);
-		
+
 		for (ArmorItem.Type armoritem$type : ArmorItem.Type.values()) {
 			enummap.put(armoritem$type, defense.get(armoritem$type));
 		}
-		return ARMOR_MATERIALS.register(name, () -> new ArmorMaterial(enummap, enchantmentValue, equipSound, repairIngridient, layers, toughness, knockbackResistance));
+		return REGISTER.register(name, () -> new ArmorMaterial(enummap, enchantmentValue, equipSound, repairIngridient, layers, toughness, knockbackResistance));
 	}
-	
+
 }

@@ -1,6 +1,0 @@
-{
-  "parent": "stonecraft:item/netherite_slingshot",
-  "textures": {
-    "layer0": "stonecraft:item/netherite_slingshot_3"
-  }
-}
