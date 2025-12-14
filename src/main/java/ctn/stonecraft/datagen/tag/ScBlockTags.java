@@ -360,6 +360,8 @@ public class ScBlockTags extends BlockTagsProvider {
 		tag(Tags.Blocks.OBSIDIANS).add(
 				ScBlocks.GLOWINGOBSIDIAN.get()
 		);
+
+    tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ScBlocks.STONE_CRAFTING_TABLE.get()); //石质工作台
 	}
 
 	protected final void addTags(TagKey<Block> tagKey, List<DeferredBlock<Block>> blocks) {

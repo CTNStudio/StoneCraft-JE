@@ -46,6 +46,7 @@ public class ScBlockModel extends BlockStateProvider {
 		blockItems(ScBlocks.COMPRESSED_BASALT);
 		blockItems(ScBlocks.COMPRESSED_TUFF);
 		blockItems(ScBlocks.COMPRESSED_DRIPSTONE_BLOCK);
+    blockItems(ScBlocks.STONE_CRAFTING_TABLE); //石质工作台
 	}
 
 	private void blockItems(DeferredBlock<Block> blockItem) {
