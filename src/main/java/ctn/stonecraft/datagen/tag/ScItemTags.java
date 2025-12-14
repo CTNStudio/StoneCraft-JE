@@ -1,6 +1,7 @@
 package ctn.stonecraft.datagen.tag;
 
 import ctn.stonecraft.datagen.ScTags;
+import ctn.stonecraft.init.ScBlocks;
 import ctn.stonecraft.init.ScItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -16,6 +17,7 @@ import javax.annotation.CheckForNull;
 import java.util.concurrent.CompletableFuture;
 
 import static ctn.stonecraft.core.StoneCraft.ID;
+import static ctn.stonecraft.datagen.ScTags.ScBlocks.FUNCTIONAL_BLOCKS;
 import static ctn.stonecraft.datagen.ScTags.ScItems.*;
 import static net.minecraft.tags.ItemTags.*;
 import static net.minecraft.world.item.Items.*;
@@ -438,7 +440,10 @@ public class ScItemTags extends ItemTagsProvider {
 				ScItems.NETHERITE_SLINGSHOT.get()
 		);
 
-
 		tag(ItemTags.DURABILITY_ENCHANTABLE).addTag(SLINGSHOT);
+    // 石质工作台
+    copy(ScTags.ScBlocks.FUNCTIONAL_BLOCKS, ScTags.ScItems.FUNCTIONAL_BLOCKS);
+    tag(ScTags.ScItems.FUNCTIONAL_BLOCKS).add(ScItems.STONE_CRAFTING_TABLE.get());
+
 	}
 }
