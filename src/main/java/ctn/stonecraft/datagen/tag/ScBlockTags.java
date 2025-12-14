@@ -1,5 +1,6 @@
 package ctn.stonecraft.datagen.tag;
 
+import ctn.stonecraft.datagen.ScTags;
 import ctn.stonecraft.init.ScBlocks;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -361,7 +362,9 @@ public class ScBlockTags extends BlockTagsProvider {
 				ScBlocks.GLOWINGOBSIDIAN.get()
 		);
 
-    tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ScBlocks.STONE_CRAFTING_TABLE.get()); //石质工作台
+    //石质工作台
+    addTags(FUNCTIONAL_BLOCKS, ScBlocks.STONE_CRAFTING_TABLE);
+    addTags(BlockTags.MINEABLE_WITH_PICKAXE, ScBlocks.STONE_CRAFTING_TABLE);
 	}
 
 	protected final void addTags(TagKey<Block> tagKey, List<DeferredBlock<Block>> blocks) {

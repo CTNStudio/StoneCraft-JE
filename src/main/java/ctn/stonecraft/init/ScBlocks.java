@@ -48,7 +48,6 @@ public class ScBlocks {
   // region 工具方块
 
   // 石质工作台
-
   public static final DeferredBlock<Block> STONE_CRAFTING_TABLE = registerBlock("stone_crafting_table", StoneCraftingTable::new, BlockBehaviour.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).strength(2.5f).sound(SoundType.STONE));
 
   //endregion

@@ -37,7 +37,10 @@ public class ScTags {
 		public static final TagKey<Item> COMPRESSED_BLOCK_LV4 = createTag("compressed_lv/lv4");
 		public static final TagKey<Item> COMPRESSED_BLOCK_LV5 = createTag("compressed_lv/lv5");
 
-		// 压缩石材料
+    // 功能方块
+    public static final TagKey<Item> FUNCTIONAL_BLOCKS = createTag("functional_blocks");
+
+    // 压缩石材料
 		public static final TagKey<Item> COMPRESSED_STONE_MATERIAL     = createTag("material/compressed_stone");
 		public static final TagKey<Item> COMPRESSED_STONE_MATERIAL_LV1 = createTag("material/compressed_stone_lv1");
 		public static final TagKey<Item> COMPRESSED_STONE_MATERIAL_LV2 = createTag("material/compressed_stone_lv2");
@@ -180,6 +183,8 @@ public class ScTags {
 
 		public static final TagKey<Block> MINEABLE_WITH_VERSATILE = createTag("mineable/versatile");
 
+    // 功能方块
+    public static final TagKey<Block> FUNCTIONAL_BLOCKS = createTag("functional_blocks");
 		// 可以掉落石粒的方块
 		public static final TagKey<Block> FALL_AWAY_STONE_NUGGET        = createTag("fall_away_stone_nugget");
 		// 可以受到 石力挖掘 附魔影响的方块

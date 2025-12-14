@@ -61,7 +61,7 @@ public class ScItems {
   //region 功能方块
 
   // 石质工作台
-  public static final DeferredItem<BlockItem> STONE_CRAFTING_TABLE = REGISTER.registerSimpleBlockItem("stone_crafting_table", ScBlocks.STONE_CRAFTING_TABLE);
+  public static final DeferredItem<BlockItem> STONE_CRAFTING_TABLE = registerBlockItem(ScBlocks.STONE_CRAFTING_TABLE);
   //endregion
 
 	//region 工具
