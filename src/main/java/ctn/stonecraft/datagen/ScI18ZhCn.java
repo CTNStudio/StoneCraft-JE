@@ -22,6 +22,7 @@ import net.neoforged.neoforge.registries.DeferredItem;
 import java.util.List;
 import java.util.function.Supplier;
 
+import static ctn.stonecraft.common.blocks.stone_crafting_table.StoneCraftingTable.STONE_CRAFTING_TABLE_CONTAINER_TITLE;
 import static ctn.stonecraft.core.StoneCraft.ID;
 import static ctn.stonecraft.common.entity.projectile.stone_nugget.AbsStoneNuggetProjectile.SHOW_SKIP_RESULT_OTHERS_TEXT;
 import static ctn.stonecraft.common.entity.projectile.stone_nugget.AbsStoneNuggetProjectile.SHOW_SKIP_RESULT_OWNER_TEXT;
@@ -64,6 +65,7 @@ public class ScI18ZhCn extends LanguageProvider {
 		addBlocks(ScBlocks.COMPRESSED_BASALT, "玄武岩");
 		addBlocks(ScBlocks.COMPRESSED_TUFF, "凝灰岩");
 		addBlocks(ScBlocks.COMPRESSED_DRIPSTONE_BLOCK, "滴水石");
+    add(ScBlocks.STONE_CRAFTING_TABLE.get(), "石质工作台");
 		//endregion
 
 		//region 创造模式分页面
@@ -196,6 +198,10 @@ public class ScI18ZhCn extends LanguageProvider {
 		add(SHOW_SKIP_RESULT_OWNER_TEXT, "你的成绩是：%d次！");
 		add(SHOW_SKIP_RESULT_OTHERS_TEXT, "%s的成绩是：%d次！");
 		//endregion
+
+    //region 菜单
+    add(STONE_CRAFTING_TABLE_CONTAINER_TITLE, "石质工作台");
+    //endregion
 	}
 
 	//region 工具

@@ -41,6 +41,7 @@ public class ScBlockLootTable extends BlockLootSubProvider {
 		dropSelf(ScBlocks.COMPRESSED_BASALT);
 		dropSelf(ScBlocks.COMPRESSED_TUFF);
 		dropSelf(ScBlocks.COMPRESSED_DRIPSTONE_BLOCK);
+    this.dropSelf(ScBlocks.STONE_CRAFTING_TABLE.get());     //石质工作台
 	}
 
 	@Override

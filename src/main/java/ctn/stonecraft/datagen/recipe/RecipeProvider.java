@@ -386,6 +386,13 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 				.pattern("ABA")
 				.setRecipesId(getLocation("%s_%d".formatted(getItemName(ScItems.GLOWINGOBSIDIAN), 2))
 				));
+
+    //石质工作台
+    ShapedBuilder.basicBuilder(output, ScItems.STONE_CRAFTING_TABLE, RecipeCategory.BUILDING_BLOCKS, shapedBuilder -> shapedBuilder
+        .define('A', Tags.Items.COBBLESTONES)
+        .pattern("AA")
+        .pattern("AA")
+    );
 		//endregion
 
 		slingshot(output, Tiers.WOOD.getRepairIngredient(), getIngredient(Tags.Items.LEATHERS), ScItems.WOOD_SLINGSHOT);
@@ -404,7 +411,8 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 						Items.OBSIDIAN, ScItems.GLOWINGOBSIDIAN, Items.CRYING_OBSIDIAN),
 				RecipeCategory.COMBAT, ScItems.STONE_NUGGET, 16);
 		//endregion
-	}
+
+  }
 
 	//region 切石机合成预制方法
 	public void stonecutting(RecipeOutput output, Ingredient ingredient, RecipeCategory category, ItemLike result, int count, String id) {

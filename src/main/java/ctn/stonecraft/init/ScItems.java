@@ -58,6 +58,12 @@ public class ScItems {
 	public static final List<DeferredItem<BlockItem>> COMPRESSED_DRIPSTONE_BLOCK   = registerGradeBlockItem(ScBlocks.COMPRESSED_DRIPSTONE_BLOCK);
 	//endregion
 
+  //region 功能方块
+
+  // 石质工作台
+  public static final DeferredItem<BlockItem> STONE_CRAFTING_TABLE = REGISTER.registerSimpleBlockItem("stone_crafting_table", ScBlocks.STONE_CRAFTING_TABLE);
+  //endregion
+
 	//region 工具
 
 	public static final DeferredItem<Item> COMPRESSED_STONE_AXE_LV1 = registerDiggerItem("compressed_stone_axe_lv1", AxeItem::new, ScTiers.LV1, 5, -3.2f);

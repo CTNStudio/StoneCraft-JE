@@ -1,9 +1,13 @@
 package ctn.stonecraft.init;
 
+import ctn.stonecraft.common.blocks.stone_crafting_table.StoneCraftingTable;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CryingObsidianBlock;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
+import net.minecraft.world.level.material.MapColor;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.jetbrains.annotations.NotNull;
@@ -40,6 +44,14 @@ public class ScBlocks {
 	public static final List<DeferredBlock<Block>> COMPRESSED_BASALT            = registerGradeBlock("compressed_basalt_lv", Blocks.BASALT, 1.25f, 4.2f);
 	public static final List<DeferredBlock<Block>> COMPRESSED_TUFF              = registerGradeBlock("compressed_tuff_lv", Blocks.TUFF, 1.5f, 6);
 	public static final List<DeferredBlock<Block>> COMPRESSED_DRIPSTONE_BLOCK   = registerGradeBlock("compressed_dripstone_block_lv", Blocks.DRIPSTONE_BLOCK, 1.5f, 6);
+
+  // region 工具方块
+
+  // 石质工作台
+
+  public static final DeferredBlock<Block> STONE_CRAFTING_TABLE = registerBlock("stone_crafting_table", StoneCraftingTable::new, BlockBehaviour.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).strength(2.5f).sound(SoundType.STONE));
+
+  //endregion
 
 	private static <B extends Block> List<DeferredBlock<B>> registerGradeBlock(@NotNull String name, Block block,
 			Function<BlockBehaviour.Properties, ? extends B> func, float destroyTime, float explosionResistance) {
