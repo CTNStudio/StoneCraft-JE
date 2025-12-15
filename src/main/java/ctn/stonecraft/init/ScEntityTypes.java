@@ -1,5 +1,6 @@
 package ctn.stonecraft.init;
 
+import ctn.stonecraft.common.entity.projectile.stone_nugget.flint.FlintProjectile;
 import ctn.stonecraft.common.entity.projectile.stone_nugget.AbsStoneNuggetProjectile;
 import ctn.stonecraft.common.entity.projectile.stone_nugget.BasicStoneNuggetProjectile;
 import ctn.stonecraft.common.entity.projectile.stone_nugget.StoneNuggetProjectileBuilder;
@@ -14,6 +15,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.function.BiFunction;
 import java.util.function.Supplier;
 
+import static ctn.stonecraft.common.entity.projectile.stone_nugget.flint.FlintProjectile.FLINT_BASE_NUGGET_PROPS;
 import static ctn.stonecraft.core.StoneCraft.ID;
 
 /**
@@ -35,7 +37,20 @@ public class ScEntityTypes {
 			registerDefaultStoneNugget("stone_nugget", (entityType, level) ->
 					new BasicStoneNuggetProjectile(new StoneNuggetProjectileBuilder(() -> ScItems.STONE_NUGGET.get()), entityType, level, null));
 
-	/**
+  /**
+   * 燧石弹射物
+   */
+  public static final Supplier<EntityType<FlintProjectile>> FLINT_PROJECTILE =
+    registerDefaultStoneNugget("flint_projectile", (entityType, level) ->
+      new FlintProjectile(
+        new StoneNuggetProjectileBuilder(FLINT_BASE_NUGGET_PROPS),  // 使用兼容原版Item的构建器
+        entityType,
+        level,
+        null
+      )
+    );
+
+  /**
 	 * 注册投射物实体类型（使用自定义构建器）
 	 *
 	 * @param name     实体名称

@@ -30,14 +30,12 @@ import java.util.function.Function;
  * 实现了可以作为弹射物使用的物品的基本功能
  */
 public abstract class AbsStoneNuggetItem extends Item implements ProjectileItem {
-	private final float                                                                                             damage;
-	private final float                                                                                             weight;
-	private final double                                                                                            gravity;
+  private final BaseNuggetProps                                                                                   baseNuggetProps;      //石粒基本属性
 	private       StoneNuggetProjectileBuilder                                                                      stoneNuggetProperties;
 	private final Function<AbsStoneNuggetItem, StoneNuggetProjectileBuilder>                                        stoneNuggetPropertiesProvider;
 	private final Function4<StoneNuggetProjectileBuilder, LivingEntity, Level, ItemStack, AbsStoneNuggetProjectile> playerProjectileFactory;
 	private final Function4<StoneNuggetProjectileBuilder, Position, Level, ItemStack, AbsStoneNuggetProjectile>     positionProjectileFactory;
-	
+
 	/**
 	 * 构造函数，创建一个新的石粒物品
 	 *
@@ -46,15 +44,13 @@ public abstract class AbsStoneNuggetItem extends Item implements ProjectileItem 
 	 */
 	public AbsStoneNuggetItem(Item.Properties properties, StoneNuggetBuilder stoneNuggetBuilder) {
 		super(properties);
-		this.damage                        = stoneNuggetBuilder.damage;
-		this.weight                        = stoneNuggetBuilder.weight;
-		this.gravity                       = stoneNuggetBuilder.gravity;
+		this.baseNuggetProps                       = stoneNuggetBuilder.nuggetProps;
 		this.stoneNuggetPropertiesProvider = stoneNuggetBuilder.snpProperties;
 		this.playerProjectileFactory       = stoneNuggetBuilder.projectilePlayer;
 		this.positionProjectileFactory     = stoneNuggetBuilder.projectilePosition;
 		DispenserBlock.registerProjectileBehavior(this);
 	}
-	
+
 	/**
 	 * 将物品作为弹射物实体创建
 	 *
@@ -70,7 +66,7 @@ public abstract class AbsStoneNuggetItem extends Item implements ProjectileItem 
 		projectile.setItem(stack);
 		return projectile;
 	}
-	
+
 	/**
 	 * 处理物品的使用事件
 	 *
@@ -96,12 +92,12 @@ public abstract class AbsStoneNuggetItem extends Item implements ProjectileItem 
 			AbsStoneNuggetProjectile projectile = createProjectile(level, player, itemstack, hand);
 			level.addFreshEntity(projectile);
 		}
-		
+
 		player.awardStat(Stats.ITEM_USED.get(this));
 		itemstack.consume(1, player);
 		return InteractionResultHolder.sidedSuccess(itemstack, level.isClientSide());
 	}
-	
+
 	/**
 	 * 根据玩家创建弹射物
 	 *
@@ -125,7 +121,7 @@ public abstract class AbsStoneNuggetItem extends Item implements ProjectileItem 
 		projectile.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, velocity, getInaccuracy(velocity));
 		return projectile;
 	}
-	
+
 	/**
 	 * 获取发射的偏移
 	 *
@@ -135,7 +131,7 @@ public abstract class AbsStoneNuggetItem extends Item implements ProjectileItem 
 	protected float getInaccuracy(float velocity) {
 		return 1.5f + 1 * (velocity * 0.1f);
 	}
-	
+
 	/**
 	 * 获取玩家发射的弹射物实例
 	 *
@@ -147,7 +143,7 @@ public abstract class AbsStoneNuggetItem extends Item implements ProjectileItem 
 		getStoneNuggetProperties();
 		return playerProjectileFactory.apply(stoneNuggetProperties, shooter, level, weapon);
 	}
-	
+
 	/**
 	 * 获取指定位置的弹射物实例
 	 *
@@ -159,7 +155,7 @@ public abstract class AbsStoneNuggetItem extends Item implements ProjectileItem 
 		getStoneNuggetProperties();
 		return positionProjectileFactory.apply(stoneNuggetProperties, pos, level, weapon);
 	}
-	
+
 	/**
 	 * 获取石粒投射物属性，如果尚未初始化则进行初始化
 	 */
@@ -168,34 +164,32 @@ public abstract class AbsStoneNuggetItem extends Item implements ProjectileItem 
 			stoneNuggetProperties = stoneNuggetPropertiesProvider.apply(this);
 		}
 	}
-	
+
 	//region get方法
-	
+
 	/**
 	 * 获取石粒的基础伤害值
 	 *
 	 * @return 基础伤害值
 	 */
-	public float getDamage() {
-		return damage;
-	}
-	
+	public float Damage() { return this.baseNuggetProps.damage; }
+
 	/**
 	 * 获取石粒的重量
 	 *
 	 * @return 重量值
 	 */
-	public float getWeight() {
-		return weight;
+	public float Weight() {
+		return this.baseNuggetProps.weight;
 	}
-	
+
 	/**
 	 * 获取石粒的重力值
 	 *
 	 * @return 重力值
 	 */
-	public double getGravity() {
-		return gravity;
+	public double Gravity() {
+		return this.baseNuggetProps.gravity;
 	}
 	//endregion
 }

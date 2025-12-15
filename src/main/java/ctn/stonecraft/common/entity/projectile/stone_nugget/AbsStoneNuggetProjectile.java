@@ -86,30 +86,31 @@ public abstract class AbsStoneNuggetProjectile extends ThrowableItemProjectile {
 	@Nullable
 	private ItemStack          weapon;
 	private AbsStoneNuggetItem projectileItem;
+  protected boolean SkipAllowed = true; //是否允许打水漂
 	// endregion
 
 	// region 构造方法
 	public AbsStoneNuggetProjectile(StoneNuggetProjectileBuilder stoneNuggetProjectileBuilder,
-			EntityType<AbsStoneNuggetProjectile> entityType, Position pos, Level level, @Nullable ItemStack weapon) {
+			EntityType<? extends AbsStoneNuggetProjectile> entityType, Position pos, Level level, @Nullable ItemStack weapon) {
 		this(stoneNuggetProjectileBuilder, entityType, pos.x(), pos.y(), pos.z(), level, weapon);
 	}
 
 	public AbsStoneNuggetProjectile(StoneNuggetProjectileBuilder stoneNuggetProjectileBuilder,
-			EntityType<AbsStoneNuggetProjectile> entityType, double x, double y, double z, Level level, @Nullable ItemStack weapon) {
+			EntityType<? extends AbsStoneNuggetProjectile> entityType, double x, double y, double z, Level level, @Nullable ItemStack weapon) {
 		super(entityType, x, y, z, level);
 		this.weapon = weapon;
 		init(stoneNuggetProjectileBuilder, weapon);
 	}
 
 	public AbsStoneNuggetProjectile(StoneNuggetProjectileBuilder stoneNuggetProjectileBuilder,
-			EntityType<AbsStoneNuggetProjectile> entityType, Level level, @Nullable ItemStack weapon) {
+			EntityType<? extends AbsStoneNuggetProjectile> entityType, Level level, @Nullable ItemStack weapon) {
 		super(entityType, level);
 		this.weapon = weapon;
 		init(stoneNuggetProjectileBuilder, weapon);
 	}
 
 	public AbsStoneNuggetProjectile(StoneNuggetProjectileBuilder stoneNuggetProjectileBuilder,
-			EntityType<AbsStoneNuggetProjectile> entityType, LivingEntity shooter, Level level, @Nullable ItemStack weapon) {
+			EntityType<? extends AbsStoneNuggetProjectile> entityType, LivingEntity shooter, Level level, @Nullable ItemStack weapon) {
 		super(entityType, shooter, level);
 		this.weapon = weapon;
 		init(stoneNuggetProjectileBuilder, weapon);
@@ -133,10 +134,10 @@ public abstract class AbsStoneNuggetProjectile extends ThrowableItemProjectile {
 			maxBounceAngle                  = stoneNuggetProjectileBuilder.maxBounceAngle;
 			minBounceAngle                  = stoneNuggetProjectileBuilder.minBounceAngle;
 			minBounceSpeed                  = stoneNuggetProjectileBuilder.minBounceSpeed;
-			projectileItem                  = stoneNuggetProjectileBuilder.projectileItem.get();
-			basicDamage                     = projectileItem.getDamage();
-			basicGravity                    = projectileItem.getGravity();
-			basicWeight                     = projectileItem.getWeight();
+			projectileItem                  = (stoneNuggetProjectileBuilder.projectileItem == null) ? null : stoneNuggetProjectileBuilder.projectileItem.get();
+			basicDamage                     = stoneNuggetProjectileBuilder.baseNuggetProps.damage;
+			basicGravity                    = stoneNuggetProjectileBuilder.baseNuggetProps.gravity;
+			basicWeight                     = stoneNuggetProjectileBuilder.baseNuggetProps.weight;
 		}
 		if (weapon != null && (weapon.getItem() instanceof Slingshot slingshot)) {
 			damageBonus      = slingshot.getDamageBonus();
@@ -219,9 +220,9 @@ public abstract class AbsStoneNuggetProjectile extends ThrowableItemProjectile {
 		} else {
 			projectileItem = ScItems.STONE_NUGGET.get();
 		}
-		basicDamage  = getProjectileItem().getDamage();
-		basicGravity = getProjectileItem().getGravity();
-		basicWeight  = getProjectileItem().getWeight();
+		basicDamage  = getProjectileItem().Damage();
+		basicGravity = getProjectileItem().Gravity();
+		basicWeight  = getProjectileItem().Weight();
 	}
 	// endregion
 
@@ -237,7 +238,9 @@ public abstract class AbsStoneNuggetProjectile extends ThrowableItemProjectile {
 		Level level = this.level();
 
 		// 进行打水漂逻辑
-		handleSkipLogic(level);
+    if(SkipAllowed){
+      handleSkipLogic(level);
+    }
 
 		checkEntityCollisions();
 

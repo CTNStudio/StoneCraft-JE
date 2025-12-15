@@ -1,7 +1,7 @@
 package ctn.stonecraft.common.item.slingshot;
 
+import ctn.stonecraft.common.entity.projectile.ProjectileFactoryRegistry;
 import ctn.stonecraft.common.entity.projectile.stone_nugget.AbsStoneNuggetProjectile;
-import ctn.stonecraft.common.item.stone_nugget.AbsStoneNuggetItem;
 import ctn.stonecraft.datagen.ScTags;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -35,13 +35,12 @@ import static ctn.stonecraft.init.ScItems.STONE_NUGGET;
  */
 public class Slingshot extends ProjectileWeaponItem {
 	public static final Predicate<ItemStack> STONE_NUGGET_ONLY = itemStack -> itemStack.is(ScTags.ScItems.STONE_NUGGET);
-	
 	private final Tier  tier;
 	private final int   chargingTime;     // 满蓄力所需时间
 	private final float damageMultiplier; // 伤害系数
 	private final float damageBonus;      // 伤害加成
 	private final float speedBonus;  // 速度系数
-	
+
 	/**
 	 * 构造函数，创建一个新的弹弓物品
 	 *
@@ -56,7 +55,7 @@ public class Slingshot extends ProjectileWeaponItem {
 		this.damageBonus      = slingshotBuilder.damageBonus;
 		this.speedBonus       = slingshotBuilder.speedBonus;
 	}
-	
+
 	/**
 	 * @deprecated
 	 */
@@ -65,7 +64,7 @@ public class Slingshot extends ProjectileWeaponItem {
 	public @NotNull Predicate<ItemStack> getAllSupportedProjectiles() {
 		return STONE_NUGGET_ONLY;
 	}
-	
+
 	/**
 	 * 获取支持的弹药物品谓词
 	 *
@@ -75,7 +74,7 @@ public class Slingshot extends ProjectileWeaponItem {
 	public @NotNull Predicate<ItemStack> getAllSupportedProjectiles(@NotNull ItemStack stack) {
 		return STONE_NUGGET_ONLY;
 	}
-	
+
 	/**
 	 * 获取弹弓的默认射程
 	 *
@@ -85,7 +84,7 @@ public class Slingshot extends ProjectileWeaponItem {
 	public int getDefaultProjectileRange() {
 		return 7;
 	}
-	
+
 	/**
 	 * 发射弹射物的具体实现
 	 *
@@ -111,7 +110,7 @@ public class Slingshot extends ProjectileWeaponItem {
 		velocity += velocity * speedBonus;
 		projectile.shootFromRotation(shooter, shooter.getXRot(), shooter.getYRot() + angle, 0.0F, velocity, inaccuracy);
 	}
-	
+
 	/**
 	 * 创建弹射物
 	 *
@@ -125,13 +124,12 @@ public class Slingshot extends ProjectileWeaponItem {
 	@Override
 	protected @NotNull AbsStoneNuggetProjectile createProjectile(@NotNull Level level, @NotNull LivingEntity shooter,
 			@NotNull ItemStack weapon, ItemStack ammo, boolean isCrit) {
-		AbsStoneNuggetItem item = ammo.getItem() instanceof AbsStoneNuggetItem item1 ? item1 : STONE_NUGGET.get();
-		AbsStoneNuggetProjectile projectile = item.getProjectile(level, shooter, weapon);
-		projectile.setDamageBonus(getDamageBonus());
-		projectile.setDamageMultiplier(getDamageMultiplier());
-		return projectile;
+      AbsStoneNuggetProjectile projectile = ProjectileFactoryRegistry.getFacory(ammo.getItem()).create(level, shooter, weapon, ammo);
+      projectile.setDamageBonus(getDamageBonus());
+      projectile.setDamageMultiplier(getDamageMultiplier());
+      return projectile;
 	}
-	
+
 	/**
 	 * @deprecated
 	 */
@@ -140,10 +138,9 @@ public class Slingshot extends ProjectileWeaponItem {
 	public AbstractArrow customArrow(@NotNull AbstractArrow arrow, @NotNull ItemStack projectileStack, @NotNull ItemStack weaponStack) {
 		return null;
 	}
-	
+
 	/**
 	 * 获取创造模式下的默认弹药
-	 *
 	 * @param player               玩家（可能为空）
 	 * @param projectileWeaponItem 弹射武器物品
 	 * @return 默认的石子物品
@@ -154,19 +151,19 @@ public class Slingshot extends ProjectileWeaponItem {
 			return STONE_NUGGET.get().getDefaultInstance();
 		}
 		Inventory inventory = player.getInventory();
-		
+
 		// 先检查副手，再检查主手物品栏
 		return Stream.concat(inventory.offhand.stream(), inventory.items.stream())
 				.filter(stack -> stack.is(ScTags.ScItems.STONE_NUGGET))
 				.findFirst()
 				.orElse(STONE_NUGGET.get().getDefaultInstance());
 	}
-	
-	
+
+
 	public float getDamageMultiplier() {
 		return damageMultiplier;
 	}
-	
+
 	/**
 	 * 获取弹弓的伤害倍数
 	 *
@@ -175,30 +172,30 @@ public class Slingshot extends ProjectileWeaponItem {
 	public float getDamageBonus() {
 		return damageBonus;
 	}
-	
+
 	@Override
 	public @NotNull InteractionResultHolder<ItemStack> use(@NotNull Level level, Player player, @NotNull InteractionHand hand) {
 		ItemStack itemstack = player.getItemInHand(hand);
 		boolean flag = !player.getProjectile(itemstack).isEmpty();
-		
+
 		if (!player.hasInfiniteMaterials() && !flag) {
 			return InteractionResultHolder.fail(itemstack);
 		}
 		player.startUsingItem(hand);
 		return InteractionResultHolder.consume(itemstack);
-		
+
 	}
-	
+
 	@Override
 	public @NotNull UseAnim getUseAnimation(@NotNull ItemStack stack) {
 		return UseAnim.BOW;
 	}
-	
+
 	@Override
 	public int getUseDuration(@NotNull ItemStack stack, @NotNull LivingEntity entity) {
 		return 72000;
 	}
-	
+
 	@Override
 	public void releaseUsing(@NotNull ItemStack stack, @NotNull Level level, @NotNull LivingEntity entityLiving, int timeLeft) {
 		if (!(entityLiving instanceof Player player)) {
@@ -220,7 +217,7 @@ public class Slingshot extends ProjectileWeaponItem {
 			this.shoot(serverlevel, player, player.getUsedItemHand(), stack, list,
 					f, 1.0F, isCrit, null);
 		}
-		
+
 		level.playSound(
 				null,
 				player.getX(),
@@ -233,33 +230,33 @@ public class Slingshot extends ProjectileWeaponItem {
 		);
 		player.awardStat(Stats.ITEM_USED.get(this));
 	}
-	
+
 	public Tier getTier() {
 		return this.tier;
 	}
-	
+
 	@Override
 	public int getEnchantmentValue() {
 		return this.tier.getEnchantmentValue();
 	}
-	
+
 	@Override
 	public boolean isValidRepairItem(ItemStack toRepair, ItemStack repair) {
 		return this.tier.getRepairIngredient().test(repair) || super.isValidRepairItem(toRepair, repair);
 	}
-	
+
 	public float getPowerForTime(int charge) {
 		if (charge <= 0) {
 			return 0.0f;
 		}
-		
+
 		float power = ((float) charge / chargingTime);
 		if (power > 1.0f) {
 			power = 1.0f;
 		}
 		return power;
 	}
-	
+
 	/**
 	 * 获取弹弓的蓄力时间
 	 *
