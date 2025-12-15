@@ -46,8 +46,18 @@ public class ScBlockModel extends BlockStateProvider {
 		blockItems(ScBlocks.COMPRESSED_BASALT);
 		blockItems(ScBlocks.COMPRESSED_TUFF);
 		blockItems(ScBlocks.COMPRESSED_DRIPSTONE_BLOCK);
-    blockItems(ScBlocks.STONE_CRAFTING_TABLE); //石质工作台
+
+    cubeColumn(ScBlocks.STONE_CRAFTING_TABLE); //石质工作台
 	}
+
+  private void cubeColumn(DeferredBlock<Block> blockItem){
+    Block block = blockItem.get();
+    simpleBlockWithItem(block, models().cubeColumn(
+      name(block),
+      blockTexture(block),
+      blockTexture(block).withSuffix("_top")
+    ));
+  }
 
 	private void blockItems(DeferredBlock<Block> blockItem) {
 		Block block = blockItem.get();

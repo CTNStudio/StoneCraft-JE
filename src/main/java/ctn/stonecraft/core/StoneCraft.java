@@ -17,7 +17,7 @@ import org.apache.logging.log4j.Logger;
 
 @Mod(StoneCraft.ID)
 public class StoneCraft {
-	public static final  String ID = "stonecraft";
+	public static final String ID = "stonecraft";
 	public static final Logger LOGGER = LogManager.getLogger(ID);
 
 	public StoneCraft(IEventBus eventBus, ModContainer container) {
