@@ -20,6 +20,7 @@ public class RegistrarClientRendering {
 	@SubscribeEvent
 	public static void onClientSetup(FMLClientSetupEvent event) {
 		EntityRenderers.register(ScEntityTypes.STONE_NUGGET.get(), ThrownItemRenderer::new);
+    EntityRenderers.register(ScEntityTypes.FLINT_PROJECTILE.get(), ThrownItemRenderer::new); //燧石
 	}
 
 	/** 注册粒子渲染器 */

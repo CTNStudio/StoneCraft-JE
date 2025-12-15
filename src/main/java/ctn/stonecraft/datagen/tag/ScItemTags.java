@@ -427,9 +427,9 @@ public class ScItemTags extends ItemTagsProvider {
 				ScItems.GLOWINGOBSIDIAN.get()
 		);
 
-		tag(STONE_NUGGET).add(
-				ScItems.STONE_NUGGET.get()
-		);
+		tag(STONE_NUGGET)
+      .add(ScItems.STONE_NUGGET.get())
+      .add(FLINT); //支持燧石
 
 		tag(SLINGSHOT).add(
 				ScItems.WOOD_SLINGSHOT.get(),
