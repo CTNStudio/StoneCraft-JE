@@ -220,9 +220,9 @@ public abstract class AbsStoneNuggetProjectile extends ThrowableItemProjectile {
 		} else {
 			projectileItem = ScItems.STONE_NUGGET.get();
 		}
-		basicDamage  = getProjectileItem().Damage();
-		basicGravity = getProjectileItem().Gravity();
-		basicWeight  = getProjectileItem().Weight();
+		basicDamage  = getProjectileItem().damage();
+		basicGravity = getProjectileItem().gravity();
+		basicWeight  = getProjectileItem().weight();
 	}
 	// endregion
 

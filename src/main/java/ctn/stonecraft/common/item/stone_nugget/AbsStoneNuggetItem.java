@@ -172,14 +172,14 @@ public abstract class AbsStoneNuggetItem extends Item implements ProjectileItem 
 	 *
 	 * @return 基础伤害值
 	 */
-	public float Damage() { return this.baseNuggetProps.damage; }
+	public float damage() { return this.baseNuggetProps.damage; }
 
 	/**
 	 * 获取石粒的重量
 	 *
 	 * @return 重量值
 	 */
-	public float Weight() {
+	public float weight() {
 		return this.baseNuggetProps.weight;
 	}
 
@@ -188,7 +188,7 @@ public abstract class AbsStoneNuggetItem extends Item implements ProjectileItem 
 	 *
 	 * @return 重力值
 	 */
-	public double Gravity() {
+	public double gravity() {
 		return this.baseNuggetProps.gravity;
 	}
 	//endregion

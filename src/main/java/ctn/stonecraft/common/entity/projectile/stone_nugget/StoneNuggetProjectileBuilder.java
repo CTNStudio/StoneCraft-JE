@@ -22,13 +22,13 @@ public final class StoneNuggetProjectileBuilder {
 	public StoneNuggetProjectileBuilder(Supplier<AbsStoneNuggetItem> projectileItem) {
 		this.projectileItem = projectileItem;
     var item = projectileItem.get();
-    this.baseNuggetProps = new BaseNuggetProps(item.Damage(), item.Weight(), item.Gravity());
+    this.baseNuggetProps = new BaseNuggetProps(item.damage(), item.weight(), item.gravity());
 	}
 
 	public StoneNuggetProjectileBuilder(AbsStoneNuggetItem absStoneNuggetItem) {
 		projectileItem = () -> absStoneNuggetItem;
     var item = projectileItem.get();
-    this.baseNuggetProps = new BaseNuggetProps(item.Damage(), item.Weight(), item.Gravity());
+    this.baseNuggetProps = new BaseNuggetProps(item.damage(), item.weight(), item.gravity());
 	}
 
   /**
