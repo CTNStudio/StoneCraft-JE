@@ -7,6 +7,9 @@ import net.minecraft.world.inventory.CraftingMenu;
 import net.minecraft.world.level.block.Block;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * 石质工作台菜单(复用原版工作台)
+ */
 public class StoneCraftingMenu extends CraftingMenu {
   private final ContainerLevelAccess access;
   private final Block block;

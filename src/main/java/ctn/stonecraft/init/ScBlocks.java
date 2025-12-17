@@ -1,5 +1,6 @@
 package ctn.stonecraft.init;
 
+import ctn.stonecraft.common.blocks.stone_converting_table.StoneConvertingTable;
 import ctn.stonecraft.common.blocks.stone_crafting_table.StoneCraftingTable;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -49,7 +50,8 @@ public class ScBlocks {
 
   // 石质工作台
   public static final DeferredBlock<Block> STONE_CRAFTING_TABLE = registerBlock("stone_crafting_table", StoneCraftingTable::new, BlockBehaviour.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).strength(2.5f).sound(SoundType.STONE));
-
+  // 石头转换台
+  public static final DeferredBlock<Block> STONE_CONVERTING_TABLE = registerBlock("stone_converting_table", StoneConvertingTable::new, BlockBehaviour.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).strength(2.5f).sound((SoundType.STONE)));
   //endregion
 
 	private static <B extends Block> List<DeferredBlock<B>> registerGradeBlock(@NotNull String name, Block block,

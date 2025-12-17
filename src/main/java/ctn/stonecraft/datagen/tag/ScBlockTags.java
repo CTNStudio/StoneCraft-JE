@@ -363,8 +363,8 @@ public class ScBlockTags extends BlockTagsProvider {
 		);
 
     //石质工作台
-    addTags(FUNCTIONAL_BLOCKS, ScBlocks.STONE_CRAFTING_TABLE);
-    addTags(BlockTags.MINEABLE_WITH_PICKAXE, ScBlocks.STONE_CRAFTING_TABLE);
+    addTags(FUNCTIONAL_BLOCKS, ScBlocks.STONE_CRAFTING_TABLE, ScBlocks.STONE_CONVERTING_TABLE);
+    addTags(BlockTags.MINEABLE_WITH_PICKAXE, ScBlocks.STONE_CRAFTING_TABLE, ScBlocks.STONE_CONVERTING_TABLE);
 	}
 
 	protected final void addTags(TagKey<Block> tagKey, List<DeferredBlock<Block>> blocks) {

@@ -1,5 +1,6 @@
 package ctn.stonecraft.datagen.recipe;
 
+import ctn.stonecraft.datagen.recipe.stone_converting.StoneConvertingRecipeProvider;
 import ctn.stonecraft.init.ScItems;
 import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
@@ -412,6 +413,8 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 				RecipeCategory.COMBAT, ScItems.STONE_NUGGET, 16);
 		//endregion
 
+    // 石头转换台相关配方
+    StoneConvertingRecipeProvider.buildRecipes(output);
   }
 
 	//region 切石机合成预制方法
@@ -944,4 +947,6 @@ public class RecipeProvider extends net.minecraft.data.recipes.RecipeProvider {
 		requires(builder, Map.of('#', requires), group, recipeOutput);
 	}
 	//endregion
+
+
 }

@@ -48,8 +48,13 @@ public class ScBlockModel extends BlockStateProvider {
 		blockItems(ScBlocks.COMPRESSED_DRIPSTONE_BLOCK);
 
     cubeColumn(ScBlocks.STONE_CRAFTING_TABLE); //石质工作台
+    cubeColumn(ScBlocks.STONE_CONVERTING_TABLE);//石头转换台
 	}
 
+  /**
+   * 柱状方块模型注册(顶部底部相同, 侧面相同)
+   * 资源命名规则: name.png = 侧面贴图，name_top.png = 顶部贴图
+   */
   private void cubeColumn(DeferredBlock<Block> blockItem){
     Block block = blockItem.get();
     simpleBlockWithItem(block, models().cubeColumn(
