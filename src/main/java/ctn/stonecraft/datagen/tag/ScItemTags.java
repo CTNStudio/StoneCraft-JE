@@ -441,9 +441,9 @@ public class ScItemTags extends ItemTagsProvider {
 		);
 
 		tag(ItemTags.DURABILITY_ENCHANTABLE).addTag(SLINGSHOT);
-    // 石质工作台
+    // 石质工作台&石头转换台
     copy(ScTags.ScBlocks.FUNCTIONAL_BLOCKS, ScTags.ScItems.FUNCTIONAL_BLOCKS);
-    tag(ScTags.ScItems.FUNCTIONAL_BLOCKS).add(ScItems.STONE_CRAFTING_TABLE.get());
+    tag(ScTags.ScItems.FUNCTIONAL_BLOCKS).add(ScItems.STONE_CRAFTING_TABLE.get(), ScItems.STONE_CONVERTING_TABLE.get());
 
 	}
 }

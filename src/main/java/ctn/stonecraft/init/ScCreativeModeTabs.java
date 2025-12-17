@@ -54,6 +54,7 @@ public class ScCreativeModeTabs {
 						registerBlockListItems(output, ScItems.COMPRESSED_TUFF);
 						registerBlockListItems(output, ScItems.COMPRESSED_DRIPSTONE_BLOCK);
             output.accept(ScItems.STONE_CRAFTING_TABLE); //石质工作台
+            output.accept(ScItems.STONE_CONVERTING_TABLE); //石头转换台
 					}, () -> ScItems.COMPRESSED_COBBLESTONE.getFirst().get().getDefaultInstance()));
 
 	public static final DeferredHolder<CreativeModeTab, CreativeModeTab> ITEM =

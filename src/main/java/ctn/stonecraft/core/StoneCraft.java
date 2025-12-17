@@ -50,6 +50,8 @@ public class StoneCraft {
     ScParticleTypes.REGISTER.register(eventBus);
     ScSoundEvents.REGISTER.register(eventBus);
     ScDamageType.REGISTER.register(eventBus);
+    ScRecipes.register(eventBus);  //配方注册
+    ScMenuTypes.register(eventBus); //菜单注册
   }
 
   // 通用设置初始化
