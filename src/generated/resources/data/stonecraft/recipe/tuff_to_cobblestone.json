@@ -1,0 +1,10 @@
+{
+  "type": "stonecraft:stone_converting",
+  "ingredient": {
+    "item": "minecraft:tuff"
+  },
+  "result": {
+    "count": 1,
+    "id": "minecraft:cobblestone"
+  }
+}

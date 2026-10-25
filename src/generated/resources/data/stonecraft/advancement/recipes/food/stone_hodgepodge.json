@@ -1,0 +1,109 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "stonecraft:stone_hodgepodge"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "item.minecraft.bowl": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:bowl"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "item.stonecraft.stone_apple": {
+      "conditions": {
+        "items": [
+          {
+            "items": "stonecraft:stone_apple"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "item.stonecraft.stone_bread": {
+      "conditions": {
+        "items": [
+          {
+            "items": "stonecraft:stone_bread"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "item.stonecraft.stone_carrot": {
+      "conditions": {
+        "items": [
+          {
+            "items": "stonecraft:stone_carrot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "item.stonecraft.stone_hodgepodge": {
+      "conditions": {
+        "items": [
+          {
+            "items": "stonecraft:stone_hodgepodge"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "item.stonecraft.stone_kelp": {
+      "conditions": {
+        "items": [
+          {
+            "items": "stonecraft:stone_kelp"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "item.stonecraft.stone_melon_slice": {
+      "conditions": {
+        "items": [
+          {
+            "items": "stonecraft:stone_melon_slice"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "item.stonecraft.stone_potato": {
+      "conditions": {
+        "items": [
+          {
+            "items": "stonecraft:stone_potato"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "item.stonecraft.stone_hodgepodge",
+      "item.minecraft.bowl",
+      "item.stonecraft.stone_apple",
+      "item.stonecraft.stone_bread",
+      "item.stonecraft.stone_carrot",
+      "item.stonecraft.stone_kelp",
+      "item.stonecraft.stone_melon_slice",
+      "item.stonecraft.stone_potato"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "stonecraft:stone_hodgepodge"
+    ]
+  }
+}

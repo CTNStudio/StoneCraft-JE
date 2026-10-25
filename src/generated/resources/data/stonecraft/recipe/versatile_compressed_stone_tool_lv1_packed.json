@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "versatileTool",
+  "key": {
+    "#": {
+      "item": "stonecraft:versatile_compressed_stone_tool_lv1"
+    }
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "stonecraft:versatile_compressed_stone_tool_lv2"
+  }
+}

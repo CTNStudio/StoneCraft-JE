@@ -1,0 +1,54 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "stonecraft:stone_cooked_beef"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "item.minecraft.cooked_beef": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:cooked_beef"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "item.stonecraft.stone_cooked_beef": {
+      "conditions": {
+        "items": [
+          {
+            "items": "stonecraft:stone_cooked_beef"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "minecraft:stone_crafting_materials": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#minecraft:stone_crafting_materials"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "item.stonecraft.stone_cooked_beef",
+      "minecraft:stone_crafting_materials",
+      "item.minecraft.cooked_beef"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "stonecraft:stone_cooked_beef"
+    ]
+  }
+}

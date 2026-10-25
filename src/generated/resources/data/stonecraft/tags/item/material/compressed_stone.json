@@ -1,0 +1,16 @@
+{
+  "values": [
+    "#stonecraft:compressed/cobblestone",
+    "#stonecraft:compressed/granite",
+    "#stonecraft:compressed/andesite",
+    "#stonecraft:compressed/diorite",
+    "#stonecraft:compressed/end_stone",
+    "#stonecraft:compressed/netherrack",
+    "#stonecraft:compressed/blackstone",
+    "#stonecraft:compressed/calcite",
+    "#stonecraft:compressed/cobbled_deepslate",
+    "#stonecraft:compressed/basalt",
+    "#stonecraft:compressed/tuff",
+    "#stonecraft:compressed/dripstone_block"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "block.minecraft.end_stone": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:end_stone"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "block.stonecraft.compressed_end_stone_lv1": {
+      "conditions": {
+        "items": [
+          {
+            "items": "stonecraft:compressed_end_stone_lv1"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "stonecraft:end_stone_packed"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "block.stonecraft.compressed_end_stone_lv1",
+      "block.minecraft.end_stone"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "stonecraft:end_stone_packed"
+    ]
+  }
+}

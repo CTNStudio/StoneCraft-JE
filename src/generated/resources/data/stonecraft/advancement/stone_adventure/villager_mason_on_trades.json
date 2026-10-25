@@ -1,0 +1,37 @@
+{
+  "parent": "stonecraft:stone_adventure/root",
+  "criteria": {
+    "mason": {
+      "conditions": {
+        "villager": [
+          {
+            "condition": "minecraft:entity_properties",
+            "entity": "this",
+            "predicate": {
+              "nbt": "{VillagerData:{profession:\"minecraft:mason\"}}"
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:villager_trade"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.stonecraft.stone_adventure/villager_mason_on_trades.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "stonecraft:stone_coin"
+    },
+    "title": {
+      "translate": "advancements.stonecraft.stone_adventure/villager_mason_on_trades.title"
+    }
+  },
+  "requirements": [
+    [
+      "mason"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,33 @@
+{
+  "parent": "stonecraft:stone_adventure/get_obsidian",
+  "criteria": {
+    "stone_adventure/get_bedrock": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:bedrock"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.stonecraft.stone_adventure/get_bedrock.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:bedrock"
+    },
+    "title": {
+      "translate": "advancements.stonecraft.stone_adventure/get_bedrock.title"
+    }
+  },
+  "requirements": [
+    [
+      "stone_adventure/get_bedrock"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

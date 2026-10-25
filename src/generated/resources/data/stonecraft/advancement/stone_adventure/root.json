@@ -1,0 +1,33 @@
+{
+  "criteria": {
+    "get_stone": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#stonecraft:advancement/root_item"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "background": "stonecraft:textures/block/compressed_cobblestone/lv1.png",
+    "description": {
+      "translate": "advancements.stonecraft.stone_adventure.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:cobblestone"
+    },
+    "title": {
+      "translate": "advancements.stonecraft.stone_adventure.title"
+    }
+  },
+  "requirements": [
+    [
+      "get_stone"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "stonecraft:stone_hoe_packed"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "item.minecraft.stone_hoe": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:stone_hoe"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "item.stonecraft.compressed_stone_hoe_lv1": {
+      "conditions": {
+        "items": [
+          {
+            "items": "stonecraft:compressed_stone_hoe_lv1"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "item.stonecraft.compressed_stone_hoe_lv1",
+      "item.minecraft.stone_hoe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "stonecraft:stone_hoe_packed"
+    ]
+  }
+}

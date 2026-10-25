@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "shove",
+  "key": {
+    "#": {
+      "item": "minecraft:stone_shovel"
+    }
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "stonecraft:compressed_stone_shovel_lv1"
+  }
+}

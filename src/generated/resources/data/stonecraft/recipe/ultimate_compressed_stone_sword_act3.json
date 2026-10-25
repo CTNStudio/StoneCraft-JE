@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "*": {
+      "item": "stonecraft:stone_star"
+    },
+    "A": {
+      "item": "stonecraft:ultimate_compressed_stone_sword_act2"
+    }
+  },
+  "pattern": [
+    " * ",
+    "*A*",
+    " * "
+  ],
+  "result": {
+    "count": 1,
+    "id": "stonecraft:ultimate_compressed_stone_sword_act3"
+  }
+}

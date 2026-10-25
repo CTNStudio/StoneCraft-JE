@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "stonecraft:block/compressed_bedrock_lv3"
+    }
+  }
+}

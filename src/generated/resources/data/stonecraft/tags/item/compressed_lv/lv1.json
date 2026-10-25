@@ -1,0 +1,26 @@
+{
+  "values": [
+    "stonecraft:compressed_cobblestone_lv1",
+    "stonecraft:compressed_mossy_cobblestone_lv1",
+    "stonecraft:compressed_stone_lv1",
+    "stonecraft:compressed_granite_lv1",
+    "stonecraft:compressed_andesite_lv1",
+    "stonecraft:compressed_diorite_lv1",
+    "stonecraft:compressed_bedrock_lv1",
+    "stonecraft:compressed_end_stone_lv1",
+    "stonecraft:compressed_obsidian_lv1",
+    "stonecraft:compressed_glowingobsidian_lv1",
+    "stonecraft:compressed_crying_obsidian_lv1",
+    "stonecraft:compressed_prismarine_lv1",
+    "stonecraft:compressed_dark_prismarine_lv1",
+    "stonecraft:compressed_netherrack_lv1",
+    "stonecraft:compressed_glowstone_lv1",
+    "stonecraft:compressed_blackstone_lv1",
+    "stonecraft:compressed_calcite_lv1",
+    "stonecraft:compressed_deepslate_lv1",
+    "stonecraft:compressed_cobbled_deepslate_lv1",
+    "stonecraft:compressed_basalt_lv1",
+    "stonecraft:compressed_tuff_lv1",
+    "stonecraft:compressed_dripstone_block_lv1"
+  ]
+}

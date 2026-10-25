@@ -1,0 +1,18 @@
+{
+  "values": [
+    "#c:stones",
+    "#c:cobblestones",
+    "#c:cobblestones/normal",
+    "#minecraft:terracotta",
+    "#c:glazed_terracottas",
+    "#c:sandstone/blocks",
+    "#stonecraft:compressed_lv/compressed_blocks",
+    "#minecraft:base_stone_nether",
+    "#minecraft:base_stone_overworld",
+    "#stonecraft:fall_away_stone_nugget",
+    "minecraft:calcite",
+    "minecraft:smooth_basalt",
+    "minecraft:obsidian",
+    "minecraft:crying_obsidian"
+  ]
+}

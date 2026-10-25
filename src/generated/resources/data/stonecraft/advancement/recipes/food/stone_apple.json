@@ -1,0 +1,54 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "stonecraft:stone_apple"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "item.minecraft.apple": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:apple"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "item.stonecraft.stone_apple": {
+      "conditions": {
+        "items": [
+          {
+            "items": "stonecraft:stone_apple"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "minecraft:stone_crafting_materials": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#minecraft:stone_crafting_materials"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "item.stonecraft.stone_apple",
+      "minecraft:stone_crafting_materials",
+      "item.minecraft.apple"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "stonecraft:stone_apple"
+    ]
+  }
+}

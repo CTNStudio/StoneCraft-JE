@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "leggings",
+  "key": {
+    "#": {
+      "item": "stonecraft:compressed_stone_leggings_lv1"
+    }
+  },
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "stonecraft:compressed_stone_leggings_lv2"
+  }
+}

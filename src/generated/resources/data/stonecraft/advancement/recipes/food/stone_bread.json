@@ -1,0 +1,54 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "stonecraft:stone_bread"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "item.minecraft.bread": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:bread"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "item.stonecraft.stone_bread": {
+      "conditions": {
+        "items": [
+          {
+            "items": "stonecraft:stone_bread"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "minecraft:stone_crafting_materials": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#minecraft:stone_crafting_materials"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "item.stonecraft.stone_bread",
+      "minecraft:stone_crafting_materials",
+      "item.minecraft.bread"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "stonecraft:stone_bread"
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "chestplate",
+  "key": {
+    "#": {
+      "item": "stonecraft:compressed_obsidian_lv2"
+    }
+  },
+  "pattern": [
+    "# #",
+    "###",
+    "###"
+  ],
+  "result": {
+    "count": 1,
+    "id": "stonecraft:compressed_stone_chestplate_lv3"
+  }
+}

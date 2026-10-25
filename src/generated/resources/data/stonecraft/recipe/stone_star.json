@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "*": {
+      "tag": "stonecraft:material/compressed_stone_lv5"
+    }
+  },
+  "pattern": [
+    " * ",
+    "***",
+    " * "
+  ],
+  "result": {
+    "count": 1,
+    "id": "stonecraft:stone_star"
+  }
+}

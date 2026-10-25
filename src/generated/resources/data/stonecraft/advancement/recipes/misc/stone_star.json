@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "stonecraft:stone_star"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "item.stonecraft.stone_star": {
+      "conditions": {
+        "items": [
+          {
+            "items": "stonecraft:stone_star"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "stonecraft:material/compressed_stone_lv5": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#stonecraft:material/compressed_stone_lv5"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "item.stonecraft.stone_star",
+      "stonecraft:material/compressed_stone_lv5"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "stonecraft:stone_star"
+    ]
+  }
+}

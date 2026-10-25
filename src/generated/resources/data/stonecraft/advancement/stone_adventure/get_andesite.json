@@ -1,0 +1,33 @@
+{
+  "parent": "stonecraft:stone_adventure/root",
+  "criteria": {
+    "stone_adventure/get_andesite": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:andesite"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.stonecraft.stone_adventure/get_andesite.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:andesite"
+    },
+    "title": {
+      "translate": "advancements.stonecraft.stone_adventure/get_andesite.title"
+    }
+  },
+  "requirements": [
+    [
+      "stone_adventure/get_andesite"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

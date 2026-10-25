@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "stonecraft:obsidian_glowingobsidian_crying_obsidian_via_stone_nugget"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "stone_nugget": {
+      "conditions": {
+        "items": [
+          {
+            "items": "stonecraft:stone_nugget"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "stone_nugget"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "stonecraft:obsidian_glowingobsidian_crying_obsidian_via_stone_nugget"
+    ]
+  }
+}

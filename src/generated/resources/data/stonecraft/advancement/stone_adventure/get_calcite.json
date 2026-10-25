@@ -1,0 +1,33 @@
+{
+  "parent": "stonecraft:stone_adventure/root",
+  "criteria": {
+    "stone_adventure/get_calcite": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:calcite"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.stonecraft.stone_adventure/get_calcite.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:calcite"
+    },
+    "title": {
+      "translate": "advancements.stonecraft.stone_adventure/get_calcite.title"
+    }
+  },
+  "requirements": [
+    [
+      "stone_adventure/get_calcite"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

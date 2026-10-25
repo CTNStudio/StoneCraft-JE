@@ -1,0 +1,33 @@
+{
+  "parent": "stonecraft:stone_adventure/root",
+  "criteria": {
+    "stone_adventure/get_mossy_cobblestone": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:mossy_cobblestone"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.stonecraft.stone_adventure/get_mossy_cobblestone.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:mossy_cobblestone"
+    },
+    "title": {
+      "translate": "advancements.stonecraft.stone_adventure/get_mossy_cobblestone.title"
+    }
+  },
+  "requirements": [
+    [
+      "stone_adventure/get_mossy_cobblestone"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

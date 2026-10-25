@@ -1,0 +1,87 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "stonecraft:versatile_compressed_stone_tool_lv4"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "item.minecraft.stick": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:stick"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "item.stonecraft.compressed_stone_axe_lv4": {
+      "conditions": {
+        "items": [
+          {
+            "items": "stonecraft:compressed_stone_axe_lv4"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "item.stonecraft.compressed_stone_hoe_lv4": {
+      "conditions": {
+        "items": [
+          {
+            "items": "stonecraft:compressed_stone_hoe_lv4"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "item.stonecraft.compressed_stone_pickaxe_lv4": {
+      "conditions": {
+        "items": [
+          {
+            "items": "stonecraft:compressed_stone_pickaxe_lv4"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "item.stonecraft.compressed_stone_shovel_lv4": {
+      "conditions": {
+        "items": [
+          {
+            "items": "stonecraft:compressed_stone_shovel_lv4"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "item.stonecraft.versatile_compressed_stone_tool_lv4": {
+      "conditions": {
+        "items": [
+          {
+            "items": "stonecraft:versatile_compressed_stone_tool_lv4"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "item.stonecraft.versatile_compressed_stone_tool_lv4",
+      "item.stonecraft.compressed_stone_axe_lv4",
+      "item.stonecraft.compressed_stone_pickaxe_lv4",
+      "item.stonecraft.compressed_stone_shovel_lv4",
+      "item.minecraft.stick",
+      "item.stonecraft.compressed_stone_hoe_lv4"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "stonecraft:versatile_compressed_stone_tool_lv4"
+    ]
+  }
+}

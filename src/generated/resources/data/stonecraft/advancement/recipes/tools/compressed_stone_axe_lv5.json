@@ -1,0 +1,54 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "stonecraft:compressed_stone_axe_lv5"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "item.minecraft.stick": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:stick"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "item.stonecraft.compressed_stone_axe_lv5": {
+      "conditions": {
+        "items": [
+          {
+            "items": "stonecraft:compressed_stone_axe_lv5"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "stonecraft:material/compressed_stone_lv5": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#stonecraft:material/compressed_stone_lv5"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "item.stonecraft.compressed_stone_axe_lv5",
+      "stonecraft:material/compressed_stone_lv5",
+      "item.minecraft.stick"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "stonecraft:compressed_stone_axe_lv5"
+    ]
+  }
+}

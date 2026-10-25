@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": {
+    "item": "minecraft:bedrock"
+  },
+  "result": {
+    "count": 64,
+    "id": "stonecraft:stone_nugget"
+  }
+}

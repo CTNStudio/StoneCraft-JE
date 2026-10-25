@@ -1,0 +1,330 @@
+{
+  "parent": "stonecraft:stone_adventure/stone_eater",
+  "criteria": {
+    "0": {
+      "conditions": {
+        "advancementId": "stonecraft:ten_stones_eaten",
+        "item": {
+          "items": [
+            "stonecraft:stone_apple",
+            "stonecraft:stone_bread",
+            "stonecraft:stone_carrot",
+            "stonecraft:stone_kelp",
+            "stonecraft:stone_melon_slice",
+            "stonecraft:stone_potato",
+            "stonecraft:stone_hodgepodge",
+            "stonecraft:stonickers",
+            "stonecraft:stone_cooked_cod",
+            "stonecraft:stone_cookie",
+            "stonecraft:stone_cooked_beef",
+            "stonecraft:stone_glow_berries",
+            "stonecraft:stone_sweet_berries",
+            "stonecraft:compressed_stonickers_lv1",
+            "stonecraft:compressed_stonickers_lv2",
+            "stonecraft:compressed_stonickers_lv3",
+            "stonecraft:compressed_stonickers_lv4",
+            "stonecraft:compressed_stonickers_lv5"
+          ]
+        }
+      },
+      "trigger": "stonecraft:count_criterion_trigger"
+    },
+    "1": {
+      "conditions": {
+        "advancementId": "stonecraft:ten_stones_eaten",
+        "item": {
+          "items": [
+            "stonecraft:stone_apple",
+            "stonecraft:stone_bread",
+            "stonecraft:stone_carrot",
+            "stonecraft:stone_kelp",
+            "stonecraft:stone_melon_slice",
+            "stonecraft:stone_potato",
+            "stonecraft:stone_hodgepodge",
+            "stonecraft:stonickers",
+            "stonecraft:stone_cooked_cod",
+            "stonecraft:stone_cookie",
+            "stonecraft:stone_cooked_beef",
+            "stonecraft:stone_glow_berries",
+            "stonecraft:stone_sweet_berries",
+            "stonecraft:compressed_stonickers_lv1",
+            "stonecraft:compressed_stonickers_lv2",
+            "stonecraft:compressed_stonickers_lv3",
+            "stonecraft:compressed_stonickers_lv4",
+            "stonecraft:compressed_stonickers_lv5"
+          ]
+        }
+      },
+      "trigger": "stonecraft:count_criterion_trigger"
+    },
+    "2": {
+      "conditions": {
+        "advancementId": "stonecraft:ten_stones_eaten",
+        "item": {
+          "items": [
+            "stonecraft:stone_apple",
+            "stonecraft:stone_bread",
+            "stonecraft:stone_carrot",
+            "stonecraft:stone_kelp",
+            "stonecraft:stone_melon_slice",
+            "stonecraft:stone_potato",
+            "stonecraft:stone_hodgepodge",
+            "stonecraft:stonickers",
+            "stonecraft:stone_cooked_cod",
+            "stonecraft:stone_cookie",
+            "stonecraft:stone_cooked_beef",
+            "stonecraft:stone_glow_berries",
+            "stonecraft:stone_sweet_berries",
+            "stonecraft:compressed_stonickers_lv1",
+            "stonecraft:compressed_stonickers_lv2",
+            "stonecraft:compressed_stonickers_lv3",
+            "stonecraft:compressed_stonickers_lv4",
+            "stonecraft:compressed_stonickers_lv5"
+          ]
+        }
+      },
+      "trigger": "stonecraft:count_criterion_trigger"
+    },
+    "3": {
+      "conditions": {
+        "advancementId": "stonecraft:ten_stones_eaten",
+        "item": {
+          "items": [
+            "stonecraft:stone_apple",
+            "stonecraft:stone_bread",
+            "stonecraft:stone_carrot",
+            "stonecraft:stone_kelp",
+            "stonecraft:stone_melon_slice",
+            "stonecraft:stone_potato",
+            "stonecraft:stone_hodgepodge",
+            "stonecraft:stonickers",
+            "stonecraft:stone_cooked_cod",
+            "stonecraft:stone_cookie",
+            "stonecraft:stone_cooked_beef",
+            "stonecraft:stone_glow_berries",
+            "stonecraft:stone_sweet_berries",
+            "stonecraft:compressed_stonickers_lv1",
+            "stonecraft:compressed_stonickers_lv2",
+            "stonecraft:compressed_stonickers_lv3",
+            "stonecraft:compressed_stonickers_lv4",
+            "stonecraft:compressed_stonickers_lv5"
+          ]
+        }
+      },
+      "trigger": "stonecraft:count_criterion_trigger"
+    },
+    "4": {
+      "conditions": {
+        "advancementId": "stonecraft:ten_stones_eaten",
+        "item": {
+          "items": [
+            "stonecraft:stone_apple",
+            "stonecraft:stone_bread",
+            "stonecraft:stone_carrot",
+            "stonecraft:stone_kelp",
+            "stonecraft:stone_melon_slice",
+            "stonecraft:stone_potato",
+            "stonecraft:stone_hodgepodge",
+            "stonecraft:stonickers",
+            "stonecraft:stone_cooked_cod",
+            "stonecraft:stone_cookie",
+            "stonecraft:stone_cooked_beef",
+            "stonecraft:stone_glow_berries",
+            "stonecraft:stone_sweet_berries",
+            "stonecraft:compressed_stonickers_lv1",
+            "stonecraft:compressed_stonickers_lv2",
+            "stonecraft:compressed_stonickers_lv3",
+            "stonecraft:compressed_stonickers_lv4",
+            "stonecraft:compressed_stonickers_lv5"
+          ]
+        }
+      },
+      "trigger": "stonecraft:count_criterion_trigger"
+    },
+    "5": {
+      "conditions": {
+        "advancementId": "stonecraft:ten_stones_eaten",
+        "item": {
+          "items": [
+            "stonecraft:stone_apple",
+            "stonecraft:stone_bread",
+            "stonecraft:stone_carrot",
+            "stonecraft:stone_kelp",
+            "stonecraft:stone_melon_slice",
+            "stonecraft:stone_potato",
+            "stonecraft:stone_hodgepodge",
+            "stonecraft:stonickers",
+            "stonecraft:stone_cooked_cod",
+            "stonecraft:stone_cookie",
+            "stonecraft:stone_cooked_beef",
+            "stonecraft:stone_glow_berries",
+            "stonecraft:stone_sweet_berries",
+            "stonecraft:compressed_stonickers_lv1",
+            "stonecraft:compressed_stonickers_lv2",
+            "stonecraft:compressed_stonickers_lv3",
+            "stonecraft:compressed_stonickers_lv4",
+            "stonecraft:compressed_stonickers_lv5"
+          ]
+        }
+      },
+      "trigger": "stonecraft:count_criterion_trigger"
+    },
+    "6": {
+      "conditions": {
+        "advancementId": "stonecraft:ten_stones_eaten",
+        "item": {
+          "items": [
+            "stonecraft:stone_apple",
+            "stonecraft:stone_bread",
+            "stonecraft:stone_carrot",
+            "stonecraft:stone_kelp",
+            "stonecraft:stone_melon_slice",
+            "stonecraft:stone_potato",
+            "stonecraft:stone_hodgepodge",
+            "stonecraft:stonickers",
+            "stonecraft:stone_cooked_cod",
+            "stonecraft:stone_cookie",
+            "stonecraft:stone_cooked_beef",
+            "stonecraft:stone_glow_berries",
+            "stonecraft:stone_sweet_berries",
+            "stonecraft:compressed_stonickers_lv1",
+            "stonecraft:compressed_stonickers_lv2",
+            "stonecraft:compressed_stonickers_lv3",
+            "stonecraft:compressed_stonickers_lv4",
+            "stonecraft:compressed_stonickers_lv5"
+          ]
+        }
+      },
+      "trigger": "stonecraft:count_criterion_trigger"
+    },
+    "7": {
+      "conditions": {
+        "advancementId": "stonecraft:ten_stones_eaten",
+        "item": {
+          "items": [
+            "stonecraft:stone_apple",
+            "stonecraft:stone_bread",
+            "stonecraft:stone_carrot",
+            "stonecraft:stone_kelp",
+            "stonecraft:stone_melon_slice",
+            "stonecraft:stone_potato",
+            "stonecraft:stone_hodgepodge",
+            "stonecraft:stonickers",
+            "stonecraft:stone_cooked_cod",
+            "stonecraft:stone_cookie",
+            "stonecraft:stone_cooked_beef",
+            "stonecraft:stone_glow_berries",
+            "stonecraft:stone_sweet_berries",
+            "stonecraft:compressed_stonickers_lv1",
+            "stonecraft:compressed_stonickers_lv2",
+            "stonecraft:compressed_stonickers_lv3",
+            "stonecraft:compressed_stonickers_lv4",
+            "stonecraft:compressed_stonickers_lv5"
+          ]
+        }
+      },
+      "trigger": "stonecraft:count_criterion_trigger"
+    },
+    "8": {
+      "conditions": {
+        "advancementId": "stonecraft:ten_stones_eaten",
+        "item": {
+          "items": [
+            "stonecraft:stone_apple",
+            "stonecraft:stone_bread",
+            "stonecraft:stone_carrot",
+            "stonecraft:stone_kelp",
+            "stonecraft:stone_melon_slice",
+            "stonecraft:stone_potato",
+            "stonecraft:stone_hodgepodge",
+            "stonecraft:stonickers",
+            "stonecraft:stone_cooked_cod",
+            "stonecraft:stone_cookie",
+            "stonecraft:stone_cooked_beef",
+            "stonecraft:stone_glow_berries",
+            "stonecraft:stone_sweet_berries",
+            "stonecraft:compressed_stonickers_lv1",
+            "stonecraft:compressed_stonickers_lv2",
+            "stonecraft:compressed_stonickers_lv3",
+            "stonecraft:compressed_stonickers_lv4",
+            "stonecraft:compressed_stonickers_lv5"
+          ]
+        }
+      },
+      "trigger": "stonecraft:count_criterion_trigger"
+    },
+    "9": {
+      "conditions": {
+        "advancementId": "stonecraft:ten_stones_eaten",
+        "item": {
+          "items": [
+            "stonecraft:stone_apple",
+            "stonecraft:stone_bread",
+            "stonecraft:stone_carrot",
+            "stonecraft:stone_kelp",
+            "stonecraft:stone_melon_slice",
+            "stonecraft:stone_potato",
+            "stonecraft:stone_hodgepodge",
+            "stonecraft:stonickers",
+            "stonecraft:stone_cooked_cod",
+            "stonecraft:stone_cookie",
+            "stonecraft:stone_cooked_beef",
+            "stonecraft:stone_glow_berries",
+            "stonecraft:stone_sweet_berries",
+            "stonecraft:compressed_stonickers_lv1",
+            "stonecraft:compressed_stonickers_lv2",
+            "stonecraft:compressed_stonickers_lv3",
+            "stonecraft:compressed_stonickers_lv4",
+            "stonecraft:compressed_stonickers_lv5"
+          ]
+        }
+      },
+      "trigger": "stonecraft:count_criterion_trigger"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.stonecraft.stone_adventure/ten_stones_eaten.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "stonecraft:stone_hodgepodge"
+    },
+    "title": {
+      "translate": "advancements.stonecraft.stone_adventure/ten_stones_eaten.title"
+    }
+  },
+  "requirements": [
+    [
+      "0"
+    ],
+    [
+      "1"
+    ],
+    [
+      "2"
+    ],
+    [
+      "3"
+    ],
+    [
+      "4"
+    ],
+    [
+      "5"
+    ],
+    [
+      "6"
+    ],
+    [
+      "7"
+    ],
+    [
+      "8"
+    ],
+    [
+      "9"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

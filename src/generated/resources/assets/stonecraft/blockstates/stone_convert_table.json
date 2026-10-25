@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "stonecraft:block/stone_convert_table",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "stonecraft:block/stone_convert_table"
+    },
+    "facing=south": {
+      "model": "stonecraft:block/stone_convert_table",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "stonecraft:block/stone_convert_table",
+      "y": 270
+    }
+  }
+}

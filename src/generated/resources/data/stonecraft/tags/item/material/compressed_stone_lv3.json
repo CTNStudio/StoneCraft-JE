@@ -1,0 +1,16 @@
+{
+  "values": [
+    "stonecraft:compressed_cobblestone_lv3",
+    "stonecraft:compressed_granite_lv3",
+    "stonecraft:compressed_andesite_lv3",
+    "stonecraft:compressed_diorite_lv3",
+    "stonecraft:compressed_end_stone_lv3",
+    "stonecraft:compressed_netherrack_lv3",
+    "stonecraft:compressed_blackstone_lv3",
+    "stonecraft:compressed_calcite_lv3",
+    "stonecraft:compressed_cobbled_deepslate_lv3",
+    "stonecraft:compressed_basalt_lv3",
+    "stonecraft:compressed_tuff_lv3",
+    "stonecraft:compressed_dripstone_block_lv3"
+  ]
+}

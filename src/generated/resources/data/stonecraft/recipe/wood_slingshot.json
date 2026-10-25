@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "slingshot",
+  "key": {
+    "#": {
+      "tag": "minecraft:planks"
+    },
+    "G": {
+      "tag": "c:leathers"
+    }
+  },
+  "pattern": [
+    "#G#",
+    " # ",
+    " # "
+  ],
+  "result": {
+    "count": 1,
+    "id": "stonecraft:wood_slingshot"
+  }
+}
