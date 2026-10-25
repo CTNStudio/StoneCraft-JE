@@ -1,20 +1,36 @@
+<<<<<<< HEAD
 // 1.21.1	2025-08-11T17:54:04.9789624	Tags for minecraft:item mod id stonecraft
+=======
+// 1.21.1	2026-10-07T12:00:10.9170552	Tags for minecraft:item mod id stonecraft
+>>>>>>> main
 0aaaacfbfb69078f8af2fe3ed94655e7b5401388 data/c/tags/item/obsidians.json
 0f6979589c32158e4e45368d57285c7cee1a3a99 data/c/tags/item/stone_nugget.json
 824f4f58db05a6504268b726ae5a041a705a0912 data/c/tags/item/tools.json
 13d6eeea2a637ef16f5c8659c758b67b7da56da3 data/c/tags/item/tools/melee_weapon.json
 75ca5b599518cd2d997ed687986dff5d3891f2b8 data/c/tags/item/tools/mining_tool.json
+<<<<<<< HEAD
+=======
+13aad92459ec456636f63216455003c2bea56da3 data/minecraft/tags/item/arrows.json
+>>>>>>> main
 3aa6fd62a563acddde6b65351279e12bd4966238 data/minecraft/tags/item/axes.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/minecraft/tags/item/base_stone_nether.json
 35133e95f1c8fdd7a1c21afcc231fc0bffefb9a8 data/minecraft/tags/item/base_stone_overworld.json
 8d4ce4434f0f174e3cd90e03b366142d14de364d data/minecraft/tags/item/chest_armor.json
 75ca5b599518cd2d997ed687986dff5d3891f2b8 data/minecraft/tags/item/cluster_max_harvestables.json
+<<<<<<< HEAD
+=======
+d0b0959b83be5cb4e4d9f4acbfdbfd7cc33e9328 data/minecraft/tags/item/enchantable/bow.json
+>>>>>>> main
 cf4c3d1163aa19551b94ab5eaff7374554e4b801 data/minecraft/tags/item/enchantable/durability.json
 c46d371200e6b3353d2ee92bc3bf4ede015cef5c data/minecraft/tags/item/foot_armor.json
 ed61850294888eeedacd38e7750ff2d21cd8a101 data/minecraft/tags/item/head_armor.json
 761baf6adb3317ab26f75bcdd544e2afb79f8c08 data/minecraft/tags/item/hoes.json
 634875ea1d7ba44ed92a0b3e1e5311f183338c44 data/minecraft/tags/item/leg_armor.json
+<<<<<<< HEAD
 75ca5b599518cd2d997ed687986dff5d3891f2b8 data/minecraft/tags/item/pickaxes.json
+=======
+7c2d2b78e983aa04a0ddf2e0d02ef004cc148c18 data/minecraft/tags/item/pickaxes.json
+>>>>>>> main
 ef9ee2ccc88d81fe9dbeca3ad06c9188b91b5204 data/minecraft/tags/item/shovels.json
 0c731af120f7011caf59b3ec58a888841395bca2 data/minecraft/tags/item/stone_crafting_materials.json
 f5e5995058447869e8873a0a5480f97acfce2110 data/minecraft/tags/item/swords.json

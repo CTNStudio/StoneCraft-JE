@@ -1,6 +1,13 @@
 package ctn.stonecraft;
 
 import com.mojang.logging.LogUtils;
+<<<<<<< HEAD
+=======
+import ctn.stonecraft.init.ScBlockEntities;
+import ctn.stonecraft.init.ScMenuTypes;
+import ctn.stonecraft.init.ScRecipeSerializers;
+import ctn.stonecraft.init.ScRecipeTypes;
+>>>>>>> main
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.bus.api.IEventBus;
@@ -29,10 +36,17 @@ import static ctn.stonecraft.init.ScTriggerTypes.TRIGGER_TYPES;
 public class StoneCraft {
 	public static final  String SC_ID  = "stonecraft";
 	private static final Logger LOGGER = LogUtils.getLogger();
+<<<<<<< HEAD
 	
 	public StoneCraft(IEventBus eventBus, ModContainer container) {
 		eventBus.addListener(this::commonSetup);
 		
+=======
+
+	public StoneCraft(IEventBus eventBus, ModContainer container) {
+		eventBus.addListener(this::commonSetup);
+
+>>>>>>> main
 		ARMOR_MATERIALS.register(eventBus);
 		ITEM_REGISTER.register(eventBus);
 		BLOCK_REGISTER.register(eventBus);
@@ -42,6 +56,7 @@ public class StoneCraft {
 		TRIGGER_TYPES.register(eventBus);
 		PARTICLE_TYPES.register(eventBus);
 		SOUND_EVENT.register(eventBus);
+<<<<<<< HEAD
     DAMAGE_TYPE.register(eventBus);
 		NeoForge.EVENT_BUS.register(this);
 	}
@@ -54,12 +69,37 @@ public class StoneCraft {
 		return ResourceLocation.fromNamespaceAndPath(SC_ID, name);
 	}
 	
+=======
+		DAMAGE_TYPE.register(eventBus);
+
+		ScBlockEntities.BLOCK_ENTITIES.register(eventBus);
+		ScMenuTypes.MENU_TYPES.register(eventBus);
+		ScRecipeTypes.RECIPE_TYPES.register(eventBus);
+		ScRecipeSerializers.RECIPE_SERIALIZERS.register(eventBus);
+
+		NeoForge.EVENT_BUS.register(this);
+	}
+
+	private void commonSetup(FMLCommonSetupEvent event) {
+		LOGGER.info("HELLO FROM COMMON SETUP");
+	}
+
+	public static ResourceLocation path(String name) {
+		return ResourceLocation.fromNamespaceAndPath(SC_ID, name);
+	}
+
+>>>>>>> main
 	@SubscribeEvent
 	public void onServerStarting(ServerStartingEvent event) {
 		LOGGER.info("HELLO from server starting");
 	}
+<<<<<<< HEAD
 	
 	@EventBusSubscriber(modid = SC_ID)
+=======
+
+	@EventBusSubscriber(modid = SC_ID, value = net.neoforged.api.distmarker.Dist.CLIENT)
+>>>>>>> main
 	public static class ClientModEvents {
 		@SubscribeEvent
 		public static void onClientSetup(FMLClientSetupEvent event) {
@@ -67,4 +107,8 @@ public class StoneCraft {
 			LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
 		}
 	}
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> main

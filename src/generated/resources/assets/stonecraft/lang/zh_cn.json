@@ -29,10 +29,20 @@
   "advancements.stonecraft.stone_adventure/get_netherrack.title": "嘎嘣脆",
   "advancements.stonecraft.stone_adventure/get_obsidian.description": "获得黑曜石",
   "advancements.stonecraft.stone_adventure/get_obsidian.title": "真硬！2.0",
+<<<<<<< HEAD
+=======
+  "advancements.stonecraft.stone_adventure/get_redstone.description": "获得红石",
+  "advancements.stonecraft.stone_adventure/get_redstone.title": "赤石",
+>>>>>>> main
   "advancements.stonecraft.stone_adventure/get_tuff.description": "获得凝灰岩",
   "advancements.stonecraft.stone_adventure/get_tuff.title": "紫水晶必定在此！",
   "advancements.stonecraft.stone_adventure/our_trio.description": "获取安山岩、闪长岩和花岗岩",
   "advancements.stonecraft.stone_adventure/our_trio.title": "《我们仨》",
+<<<<<<< HEAD
+=======
+  "advancements.stonecraft.stone_adventure/stone_convert.description": "初次使用石头转化台",
+  "advancements.stonecraft.stone_adventure/stone_convert.title": "炼石学",
+>>>>>>> main
   "advancements.stonecraft.stone_adventure/stone_eater.description": "吃掉任意一个石头食物",
   "advancements.stonecraft.stone_adventure/stone_eater.title": "食石食",
   "advancements.stonecraft.stone_adventure/ten_stones_eaten.description": "吃掉十种不一样的石头食物",
@@ -150,9 +160,18 @@
   "block.stonecraft.compressed_tuff_lv4": "四级压缩凝灰岩",
   "block.stonecraft.compressed_tuff_lv5": "五级压缩凝灰岩",
   "block.stonecraft.glowingobsidian": "发光的黑耀石",
+<<<<<<< HEAD
   "enchantment.stonecraft.oldb": "oldb神力",
   "enchantment.stonecraft.stone_buffer": "石之缓冲",
   "enchantment.stonecraft.stone_destroyer": "石力挖掘",
+=======
+  "block.stonecraft.stone_convert_table": "石头转换台",
+  "container.stonecraft.stone_convert_table": "石头转化台",
+  "enchantment.stonecraft.oldb": "oldb神力",
+  "enchantment.stonecraft.stone_buffer": "石之缓冲",
+  "enchantment.stonecraft.stone_destroyer": "石力挖掘",
+  "entity.stonecraft.stone_arrow": "石箭",
+>>>>>>> main
   "entity.stonecraft.stone_nugget": "石粒",
   "item.stonecraft.compressed_stone_axe_lv1": "一级压缩石斧",
   "item.stonecraft.compressed_stone_axe_lv2": "二级压缩石斧",
@@ -169,6 +188,15 @@
   "item.stonecraft.compressed_stone_chestplate_lv3": "三级压缩石甲",
   "item.stonecraft.compressed_stone_chestplate_lv4": "四级压缩石甲",
   "item.stonecraft.compressed_stone_chestplate_lv5": "五级压缩石甲",
+<<<<<<< HEAD
+=======
+  "item.stonecraft.compressed_stone_hammer_lv0": "石锤",
+  "item.stonecraft.compressed_stone_hammer_lv1": "一级压缩石锤",
+  "item.stonecraft.compressed_stone_hammer_lv2": "二级压缩石锤",
+  "item.stonecraft.compressed_stone_hammer_lv3": "三级压缩石锤",
+  "item.stonecraft.compressed_stone_hammer_lv4": "四级压缩石锤",
+  "item.stonecraft.compressed_stone_hammer_lv5": "五级压缩石锤",
+>>>>>>> main
   "item.stonecraft.compressed_stone_helmet_lv1": "一级压缩石盔",
   "item.stonecraft.compressed_stone_helmet_lv2": "二级压缩石盔",
   "item.stonecraft.compressed_stone_helmet_lv3": "三级压缩石盔",
@@ -209,7 +237,14 @@
   "item.stonecraft.iron_slingshot": "铁质弹弓",
   "item.stonecraft.netherite_slingshot": "下界合金质弹弓",
   "item.stonecraft.stone_apple": "石头苹果",
+<<<<<<< HEAD
   "item.stonecraft.stone_boots": "石靴",
+=======
+  "item.stonecraft.stone_arrow": "石箭",
+  "item.stonecraft.stone_ball": "石球",
+  "item.stonecraft.stone_boots": "石靴",
+  "item.stonecraft.stone_bow": "石弓",
+>>>>>>> main
   "item.stonecraft.stone_bread": "石头面包",
   "item.stonecraft.stone_carrot": "石头胡萝卜",
   "item.stonecraft.stone_chestplate": "石甲",
@@ -240,9 +275,16 @@
   "item.stonecraft.versatile_stone_tool": "石制多功能工具",
   "item.stonecraft.wood_slingshot": "木质弹弓",
   "itemGroup.stonecraft.block": "石头工艺-方块",
+<<<<<<< HEAD
   "itemGroup.stonecraft.equipment": "石头工艺-装备",
   "itemGroup.stonecraft.food": "石头工艺-食物",
   "itemGroup.stonecraft.item": "石头工艺-物品",
+=======
+  "itemGroup.stonecraft.combat_supplies": "石头工艺-战斗用品",
+  "itemGroup.stonecraft.food": "石头工艺-食物",
+  "itemGroup.stonecraft.item": "石头工艺-物品",
+  "itemGroup.stonecraft.tool": "石头工艺-工具",
+>>>>>>> main
   "pack.stonecraft.description": "石头工艺",
   "stonecraft:stone_nugget.show_skip_result.others": "%s的成绩是：%d次！",
   "stonecraft:stone_nugget.show_skip_result.owner": "你的成绩是：%d次！"

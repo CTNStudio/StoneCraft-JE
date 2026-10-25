@@ -1,5 +1,9 @@
 package ctn.stonecraft.init;
 
+<<<<<<< HEAD
+=======
+import ctn.stonecraft.common.entity.projectile.stone_arrow.StoneArrowEntity;
+>>>>>>> main
 import ctn.stonecraft.common.entity.projectile.stone_nugget.AbsStoneNuggetProjectile;
 import ctn.stonecraft.common.entity.projectile.stone_nugget.BasicStoneNuggetProjectile;
 import ctn.stonecraft.common.entity.projectile.stone_nugget.StoneNuggetProjectileBuilder;
@@ -34,6 +38,19 @@ public class ScEntityTypes {
 	public static final Supplier<EntityType<AbsStoneNuggetProjectile>> STONE_NUGGET =
 			registerDefaultStoneNugget("stone_nugget", (entityType, level) ->
 					new BasicStoneNuggetProjectile(new StoneNuggetProjectileBuilder(() -> ScItems.STONE_NUGGET.get()), entityType, level, null));
+<<<<<<< HEAD
+=======
+
+	/**
+	 * 石箭
+	 */
+	public static final Supplier<EntityType<StoneArrowEntity>> STONE_ARROW =
+			registerEntity("stone_arrow", EntityType.Builder
+					.<StoneArrowEntity>of(StoneArrowEntity::new, MobCategory.MISC)
+					.sized(0.25F, 0.25F)
+					.clientTrackingRange(4)
+					.updateInterval(20));
+>>>>>>> main
 	
 	/**
 	 * 注册投射物实体类型（使用自定义构建器）

@@ -42,8 +42,13 @@
     [
       "has_the_recipe",
       "item.stonecraft.stone_sweet_berries",
+<<<<<<< HEAD
       "item.minecraft.sweet_berries",
       "minecraft:stone_crafting_materials"
+=======
+      "minecraft:stone_crafting_materials",
+      "item.minecraft.sweet_berries"
+>>>>>>> main
     ]
   ],
   "rewards": {

@@ -42,6 +42,15 @@ public class ScItemModel extends ItemModelProvider {
 	 */
 	@Override
 	protected void registerModels() {
+<<<<<<< HEAD
+=======
+		basicItem(ScItems.COMPRESSED_STONE_HAMMER_LV0.get());
+		basicItem(ScItems.COMPRESSED_STONE_HAMMER_LV1.get());
+		basicItem(ScItems.COMPRESSED_STONE_HAMMER_LV2.get());
+		basicItem(ScItems.COMPRESSED_STONE_HAMMER_LV3.get());
+		basicItem(ScItems.COMPRESSED_STONE_HAMMER_LV4.get());
+		basicItem(ScItems.COMPRESSED_STONE_HAMMER_LV5.get());
+>>>>>>> main
 		handheldItem(ScItems.COMPRESSED_STONE_SWORD_LV1.get());
 		handheldItem(ScItems.COMPRESSED_STONE_SWORD_LV2.get());
 		handheldItem(ScItems.COMPRESSED_STONE_SWORD_LV3.get());
@@ -121,6 +130,11 @@ public class ScItemModel extends ItemModelProvider {
 		basicItem(ScItems.COMPRESSED_STONE_CHESTPLATE_LV5.get());
 		basicItem(ScItems.COMPRESSED_STONE_LEGGINGS_LV5.get());
 		basicItem(ScItems.COMPRESSED_STONE_BOOTS_LV5.get());
+<<<<<<< HEAD
+=======
+		basicItem(ScItems.STONE_BALL.get());
+		basicItem(ScItems.STONE_ARROW.get());
+>>>>>>> main
 		
 		{
 			Map<Float, String> builder = new TextureMapBuilder().sharingWithoutHeadAndTail("_", 3)

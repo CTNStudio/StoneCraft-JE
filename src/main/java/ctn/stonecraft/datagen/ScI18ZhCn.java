@@ -64,6 +64,11 @@ public class ScI18ZhCn extends LanguageProvider {
 		addBlocks(ScBlocks.COMPRESSED_BASALT, "玄武岩");
 		addBlocks(ScBlocks.COMPRESSED_TUFF, "凝灰岩");
 		addBlocks(ScBlocks.COMPRESSED_DRIPSTONE_BLOCK, "滴水石");
+<<<<<<< HEAD
+=======
+		add(ScBlocks.STONE_CONVERT_TABLE.get(), "石头转换台");
+		add("container.stonecraft.stone_convert_table", "石头转化台");
+>>>>>>> main
 		//endregion
 		
 		//region 创造模式分页面
@@ -109,6 +114,15 @@ public class ScI18ZhCn extends LanguageProvider {
 		add(ScItems.VERSATILE_COMPRESSED_STONE_TOOL_LV3.get(), "三级压缩石制多功能工具");
 		add(ScItems.VERSATILE_COMPRESSED_STONE_TOOL_LV4.get(), "四级压缩石制多功能工具");
 		add(ScItems.VERSATILE_COMPRESSED_STONE_TOOL_LV5.get(), "五级压缩石制多功能工具");
+<<<<<<< HEAD
+=======
+		add(ScItems.COMPRESSED_STONE_HAMMER_LV0.get(), "石锤");
+		add(ScItems.COMPRESSED_STONE_HAMMER_LV1.get(), "一级压缩石锤");
+		add(ScItems.COMPRESSED_STONE_HAMMER_LV2.get(), "二级压缩石锤");
+		add(ScItems.COMPRESSED_STONE_HAMMER_LV3.get(), "三级压缩石锤");
+		add(ScItems.COMPRESSED_STONE_HAMMER_LV4.get(), "四级压缩石锤");
+		add(ScItems.COMPRESSED_STONE_HAMMER_LV5.get(), "五级压缩石锤");
+>>>>>>> main
 		add(ScItems.STONE_APPLE.get(), "石头苹果");
 		add(ScItems.STONE_BREAD.get(), "石头面包");
 		add(ScItems.STONE_CARROT.get(), "石头胡萝卜");
@@ -160,6 +174,13 @@ public class ScI18ZhCn extends LanguageProvider {
 		add(ScItems.GOLD_SLINGSHOT.get(), "金质弹弓");
 		add(ScItems.DIAMOND_SLINGSHOT.get(), "钻石质弹弓");
 		add(ScItems.NETHERITE_SLINGSHOT.get(), "下界合金质弹弓");
+<<<<<<< HEAD
+=======
+		add(ScItems.STONE_BALL.get(), "石球");
+		add(ScItems.STONE_ARROW.get(), "石箭");
+		addEntityType(ScEntityTypes.STONE_ARROW, "石箭");
+		add(ScItems.STONE_BOW.get(), "石弓");
+>>>>>>> main
 		//endregion
 		
 		//region 附魔
@@ -189,6 +210,11 @@ public class ScI18ZhCn extends LanguageProvider {
 		addAdvancement(saAdvancementId(STONE_EATER), "食石食", "吃掉任意一个石头食物");
 		addAdvancement(saAdvancementId(TEN_STONES_EATEN), "食十石食", "吃掉十种不一样的石头食物");
 		addAdvancement(saAdvancementId(EPIC_STONE_FEAST), "史诗食世石", "吃掉所有种类的石头食物");
+<<<<<<< HEAD
+=======
+		addAdvancement(saAdvancementId("stone_convert"), "炼石学", "初次使用石头转化台");
+		addAdvancement(saAdvancementId("get_redstone"), "赤石", "获得红石");
+>>>>>>> main
 		//endregion
 		
 		//region 实体

@@ -8,6 +8,10 @@ version = "${mod_version}"
 displayName = "${mod_name}"
 authors = "${mod_authors}"
 description = '''${mod_description}'''
+<<<<<<< HEAD
+=======
+logoFile = "pack.png"
+>>>>>>> main
 
 [[mixins]]
 config = "${mod_id}.mixins.json"

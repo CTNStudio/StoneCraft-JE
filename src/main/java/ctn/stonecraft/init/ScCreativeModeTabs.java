@@ -53,6 +53,10 @@ public class ScCreativeModeTabs {
 						registerBlockListItems(output, ScItems.COMPRESSED_BASALT);
 						registerBlockListItems(output, ScItems.COMPRESSED_TUFF);
 						registerBlockListItems(output, ScItems.COMPRESSED_DRIPSTONE_BLOCK);
+<<<<<<< HEAD
+=======
+						output.accept(ScItems.STONE_CONVERT_TABLE.get());
+>>>>>>> main
 					}, () -> ScItems.COMPRESSED_COBBLESTONE.getFirst().get().getDefaultInstance()));
 	
 	public static final DeferredHolder<CreativeModeTab, CreativeModeTab> ITEM =
@@ -65,6 +69,10 @@ public class ScCreativeModeTabs {
 						output.accept(ScItems.STONE_STAR);
 						output.accept(ScItems.STONE_NUGGET);
 						output.accept(ScItems.STONE_COIN);
+<<<<<<< HEAD
+=======
+						output.accept(ScItems.STONE_BALL.get());
+>>>>>>> main
 					}, () -> ScItems.STONE_COIN.get().getDefaultInstance()));
 	public static final DeferredHolder<CreativeModeTab, CreativeModeTab> TOOL =
 			register("tool", (name) -> registerCreativeModeTab(
@@ -88,7 +96,11 @@ public class ScCreativeModeTabs {
 						output.accept(ScItems.COMPRESSED_STONE_AXE_LV3);
 						output.accept(ScItems.COMPRESSED_STONE_AXE_LV4);
 						output.accept(ScItems.COMPRESSED_STONE_AXE_LV5);
+<<<<<<< HEAD
 						
+=======
+
+>>>>>>> main
 						output.accept(ScItems.COMPRESSED_STONE_PICKAXE_LV1);
 						output.accept(ScItems.COMPRESSED_STONE_PICKAXE_LV2);
 						output.accept(ScItems.COMPRESSED_STONE_PICKAXE_LV3);
@@ -106,7 +118,18 @@ public class ScCreativeModeTabs {
 						output.accept(ScItems.COMPRESSED_STONE_HOE_LV3);
 						output.accept(ScItems.COMPRESSED_STONE_HOE_LV4);
 						output.accept(ScItems.COMPRESSED_STONE_HOE_LV5);
+<<<<<<< HEAD
 					}, () -> ScItems.COMPRESSED_STONE_SWORD_LV1.get().getDefaultInstance()));
+=======
+
+						output.accept(ScItems.COMPRESSED_STONE_HAMMER_LV0);
+						output.accept(ScItems.COMPRESSED_STONE_HAMMER_LV1);
+						output.accept(ScItems.COMPRESSED_STONE_HAMMER_LV2);
+						output.accept(ScItems.COMPRESSED_STONE_HAMMER_LV3);
+						output.accept(ScItems.COMPRESSED_STONE_HAMMER_LV4);
+						output.accept(ScItems.COMPRESSED_STONE_HAMMER_LV5);
+					}, () -> ScItems.COMPRESSED_STONE_PICKAXE_LV5.get().getDefaultInstance()));
+>>>>>>> main
 	
 	public static final DeferredHolder<CreativeModeTab, CreativeModeTab> FOOD =
 			register("food", (name) -> registerCreativeModeTab(
@@ -177,7 +200,14 @@ public class ScCreativeModeTabs {
 						output.accept(ScItems.COMPRESSED_STONE_CHESTPLATE_LV5);
 						output.accept(ScItems.COMPRESSED_STONE_LEGGINGS_LV5);
 						output.accept(ScItems.COMPRESSED_STONE_BOOTS_LV5);
+<<<<<<< HEAD
 					}, () -> ScItems.STONE_APPLE.get().getDefaultInstance()));
+=======
+						output.accept(ScItems.STONE_BOW);
+						output.accept(ScItems.STONE_ARROW);
+
+					}, () -> ScItems.COMPRESSED_STONE_SWORD_LV5.get().getDefaultInstance()));
+>>>>>>> main
 	
 	private static void outputEnchantmentBook(CreativeModeTab.ItemDisplayParameters parameters, CreativeModeTab.Output output, ResourceKey<Enchantment> stoneDestroyer) {
 		parameters.holders().lookup(Registries.ENCHANTMENT).ifPresent(lookup ->

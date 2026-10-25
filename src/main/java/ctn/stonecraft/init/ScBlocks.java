@@ -1,5 +1,9 @@
 package ctn.stonecraft.init;
 
+<<<<<<< HEAD
+=======
+import ctn.stonecraft.common.block.StoneConvertTableBlock;
+>>>>>>> main
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CryingObsidianBlock;
@@ -40,7 +44,12 @@ public class ScBlocks {
 	public static final List<DeferredBlock<Block>> COMPRESSED_BASALT            = registerGradeBlock("compressed_basalt_lv", Blocks.BASALT, 1.25f, 4.2f);
 	public static final List<DeferredBlock<Block>> COMPRESSED_TUFF              = registerGradeBlock("compressed_tuff_lv", Blocks.TUFF, 1.5f, 6);
 	public static final List<DeferredBlock<Block>> COMPRESSED_DRIPSTONE_BLOCK   = registerGradeBlock("compressed_dripstone_block_lv", Blocks.DRIPSTONE_BLOCK, 1.5f, 6);
+<<<<<<< HEAD
 	
+=======
+	public static final DeferredBlock<StoneConvertTableBlock> STONE_CONVERT_TABLE = registerBlock("stone_convert_table", StoneConvertTableBlock::new, BlockBehaviour.Properties.of().strength(3.5f).requiresCorrectToolForDrops());
+
+>>>>>>> main
 	private static <B extends Block> List<DeferredBlock<B>> registerGradeBlock(@NotNull String name, Block block,
 			Function<BlockBehaviour.Properties, ? extends B> func, float destroyTime, float explosionResistance) {
 		return registerGradeBlock(name, block, func, destroyTime, explosionResistance, 5);

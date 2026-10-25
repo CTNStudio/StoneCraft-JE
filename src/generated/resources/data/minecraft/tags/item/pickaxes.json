@@ -1,5 +1,14 @@
 {
   "values": [
+<<<<<<< HEAD
+=======
+    "stonecraft:compressed_stone_hammer_lv0",
+    "stonecraft:compressed_stone_hammer_lv1",
+    "stonecraft:compressed_stone_hammer_lv2",
+    "stonecraft:compressed_stone_hammer_lv3",
+    "stonecraft:compressed_stone_hammer_lv4",
+    "stonecraft:compressed_stone_hammer_lv5",
+>>>>>>> main
     "#stonecraft:compressed_tools/pickaxe",
     "#stonecraft:tools/versatile"
   ]

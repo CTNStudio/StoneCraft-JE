@@ -1,9 +1,13 @@
 package ctn.stonecraft;
 
+<<<<<<< HEAD
 import ctn.stonecraft.datagen.ScBlockModel;
 import ctn.stonecraft.datagen.ScDatapackBuiltinEntriesProvider;
 import ctn.stonecraft.datagen.ScI18ZhCn;
 import ctn.stonecraft.datagen.ScItemModel;
+=======
+import ctn.stonecraft.datagen.*;
+>>>>>>> main
 import ctn.stonecraft.datagen.advancement.ScAdvancementProvider;
 import ctn.stonecraft.datagen.loot.ScLootTableProvider;
 import ctn.stonecraft.datagen.recipe.RecipeProvider;
@@ -53,7 +57,18 @@ public class StoneDatagen {
 		dataGenerator.addProvider(client, new ScBlockModel(output, helper));
 		dataGenerator.addProvider(client, new ScItemModel(output, helper));
 		dataGenerator.addProvider(client, new ScI18ZhCn(output));
+<<<<<<< HEAD
 		
+=======
+		dataGenerator.addProvider(client, new ScI18ZhHk(output));
+		dataGenerator.addProvider(client, new ScI18ZhTw(output));
+		dataGenerator.addProvider(client, new ScI18JaJp(output));
+		dataGenerator.addProvider(client, new ScI18Lzh(output));
+		dataGenerator.addProvider(client, new ScI18EnUs(output));
+		dataGenerator.addProvider(client, new ScI18RuRu(output));
+
+
+>>>>>>> main
 		// 服务端数据生成
 		dataGenerator.addProvider(server, new ScDatapackBuiltinEntriesProvider(output, completableFuture));
 		ScBlockTags blockTags = new ScBlockTags(output, completableFuture, helper);

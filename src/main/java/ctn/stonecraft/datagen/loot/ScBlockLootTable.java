@@ -41,6 +41,10 @@ public class ScBlockLootTable extends BlockLootSubProvider {
 		dropSelf(ScBlocks.COMPRESSED_BASALT);
 		dropSelf(ScBlocks.COMPRESSED_TUFF);
 		dropSelf(ScBlocks.COMPRESSED_DRIPSTONE_BLOCK);
+<<<<<<< HEAD
+=======
+		dropSelf(ScBlocks.STONE_CONVERT_TABLE.get());
+>>>>>>> main
 	}
 	
 	@Override

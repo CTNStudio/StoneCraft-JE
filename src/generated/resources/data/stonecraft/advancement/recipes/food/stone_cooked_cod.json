@@ -42,8 +42,13 @@
     [
       "has_the_recipe",
       "item.stonecraft.stone_cooked_cod",
+<<<<<<< HEAD
       "item.minecraft.cooked_cod",
       "minecraft:stone_crafting_materials"
+=======
+      "minecraft:stone_crafting_materials",
+      "item.minecraft.cooked_cod"
+>>>>>>> main
     ]
   ],
   "rewards": {

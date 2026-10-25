@@ -42,8 +42,13 @@
     [
       "has_the_recipe",
       "item.stonecraft.compressed_stone_pickaxe_lv4",
+<<<<<<< HEAD
       "item.minecraft.stick",
       "stonecraft:material/compressed_stone_lv4"
+=======
+      "stonecraft:material/compressed_stone_lv4",
+      "item.minecraft.stick"
+>>>>>>> main
     ]
   ],
   "rewards": {

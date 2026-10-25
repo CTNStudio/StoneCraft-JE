@@ -1,0 +1,26 @@
+{
+  "parent": "stonecraft:stone_adventure/root",
+  "criteria": {
+    "use_stone_convert_table": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.stonecraft.stone_adventure/stone_convert.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "stonecraft:stone_convert_table"
+    },
+    "title": {
+      "translate": "advancements.stonecraft.stone_adventure/stone_convert.title"
+    }
+  },
+  "requirements": [
+    [
+      "use_stone_convert_table"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -22,10 +22,17 @@ import static net.minecraft.world.item.Items.*;
 
 public class ScItemTags extends ItemTagsProvider {
 	public ScItemTags(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider,
+<<<<<<< HEAD
 			CompletableFuture<TagLookup<Block>> blockTags, @CheckForNull ExistingFileHelper existingFileHelper) {
 		super(output, lookupProvider, blockTags, SC_ID, existingFileHelper);
 	}
 	
+=======
+	                  CompletableFuture<TagLookup<Block>> blockTags, @CheckForNull ExistingFileHelper existingFileHelper) {
+		super(output, lookupProvider, blockTags, SC_ID, existingFileHelper);
+	}
+
+>>>>>>> main
 	@Override
 	protected void addTags(HolderLookup.@NotNull Provider capability) {
 		tag(COMPRESSED_STONE_HELMET_LV1).add(ScItems.COMPRESSED_STONE_HELMET_LV1.get());
@@ -40,7 +47,11 @@ public class ScItemTags extends ItemTagsProvider {
 				COMPRESSED_STONE_HELMET_LV4,
 				COMPRESSED_STONE_HELMET_LV5);
 		tag(STONE_HELMET).addTag(COMPRESSED_STONE_HELMET).add(ScItems.STONE_HELMET.get());
+<<<<<<< HEAD
 		
+=======
+
+>>>>>>> main
 		tag(COMPRESSED_STONE_CHESTPLATE_LV1).add(ScItems.COMPRESSED_STONE_CHESTPLATE_LV1.get());
 		tag(COMPRESSED_STONE_CHESTPLATE_LV2).add(ScItems.COMPRESSED_STONE_CHESTPLATE_LV2.get());
 		tag(COMPRESSED_STONE_CHESTPLATE_LV3).add(ScItems.COMPRESSED_STONE_CHESTPLATE_LV3.get());
@@ -53,7 +64,20 @@ public class ScItemTags extends ItemTagsProvider {
 				COMPRESSED_STONE_CHESTPLATE_LV4,
 				COMPRESSED_STONE_CHESTPLATE_LV5);
 		tag(STONE_CHESTPLATE).addTag(COMPRESSED_STONE_CHESTPLATE).add(ScItems.STONE_CHESTPLATE.get());
+<<<<<<< HEAD
 		
+=======
+
+		tag(ItemTags.PICKAXES).add(
+				ScItems.COMPRESSED_STONE_HAMMER_LV0.get(),
+				ScItems.COMPRESSED_STONE_HAMMER_LV1.get(),
+				ScItems.COMPRESSED_STONE_HAMMER_LV2.get(),
+				ScItems.COMPRESSED_STONE_HAMMER_LV3.get(),
+				ScItems.COMPRESSED_STONE_HAMMER_LV4.get(),
+				ScItems.COMPRESSED_STONE_HAMMER_LV5.get()
+		);
+
+>>>>>>> main
 		tag(COMPRESSED_STONE_LEGGINGS_LV1).add(ScItems.COMPRESSED_STONE_LEGGINGS_LV1.get());
 		tag(COMPRESSED_STONE_LEGGINGS_LV2).add(ScItems.COMPRESSED_STONE_LEGGINGS_LV2.get());
 		tag(COMPRESSED_STONE_LEGGINGS_LV3).add(ScItems.COMPRESSED_STONE_LEGGINGS_LV3.get());
@@ -66,7 +90,11 @@ public class ScItemTags extends ItemTagsProvider {
 				COMPRESSED_STONE_LEGGINGS_LV4,
 				COMPRESSED_STONE_LEGGINGS_LV5);
 		tag(STONE_LEGGINGS).addTag(COMPRESSED_STONE_LEGGINGS).add(ScItems.STONE_LEGGINGS.get());
+<<<<<<< HEAD
 		
+=======
+
+>>>>>>> main
 		tag(COMPRESSED_STONE_BOOTS_LV1).add(ScItems.COMPRESSED_STONE_BOOTS_LV1.get());
 		tag(COMPRESSED_STONE_BOOTS_LV2).add(ScItems.COMPRESSED_STONE_BOOTS_LV2.get());
 		tag(COMPRESSED_STONE_BOOTS_LV3).add(ScItems.COMPRESSED_STONE_BOOTS_LV3.get());
@@ -79,7 +107,11 @@ public class ScItemTags extends ItemTagsProvider {
 				COMPRESSED_STONE_BOOTS_LV4,
 				COMPRESSED_STONE_BOOTS_LV5);
 		tag(STONE_BOOTS).addTag(COMPRESSED_STONE_BOOTS).add(ScItems.STONE_BOOTS.get());
+<<<<<<< HEAD
 		
+=======
+
+>>>>>>> main
 		tag(COMPRESSED_STONE_ARMOR_LV1).addTags(
 				COMPRESSED_STONE_HELMET_LV1,
 				COMPRESSED_STONE_CHESTPLATE_LV1,
@@ -112,13 +144,21 @@ public class ScItemTags extends ItemTagsProvider {
 				COMPRESSED_STONE_ARMOR_LV4,
 				COMPRESSED_STONE_ARMOR_LV5);
 		tag(STONE_ARMOR).addTag(COMPRESSED_STONE_ARMOR);
+<<<<<<< HEAD
 		
+=======
+
+>>>>>>> main
 		tag(FOOT_ARMOR).addTag(STONE_BOOTS);
 		tag(LEG_ARMOR).addTag(STONE_LEGGINGS);
 		tag(CHEST_ARMOR).addTag(STONE_CHESTPLATE);
 		tag(HEAD_ARMOR).addTag(STONE_HELMET);
 		tag(TRIMMABLE_ARMOR).addTag(STONE_ARMOR);
+<<<<<<< HEAD
 		
+=======
+
+>>>>>>> main
 		tag(COMPRESSED_STONE_TOOL_LV1).add(
 				ScItems.COMPRESSED_STONE_SWORD_LV1.get(),
 				ScItems.COMPRESSED_STONE_AXE_LV1.get(),
@@ -383,7 +423,11 @@ public class ScItemTags extends ItemTagsProvider {
 				ScItems.COMPRESSED_TUFF.get(4).get(),
 				ScItems.COMPRESSED_DRIPSTONE_BLOCK.get(4).get()
 		);
+<<<<<<< HEAD
 		
+=======
+
+>>>>>>> main
 		tag(COMPRESSED_STONE_FOOD_LV1).add(ScItems.COMPRESSED_STONICKERS_LV1.get());
 		tag(COMPRESSED_STONE_FOOD_LV2).add(ScItems.COMPRESSED_STONICKERS_LV2.get());
 		tag(COMPRESSED_STONE_FOOD_LV3).add(ScItems.COMPRESSED_STONICKERS_LV3.get());
@@ -412,6 +456,7 @@ public class ScItemTags extends ItemTagsProvider {
 				ScItems.STONE_SWEET_BERRIES.get()
 		).addTag(COMPRESSED_STONE_FOOD);
 		tag(WOLF_FOOD).addTag(STONE_FOOD);
+<<<<<<< HEAD
 		
 		copy(BlockTags.BASE_STONE_NETHER, BASE_STONE_NETHER);
 		copy(BlockTags.BASE_STONE_OVERWORLD, BASE_STONE_OVERWORLD);
@@ -429,6 +474,25 @@ public class ScItemTags extends ItemTagsProvider {
 				ScItems.STONE_NUGGET.get()
 		);
 		
+=======
+
+		copy(BlockTags.BASE_STONE_NETHER, BASE_STONE_NETHER);
+		copy(BlockTags.BASE_STONE_OVERWORLD, BASE_STONE_OVERWORLD);
+		copy(ScTags.ScBlocks.FALL_AWAY_STONE_NUGGET, FALL_AWAY_STONE_NUGGE);
+
+		copy(ScTags.ScBlocks.STONE_DESTROYER_EFFECT_BLOCKS, STONE_DESTROYER_EFFECT_BLOCKS);
+		copy(ScTags.ScBlocks.ADVANCEMENT_ROOT_BLOCK, ADVANCEMENT_ROOT_ITEM);
+		copy(ScTags.ScBlocks.BREAKABLE_BY_STONE_NUGGET, BREAKABLE_BY_STONE_NUGGET);
+
+		tag(Tags.Items.OBSIDIANS).add(
+				ScItems.GLOWINGOBSIDIAN.get()
+		);
+
+		tag(STONE_NUGGET).add(
+				ScItems.STONE_NUGGET.get()
+		);
+
+>>>>>>> main
 		tag(SLINGSHOT).add(
 				ScItems.WOOD_SLINGSHOT.get(),
 				ScItems.STONE_SLINGSHOT.get(),
@@ -437,8 +501,15 @@ public class ScItemTags extends ItemTagsProvider {
 				ScItems.DIAMOND_SLINGSHOT.get(),
 				ScItems.NETHERITE_SLINGSHOT.get()
 		);
+<<<<<<< HEAD
 		
 		
 		tag(ItemTags.DURABILITY_ENCHANTABLE).addTag(SLINGSHOT);
+=======
+
+		tag(ItemTags.DURABILITY_ENCHANTABLE).addTag(SLINGSHOT);
+		tag(ARROWS).add(ScItems.STONE_ARROW.get());
+		tag(BOW_ENCHANTABLE).add(ScItems.STONE_BOW.get());
+>>>>>>> main
 	}
 }

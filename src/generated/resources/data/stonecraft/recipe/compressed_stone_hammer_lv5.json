@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "hammer",
+  "key": {
+    "A": {
+      "item": "stonecraft:compressed_cobblestone_lv5"
+    },
+    "I": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "AIA",
+    " I "
+  ],
+  "result": {
+    "count": 1,
+    "id": "stonecraft:compressed_stone_hammer_lv5"
+  }
+}

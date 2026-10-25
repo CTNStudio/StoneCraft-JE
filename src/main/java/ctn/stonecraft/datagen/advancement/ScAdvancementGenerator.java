@@ -4,10 +4,14 @@ import ctn.stonecraft.common.trigger.CountCriterionTrigger;
 import ctn.stonecraft.datagen.tool.AdvancementProviderTool;
 import ctn.stonecraft.init.ScItems;
 import net.minecraft.advancements.*;
+<<<<<<< HEAD
 import net.minecraft.advancements.critereon.ConsumeItemTrigger;
 import net.minecraft.advancements.critereon.EntityPredicate;
 import net.minecraft.advancements.critereon.NbtPredicate;
 import net.minecraft.advancements.critereon.TradeTrigger;
+=======
+import net.minecraft.advancements.critereon.*;
+>>>>>>> main
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
@@ -197,7 +201,30 @@ public final class ScAdvancementGenerator implements AdvancementGenerator {
 				true,
 				true,
 				false);
+<<<<<<< HEAD
 		
+=======
+
+		AdvancementHolder stoneConvert = save(
+				Advancement.Builder.advancement().parent(root).display(
+								ScItems.STONE_CONVERT_TABLE.get(),
+								titleText(saAdvancementId("stone_convert")),
+								descriptionText(saAdvancementId("stone_convert")),
+								null,
+								AdvancementType.TASK,
+								true,
+								true,
+								false)
+						.addCriterion("use_stone_convert_table",
+								CriteriaTriggers.IMPOSSIBLE.createCriterion(new ImpossibleTrigger.TriggerInstance())),
+				saver, saAdvancementId("stone_convert"));
+
+		AdvancementHolder getRedstone = createObtainAdv(
+				root, saver, saAdvancementId("get_redstone"),
+				Items.REDSTONE, AdvancementType.TASK,
+				false);
+
+>>>>>>> main
 		for (Item item : ALL_STONE_FOOD) {
 			edibleAllStoneFoodBuilder.addCriterion(item.getDescriptionId(),
 					ConsumeItemTrigger.TriggerInstance.usedItem(matchItems(item)));

@@ -20,7 +20,11 @@ public class ScBlockModel extends BlockStateProvider {
 	public ScBlockModel(PackOutput output, ExistingFileHelper exFileHelper) {
 		super(output, SC_ID, exFileHelper);
 	}
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> main
 	@Override
 	protected void registerStatesAndModels() {
 		blockItems(ScBlocks.COMPRESSED_COBBLESTONE);
@@ -46,25 +50,57 @@ public class ScBlockModel extends BlockStateProvider {
 		blockItems(ScBlocks.COMPRESSED_BASALT);
 		blockItems(ScBlocks.COMPRESSED_TUFF);
 		blockItems(ScBlocks.COMPRESSED_DRIPSTONE_BLOCK);
+<<<<<<< HEAD
 	}
 	
+=======
+
+		// 石头转换台
+		stoneConvertTable();
+	}
+
+	private void stoneConvertTable() {
+		Block block = ScBlocks.STONE_CONVERT_TABLE.get();
+		String name = name(block);
+		String base = "block/stone_convert_table/";
+
+
+		horizontalBlock(block,
+				modLoc(base + "side"),
+				modLoc(base + "front"),
+				modLoc(base + "top"));
+
+		// 方块物品模型
+		itemModels().withExistingParent(name, modLoc("block/" + name));
+	}
+
+>>>>>>> main
 	private void blockItems(DeferredBlock<Block> blockItem) {
 		Block block = blockItem.get();
 		simpleBlockWithItem(block, cubeAll(block));
 	}
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> main
 	private void blockItems(List<DeferredBlock<Block>> blockItems) {
 		for (DeferredBlock<Block> blockItem : blockItems) {
 			Block block = blockItem.get();
 			ResourceLocation name = key(block);
 			String path = name.getPath();
 			String nameBlock = name(block);
+<<<<<<< HEAD
 			
 			// 分割路径并检查格式是否符合预期
+=======
+
+>>>>>>> main
 			String[] split = path.split("_lv");
 			if (split.length < 2) {
 				throw new IllegalArgumentException("Invalid block path format: " + path + ". Expected pattern '***_lv*'");
 			}
+<<<<<<< HEAD
 			
 			String namespace = name.getNamespace();
 			String modelName = split[0] + "/" + "lv" + split[1];
@@ -87,3 +123,27 @@ public class ScBlockModel extends BlockStateProvider {
 		return key(block).getPath();
 	}
 }
+=======
+
+			String namespace = name.getNamespace();
+			String modelName = split[0] + "/" + "lv" + split[1];
+			ResourceLocation modelLocation = ResourceLocation.fromNamespaceAndPath(namespace, ModelProvider.BLOCK_FOLDER + "/" + modelName);
+
+			ModelFile modelFile = models().cubeAll(nameBlock, modelLocation);
+			ConfiguredModel configuredModel = new ConfiguredModel(modelFile);
+
+			getVariantBuilder(block).partialState().setModels(configuredModel);
+
+			itemModels().getBuilder(path).parent(modelFile);
+		}
+	}
+
+	private ResourceLocation key(Block block) {
+		return BuiltInRegistries.BLOCK.getKey(block);
+	}
+
+	private String name(Block block) {
+		return key(block).getPath();
+	}
+}
+>>>>>>> main

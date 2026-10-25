@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 // 1.21.1	2025-08-13T13:32:37.9336212	Item Models: stonecraft
+=======
+// 1.21.1	2026-10-07T12:00:10.9390573	Item Models: stonecraft
+>>>>>>> main
 3ac5c9f9c39e4839c6bfb3d213d93e0940ef301a assets/stonecraft/models/item/compressed_stone_axe_lv1.json
 b5bd9791c08be54cd087c816392870a598105593 assets/stonecraft/models/item/compressed_stone_axe_lv2.json
 ae47cc623db5d0db846d0354cfc319f6019144ff assets/stonecraft/models/item/compressed_stone_axe_lv3.json
@@ -14,6 +18,15 @@ c8b26591044e9c5bd633e1bfe53a12328cdbbab1 assets/stonecraft/models/item/compresse
 0dba896fa6baf08ed5b8802291054fda67501936 assets/stonecraft/models/item/compressed_stone_chestplate_lv3.json
 76d62c9b3cd1b5b6a9b1666b312dedaab5e822ae assets/stonecraft/models/item/compressed_stone_chestplate_lv4.json
 155c357d3e946f5fcfbb9b4e794e14cef6034432 assets/stonecraft/models/item/compressed_stone_chestplate_lv5.json
+<<<<<<< HEAD
+=======
+02071ca845a829d78f32e70af3dc9b2f712a9fce assets/stonecraft/models/item/compressed_stone_hammer_lv0.json
+55bad25dc357f1aaf56dedd26e7b822d3d4a6226 assets/stonecraft/models/item/compressed_stone_hammer_lv1.json
+9d739c3a79f068422f31f57b38db335af57776a5 assets/stonecraft/models/item/compressed_stone_hammer_lv2.json
+bb371c48a5c621efc44f1527fdfa9736965fa5b0 assets/stonecraft/models/item/compressed_stone_hammer_lv3.json
+5a4abdf083b621e7bb1957af7f51aad3b9913bdd assets/stonecraft/models/item/compressed_stone_hammer_lv4.json
+9ea83b2f5d57517ab87b807f39225b9b41e0e553 assets/stonecraft/models/item/compressed_stone_hammer_lv5.json
+>>>>>>> main
 653837fc44aac707d1efdf8fd90b52436efd129f assets/stonecraft/models/item/compressed_stone_helmet_lv1.json
 2e8bd2842349529673e4def894ef940d58a53ba3 assets/stonecraft/models/item/compressed_stone_helmet_lv2.json
 a8ea2461b288edc078adda72cd38791ce1f121ec assets/stonecraft/models/item/compressed_stone_helmet_lv3.json
@@ -66,6 +79,11 @@ fd9026024855b7a4b420c6ea1024270ef2e1f968 assets/stonecraft/models/item/iron_slin
 d46c70a554a89720406508f8d2e4cddf6ae97f9e assets/stonecraft/models/item/netherite_slingshot_2.json
 b654eeaa4e9cb767d77aab26c77f2669a70b8fb8 assets/stonecraft/models/item/netherite_slingshot_3.json
 29121b191061859284a28fb4933920ba28b92efa assets/stonecraft/models/item/stone_apple.json
+<<<<<<< HEAD
+=======
+80dc607d90775d3f074ce3d449da548feceeb24f assets/stonecraft/models/item/stone_arrow.json
+c7fe9391295f48867a051404b4c0b0117c7da682 assets/stonecraft/models/item/stone_ball.json
+>>>>>>> main
 4aabef9344fa9a6e4757b30f28c92ebc6a48fb53 assets/stonecraft/models/item/stone_boots.json
 29a1ca70cfaf4f5384ddcdea8c1a08322ec5c59e assets/stonecraft/models/item/stone_bread.json
 8cc9ec12702e845c4a63096db0030de3740f7aa4 assets/stonecraft/models/item/stone_carrot.json

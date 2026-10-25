@@ -42,8 +42,13 @@
     [
       "has_the_recipe",
       "item.stonecraft.stone_kelp",
+<<<<<<< HEAD
       "block.minecraft.kelp",
       "minecraft:stone_crafting_materials"
+=======
+      "minecraft:stone_crafting_materials",
+      "block.minecraft.kelp"
+>>>>>>> main
     ]
   ],
   "rewards": {

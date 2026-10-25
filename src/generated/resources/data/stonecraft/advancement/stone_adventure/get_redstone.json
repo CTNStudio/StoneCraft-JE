@@ -1,0 +1,33 @@
+{
+  "parent": "stonecraft:stone_adventure/root",
+  "criteria": {
+    "stone_adventure/get_redstone": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:redstone"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.stonecraft.stone_adventure/get_redstone.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:redstone"
+    },
+    "title": {
+      "translate": "advancements.stonecraft.stone_adventure/get_redstone.title"
+    }
+  },
+  "requirements": [
+    [
+      "stone_adventure/get_redstone"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -42,8 +42,13 @@
     [
       "has_the_recipe",
       "item.stonecraft.stone_melon_slice",
+<<<<<<< HEAD
       "item.minecraft.melon_slice",
       "minecraft:stone_crafting_materials"
+=======
+      "minecraft:stone_crafting_materials",
+      "item.minecraft.melon_slice"
+>>>>>>> main
     ]
   ],
   "rewards": {

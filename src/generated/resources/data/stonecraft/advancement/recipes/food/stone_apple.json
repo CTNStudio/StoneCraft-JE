@@ -42,8 +42,13 @@
     [
       "has_the_recipe",
       "item.stonecraft.stone_apple",
+<<<<<<< HEAD
       "item.minecraft.apple",
       "minecraft:stone_crafting_materials"
+=======
+      "minecraft:stone_crafting_materials",
+      "item.minecraft.apple"
+>>>>>>> main
     ]
   ],
   "rewards": {

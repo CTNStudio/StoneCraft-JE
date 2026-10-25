@@ -42,8 +42,13 @@
     [
       "has_the_recipe",
       "item.stonecraft.compressed_stone_hoe_lv3",
+<<<<<<< HEAD
       "item.minecraft.stick",
       "stonecraft:material/compressed_stone_lv3"
+=======
+      "stonecraft:material/compressed_stone_lv3",
+      "item.minecraft.stick"
+>>>>>>> main
     ]
   ],
   "rewards": {
